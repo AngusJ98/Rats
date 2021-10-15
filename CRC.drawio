@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-10-15T14:00:05.480Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Safari/605.1.15" etag="OiSp1FgtwyOqLV_gRwna" version="15.5.3" type="github">
+<mxfile host="app.diagrams.net" modified="2021-10-15T14:02:20.887Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Safari/605.1.15" etag="tvwr-jZcicNFyLgS1CBP" version="15.5.3" type="github">
   <diagram id="zpcQQFXpKKOXDBpBT5Iq" name="Page-1">
     <mxGraphModel dx="1324" dy="1011" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -91,7 +91,7 @@
         <mxCell id="c7Za7BFch5kh-YGNbLE7-16" value="Collaborations" style="swimlane;align=left;" vertex="1" parent="c7Za7BFch5kh-YGNbLE7-14">
           <mxGeometry x="230" y="30" width="230" height="270.00000000000006" as="geometry" />
         </mxCell>
-        <mxCell id="c7Za7BFch5kh-YGNbLE7-17" value="&lt;b&gt;Class: Level&lt;/b&gt;" style="verticalLabelPosition=middle;verticalAlign=middle;html=1;shape=mxgraph.basic.corner_round_rect;dx=6;labelPosition=center;align=left;" vertex="1" parent="c7Za7BFch5kh-YGNbLE7-14">
+        <mxCell id="c7Za7BFch5kh-YGNbLE7-17" value="&lt;b&gt;Class: Board&lt;/b&gt;" style="verticalLabelPosition=middle;verticalAlign=middle;html=1;shape=mxgraph.basic.corner_round_rect;dx=6;labelPosition=center;align=left;" vertex="1" parent="c7Za7BFch5kh-YGNbLE7-14">
           <mxGeometry width="460" height="30" as="geometry" />
         </mxCell>
       </root>
