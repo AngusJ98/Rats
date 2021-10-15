@@ -1,44 +1,98 @@
-<mxfile host="app.diagrams.net" modified="2021-10-15T13:23:38.401Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Safari/605.1.15" etag="PAEuHRts8N87u9of2M1S" version="15.5.3" type="github">
+<mxfile host="app.diagrams.net" modified="2021-10-15T14:00:05.480Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Safari/605.1.15" etag="OiSp1FgtwyOqLV_gRwna" version="15.5.3" type="github">
   <diagram id="zpcQQFXpKKOXDBpBT5Iq" name="Page-1">
-    <mxGraphModel dx="711" dy="859" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1324" dy="1011" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="aV5-zZEt5HdxQ8EFgEAb-17" value="Responsibilities" style="swimlane;align=left;" vertex="1" parent="1">
-          <mxGeometry x="60" y="80" width="130" height="180" as="geometry" />
+        <mxCell id="c7Za7BFch5kh-YGNbLE7-1" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="70" y="60" width="460" height="300" as="geometry" />
         </mxCell>
-        <mxCell id="aV5-zZEt5HdxQ8EFgEAb-18" value="Collaborations" style="swimlane;align=left;" vertex="1" parent="1">
-          <mxGeometry x="190" y="80" width="130" height="180" as="geometry" />
+        <mxCell id="aV5-zZEt5HdxQ8EFgEAb-17" value="Responsibilities" style="swimlane;align=left;" parent="c7Za7BFch5kh-YGNbLE7-1" vertex="1">
+          <mxGeometry y="30" width="230" height="270.00000000000006" as="geometry" />
         </mxCell>
-        <mxCell id="aV5-zZEt5HdxQ8EFgEAb-22" value="&lt;b&gt;Class:&lt;/b&gt;" style="verticalLabelPosition=middle;verticalAlign=middle;html=1;shape=mxgraph.basic.corner_round_rect;dx=6;labelPosition=center;align=left;" vertex="1" parent="1">
-          <mxGeometry x="60" y="60" width="260" height="20" as="geometry" />
+        <mxCell id="c7Za7BFch5kh-YGNbLE7-19" value="- &amp;nbsp;Move around map, but only on certain&lt;br&gt;&amp;nbsp; &amp;nbsp;tiles&lt;br&gt;&lt;br&gt;- &amp;nbsp;Mate with other rats if fertile + correct&lt;br&gt;&amp;nbsp; &amp;nbsp;gender&lt;br&gt;&lt;br&gt;- &amp;nbsp;Interact with items that player deploys&lt;br&gt;&lt;br&gt;- &amp;nbsp;Track own hp, die if 0?" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;labelPosition=center;verticalLabelPosition=middle;" vertex="1" parent="aV5-zZEt5HdxQ8EFgEAb-17">
+          <mxGeometry y="20" width="230" height="250" as="geometry" />
         </mxCell>
-        <mxCell id="aV5-zZEt5HdxQ8EFgEAb-23" value="Responsibilities" style="swimlane;align=left;" vertex="1" parent="1">
-          <mxGeometry x="400" y="80" width="130" height="180" as="geometry" />
+        <mxCell id="aV5-zZEt5HdxQ8EFgEAb-18" value="Collaborations" style="swimlane;align=left;" parent="c7Za7BFch5kh-YGNbLE7-1" vertex="1">
+          <mxGeometry x="230" y="30" width="230" height="270.00000000000006" as="geometry" />
         </mxCell>
-        <mxCell id="aV5-zZEt5HdxQ8EFgEAb-24" value="Collaborations" style="swimlane;align=left;" vertex="1" parent="1">
-          <mxGeometry x="530" y="80" width="130" height="180" as="geometry" />
+        <mxCell id="c7Za7BFch5kh-YGNbLE7-22" value="- Tile&lt;br&gt;&lt;br&gt;&lt;br&gt;- Rat&lt;br&gt;&lt;br&gt;&lt;br&gt;- PowerItem" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" vertex="1" parent="aV5-zZEt5HdxQ8EFgEAb-18">
+          <mxGeometry y="20" width="230" height="250" as="geometry" />
         </mxCell>
-        <mxCell id="aV5-zZEt5HdxQ8EFgEAb-25" value="&lt;b&gt;Class:&lt;/b&gt;" style="verticalLabelPosition=middle;verticalAlign=middle;html=1;shape=mxgraph.basic.corner_round_rect;dx=6;labelPosition=center;align=left;" vertex="1" parent="1">
-          <mxGeometry x="400" y="60" width="260" height="20" as="geometry" />
+        <mxCell id="aV5-zZEt5HdxQ8EFgEAb-22" value="&lt;b&gt;Class: Rat&lt;/b&gt;" style="verticalLabelPosition=middle;verticalAlign=middle;html=1;shape=mxgraph.basic.corner_round_rect;dx=6;labelPosition=center;align=left;" parent="c7Za7BFch5kh-YGNbLE7-1" vertex="1">
+          <mxGeometry width="460" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="aV5-zZEt5HdxQ8EFgEAb-26" value="Responsibilities" style="swimlane;align=left;" vertex="1" parent="1">
-          <mxGeometry x="30" y="330" width="130" height="180" as="geometry" />
+        <mxCell id="c7Za7BFch5kh-YGNbLE7-2" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="70" y="410" width="460" height="300.00000000000006" as="geometry" />
         </mxCell>
-        <mxCell id="aV5-zZEt5HdxQ8EFgEAb-27" value="Collaborations" style="swimlane;align=left;" vertex="1" parent="1">
-          <mxGeometry x="160" y="330" width="130" height="180" as="geometry" />
+        <mxCell id="c7Za7BFch5kh-YGNbLE7-3" value="Responsibilities" style="swimlane;align=left;" vertex="1" parent="c7Za7BFch5kh-YGNbLE7-2">
+          <mxGeometry y="30" width="460" height="270.00000000000006" as="geometry" />
         </mxCell>
-        <mxCell id="aV5-zZEt5HdxQ8EFgEAb-28" value="&lt;b&gt;Class:&lt;/b&gt;" style="verticalLabelPosition=middle;verticalAlign=middle;html=1;shape=mxgraph.basic.corner_round_rect;dx=6;labelPosition=center;align=left;" vertex="1" parent="1">
-          <mxGeometry x="30" y="310" width="260" height="20" as="geometry" />
+        <mxCell id="c7Za7BFch5kh-YGNbLE7-27" value="&lt;ul&gt;&lt;li&gt;In inventory, or on board?&lt;/li&gt;&lt;li&gt;Affect rats when on board&lt;/li&gt;&lt;/ul&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;labelPosition=center;verticalLabelPosition=middle;" vertex="1" parent="c7Za7BFch5kh-YGNbLE7-3">
+          <mxGeometry y="20" width="230" height="250" as="geometry" />
         </mxCell>
-        <mxCell id="aV5-zZEt5HdxQ8EFgEAb-29" value="Responsibilities" style="swimlane;align=left;" vertex="1" parent="1">
-          <mxGeometry x="450" y="320" width="130" height="180" as="geometry" />
+        <mxCell id="c7Za7BFch5kh-YGNbLE7-28" value="&lt;ul&gt;&lt;li&gt;Game, Level?&lt;br&gt;&lt;/li&gt;&lt;li&gt;Rat&lt;/li&gt;&lt;/ul&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" vertex="1" parent="c7Za7BFch5kh-YGNbLE7-3">
+          <mxGeometry x="230" y="20" width="230" height="250" as="geometry" />
         </mxCell>
-        <mxCell id="aV5-zZEt5HdxQ8EFgEAb-30" value="Collaborations" style="swimlane;align=left;" vertex="1" parent="1">
-          <mxGeometry x="580" y="320" width="130" height="180" as="geometry" />
+        <mxCell id="c7Za7BFch5kh-YGNbLE7-4" value="Collaborations" style="swimlane;align=left;" vertex="1" parent="c7Za7BFch5kh-YGNbLE7-2">
+          <mxGeometry x="230" y="30" width="230" height="270.00000000000006" as="geometry" />
         </mxCell>
-        <mxCell id="aV5-zZEt5HdxQ8EFgEAb-31" value="&lt;b&gt;Class:&lt;/b&gt;" style="verticalLabelPosition=middle;verticalAlign=middle;html=1;shape=mxgraph.basic.corner_round_rect;dx=6;labelPosition=center;align=left;" vertex="1" parent="1">
-          <mxGeometry x="450" y="300" width="260" height="20" as="geometry" />
+        <mxCell id="c7Za7BFch5kh-YGNbLE7-5" value="&lt;b&gt;Class: PowerItem&lt;/b&gt;" style="verticalLabelPosition=middle;verticalAlign=middle;html=1;shape=mxgraph.basic.corner_round_rect;dx=6;labelPosition=center;align=left;" vertex="1" parent="c7Za7BFch5kh-YGNbLE7-2">
+          <mxGeometry width="460" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="c7Za7BFch5kh-YGNbLE7-6" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="60" y="760" width="460" height="300.00000000000006" as="geometry" />
+        </mxCell>
+        <mxCell id="c7Za7BFch5kh-YGNbLE7-7" value="Responsibilities" style="swimlane;align=left;" vertex="1" parent="c7Za7BFch5kh-YGNbLE7-6">
+          <mxGeometry y="30" width="460" height="270.00000000000006" as="geometry" />
+        </mxCell>
+        <mxCell id="c7Za7BFch5kh-YGNbLE7-31" value="&lt;ul&gt;&lt;li&gt;Occupied?&lt;br&gt;&lt;/li&gt;&lt;li&gt;Passable/impassable?&lt;/li&gt;&lt;/ul&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;labelPosition=center;verticalLabelPosition=middle;" vertex="1" parent="c7Za7BFch5kh-YGNbLE7-7">
+          <mxGeometry y="20" width="230" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="c7Za7BFch5kh-YGNbLE7-32" value="&lt;ul&gt;&lt;li&gt;Rat, PowerItem&lt;br&gt;&lt;/li&gt;&lt;/ul&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" vertex="1" parent="c7Za7BFch5kh-YGNbLE7-7">
+          <mxGeometry x="230" y="20" width="230" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="c7Za7BFch5kh-YGNbLE7-8" value="Collaborations" style="swimlane;align=left;" vertex="1" parent="c7Za7BFch5kh-YGNbLE7-6">
+          <mxGeometry x="230" y="30" width="230" height="270.00000000000006" as="geometry" />
+        </mxCell>
+        <mxCell id="c7Za7BFch5kh-YGNbLE7-9" value="&lt;b&gt;Class: Tile&lt;/b&gt;&lt;span style=&quot;color: rgba(0 , 0 , 0 , 0) ; font-family: monospace ; font-size: 0px&quot;&gt;%3CmxGraphModel%3E%3Croot%3E%3CmxCell%20id%3D%220%22%2F%3E%3CmxCell%20id%3D%221%22%20parent%3D%220%22%2F%3E%3CmxCell%20id%3D%222%22%20value%3D%22%22%20style%3D%22group%22%20vertex%3D%221%22%20connectable%3D%220%22%20parent%3D%221%22%3E%3CmxGeometry%20x%3D%2270%22%20y%3D%2260%22%20width%3D%22460%22%20height%3D%22300%22%20as%3D%22geometry%22%2F%3E%3C%2FmxCell%3E%3CmxCell%20id%3D%223%22%20value%3D%22Responsibilities%22%20style%3D%22swimlane%3Balign%3Dleft%3B%22%20vertex%3D%221%22%20parent%3D%222%22%3E%3CmxGeometry%20y%3D%2230%22%20width%3D%22230%22%20height%3D%22270.00000000000006%22%20as%3D%22geometry%22%2F%3E%3C%2FmxCell%3E%3CmxCell%20id%3D%224%22%20value%3D%22Collaborations%22%20style%3D%22swimlane%3Balign%3Dleft%3B%22%20vertex%3D%221%22%20parent%3D%222%22%3E%3CmxGeometry%20x%3D%22230%22%20y%3D%2230%22%20width%3D%22230%22%20height%3D%22270.00000000000006%22%20as%3D%22geometry%22%2F%3E%3C%2FmxCell%3E%3CmxCell%20id%3D%225%22%20value%3D%22%26lt%3Bb%26gt%3BClass%3A%26lt%3B%2Fb%26gt%3B%22%20style%3D%22verticalLabelPosition%3Dmiddle%3BverticalAlign%3Dmiddle%3Bhtml%3D1%3Bshape%3Dmxgraph.basic.corner_round_rect%3Bdx%3D6%3BlabelPosition%3Dcenter%3Balign%3Dleft%3B%22%20vertex%3D%221%22%20parent%3D%222%22%3E%3CmxGeometry%20width%3D%22460%22%20height%3D%2230%22%20as%3D%22geometry%22%2F%3E%3C%2FmxCell%3E%3C%2Froot%3E%3C%2FmxGraphModel%3E&lt;/span&gt;" style="verticalLabelPosition=middle;verticalAlign=middle;html=1;shape=mxgraph.basic.corner_round_rect;dx=6;labelPosition=center;align=left;" vertex="1" parent="c7Za7BFch5kh-YGNbLE7-6">
+          <mxGeometry width="460" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="c7Za7BFch5kh-YGNbLE7-10" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="560" y="60" width="460" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="c7Za7BFch5kh-YGNbLE7-11" value="Responsibilities" style="swimlane;align=left;" vertex="1" parent="c7Za7BFch5kh-YGNbLE7-10">
+          <mxGeometry y="30" width="230" height="270.00000000000006" as="geometry" />
+        </mxCell>
+        <mxCell id="c7Za7BFch5kh-YGNbLE7-12" value="Collaborations" style="swimlane;align=left;" vertex="1" parent="c7Za7BFch5kh-YGNbLE7-10">
+          <mxGeometry x="230" y="30" width="230" height="270.00000000000006" as="geometry" />
+        </mxCell>
+        <mxCell id="c7Za7BFch5kh-YGNbLE7-23" value="&lt;ul&gt;&lt;li&gt;Track score, time elapsed, rats still on the board, etc&lt;/li&gt;&lt;li&gt;Track occupation of Tiles?&lt;/li&gt;&lt;li&gt;Save state to file for loading&lt;/li&gt;&lt;li&gt;Track quantity of items in inventory&lt;/li&gt;&lt;/ul&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;labelPosition=center;verticalLabelPosition=middle;" vertex="1" parent="c7Za7BFch5kh-YGNbLE7-12">
+          <mxGeometry x="-230" y="20" width="230" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="c7Za7BFch5kh-YGNbLE7-24" value="&lt;ul&gt;&lt;li&gt;Rat&lt;/li&gt;&lt;li&gt;Tile, Rat, PowerItem, Level&lt;br&gt;&lt;/li&gt;&lt;li&gt;&lt;br&gt;&lt;/li&gt;&lt;/ul&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" vertex="1" parent="c7Za7BFch5kh-YGNbLE7-12">
+          <mxGeometry y="20" width="230" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="c7Za7BFch5kh-YGNbLE7-13" value="&lt;b&gt;Class: Game&lt;/b&gt;" style="verticalLabelPosition=middle;verticalAlign=middle;html=1;shape=mxgraph.basic.corner_round_rect;dx=6;labelPosition=center;align=left;" vertex="1" parent="c7Za7BFch5kh-YGNbLE7-10">
+          <mxGeometry width="460" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="c7Za7BFch5kh-YGNbLE7-14" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="560" y="410" width="460" height="300.00000000000006" as="geometry" />
+        </mxCell>
+        <mxCell id="c7Za7BFch5kh-YGNbLE7-15" value="Responsibilities" style="swimlane;align=left;" vertex="1" parent="c7Za7BFch5kh-YGNbLE7-14">
+          <mxGeometry y="30" width="460" height="270.00000000000006" as="geometry" />
+        </mxCell>
+        <mxCell id="c7Za7BFch5kh-YGNbLE7-29" value="-stuff" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;labelPosition=center;verticalLabelPosition=middle;" vertex="1" parent="c7Za7BFch5kh-YGNbLE7-15">
+          <mxGeometry y="20" width="230" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="c7Za7BFch5kh-YGNbLE7-30" value="-stuff" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" vertex="1" parent="c7Za7BFch5kh-YGNbLE7-15">
+          <mxGeometry x="230" y="20" width="230" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="c7Za7BFch5kh-YGNbLE7-16" value="Collaborations" style="swimlane;align=left;" vertex="1" parent="c7Za7BFch5kh-YGNbLE7-14">
+          <mxGeometry x="230" y="30" width="230" height="270.00000000000006" as="geometry" />
+        </mxCell>
+        <mxCell id="c7Za7BFch5kh-YGNbLE7-17" value="&lt;b&gt;Class: Level&lt;/b&gt;" style="verticalLabelPosition=middle;verticalAlign=middle;html=1;shape=mxgraph.basic.corner_round_rect;dx=6;labelPosition=center;align=left;" vertex="1" parent="c7Za7BFch5kh-YGNbLE7-14">
+          <mxGeometry width="460" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
