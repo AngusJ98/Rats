@@ -5,7 +5,7 @@ enum ratTypes {
 enum Direction {
 	NORTH, EAST, SOUTH, WEST
 }
-public abstract class Rat {
+public abstract class Rat extends Entity{
 	private boolean canMate;
 	private boolean canMove;
 	private boolean isDeathRat;
