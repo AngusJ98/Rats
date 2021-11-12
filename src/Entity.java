@@ -7,4 +7,9 @@ public abstract class Entity {
     public Entity(Image image) {
         this.image = image;
     }
+
+    public draw() {
+        //draw the entity
+        //or don't idm
+    }
 }
