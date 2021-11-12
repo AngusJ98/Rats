@@ -1,7 +1,7 @@
 package application;
 
 public class Game {
-    private Char[] map;
+    private char[] map;
     private int timeLeft;
     private Board board;
 
@@ -10,12 +10,12 @@ public class Game {
         this.timeLeft = timeLeft;
     }
 
-    private loadBoard() {
-        this.board = new Board(this.map)
+    private void loadBoard() {
+        this.board = new Board(this.map);
     }
 
     //calls all object managers here
-    private tick() {
+    private void tick() {
 
     }
 
