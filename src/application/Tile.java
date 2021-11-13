@@ -10,34 +10,31 @@ public class Tile extends Entity {
 	private boolean isPassable;
 	private boolean hidesRats;	
 	private tileTypes type;
-	private ArrayList<Entity> Items;
+	private ArrayList<Entity> items;
 	
 	public Tile(tileTypes type, Image image) {
 		super(image);
+		setItems(new ArrayList<Entity>()); 
 		switch (type) {		
 		case TUNNEL:
 			setHidesRats(true);
 			setPassable(true);
-			setItems(new ArrayList<Entity>());
 			setType(type);
 			break;
 		case GRASS:
 			setHidesRats(false);
 			setPassable(false);
-			setItems(new ArrayList<Entity>());
 			setType(type);
 			break;
 		case SPEEDTILE:
 			//need to figure out if I want each tile type to be a seperate class, might merge into default case
 			setHidesRats(false);
 			setPassable(true);
-			setItems(new ArrayList<Entity>());
 			setType(type);
 			break;
 		default:
 			setHidesRats(false);
 			setPassable(true);
-			setItems(new ArrayList<Entity>());
 			setType(type);
 			break;
 		}
@@ -55,10 +52,16 @@ public class Tile extends Entity {
 		this.isPassable = isPassable;
 	}
 	public ArrayList<Entity> getItems() {
-		return Items;
+		return items;
 	}
 	public void setItems(ArrayList<Entity> items) {
-		Items = items;
+		this.items = items;
+	}
+	public void addItem(Entity item) {
+		this.items.add(item);
+	}
+	public void removeItem(Entity item) {
+		this.items.remove(item);
 	}
 	public boolean getHidesRats() {
 		return hidesRats;
