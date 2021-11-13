@@ -1,4 +1,7 @@
 package application;
+
+import javafx.scene.image.Image;
+
 public class BasicRat extends Rat {
 	private boolean isBaby;
 	private int timeToGrowth; 
@@ -9,6 +12,7 @@ public class BasicRat extends Rat {
 	}
 	public void setGender(ratTypes gender) {
 		this.gender = gender;
+		super.setRatType(gender);
 	}
 	public boolean isBaby() {
 		return isBaby;
@@ -28,8 +32,8 @@ public class BasicRat extends Rat {
 	public int getNumChildren() {
 		return numChildren;
 	}
-	public BasicRat(ratTypes type) {
-		super(type);
+	public BasicRat(ratTypes type, Image image, int[] pos) {
+		super(type, image, pos);
 		switch (type) {
 		case BABY:
 			int minGrowthTime = 1000;

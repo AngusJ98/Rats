@@ -1,12 +1,14 @@
 package application;
 
+import javafx.scene.image.Image;
+
 public class DeathRat extends Rat {
 	private int killCount;
 	private void setKillCount(int killCount) {
 		this.killCount = killCount;
 	}
-	public DeathRat(ratTypes type) {
-		super(type);
+	public DeathRat(ratTypes type, Image image, int[] pos) {
+		super(type, image, pos);
 		setKillCount(0);
 	}
     public boolean move() {
