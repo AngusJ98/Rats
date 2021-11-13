@@ -1,6 +1,8 @@
 package application;
 
+import application.Game.RatManager;
 import javafx.scene.image.Image;
+import java.util.ArrayList;
 
 public class DeathRat extends Rat {
 	private int killCount;
@@ -14,11 +16,23 @@ public class DeathRat extends Rat {
     public boolean move() {
 		if (killCount < 5) {
 			super.move();
-			//check if rat on current tile
-			//send kill request(s) for rat and increase killcount
-			//needs to only send kill requests if they will not increase the killcount above 5
+			ArrayList<BasicRat> ratsToKill = checkRatCollision(pos);	
+			//check if rat on current tile			
+			if (ratsToKill != null) {
+				//send kill request(s) for rat and increase killcount
+				if (ratsToKill.size() + killCount <= 5) {
+					RatManager.killBasicRatsAtPos(pos);
+				} else { 
+					//this should rarely ever be used
+					//only send kill requests if they will not increase the killcount above 5
+					while (ratsToKill.size() + killCount <= 5) {
+						ratsToKill.remove(ratsToKill.size()-1);					
+					}
+					RatManager.killRatArray(ratsToKill);
+				}				
+			}					
 		} else {
-			//send kill request for death rat
+			RatManager.killSingleRat(this);
 		}
 		return true;
 	}

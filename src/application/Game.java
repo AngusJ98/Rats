@@ -27,15 +27,20 @@ public class Game {
 				return true;
 			}
 			return false;
-		}
-		public static void killSingleRat(Rat rat) { //so i made this method for when we need to kill individual rats
+		}		
+		public static boolean killSingleRat(Rat rat) { //so i made this method for when we need to kill individual rats
 			if (rats.contains(rat)) {
 				rats.remove(rat);
+				return true;
 			} else if (deathRats.contains(rat)) {
 				deathRats.remove(rat);
-			} else {
-				System.out.println("Tried to kill a rat that did not exist");
-			}
+				return true;
+			} 
+			System.out.println("Tried to kill a rat that did not exist");
+			return false;			
+		}
+		public static void killRatArray(ArrayList<BasicRat> ratsToKill) { //this one kills all basicrats in the array it's passed
+			rats.removeAll(ratsToKill);
 		}
 		public static void performRatActions() {
 			for (int i = 0; i < rats.size(); i++) {

@@ -10,12 +10,12 @@ enum Direction {
 	NORTH, EAST, SOUTH, WEST
 }
 public abstract class Rat extends Entity {
-	private boolean canMate;
-	private boolean canMove;
-	private ratTypes ratType;
-	private int moveSpeed;	
-	private int[] pos;
-	private Direction moveDirection;
+	protected boolean canMate;
+	protected boolean canMove;
+	protected ratTypes ratType;
+	protected int moveSpeed;	
+	protected int[] pos;
+	protected Direction moveDirection;
 	
 	public boolean getMateStatus() {
 		return canMate;
