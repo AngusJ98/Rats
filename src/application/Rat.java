@@ -7,12 +7,18 @@ package enum Direction {
 	NORTH, EAST, SOUTH, WEST
 }
 public abstract class Rat extends Entity{
+	private static int IDstart = 0
+
+	private int ID
 	private boolean canMate;
 	private boolean canMove;
 	private boolean isDeathRat;
 	private int moveSpeed;
 	private Direction moveDirection;
-	
+
+	public int getID() {
+		return ID;
+	}
 	public boolean getMateStatus() {
 		return canMate;
 	}
@@ -73,7 +79,10 @@ public abstract class Rat extends Entity{
 			setIsDeathRat(false);
 			setMoveSpeed(1);
 			break;	
-		}		
+		}
+		this.ID = this.IDstart;
+		IDstart++;
+
 	}
 
 	abstract ratActions() //what the rat does when it's action is called, calls move or whatever else it needs to do.
