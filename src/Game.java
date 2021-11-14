@@ -3,7 +3,7 @@ public class Game {
     private int timeLeft;
     private Board board;
 
-    public Game(Char[] map, int timeLeft) {
+    public Game(char[] map, int timeLeft) {
         this.map = map;
         this.timeLeft = timeLeft;
     }

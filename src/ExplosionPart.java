@@ -1,16 +1,19 @@
+import javafx.scene.image.Image;
 public class ExplosionPart extends Entity {
-    onCollision(Entity target) {
-        switch (target.getCollisionGroup) {
-            case RAT:
-                target.kill;
+
+    public ExplosionPart() {
+        super(Image image, CollisionType.ITEM);
+    }
+
+    @Override
+    void onCollision(Entity target) {
+        switch (target.getCollisionGroup()) {
+            case CollisionType.RAT:
+                target.kill();
                 break;
-            case Item:
-                target.destroy;
+            case ITEM:
+                target.destroy();
                 break;
-            case None:
-                break;
-            default:
-                break
         }
     }
 }
