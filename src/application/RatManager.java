@@ -1,5 +1,6 @@
 package application;
 import java.util.ArrayList;
+
 public class RatManager {
     private ArrayList<Rat> ratList = new ArrayList<>();
 
@@ -12,7 +13,6 @@ public class RatManager {
     }
 
     public void ratActions() {
-        //Something like this?
         for (Rat r : ratList) {
             r.ratActions();
         }

@@ -6,7 +6,7 @@ import javafx.scene.image.Image;
 enum tileTypes {
 	PATH, TUNNEL, GRASS, SPEEDTILE
 }
-public class Tile extends Entity {
+public abstract class Tile extends Entity {
 	private boolean isPassable;
 	private boolean hidesRats;	
 	private tileTypes type;
