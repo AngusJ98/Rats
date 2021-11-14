@@ -8,7 +8,7 @@ public abstract class Tile extends Entity {
 	private boolean isPassable;
 	private boolean hidesRats;	
 	private tileTypes type;
-	private ArrayList<Entity> items;
+	private ArrayList<Entity> occupants;
 	
 	public Tile(tileTypes type, Image image) {
 		super(image);
@@ -67,5 +67,13 @@ public abstract class Tile extends Entity {
 	private void setHidesRats(boolean hidesRats) {
 		this.hidesRats = hidesRats;
 	}
-	
+	public void checkCollision() {
+		if (this.occupants.length() >= 2) {
+			for (Entity o : occupants) {
+				for (Entity t : occupants) {
+					o.onCollision(t)
+				}
+			}
+		}
+	}
 }

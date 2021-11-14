@@ -16,6 +16,16 @@ public abstract class Entity {
         this.collisionTargets = collisionTargets;
     }
 
+    public CollisionType getCollisionGroup() {
+        return collisionGroup;
+    }
+
+    public CollisionType[] getCollisionTargets() {
+        return collisionTargets;
+    }
+
+    abstract onCollision(Entity entity)
+
     public draw() {
         //draw the entity
         //or don't idm
