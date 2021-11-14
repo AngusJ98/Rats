@@ -1,4 +1,3 @@
-package application;
 //We should maybe think about moving rats to their own package
 package enum ratTypes {
 	MALE, FEMALE, BABY, DEATH;

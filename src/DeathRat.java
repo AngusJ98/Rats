@@ -1,5 +1,3 @@
-package application;
-
 public class DeathRat extends Rat {
 	private int killCount;
 	private void setKillCount(int killCount) {

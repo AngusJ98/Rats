@@ -1,4 +1,3 @@
-package application;
 import javafx.scene.image.Image;
 package enum CollisionType {
     RAT, ITEM, TILE, NONE

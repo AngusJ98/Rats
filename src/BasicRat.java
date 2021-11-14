@@ -1,4 +1,3 @@
-package application;
 public class BasicRat extends Rat {
 	private boolean isBaby;
 	private Image image;

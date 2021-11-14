@@ -1,5 +1,3 @@
-package application;
-
 import java.util.ArrayList;
 import javafx.scene.image.Image;
 

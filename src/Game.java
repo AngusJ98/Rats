@@ -1,5 +1,3 @@
-package application;
-
 public class Game {
     private char[] map;
     private int timeLeft;
