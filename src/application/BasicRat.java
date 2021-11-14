@@ -1,6 +1,7 @@
 package application;
 public class BasicRat extends Rat {
 	private boolean isBaby;
+	private Image image;
 	private int timeToGrowth; 
 	private int numChildren;
 	private ratTypes gender;
@@ -29,7 +30,6 @@ public class BasicRat extends Rat {
 		return numChildren;
 	}
 	public BasicRat(ratTypes type) {
-		super(type);
 		switch (type) {
 		case BABY:
 			int minGrowthTime = 1000;
@@ -47,6 +47,7 @@ public class BasicRat extends Rat {
 			setIsBaby(false);
 			setGender(ratTypes.MALE);
 			break;
-		}			
+		}
+		super(type, image);
 	}
 }

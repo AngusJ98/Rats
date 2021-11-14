@@ -9,7 +9,8 @@ package enum Direction {
 public abstract class Rat extends Entity{
 	private static int IDstart = 0
 
-	private int ID
+	private Image image;
+	private int ID;
 	private boolean canMate;
 	private boolean canMove;
 	private boolean isDeathRat;
@@ -60,6 +61,7 @@ public abstract class Rat extends Entity{
 	}
 
 	public Rat(ratTypes type) {
+
 		switch (type) {						
 		case BABY:
 			setMoveStatus(true);
@@ -82,8 +84,10 @@ public abstract class Rat extends Entity{
 		}
 		this.ID = this.IDstart;
 		IDstart++;
-
+		super(image, RAT, RAT);
 	}
 
-	abstract ratActions() //what the rat does when it's action is called, calls move or whatever else it needs to do.
+	abstract ratActions(); //what the rat does when it's action is called, calls move or whatever else it needs to do.
+
+	abstract onRatCollision(); //what to do when the rat collides with another rat
 }
