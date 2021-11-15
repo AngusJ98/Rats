@@ -9,6 +9,7 @@ public abstract class Tile extends Entity {
 	private boolean hidesRats;	
 	private tileTypes type;
 	private ArrayList<Entity> items;
+	private ArrayList<Rat> rats;
 	
 	public Tile(tileTypes type, Image image) {
 		super(image);
@@ -67,5 +68,15 @@ public abstract class Tile extends Entity {
 	private void setHidesRats(boolean hidesRats) {
 		this.hidesRats = hidesRats;
 	}
-	
+	public void checkCollision() {
+		ArrayList<Entity> occupants = new ArrayList<>(this.rats);
+		occupants.addAll(this.items);
+		if (occupants.size() >= 2) {
+			for (Entity o : occupants) {
+				for (Entity t : occupants) {
+					o.onCollision(t);
+				}
+			}
+		}
+	}
 }

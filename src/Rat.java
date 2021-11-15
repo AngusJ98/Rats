@@ -1,8 +1,8 @@
 //We should maybe think about moving rats to their own package
-package enum ratTypes {
+enum ratTypes {
 	MALE, FEMALE, BABY, DEATH;
 }
-package enum Direction {
+enum Direction {
 	NORTH, EAST, SOUTH, WEST
 }
 public abstract class Rat extends Entity{
@@ -60,7 +60,7 @@ public abstract class Rat extends Entity{
 	}
 
 	public Rat(ratTypes type) {
-
+		super(image, CollisionType.RAT);
 		switch (type) {						
 		case BABY:
 			setMoveStatus(true);
@@ -81,12 +81,12 @@ public abstract class Rat extends Entity{
 			setMoveSpeed(1);
 			break;	
 		}
-		this.ID = this.IDstart;
+		this.ID = Rat.IDstart;
 		IDstart++;
-		super(image, RAT, RAT);
+
 	}
 
-	abstract ratActions(); //what the rat does when it's action is called, calls move or whatever else it needs to do.
+	abstract void ratActions(); //what the rat does when it's action is called, calls move or whatever else it needs to do.
 
-	abstract onRatCollision(); //what to do when the rat collides with another rat
+	abstract void onRatCollision(); //what to do when the rat collides with another rat
 }
