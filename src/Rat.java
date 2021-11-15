@@ -6,7 +6,7 @@ enum Direction {
 	NORTH, EAST, SOUTH, WEST
 }
 public abstract class Rat extends Entity{
-	private static int IDstart = 0
+	private static int IDstart = 0;
 
 	private Image image;
 	private int ID;
