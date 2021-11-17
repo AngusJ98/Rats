@@ -1,3 +1,3 @@
 public interface Manager {
-    public run();
+    public void run();
 }

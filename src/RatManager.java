@@ -10,7 +10,7 @@ public class RatManager implements Manager{
         ratList.add(rat);
     }
     public void removeRat(Rat rat) {
-        this.ratList.remove(rat)
+        this.ratList.remove(rat);
     }
     public void run() {
         for (Rat r : ratList) {
