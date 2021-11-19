@@ -16,8 +16,13 @@ public class GameFileHandler {
         Scanner in = null;
         File inputFile = new File(filePath);
         StringBuilder saveStringBuilder =  new StringBuilder();
-
-        in = new Scanner(inputFile);
+        try {
+			in = new Scanner(inputFile);
+		} catch (FileNotFoundException e) {
+            throw new FileNotFoundException(
+                String.format(ERROR_MSG_FILE_NOT_FOUND, filePath)
+            );
+		}
 
         while (in.hasNextLine()) {
             saveStringBuilder.append(in.nextLine());
