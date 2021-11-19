@@ -6,6 +6,6 @@ public class FemaleGenderChange extends Entity {
     }
     
     void onCollision(Entity target) {
-    	target.setGender(ratTypes.Female);
+    	target.setGender(ratTypes.FEMALE);
     }
 }
