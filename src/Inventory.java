@@ -6,11 +6,11 @@ Public class Inventory extends Entity {
 	}
 	
 	public String toString () {
-		string result = "The inventory:\n ";
+		String result = "The inventory:\n ";
 		//gets information from the "ItemsLeft" Attribute
 		//for (int i = 0; i< size.itemsLeft[] + 1; i++;
 		//  result += itemsLeft[i];
-		return result
+		return result;
 	}
 	
 	public void restock() {
