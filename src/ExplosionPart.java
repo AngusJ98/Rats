@@ -1,8 +1,8 @@
 import javafx.scene.image.Image;
 public class ExplosionPart extends Entity {
-
+    private Image image;
     public ExplosionPart() {
-        super(Image image, CollisionType.ITEM);
+        super(this.image, CollisionType.ITEM);
     }
 
     @Override
