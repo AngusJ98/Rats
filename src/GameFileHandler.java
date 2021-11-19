@@ -10,19 +10,14 @@ public class GameFileHandler {
 
     private GameFileHandler() {}
 
-    private static String readSaveFile(String fileName, boolean isLevel) {
+    private static String readSaveFile(String fileName, boolean isLevel) throws FileNotFoundException {
         String filePath = isLevel ? LEVEL_PATH : SAVE_PATH;
         filePath = filePath + fileName;
         Scanner in = null;
         File inputFile = new File(filePath);
         StringBuilder saveStringBuilder =  new StringBuilder();
-        try {
-			in = new Scanner(inputFile);
-		} catch (FileNotFoundException e) {
-			String errorMessage = String.format(ERROR_MSG_FILE_NOT_FOUND, filePath);
-			System.out.println(errorMessage);
-			System.exit(0);
-		}
+
+        in = new Scanner(inputFile);
 
         while (in.hasNextLine()) {
             saveStringBuilder.append(in.nextLine());
