@@ -1,7 +1,11 @@
-import java.io.File;
+import java.io.FileReader;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.*;
 
 public class GameFileHandler {
     public static final String ERROR_MSG_FILE_NOT_FOUND = "Could not find %s.";
@@ -10,25 +14,19 @@ public class GameFileHandler {
 
     private GameFileHandler() {}
 
-    private static String readSaveFile(String fileName, boolean isLevel) throws FileNotFoundException {
+    private static JSONObject readSaveFile(String fileName, boolean isLevel)
+            throws FileNotFoundException, ParseException, IOException {
         String filePath = isLevel ? LEVEL_PATH : SAVE_PATH;
         filePath = filePath + fileName;
-        Scanner in = null;
-        File inputFile = new File(filePath);
-        StringBuilder saveStringBuilder =  new StringBuilder();
+        JSONParser jsonParser = new JSONParser();
         try {
-			in = new Scanner(inputFile);
+            FileReader reader = new FileReader(filePath);
+			return (JSONObject) jsonParser.parse(reader);
 		} catch (FileNotFoundException e) {
             throw new FileNotFoundException(
                 String.format(ERROR_MSG_FILE_NOT_FOUND, filePath)
             );
-		}
-
-        while (in.hasNextLine()) {
-            saveStringBuilder.append(in.nextLine());
         }
-
-        return saveStringBuilder.toString();
     }
 
     private static void writeSaveFile(String saveString) {
