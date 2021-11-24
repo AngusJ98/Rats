@@ -4,7 +4,8 @@ import javafx.scene.image.Image;
 enum tileTypes {
 	PATH, TUNNEL, GRASS, SPEEDTILE
 }
-public abstract class Tile extends Entity {
+public abstract class Tile { // Does tile need to be an Entity? Tiles don't
+                             // move or perform any actions etc.
 	private boolean isPassable;
 	private boolean hidesRats;	
 	private tileTypes type;
@@ -12,7 +13,7 @@ public abstract class Tile extends Entity {
 	private ArrayList<Rat> rats;
 	
 	public Tile(tileTypes type, Image image) {
-		super(image);
+//		super(image, type);
 		setItems(new ArrayList<Entity>()); 
 		switch (type) {		
 		case TUNNEL:

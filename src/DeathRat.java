@@ -1,12 +1,22 @@
+import javafx.scene.image.Image;
+
 public class DeathRat extends Rat {
 	private int killCount;
 	private void setKillCount(int killCount) {
 		this.killCount = killCount;
 	}
-	public DeathRat(ratTypes type) {
-		super(type);
+	public DeathRat(ratTypes type, Image image) {
+		super(type, image);
 		setKillCount(0);
 	}
+    public void ratActions() {}
+    public void onRatCollision() {}
+
+    void kill() {
+
+    }
+
+    public void onCollision(Entity entity) {}
     public boolean move() {
 		if (killCount < 5) {
 			super.move();

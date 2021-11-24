@@ -1,10 +1,10 @@
 import javafx.scene.image.Image;
 
-public class Inventory extends Entity {
+public class Inventory { //Inventory just tracks items left etc, I don't think it needs to be an entity
     private int[] itemsLeft;
 
     public Inventory(Image image, CollisionType collisionGroup) {
-        super(image, collisionGroup);
+//        super(image, collisionGroup);
     }
 
     public String toString() {
