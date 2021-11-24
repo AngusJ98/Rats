@@ -1,9 +1,9 @@
 public class Game {
-    private char[] map;
+    private char[][] map;
     private int timeLeft;
     private Board board;
 
-    public Game(char[] map, int timeLeft) {
+    public Game(char[][] map, int timeLeft) {
         this.map = map;
         this.timeLeft = timeLeft;
     }
@@ -17,7 +17,4 @@ public class Game {
 
     }
 
-    public Entity[] getEntities() {
-        //don't think this method needs to exist
-    }
 }
