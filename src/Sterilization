@@ -1,0 +1,10 @@
+public class Sterilization {
+    private int range;
+
+    public Sterilization() {
+        //Constructer
+    }
+
+    //public (not sure what data type to put here) sterilize() {
+    }
+}

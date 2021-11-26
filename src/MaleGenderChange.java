@@ -1,13 +1,13 @@
 import javafx.scene.image.Image;
 
-public class FemaleGenderChange extends Entity {
+public class MaleGenderChange extends Entity {
 
-    public FemaleGenderChange(Image image) {
+    public MaleGenderChange(Image image) {
         super(image, CollisionType.ITEM);
     }
 
     void onCollision(BasicRat target) {
-    	target.setGender(ratTypes.FEMALE);
+    	target.setGender(ratTypes.MALE);
     }
 
     void onCollision(Entity target) {
