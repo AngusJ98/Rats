@@ -1,0 +1,7 @@
+public class Sterilization {
+    private int range;
+
+    public Sterilization() {
+        //Constructer
+    }
+}
