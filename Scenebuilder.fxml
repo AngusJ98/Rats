@@ -54,11 +54,7 @@
                         </Button>
                         <Button layoutX="10.0" layoutY="20.0" mnemonicParsing="false">
                            <graphic>
-                              <ImageView fitHeight="32.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@resources/bomb.png" />
-                                 </image>
-                              </ImageView>
+                              <ImageView fitHeight="32.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
                            </graphic>
                            <VBox.margin>
                               <Insets top="5.0" />
