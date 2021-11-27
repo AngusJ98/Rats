@@ -4,6 +4,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import sun.audio.AudioPlayer;
 
 public class LeaderboardGUI {
 
@@ -14,7 +15,7 @@ public class LeaderboardGUI {
     private static double width = 400;
     private static double height = 720;
 
-    public LeaderboardGUI(Stage leaderboardStage){
+    public LeaderboardGUI(Stage leaderboardStage) {
 
         new AudioPlayer(song);
 
@@ -41,3 +42,5 @@ public class LeaderboardGUI {
                 e1.printStackTrace();
             }
         });
+    }
+}

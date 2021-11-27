@@ -2,9 +2,15 @@ import javafx.scene.image.Image;
 
 public class BasicRat extends Rat {
 	private boolean isBaby;
+	private boolean canMate;
+	private boolean canMove;
 	private Image image;
-	private int timeToGrowth; 
+	private int timeToGrowth;
+	private int timeToBirth;
 	private int numChildren;
+	private int moveSpeed;
+	private int hp;
+	private int[] position;
 	private ratTypes gender;
 	public ratTypes getGender() {
 		return gender;
@@ -59,4 +65,21 @@ public class BasicRat extends Rat {
 			break;
 		}
 	}
+
+	public BasicRat(ratTypes gender, boolean isBaby, boolean canMate,
+                    boolean canMove, int moveSpeed, int timeToGrowth,
+                    int numChildren, int timeToBirth, int hp, int[] position,
+                    Image image) {
+	    super(gender, image);
+	    this.gender = gender;
+	    this.isBaby = isBaby;
+	    this.canMate = canMate;
+	    this.canMove = canMove;
+	    this.moveSpeed = moveSpeed;
+	    this.timeToGrowth = timeToGrowth;
+	    this.numChildren = numChildren;
+	    this.timeToBirth = timeToBirth;
+	    this.hp = hp;
+	    this.position = position;
+    }
 }
