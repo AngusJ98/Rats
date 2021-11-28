@@ -12,10 +12,10 @@ import javafx.scene.layout.TilePane;
 
 public class Runner {
     @FXML
-    private TilePane board;
+    private GridPane board;
 
 
-    Image grass = new Image('grassBlock.png');
+    Image grass = new Image("file:src/controller/test.png");
     private enum Items {
         Bomb, Gas, Sterilise, Poison, Male, Female, NoEntry, DeathRat, No
     }
@@ -36,18 +36,15 @@ public class Runner {
 
 
     public void createBoard(char[][] tiles) {
-        int width = tiles[0].length;
-        ObservableList<Node> list = board.getChildren();
-        board.setPrefColumns(width);
-        ObservableList<Node> test = board.getChildren();
 
-        for (char[] row : tiles) {
-            for (char x : row) {
+        for (int y = 0; y < tiles.length; y++) {
+            for (int x = 0; x < tiles[y].length; x++) {
 
-                switch (x) {
+                switch (tiles[x][y]) {
                     case 'G':
                         ImageView newView = new ImageView(grass);
-                        list.add(newView);
+                        board.add(newView,x,y);
+
                 }
             }
         }
