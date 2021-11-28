@@ -6,6 +6,7 @@ public class HighScore
 {
     private String gameName;
     private File highScoreFile;
+    private String path;
 
     public HighScore(String gameName)
     {
@@ -13,7 +14,7 @@ public class HighScore
 
         AccessController.doPrivileged(new PrivilegedAction() {
             public Object run() {
-                String path =
+                path =
                         System.getProperty("user.home") +
                                 File.separator +
                                 ".highscore";
@@ -30,7 +31,7 @@ public class HighScore
         //check permission first
         SecurityManager sm = System.getSecurityManager();
         if (sm != null) {
-            sm.checkPermission(new HighScorePermission(gameName));
+            sm.checkPermission(new FilePermission(path, "read, write"));
         }
 
         // need a doPrivileged block to manipulate the file
@@ -77,7 +78,7 @@ public class HighScore
         //check permission first
         SecurityManager sm = System.getSecurityManager();
         if (sm != null) {
-            sm.checkPermission(new HighScorePermission(gameName));
+            sm.checkPermission(new FilePermission(path, "read, write"));
         }
 
         Integer score = null;
