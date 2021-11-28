@@ -1,8 +1,10 @@
+import javafx.scene.image.Image;
+
 public class Sterilization extends Entity{
     private int range;
 
     public Sterilization() {
-        //Constructer
+        super(new Image(""), CollisionType.ITEM);
     }
 
     //public (not sure what data type to put here) sterilize() {
