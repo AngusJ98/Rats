@@ -19,8 +19,8 @@ public class Bomb extends Entity{
     }
 
     private void ratCollision(Rat target) {
-        if () {
-            target.kill
+        if (true) {
+            target.kill();
         };
     }
 }
