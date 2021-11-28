@@ -1,9 +1,9 @@
 import javafx.scene.image.Image;
 
-public class Sterilization extends Entity{
+public class Bomb extends Entity{
     private int range;
 
-    public Sterilization() {
+    public Bomb() {
         super(new Image(""), CollisionType.ITEM);
     }
 
@@ -19,7 +19,9 @@ public class Sterilization extends Entity{
     }
 
     private void ratCollision(Rat target) {
-        target.setMateStatus(false);
+        if () {
+            target.kill
+        };
     }
 }
 
