@@ -1,9 +1,9 @@
 import javafx.scene.image.Image;
 
-public class Poison extends Entity{
+public class Bomb extends Entity{
     private int range;
 
-    public Poison() {
+    public Bomb() {
         super(new Image(""), CollisionType.ITEM);
     }
 
@@ -19,13 +19,9 @@ public class Poison extends Entity{
     }
 
     private void ratCollision(Rat target) {
-        target.kill;
-        //Still needs the part where the poison is used up and removed from the path.
+        if () {
+            target.kill
+        };
     }
 }
 
-
-//What is mentioned in the Spec for Poison:
-//Once placed, poison will remain on the path until a rat
-//runs into it. Once a rat runs into it the rat is killed and
-//the poison is used up and removed from the path.
