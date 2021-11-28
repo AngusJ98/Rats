@@ -1,9 +1,9 @@
 import javafx.scene.image.Image;
 
-public class Sterilization extends Entity{
+public class Poison extends Entity{
     private int range;
 
-    public Sterilization() {
+    public Poison() {
         super(new Image(""), CollisionType.ITEM);
     }
 
@@ -19,7 +19,13 @@ public class Sterilization extends Entity{
     }
 
     private void ratCollision(Rat target) {
-        target.setMateStatus(false);
+        target.kill;
+        //Still needs the part where you remove the gas on a tile after a rat is killed
     }
 }
 
+
+//What is mentioned in the Spec for Poison:
+//Once placed, poison will remain on the path until a rat
+//runs into it. Once a rat runs into it the rat is killed and
+//the poison is used up and removed from the path.
