@@ -19,7 +19,7 @@ public class Poison extends Entity{
     }
 
     private void ratCollision(Rat target) {
-        target.kill;
+        target.kill();
         //Still needs the part where the poison is used up and removed from the path.
     }
 }
