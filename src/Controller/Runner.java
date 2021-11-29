@@ -205,7 +205,7 @@ public class Runner {
     }
 
     public void updateCount() {
-        this.bombCount.setText(Inventory.getBombCount());
+        this.bombCount.setText(Inventory.getBombCount());//TODO Add correct count methods here
         this.gasCount.setText(Inventory.getgasCount());
         this.sterileCount.setText(Inventory.getsterileCount());
         this.noEntCount.setText(Inventory.getnoEntryCount());

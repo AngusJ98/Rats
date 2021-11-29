@@ -51,12 +51,12 @@ public class MenuRunner {
     }
 
     public void level1(ActionEvent actionEvent) throws Exception {
-        this.startGame();
         Main.setLevelNum(1);
+        this.startGame();
     }
 
     public void level2(ActionEvent actionEvent) throws Exception {
-        this.startGame();
         Main.setLevelNum(2);
+        this.startGame();
     }
 }
