@@ -50,7 +50,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <ToggleButton mnemonicParsing="false" onAction="#setItemBomb" prefHeight="319.0" prefWidth="467.0">
+                  <ToggleButton fx:id="bomb" mnemonicParsing="false" onAction="#setItemBomb" prefHeight="319.0" prefWidth="467.0">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
