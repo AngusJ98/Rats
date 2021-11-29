@@ -21,7 +21,7 @@ public class Runner {
     @FXML private AnchorPane base;
     private GridPane board;
     private final double pixelWidth = 800;
-
+    private StackPane[][] stackPaneArray = null; // a list of stackpanes indexed by row and col so we can add children later!
     private enum Items {
         Bomb, Gas, Sterilise, Poison, Male, Femaleri, NoEntry, DeathRat, No
     }
@@ -97,12 +97,20 @@ public class Runner {
         int height = tiles.length;
         int tilePixelWidth = min((int)pixelWidth / width, (int)pixelWidth/height);
 
-
+        drawTiles(tiles, tilePixelWidth);
 
     }
 
-    //This only needs to be called once
+    private void generateStackPaneArray() {
+        this.stackPaneArray = new StackPane[][];
+        for (Node pane : this.board.getChildren()) {
+            this.stackPaneArray[GridPane.getRowIndex(pane)][GridPane.getColumnIndex(pane)] = (StackPane)pane;
+        }
+    }
+
+    //This only needs to be called once... probably
     public void drawTiles (Tile[][] tiles, int tileWidth) {
+
         for (int y = 0; y < tiles.length; y++) {
             for (int x = 0; x < tiles[y].length; x++) {
                 StackPane tile = new StackPane();
@@ -114,6 +122,15 @@ public class Runner {
                 tile.getChildren().add(pic);
                 board.add(tile, x, y);
             }
+        }
+    }
+
+    public void drawRats (Rat[] rats) {
+        for (Rat rat : rats) {
+            ImageView pic = new ImageView(rat.getImage());
+            int x = rat.getPosition();
+            int y = rat.getPosition();
+            targetTile = board.getChildren()
         }
     }
 

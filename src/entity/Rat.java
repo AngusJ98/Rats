@@ -86,6 +86,10 @@ public abstract class Rat extends Entity{
 
 	}
 
+	public Image getImage() {
+		return image;
+	}
+
 	public abstract void ratActions(); //what the rat does when it's action is called, calls move or whatever else it needs to do.
 
 	abstract void onRatCollision(); //what to do when the rat collides with another rat
