@@ -4,6 +4,7 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.text.Text;
 import tiles.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,8 +20,15 @@ import static java.lang.Math.min;
 
 public class Runner {
 
+    @FXML private Text bombCount;
+    @FXML private Text gasCount;
+    @FXML private Text sterileCount;
+    @FXML private Text noEntCount;
+    @FXML private Text maleCount;
+    @FXML private Text femaleCount;
     @FXML private AnchorPane base;
     @FXML private ToggleGroup itemToggle;
+
     private GridPane board;
     private final double pixelWidth = 800;
     private StackPane[][] stackPaneArray = null; // a list of stackpanes indexed by row and col so we can add children later!
