@@ -147,7 +147,7 @@ public class Runner {
                                 "    -fx-text-fill: #828282;"
                 );
                 //set button action
-                if (gameTile.getType() == tileTypes.PATH) {
+                if (gameTile.getType() == TileTypes.PATH) {
                     b.setOnAction(new EventHandler<ActionEvent>() {
                         @Override public void handle(ActionEvent e) {
                             int buttonX = GridPane.getRowIndex(b.getParent());

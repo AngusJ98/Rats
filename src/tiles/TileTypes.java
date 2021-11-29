@@ -1,5 +1,6 @@
 package tiles;
 
-public enum tileTypes {
+public enum TileTypes {
 	PATH, TUNNEL, GRASS, SPEEDTILE
 }
+
