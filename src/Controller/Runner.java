@@ -1,6 +1,8 @@
 package Controller;
 import entity.*;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
@@ -208,5 +210,15 @@ public class Runner {
         this.noEntCount.setText(Inventory.getnoEntryCount());
         this.maleCount.setText(Inventory.getmaleCount());
         this.femaleCount.setText(Inventory.getfemaleCount());
+    }
+
+    public void returnToMenu() {
+        try {
+            Scene menu = FXMLLoader.load(getClass().getResource("menu.fxml"));
+            Main.changeScene(menu);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
     }
 }

@@ -24,6 +24,7 @@
             <items>
               <MenuItem mnemonicParsing="false" text="Save" />
                   <MenuItem mnemonicParsing="false" text="Restart" />
+                  <MenuItem mnemonicParsing="false" onAction="#returnToMenu" text="Return to Menu" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">

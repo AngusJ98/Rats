@@ -8,13 +8,14 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     private static Stage stg;
-
+    public static final int WINDOW_WIDTH = 1000;
+    public static final int WINDOW_HEIGHT = 800;
     public void start(Stage primaryStage) throws Exception{
         stg = primaryStage;
         primaryStage.setResizable(false);
         Parent root = FXMLLoader.load(getClass().getResource("game.fxml"));
         primaryStage.setTitle("RATS!");
-        primaryStage.setScene(new Scene(root, 1000, 800));
+        primaryStage.setScene(new Scene(root, WINDOW_WIDTH, WINDOW_HEIGHT));
         primaryStage.show();
     }
 
@@ -22,6 +23,11 @@ public class Main extends Application {
         launch(args);
     }
 
+    public static void changeScene(Scene newScene) {
+        stg.close();
+        Main.stg.setScene(newScene);
+        stg.show();
+    }
 
 
 
