@@ -10,11 +10,15 @@ public abstract class Entity {
     //protected pos;?
 
 
+
+
     public Entity(Image image, CollisionType collisionGroup) {
         this.image = image;
         this.collisionGroup = collisionGroup;
     }
-
+    public Image getImage() {
+        return image;
+    }
     public CollisionType getCollisionGroup() {
         return collisionGroup;
     }
