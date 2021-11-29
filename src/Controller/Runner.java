@@ -14,7 +14,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 
 
-import static java.lang.Math.max;
 import static java.lang.Math.min;
 
 
@@ -30,17 +29,12 @@ public class Runner {
     @FXML private ToggleGroup itemToggle;
 
     private GridPane board;
-    private final double pixelWidth = 800;
+    private final double pixelWidth = 800; //this is how wide the board section of the game is
     private StackPane[][] stackPaneArray = null; // a list of stackpanes indexed by row and col so we can add children later!
     private int tilePixelSize = 1; //Set as default, will be changed later
     private int width = 0; //How many tiles wide the board is
     private int height = 0; //How many tiles high the board is
 
-    private enum Items {
-        Bomb, Gas, Sterilise, Poison, Male, Femaleri, NoEntry, DeathRat, No
-    }
-
-    private Items currentSelected;
 
     public Runner() {
 
@@ -64,16 +58,22 @@ public class Runner {
                         {'G', 'P', 'G', 'G', 'G', 'G', 'G', 'G', 'P', 'G', 'G', 'P', 'G', 'P', 'G'},
                         {'G', 'P', 'P', 'P', 'T', 'T', 'P', 'P', 'P', 'T', 'T', 'P', 'P', 'P', 'G'},
                         {'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G'}};
-        createBoard(testTiles);
+        createBoardFromChar(testTiles);
+    }
+
+    public void normalTickDrawing(Entity[] entities) {
+        this.updateCount();
+        this.redrawEntities(entities);
     }
 
 
-    public void createBoard(char[][] tiles) {
+    public void createBoardFromChar(char[][] tiles) {
         this.width = tiles[0].length;
         this.height = tiles.length;
         Image grass = new Image("file:resources/grassBlock.png");
         Image path = new Image("file:resources/dirtBlock.png");
-        Image test = new Image("file:resources/strightTun.png");
+        Image tun = new Image("file:resources/strightTun.png");
+        Image speed = new Image("file:resources/speedTile.png");
         this.tilePixelSize = min((int) pixelWidth / this.width, (int) pixelWidth / this.height);//Min statement to account for rectangular board
 
         for (int y = 0; y < tiles.length; y++) {
@@ -90,7 +90,10 @@ public class Runner {
                         //add a button on top to place items
                         break;
                     case 'T':
-                        tileType.setImage(test);
+                        tileType.setImage(tun);
+                        break;
+                    case 'S':
+                        tileType.setImage(speed);
                         break;
                 }
                 tileType.setFitHeight(this.tilePixelSize);
@@ -196,5 +199,14 @@ public class Runner {
                 pane.getChildren().remove(2, size); //first 2 are tile and button for item placement
             }
         }
+    }
+
+    public void updateCount() {
+        this.bombCount.setText(Inventory.getBombCount());
+        this.gasCount.setText(Inventory.getgasCount());
+        this.sterileCount.setText(Inventory.getsterileCount());
+        this.noEntCount.setText(Inventory.getnoEntryCount());
+        this.maleCount.setText(Inventory.getmaleCount());
+        this.femaleCount.setText(Inventory.getfemaleCount());
     }
 }
