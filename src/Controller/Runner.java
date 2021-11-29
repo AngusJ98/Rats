@@ -1,5 +1,6 @@
 package Controller;
 import entity.*;
+import tiles.*;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -36,6 +37,8 @@ public class Runner {
 
     public void initialize() {
         board = new GridPane();
+        board.setHgap(0);
+        board.setVgap(0);
         base.getChildren().add(board);
         char[][] testTiles =
                 {{'G','G','G','G','G','G','G','G','G','G','G','G','G','G','G'},
@@ -52,9 +55,9 @@ public class Runner {
     public void createBoard(char[][] tiles) {
         int width = tiles[0].length;
         int height = tiles.length;
-        Image grass = new Image("file:src/controller/grassBlock.png");
-        Image path = new Image("file:src/controller/dirtBlock.png");
-        Image test = new Image("file:src/controller/test.png");
+        Image grass = new Image("file:resources/grassBlock.png");
+        Image path = new Image("file:resources/dirtBlock.png");
+        Image test = new Image("file:resources/strightTun.png");
         int tilePixelWidth = min((int)pixelWidth / width, (int)pixelWidth/height);
 
         for (int y = 0; y < tiles.length; y++) {
@@ -87,7 +90,33 @@ public class Runner {
         board.setVgap(0);
     }
 
-    //public void drawBoard(tiles.Tile[][]) {
 
-    //}
+    public void drawBoard(Tile[][] tiles, Entity[] entities) {
+
+        int width = tiles[0].length;
+        int height = tiles.length;
+        int tilePixelWidth = min((int)pixelWidth / width, (int)pixelWidth/height);
+
+
+
+    }
+
+    //This only needs to be called once
+    public void drawTiles (Tile[][] tiles, int tileWidth) {
+        for (int y = 0; y < tiles.length; y++) {
+            for (int x = 0; x < tiles[y].length; x++) {
+                StackPane tile = new StackPane();
+                Tile gameTile = tiles[y][x];
+                ImageView pic = new ImageView();
+                pic.setImage(gameTile.getImage());
+                pic.setFitHeight(tileWidth);
+                pic.setFitWidth(tileWidth);
+                tile.getChildren().add(pic);
+                board.add(tile, x, y);
+            }
+        }
+    }
+
+
+
 }

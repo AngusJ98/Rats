@@ -6,9 +6,6 @@ import entity.Entity;
 import entity.Rat;
 import javafx.scene.image.Image;
 
-enum tileTypes {
-	PATH, TUNNEL, GRASS, SPEEDTILE
-}
 public abstract class Tile { // Does tile need to be an entity.Entity? Tiles don't
                              // move or perform any actions etc.
 	private boolean isPassable;
@@ -16,33 +13,43 @@ public abstract class Tile { // Does tile need to be an entity.Entity? Tiles don
 	private tileTypes type;
 	private ArrayList<Entity> items;
 	private ArrayList<Rat> rats;
-	
+	private Image image = new Image("file:resources/error.png");
+
+
+
 	public Tile(tileTypes type, Image image) {
 //		super(image, type);
 		setItems(new ArrayList<Entity>());
-		switch (type) {		
+		switch (type) {
 		case TUNNEL:
 			setHidesRats(true);
 			setPassable(true);
 			setType(type);
+			this.image = new Image("file:resources/strightTun.png");
 			break;
 		case GRASS:
 			setHidesRats(false);
 			setPassable(false);
 			setType(type);
+			this.image = new Image("file:resources/grassBlock.png");
 			break;
 		case SPEEDTILE:
 			//need to figure out if I want each tile type to be a seperate class, might merge into default case
 			setHidesRats(false);
 			setPassable(true);
 			setType(type);
+			this.image = new Image("file:resources/speedTile.png");
 			break;
 		default:
 			setHidesRats(false);
 			setPassable(true);
 			setType(type);
+			this.image = new Image("file:resources/cornTun.png");
 			break;
 		}
+	}
+	public Image getImage() {
+		return image;
 	}
 	public tileTypes getType() {
 		return type;
