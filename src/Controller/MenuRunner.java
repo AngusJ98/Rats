@@ -1,5 +1,6 @@
 package Controller;
-
+import highscore.*;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -18,17 +19,7 @@ public class MenuRunner {
 
     @FXML private AnchorPane menuBase;
 
-    private final ToggleButton audioButton = new ToggleButton("Mute");
     private final Button mainmenuButton = new Button("Main Menu");
-
-    private static final File song = new File("resources/leaderboard.mp3"); // doesn't exist yet
-    private static final double width = 400;
-    private static final double height = 720;
-
-    private AudioStream audio;
-    private InputStream in;
-    private boolean isMusicPlaying;
-
 
     public MenuRunner() {
 
@@ -40,15 +31,15 @@ public class MenuRunner {
         HBox table = new HBox(2);
         table.setAlignment(Pos.TOP_CENTER);
 
-        table.getChildren().addAll(mainmenuButton, audioButton);
+        table.getChildren().addAll(mainmenuButton);
 
         table.setStyle("-fx-background-color:GREY");
+
+        //add the table to the scene
         menuBase.getChildren().add(table);
-
-
     }
 
-    private void startGame(String levelPath) throws Exception{
+    private void startGame() throws Exception{
         try {
             Scene game = FXMLLoader.load(getClass().getResource("game.fxml"));
             Main.changeScene(game);
@@ -59,8 +50,13 @@ public class MenuRunner {
         }
     }
 
+    public void level1(ActionEvent actionEvent) throws Exception {
+        this.startGame();
+        Main.setLevelNum(1);
+    }
 
-
-
-
+    public void level2(ActionEvent actionEvent) throws Exception {
+        this.startGame();
+        Main.setLevelNum(2);
+    }
 }

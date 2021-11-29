@@ -11,8 +11,8 @@
         <menus>
           <Menu mnemonicParsing="false" text="Play">
             <items>
-              <MenuItem mnemonicParsing="false" text="Level 1" />
-                  <MenuItem mnemonicParsing="false" text="Level 2" />
+              <MenuItem mnemonicParsing="false" onAction="#level1" text="Level 1" />
+                  <MenuItem mnemonicParsing="false" onAction="#level2" text="Level 2" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">

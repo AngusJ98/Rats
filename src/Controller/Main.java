@@ -10,6 +10,7 @@ public class Main extends Application {
     private static Stage stg;
     public static final int WINDOW_WIDTH = 1000;
     public static final int WINDOW_HEIGHT = 800;
+    private static int levelNum = 0;
     public void start(Stage primaryStage) throws Exception{
         stg = primaryStage;
         primaryStage.setResizable(false);
@@ -21,6 +22,14 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    public static int getLevelNum() {
+        return levelNum;
+    }
+
+    public static void setLevelNum(int levelNum) {
+        Main.levelNum = levelNum;
     }
 
     public static void changeScene(Scene newScene) {

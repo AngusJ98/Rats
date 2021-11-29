@@ -113,7 +113,7 @@ public class Runner {
 
     public void drawBoard(Tile[][] tiles, Entity[] entities) {
         drawTiles(tiles);
-        drawEntities(entities);
+        redrawEntities(entities);
     }
 
     private void generateStackPaneArray() {
@@ -154,11 +154,12 @@ public class Runner {
                 b.setPrefSize(this.tilePixelSize,this.tilePixelSize);
                 b.setStyle(
                         "    -fx-border-color: transparent;\n" +
-                                "    -fx-border-width: 0;\n" +
-                                "    -fx-background-radius: 0;\n" +
-                                "    -fx-background-color: transparent;\n" +
-                                "    -fx-text-fill: #828282;"
+                        "    -fx-border-width: 0;\n" +
+                        "    -fx-background-radius: 0;\n" +
+                        "    -fx-background-color: transparent;\n" +
+                        "    -fx-text-fill: #828282;"
                 );
+
                 //set button action
                 if (gameTile.getType() == TileTypes.PATH) {
                     b.setOnAction(new EventHandler<ActionEvent>() {
