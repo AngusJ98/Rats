@@ -11,12 +11,15 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 
+import static java.lang.Math.max;
+import static java.lang.Math.min;
+
 
 public class Runner {
 
     @FXML private AnchorPane base;
     private GridPane board;
-
+    private final double pixelWidth = 800;
 
     private enum Items {
         Bomb, Gas, Sterilise, Poison, Male, Femaleri, NoEntry, DeathRat, No
@@ -48,9 +51,11 @@ public class Runner {
 
     public void createBoard(char[][] tiles) {
         int width = tiles[0].length;
+        int height = tiles.length;
         Image grass = new Image("file:src/controller/grassBlock.png");
         Image path = new Image("file:src/controller/dirtBlock.png");
         Image test = new Image("file:src/controller/test.png");
+        int tilePixelWidth = min((int)pixelWidth / width, (int)pixelWidth/height);
 
         for (int y = 0; y < tiles.length; y++) {
             for (int x = 0; x < tiles[y].length; x++) {
@@ -69,21 +74,17 @@ public class Runner {
                         tileType.setImage(test);
                         break;
                 }
-                tileType.setFitHeight(25);
-                tileType.setFitWidth(25);
+                tileType.setFitHeight(tilePixelWidth);
+                tileType.setFitWidth(tilePixelWidth);
                 tile.getChildren().add(tileType);
                 board.add(tile, x, y);
             }
         }
 
-        for (int i = 0; i < width; i++) {
-            board.getColumnConstraints().add(new ColumnConstraints(5, Control.USE_COMPUTED_SIZE, Double.POSITIVE_INFINITY, Priority.ALWAYS, HPos.CENTER, true));
-            board.getRowConstraints().add(new RowConstraints(5, Control.USE_COMPUTED_SIZE, Double.POSITIVE_INFINITY, Priority.ALWAYS, VPos.CENTER, true));
-        }
+
 
         board.setHgap(0);
         board.setVgap(0);
-
     }
 
 
