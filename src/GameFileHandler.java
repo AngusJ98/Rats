@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import entity.BasicRat;
+import entity.RatTypes;
 import javafx.scene.image.Image;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -67,7 +69,7 @@ public class GameFileHandler {
     private static BasicRat[] parseRats(JSONObject json) {
         Image image;
         String imagePath;
-        ratTypes gender;
+        RatTypes gender;
         boolean isBaby;
         int[] position = new int[2];
         JSONArray positionJObj;
@@ -76,12 +78,12 @@ public class GameFileHandler {
         BasicRat[] rats = new BasicRat[ratsJArray.size()];
         for (int i = 0; i < rats.length; i++) {
             rat = (JSONObject) ratsJArray.get(i);
-            gender = rat.get("gender") == "MALE" ? ratTypes.MALE : ratTypes.FEMALE;
+            gender = rat.get("gender") == "MALE" ? RatTypes.MALE : RatTypes.FEMALE;
             isBaby = (boolean) rat.get("isBaby");
             if(isBaby) {
                 imagePath = "babyRat.png";
             } else {
-                imagePath = gender == ratTypes.MALE ? "boyRat.png" : "girlRat.png";
+                imagePath = gender == RatTypes.MALE ? "boyRat.png" : "girlRat.png";
             }
             image = new Image("resources/" + imagePath, true);
             positionJObj = (JSONArray) rat.get("position");
@@ -104,7 +106,7 @@ public class GameFileHandler {
         return rats;
     }
 
-//    private static Entity[] parseItemsOnMap(JSONObject json) {
+//    private static entity.Entity[] parseItemsOnMap(JSONObject json) {
 //
 //    }
 //

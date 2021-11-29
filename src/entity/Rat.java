@@ -1,10 +1,7 @@
-//We should maybe think about moving rats to their own package
+package entity;//We should maybe think about moving rats to their own package
 
 import javafx.scene.image.Image;
 
-enum ratTypes {
-	MALE, FEMALE, BABY, DEATH;
-}
 enum Direction {
 	NORTH, EAST, SOUTH, WEST
 }
@@ -62,7 +59,7 @@ public abstract class Rat extends Entity{
 		return true;
 	}
 
-	public Rat(ratTypes type, Image image) {
+	public Rat(RatTypes type, Image image) {
 		super(image, CollisionType.RAT);
 		switch (type) {						
 		case BABY:
@@ -89,7 +86,7 @@ public abstract class Rat extends Entity{
 
 	}
 
-	abstract void ratActions(); //what the rat does when it's action is called, calls move or whatever else it needs to do.
+	public abstract void ratActions(); //what the rat does when it's action is called, calls move or whatever else it needs to do.
 
 	abstract void onRatCollision(); //what to do when the rat collides with another rat
 

@@ -1,3 +1,5 @@
+package entity;
+
 import javafx.scene.image.Image;
 
 public class DeathRat extends Rat {
@@ -5,7 +7,7 @@ public class DeathRat extends Rat {
 	private void setKillCount(int killCount) {
 		this.killCount = killCount;
 	}
-	public DeathRat(ratTypes type, Image image) {
+	public DeathRat(RatTypes type, Image image) {
 		super(type, image);
 		setKillCount(0);
 	}

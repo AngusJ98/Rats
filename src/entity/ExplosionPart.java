@@ -1,3 +1,5 @@
+package entity;
+
 import javafx.scene.image.Image;
 public class ExplosionPart extends Entity {
     private Image image;
@@ -6,7 +8,7 @@ public class ExplosionPart extends Entity {
     }
 
     @Override
-    void onCollision(Entity target) {
+    public void onCollision(Entity target) {
         switch (target.getCollisionGroup()) {
             case RAT:
                 ratCollision((Rat)target);
@@ -25,6 +27,6 @@ public class ExplosionPart extends Entity {
     }
 
     private void itemCollision(Entity target) {
-        // Guessing we'll need a damage/destroy method in Entity maybe?
+        // Guessing we'll need a damage/destroy method in entity.Entity maybe?
     }
 }

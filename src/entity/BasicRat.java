@@ -1,3 +1,5 @@
+package entity;
+
 import javafx.scene.image.Image;
 
 public class BasicRat extends Rat {
@@ -11,8 +13,8 @@ public class BasicRat extends Rat {
 	private int moveSpeed;
 	private int hp;
 	private int[] position;
-	private ratTypes gender;
-	public ratTypes getGender() {
+	private RatTypes gender;
+	public RatTypes getGender() {
 		return gender;
 	}
 	public void ratActions() {}
@@ -23,7 +25,7 @@ public class BasicRat extends Rat {
     }
 
     public void onCollision(Entity entity) {}
-	public void setGender(ratTypes gender) {
+	public void setGender(RatTypes gender) {
 		this.gender = gender;
 	}
 	public boolean isBaby() {
@@ -44,7 +46,7 @@ public class BasicRat extends Rat {
 	public int getNumChildren() {
 		return numChildren;
 	}
-	public BasicRat(ratTypes type, Image image) {
+	public BasicRat(RatTypes type, Image image) {
         super(type, image);
 		switch (type) {
 		case BABY:
@@ -56,17 +58,17 @@ public class BasicRat extends Rat {
 			break;
 		case FEMALE:
 			setIsBaby(false);
-			setGender(ratTypes.FEMALE);
+			setGender(RatTypes.FEMALE);
 			setNumChildren(0);
 			break;
 		default:
 			setIsBaby(false);
-			setGender(ratTypes.MALE);
+			setGender(RatTypes.MALE);
 			break;
 		}
 	}
 
-	public BasicRat(ratTypes gender, boolean isBaby, boolean canMate,
+	public BasicRat(RatTypes gender, boolean isBaby, boolean canMate,
                     boolean canMove, int moveSpeed, int timeToGrowth,
                     int numChildren, int timeToBirth, int hp, int[] position,
                     Image image) {

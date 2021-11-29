@@ -1,3 +1,5 @@
+package entity;
+
 import javafx.scene.image.Image;
 
 public class Sterilization extends Entity{
@@ -8,7 +10,7 @@ public class Sterilization extends Entity{
     }
 
     @Override
-    void onCollision(Entity target) {
+    public void onCollision(Entity target) {
         switch (target.getCollisionGroup()) {
             case RAT:
                 ratCollision((Rat)target);

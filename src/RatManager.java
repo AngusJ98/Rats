@@ -1,3 +1,5 @@
+import entity.Rat;
+
 import java.util.ArrayList;
 
 public class RatManager implements Manager{

@@ -1,3 +1,5 @@
+package entity;
+
 import javafx.scene.image.Image;
 enum CollisionType {
     RAT, ITEM, TILE, NONE
@@ -17,7 +19,7 @@ public abstract class Entity {
         return collisionGroup;
     }
 
-    abstract void onCollision(Entity target);
+    public abstract void onCollision(Entity target);
 
     public void draw() {
         //draw the entity

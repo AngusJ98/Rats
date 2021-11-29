@@ -1,10 +1,15 @@
+package tiles;
+
 import java.util.ArrayList;
+
+import entity.Entity;
+import entity.Rat;
 import javafx.scene.image.Image;
 
 enum tileTypes {
 	PATH, TUNNEL, GRASS, SPEEDTILE
 }
-public abstract class Tile { // Does tile need to be an Entity? Tiles don't
+public abstract class Tile { // Does tile need to be an entity.Entity? Tiles don't
                              // move or perform any actions etc.
 	private boolean isPassable;
 	private boolean hidesRats;	
@@ -14,7 +19,7 @@ public abstract class Tile { // Does tile need to be an Entity? Tiles don't
 	
 	public Tile(tileTypes type, Image image) {
 //		super(image, type);
-		setItems(new ArrayList<Entity>()); 
+		setItems(new ArrayList<Entity>());
 		switch (type) {		
 		case TUNNEL:
 			setHidesRats(true);

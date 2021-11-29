@@ -1,5 +1,5 @@
 package Controller;
-
+import entity.*;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -87,5 +87,7 @@ public class Runner {
         board.setVgap(0);
     }
 
+    //public void drawBoard(tiles.Tile[][]) {
 
+    //}
 }
