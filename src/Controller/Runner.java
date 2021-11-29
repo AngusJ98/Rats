@@ -110,7 +110,13 @@ public class Runner {
         }
     }
 
-    public void redrawBoard(Entity[] entities) {
+    //Completely redraws board, don't think it's needed
+    public void redrawBoard(Tile[][] tiles, Entity[] entities) {
+        this.board.getChildren().clear();
+        this.drawBoard(tiles, entities);
+    }
+
+    public void redrawEntities(Entity[] entities) {
         this.removeEntities();
         this.drawEntities(entities);
     }
