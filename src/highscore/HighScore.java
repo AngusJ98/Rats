@@ -1,3 +1,5 @@
+package highscore;
+
 import java.io.*;
 import java.security.*;
 import java.util.Hashtable;
