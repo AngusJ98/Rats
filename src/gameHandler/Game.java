@@ -11,9 +11,11 @@ public class Game {
 	private static ArrayList<BasicRat> rats = new ArrayList<BasicRat>();
 	private static String levelPath;
 
+    public void start() {
+    }
 
 
-	public static class RatManager {
+    public static class RatManager {
 		private static ArrayList<DeathRat> deathRats = new ArrayList<DeathRat>();
 		public static ArrayList<BasicRat> getRatsAtPos(int[] pos) {	
 			ArrayList<BasicRat> ratsAtPos = new ArrayList<BasicRat>();

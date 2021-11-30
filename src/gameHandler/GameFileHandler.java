@@ -151,6 +151,9 @@ public class GameFileHandler {
 
     }
 
+    // loadGame() and newGame() will both return Tuples containing everything
+    // needed to resume or start a game
+    // void atm so it still compiles.
     public static void loadGame() {
 
     }
