@@ -184,8 +184,8 @@ public class Runner {
             pic.setFitHeight(this.tilePixelSize);
             pic.setFitWidth(this.tilePixelSize);
             int[] position = entity.getPosition();
-            int x = position[0]; //TODO use correct method here
-            int y = position[1]; //TODO use correct method here
+            int x = position[0];
+            int y = position[1];
             StackPane targetTile = this.stackPaneArray[x][y];
             targetTile.getChildren().add(pic);
         }
@@ -202,7 +202,7 @@ public class Runner {
     }
 
     public void updateCount() {
-        this.bombCount.setText(String.valueOf(Inventory.getBombCount()));//TODO Add correct count methods here
+        this.bombCount.setText(String.valueOf(Inventory.getBombCount()));
         this.gasCount.setText(String.valueOf(Inventory.getgasCount()));
         this.sterileCount.setText(String.valueOf(Inventory.getsterileCount()));
         this.noEntCount.setText(String.valueOf(Inventory.getnoEntryCount()));
