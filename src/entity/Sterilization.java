@@ -5,8 +5,8 @@ import javafx.scene.image.Image;
 public class Sterilization extends Entity{
     private int range;
 
-    public Sterilization() {
-        super(new Image(""), CollisionType.ITEM);
+    public Sterilization(int[] position) {
+        super(new Image(""), CollisionType.ITEM, position);
     }
 
     @Override

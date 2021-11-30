@@ -5,8 +5,8 @@ import javafx.scene.image.Image;
 public class Bomb extends Entity{
     private int range;
 
-    public Bomb() {
-        super(new Image(""), CollisionType.ITEM);
+    public Bomb(int[] position) {
+        super(new Image(""), CollisionType.ITEM, position);
     }
 
     @Override

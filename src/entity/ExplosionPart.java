@@ -3,8 +3,8 @@ package entity;
 import javafx.scene.image.Image;
 public class ExplosionPart extends Entity {
     private Image image;
-    public ExplosionPart(Image image) {
-        super(image, CollisionType.ITEM);
+    public ExplosionPart(Image image, int[] position) {
+        super(image, CollisionType.ITEM, position);
     }
 
     //@Override

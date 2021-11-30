@@ -5,8 +5,8 @@ import javafx.scene.image.Image;
 public class Poison extends Entity{
     private int range;
 
-    public Poison() {
-        super(new Image(""), CollisionType.ITEM);
+    public Poison(int[] position) {
+        super(new Image(""), CollisionType.ITEM, position);
     }
 
     @Override
