@@ -15,7 +15,7 @@ public class Game {
 			ArrayList<BasicRat> ratsAtPos = new ArrayList<BasicRat>();
 			for (int i = 0; i < rats.size(); i++) {
 				BasicRat currentRat = rats.get(i);
-				if (currentRat.getPos() == pos) {
+				if (currentRat.getPosition() == pos) {
 					ratsAtPos.add(currentRat);
 				}
 			}

@@ -1,4 +1,6 @@
-public class Inventory { 
+package Controller;
+
+public class Inventory {
 	//Inventory just tracks items left etc, I don't think it needs to be an entity
 	//we can either just display text on the side of the screen 
 	//or we could have lil icons which would be pretty neat
@@ -6,6 +8,31 @@ public class Inventory {
 	//we can set screenCoordinate to a large number
     private int[] itemsLeft;
     private int[] itemNames;
+
+    public static int getBombCount() {
+        return 1;
+    }
+
+    public static int getgasCount() {
+        return 1;
+    }
+
+    public static int getsterileCount() {
+        return 1;
+    }
+
+    public static int getnoEntryCount() {
+        return 1;
+    }
+
+    public static int getmaleCount() {
+        return 1;
+    }
+
+    public static int getfemaleCount() {
+        return 1;
+    }
+
     public String toString() {
         String result = "Remaining Items:\n";
         //gets information from the "ItemsLeft" Attribute

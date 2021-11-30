@@ -202,12 +202,12 @@ public class Runner {
     }
 
     public void updateCount() {
-        this.bombCount.setText(Inventory.getBombCount());//TODO Add correct count methods here
-        this.gasCount.setText(Inventory.getgasCount());
-        this.sterileCount.setText(Inventory.getsterileCount());
-        this.noEntCount.setText(Inventory.getnoEntryCount());
-        this.maleCount.setText(Inventory.getmaleCount());
-        this.femaleCount.setText(Inventory.getfemaleCount());
+        this.bombCount.setText(String.valueOf(Inventory.getBombCount()));//TODO Add correct count methods here
+        this.gasCount.setText(String.valueOf(Inventory.getgasCount()));
+        this.sterileCount.setText(String.valueOf(Inventory.getsterileCount()));
+        this.noEntCount.setText(String.valueOf(Inventory.getnoEntryCount()));
+        this.maleCount.setText(String.valueOf(Inventory.getmaleCount()));
+        this.femaleCount.setText(String.valueOf(Inventory.getfemaleCount()));
     }
 
     public void returnToMenu() {
