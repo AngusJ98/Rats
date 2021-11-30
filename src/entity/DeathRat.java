@@ -9,10 +9,16 @@ public class DeathRat extends Rat {
 	private void setKillCount(int killCount) {
 		this.killCount = killCount;
 	}
-	public DeathRat(ratTypes type, Image image, int[] pos) {
+	public DeathRat(RatTypes type, Image image, int[] pos) {
 		super(type, image, pos);
 		setKillCount(0);
 	}
+
+    @Override
+    public void kill() {
+
+    }
+
     public void checkCurrentTile() {
     	if (killCount < 5) {
 			ArrayList<BasicRat> ratsToKill = RatManager.getRatsAtPos(pos); //checkRatCollision(pos);	
@@ -35,5 +41,9 @@ public class DeathRat extends Rat {
 			RatManager.killSingleRat(this);
 		}
     }
-    
+
+    @Override
+    public void onCollision(Entity t) {
+
+    }
 }

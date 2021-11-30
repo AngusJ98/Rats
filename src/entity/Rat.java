@@ -13,7 +13,6 @@ public abstract class Rat extends Entity {
 	protected int moveSpeed;	
 	protected int[] pos;
 	protected Direction moveDirection;
-	
 	public boolean getMateStatus() {
 		return canMate;
 	}
@@ -96,5 +95,6 @@ public abstract class Rat extends Entity {
 			break;	
 		}		
 	}
-	
+
+    public abstract void kill();
 }
