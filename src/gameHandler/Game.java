@@ -9,6 +9,10 @@ import java.util.HashMap;
 public class Game {	
 	//this is a pretty static way of doing things, but it's very functional
 	private static ArrayList<BasicRat> rats = new ArrayList<BasicRat>();
+	private static String levelPath;
+
+
+
 	public static class RatManager {
 		private static ArrayList<DeathRat> deathRats = new ArrayList<DeathRat>();
 		public static ArrayList<BasicRat> getRatsAtPos(int[] pos) {	
@@ -82,6 +86,13 @@ public class Game {
 		constructTileMap();
 		constructRatList();
 		otherShit();
+	}
+	public static String getLevelPath() {
+		return levelPath;
+	}
+
+	public static void setLevelPath(String levelPath) {
+		Game.levelPath = levelPath;
 	}
 	public void constructTileMap() {}
 	public void constructRatList() {}	

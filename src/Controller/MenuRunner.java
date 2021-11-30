@@ -1,4 +1,5 @@
 package Controller;
+import gameHandler.Game;
 import highscore.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -51,12 +52,12 @@ public class MenuRunner {
     }
 
     public void level1(ActionEvent actionEvent) throws Exception {
-        Main.setLevelNum(1);
+        Game.setLevelPath("file:resources/level1.json");
         this.startGame();
     }
 
     public void level2(ActionEvent actionEvent) throws Exception {
-        Main.setLevelNum(2);
+        Game.setLevelPath("file:resources/level2.json");
         this.startGame();
     }
 }

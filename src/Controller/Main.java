@@ -24,14 +24,6 @@ public class Main extends Application {
         launch(args);
     }
 
-    public static int getLevelNum() {
-        return levelNum;
-    }
-
-    public static void setLevelNum(int levelNum) {
-        Main.levelNum = levelNum;
-    }
-
     public static void changeScene(Scene newScene) {
         stg.close();
         Main.stg.setScene(newScene);
