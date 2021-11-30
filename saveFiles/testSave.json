@@ -5,7 +5,7 @@
   },
   "rats": [
     {
-      "gender": "FEMALE",
+      "type": "FEMALE",
       "isBaby": false,
       "canMate": false,
       "canMove": true,
@@ -17,7 +17,7 @@
       "position": [5, 5]
     },
     {
-      "gender": "MALE",
+      "type": "MALE",
       "isBaby": false,
       "canMate": true,
       "canMove": true,
@@ -29,7 +29,7 @@
       "position": [13, 1]
     },
     {
-      "gender": "MALE",
+      "type": "BABY",
       "isBaby": true,
       "canMate": false,
       "canMove": true,
