@@ -24,3 +24,8 @@ hs_err_pid*
 
 # IDE files
 .idea/
+out/
+*.iml
+
+# Jonny local testing folder
+poo/

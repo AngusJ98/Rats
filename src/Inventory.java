@@ -1,5 +1,3 @@
-package application;
-
 public class Inventory { 
 	//Inventory just tracks items left etc, I don't think it needs to be an entity
 	//we can either just display text on the side of the screen 
@@ -21,6 +19,10 @@ public class Inventory {
     public void restock() {
         //????
     	//idk if we need this
+        //
+        //might make sense if it takes an item as an arg, then it
+        //could be called by the game for each item when they're due to be
+        //refreshed (different items will have different frequencies)
     }
 
     

@@ -1,0 +1,65 @@
+{
+  "map": {
+    "dimensions": [15, 7],
+    "tiles": "GGGGGGGGGGGGGGG\nGPPPTTPPPTTPPPG\nGGGPGGGGPGGPGPG\nGPPPGGPPPGGPGPG\nGPGGGGGGPGGPGPG\nGPPPTTPPPTTPPPG\nGGGGGGGGGGGGGGG"
+  },
+  "rats": [
+    {
+      "gender": "FEMALE",
+      "isBaby": false,
+      "canMate": false,
+      "canMove": true,
+      "moveSpeed": 10,
+      "timeToGrowth": 0,
+      "numChildren": 4,
+      "timeToBirth": 12,
+      "hp": 100,
+      "position": [5, 5]
+    },
+    {
+      "gender": "MALE",
+      "isBaby": false,
+      "canMate": true,
+      "canMove": true,
+      "moveSpeed": 10,
+      "timeToGrowth": 0,
+      "numChildren": 0,
+      "timeToBirth": 0,
+      "hp": 100,
+      "position": [13, 1]
+    },
+    {
+      "gender": "MALE",
+      "isBaby": true,
+      "canMate": false,
+      "canMove": true,
+      "moveSpeed": 10,
+      "timeToGrowth": 60,
+      "numChildren": 0,
+      "timeToBirth": 0,
+      "hp": 20,
+      "position": [1, 1]
+    }
+  ],
+  "itemsOnMap": {
+    "bomb": [], "gas": [], "sterilise": [], "poison": [],
+    "mSexChange": [], "fSexChange": [], "noEntry": [], "deathRat": []
+  },
+  "levelStats": {
+    "timeLeft": 60,
+    "ratLimit": 10,
+    "itemFrequencies": {
+      "bomb": 1, "gas": 2, "sterilise": 2, "poison": 3,
+      "mSexChange": 4, "fSexChange": 4, "noEntry": 4, "deathRat": 1
+    }
+  },
+  "playerStats": {
+    "name": "Dave",
+    "score": 0,
+    "maxLevel": 3
+  },
+  "inventory": {
+    "bomb": 3, "gas": 3, "sterilise": 3, "poison": 3,
+    "mSexChange": 3, "fSexChange": 3, "noEntry": 3, "deathRat": 1
+  }
+}

@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import entity.BasicRat;
+import entity.RatTypes;
+import javafx.scene.image.Image;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.*;
@@ -30,17 +33,26 @@ public class GameFileHandler {
         }
     }
 
-    private static Game initGame(JSONObject json) {
+    private static int objToInt(JSONObject obj, String key) {
+        return Math.toIntExact((long) obj.get(key));
+    }
+
+    private static int objToInt(JSONArray obj, int key) {
+        return Math.toIntExact((long) obj.get(key));
+    }
+
+
+    private static char[][] parseMap(JSONObject json) {
         JSONObject mapObj = (JSONObject) json.get("map");
         JSONObject levelStatsObj = (JSONObject) json.get("levelStats");
         JSONArray dimensionsJObj = (JSONArray) mapObj.get("dimensions");
         String tilesString = (String) mapObj.get("tiles");
 
-        int timeLeft = Math.toIntExact((long) levelStatsObj.get("timeLeft"));
+        int timeLeft = objToInt(levelStatsObj, "timeLeft");
 
         int[] dimensions = {
-            Math.toIntExact((long) dimensionsJObj.get(0)),
-            Math.toIntExact((long) dimensionsJObj.get(1))
+            objToInt(dimensionsJObj, 0),
+            objToInt(dimensionsJObj, 1)
         };
         
         char[][] map = new char[dimensions[1]][dimensions[0]];
@@ -50,15 +62,65 @@ public class GameFileHandler {
         }
 
         println(Arrays.deepToString(map));
-        return new Game(map, timeLeft);
 
-
-
+        return map;
     }
 
-    private static void writeSaveFile(String saveString) {
-
+    private static BasicRat[] parseRats(JSONObject json) {
+        Image image;
+        String imagePath;
+        RatTypes gender;
+        boolean isBaby;
+        int[] position = new int[2];
+        JSONArray positionJObj;
+        JSONArray ratsJArray = (JSONArray) json.get("rats");
+        JSONObject rat;
+        BasicRat[] rats = new BasicRat[ratsJArray.size()];
+        for (int i = 0; i < rats.length; i++) {
+            rat = (JSONObject) ratsJArray.get(i);
+            gender = rat.get("gender") == "MALE" ? RatTypes.MALE : RatTypes.FEMALE;
+            isBaby = (boolean) rat.get("isBaby");
+            if(isBaby) {
+                imagePath = "babyRat.png";
+            } else {
+                imagePath = gender == RatTypes.MALE ? "boyRat.png" : "girlRat.png";
+            }
+            image = new Image("resources/" + imagePath, true);
+            positionJObj = (JSONArray) rat.get("position");
+            position[0] = objToInt(positionJObj, 0);
+            position[1] = objToInt(positionJObj, 1);
+            rats[i] = new BasicRat(
+                gender,
+                (boolean) rat.get("isBaby"),
+                (boolean) rat.get("canMate"),
+                (boolean) rat.get("canMove"),
+                objToInt(rat, "moveSpeed"),
+                objToInt(rat, "timeToGrowth"),
+                objToInt(rat, "numChildren"),
+                objToInt(rat, "timeToBirth"),
+                objToInt(rat, "hp"),
+                position,
+                image
+            );
+        }
+        return rats;
     }
+
+//    private static entity.Entity[] parseItemsOnMap(JSONObject json) {
+//
+//    }
+//
+//    private static int[] parseLevelStats(JSONObject json) {
+//
+//    }
+//
+//    private static int[] parseInventory(JSONObject json) {
+//
+//    }
+//
+//    private static void writeSaveFile(String saveString) {
+//
+//    }
 
     private static ArrayList<Object> parseJSON(JSONObject json) {
          ArrayList<Object> objects = new ArrayList<>();
@@ -81,7 +143,7 @@ public class GameFileHandler {
     }
 
     public static void newGame() {
-
+        // will need to check player's maxLevel to make sure they've unlocked it
     }
 
     // For testing //
@@ -103,7 +165,7 @@ public class GameFileHandler {
         JSONObject json = readJSON("testLevel.json", true);
         println(json + "\n");
 
-        Game game = initGame(json);
+        parseMap(json);
 
 
     }
