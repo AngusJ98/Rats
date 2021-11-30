@@ -7,7 +7,7 @@ public class ExplosionPart extends Entity {
         super(image, CollisionType.ITEM);
     }
 
-    @Override
+    //@Override
     public void onCollision(Entity target) {
         switch (target.getCollisionGroup()) {
             case RAT:

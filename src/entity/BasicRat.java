@@ -31,7 +31,7 @@ public class BasicRat extends Rat {
 		ArrayList<Entity> entities = Game.TileManager.getEntities(pos);
 		for (int i = 0; i<entities.size(); i++) {
 			//check if rat/cast to rat
-			if (entities.get(i).isRat) {	
+			if (entities.get(i).isRat()) {
 				Rat rat = (Rat) entities.get(i);
 				if (rat.getRatType().equals(ratTypes.DEATH)) {
 					rat.checkCurrentTile(); //death rat eats this rat

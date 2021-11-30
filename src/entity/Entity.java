@@ -17,11 +17,8 @@ public abstract class Entity {
         this.collisionGroup = collisionGroup;
     }
 
-    public boolean getIsRat() {
+    public boolean isRat() {
         return collisionGroup == CollisionType.RAT;
-    }
-    public void setIsRat() {
-        this.collisionGroup = CollisionType.RAT;
     }
     public Image getImage() {
         return image;
@@ -29,8 +26,6 @@ public abstract class Entity {
     public CollisionType getCollisionGroup() {
         return collisionGroup;
     }
-
-    public abstract void onCollision(Entity target);
 
     public void draw() {
         //draw the entity
