@@ -9,6 +9,7 @@ public class Inventory {
     private int[] itemsLeft;
     private int[] itemNames;
 
+    // TODO:
     public static int getBombCount() {
         return 1;
     }
