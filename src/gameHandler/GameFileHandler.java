@@ -6,16 +6,21 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import entity.BasicRat;
 import entity.RatTypes;
 import javafx.scene.image.Image;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.*;
+import entity.*;
 
 public class GameFileHandler {
     public static final String ERROR_MSG_FILE_NOT_FOUND = "Could not find %s.";
     public static final String SAVE_PATH = "saveFiles/";
     public static final String LEVEL_PATH = "levelFiles/";
+    public static final String MALE_RAT_IMG = "boyRat.png";
+    public static final String FEMALE_RAT_IMG = "girlRat.png";
+    public static final String BABY_RAT_IMG = "babyRat.png";
 
     private GameFileHandler() {}
 
@@ -70,7 +75,7 @@ public class GameFileHandler {
     private static BasicRat[] parseRats(JSONObject json) {
         Image image;
         String imagePath;
-        RatTypes gender;
+        RatTypes type;
         boolean isBaby;
         int[] position = new int[2];
         JSONArray positionJObj;
@@ -79,20 +84,27 @@ public class GameFileHandler {
         BasicRat[] rats = new BasicRat[ratsJArray.size()];
         for (int i = 0; i < rats.length; i++) {
             rat = (JSONObject) ratsJArray.get(i);
-            gender = rat.get("gender") == "MALE" ? RatTypes.MALE : RatTypes.FEMALE;
-            isBaby = (boolean) rat.get("isBaby");
-            if(isBaby) {
-                imagePath = "babyRat.png";
-            } else {
-                imagePath = gender == RatTypes.MALE ? "boyRat.png" : "girlRat.png";
+            switch ((String) rat.get("type")) {
+                case "MALE":
+                    type = RatTypes.MALE;
+                    imagePath = MALE_RAT_IMG;
+                    break;
+                case "BABY":
+                    type = RatTypes.BABY;
+                    imagePath = BABY_RAT_IMG;
+                    break;
+                default:
+                    type = RatTypes.FEMALE;
+                    imagePath = FEMALE_RAT_IMG;
+                    break;
             }
+
             image = new Image("resources/" + imagePath, true);
             positionJObj = (JSONArray) rat.get("position");
             position[0] = objToInt(positionJObj, 0);
             position[1] = objToInt(positionJObj, 1);
             rats[i] = new BasicRat(
-                gender,
-                (boolean) rat.get("isBaby"),
+                type,
                 (boolean) rat.get("canMate"),
                 (boolean) rat.get("canMove"),
                 objToInt(rat, "moveSpeed"),
@@ -104,7 +116,7 @@ public class GameFileHandler {
                 image
             );
         }
-        return rats;
+            return rats;
     }
 
 //    private static entity.Entity[] parseItemsOnMap(JSONObject json) {
