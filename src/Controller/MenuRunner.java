@@ -44,6 +44,7 @@ public class MenuRunner {
         try {
             Scene game = FXMLLoader.load(getClass().getResource("game.fxml"));
             Main.changeScene(game);
+
             //TODO pass code to load the level file
         } catch (Exception e) {
             e.printStackTrace();
