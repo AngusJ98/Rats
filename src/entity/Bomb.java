@@ -3,10 +3,43 @@ package entity;
 import javafx.scene.image.Image;
 
 public class Bomb extends Entity{
+    public static final int DEFAULT_BOMB_TIME = 4000;
+    public static final int TICKS_PER_SECOND = 1000;
     private int range;
+    private int timer;
 
     public Bomb(int[] position) {
         super(new Image(""), CollisionType.ITEM, position);
+        timer = DEFAULT_BOMB_TIME;
+    }
+
+    public Bomb(int[] position, int timeLeft) {
+        super(new Image(""), CollisionType.ITEM, position);
+        timer = timeLeft;
+    }
+
+
+    // touching the bomb shouldn't kill the rat.
+    private void ratCollision(Rat target) {
+        if (true) {
+            target.kill();
+        };
+    }
+
+    // if anyone renames this method to something more sensible i will personally
+    // feel very offended
+    private void boom() {
+        // create ExplosionParts etc
+    }
+
+    public void tick() {
+        timer--;
+        boom();
+    }
+
+    public int getSeconds() {
+        // god damn i hate java so much look at this shit
+        return (int) Math.ceil((float) timer / TICKS_PER_SECOND);
     }
 
     @Override
@@ -19,12 +52,6 @@ public class Bomb extends Entity{
                 break;
         }
     }
-
-    private void ratCollision(Rat target) {
-        if (true) {
-            target.kill();
-        };
-    }
 }
 
 //From the Spec:
@@ -34,5 +61,5 @@ public class Bomb extends Entity{
 //explosion passes through tunnels). The grass prevents
 //the explosion from continuing in a given direction. The
 //explosion will kill any rats on these tiles and will also
-//destroy any other items currently placed on these tiles.
+//destroy any other items currently placed on these tiles. <<<<<<<<<<------------------------------------
 //Each bomb should display a count down: 4, 3, 2, 1.
