@@ -42,10 +42,6 @@ public class Runner {
 
     }
 
-    public void setItemBomb(ActionEvent actionEvent) {
-
-    }
-
     public void initialize() {
 
         board = new GridPane();
