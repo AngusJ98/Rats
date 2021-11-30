@@ -33,4 +33,5 @@ public abstract class Entity {
     }
 
 
+    public abstract void onCollision(Entity t);
 }
