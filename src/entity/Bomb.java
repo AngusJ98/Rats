@@ -26,8 +26,8 @@ public class Bomb extends Entity{
         };
     }
 
-    // if anyone renames this method to something more sensible i will personally
-    // feel very offended
+    // if anyone renames this method to something more sensible
+    // i will personally feel very offended
     private void boom() {
         // create ExplosionParts etc
     }
@@ -37,12 +37,14 @@ public class Bomb extends Entity{
         boom();
     }
 
+    //Each bomb should display a count down: 4, 3, 2, 1.
     public int getSeconds() {
         // god damn i hate java so much look at this shit
         return (int) Math.ceil((float) timer / TICKS_PER_SECOND);
     }
 
     @Override
+    // shouldn't do anything
     public void onCollision(Entity target) {
         switch (target.getCollisionGroup()) {
             case RAT:
