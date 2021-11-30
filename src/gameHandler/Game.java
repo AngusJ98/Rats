@@ -87,12 +87,18 @@ public class Game {
 		constructRatList();
 		otherShit();
 	}
+<<<<<<< Updated upstream
 	public static String getLevelPath() {
 		return levelPath;
 	}
 
 	public static void setLevelPath(String levelPath) {
 		Game.levelPath = levelPath;
+=======
+
+	public void tick() {
+
+>>>>>>> Stashed changes
 	}
 	public void constructTileMap() {}
 	public void constructRatList() {}	
