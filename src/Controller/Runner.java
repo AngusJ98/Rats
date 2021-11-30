@@ -183,8 +183,9 @@ public class Runner {
             pic.setImage(entity.getImage());
             pic.setFitHeight(this.tilePixelSize);
             pic.setFitWidth(this.tilePixelSize);
-            int x = entity.getXPosition(); //TODO use correct method here
-            int y = entity.getYPosition(); //TODO use correct method here
+            int[] position = entity.getPosition();
+            int x = position[0]; //TODO use correct method here
+            int y = position[1]; //TODO use correct method here
             StackPane targetTile = this.stackPaneArray[x][y];
             targetTile.getChildren().add(pic);
         }
