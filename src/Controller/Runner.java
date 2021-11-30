@@ -31,7 +31,7 @@ public class Runner {
     @FXML private ToggleGroup itemToggle;
 
     private GridPane board;
-    private final double pixelWidth = 800; //this is how wide the board section of the game is
+    private final double pixelWidth = 600; //this is how wide the board section of the game is
     private StackPane[][] stackPaneArray = null; // a list of stackpanes indexed by row and col so we can add children later!
     private int tilePixelSize = 1; //Set as default, will be changed later
     private int width = 0; //How many tiles wide the board is
@@ -212,8 +212,7 @@ public class Runner {
 
     public void returnToMenu() {
         try {
-            Scene menu = FXMLLoader.load(getClass().getResource("menu.fxml"));
-            Main.changeScene(menu);
+            Main.changeScene(Main.getMenuScene());
         } catch (Exception e) {
             e.printStackTrace();
             System.exit(1);

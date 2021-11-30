@@ -42,9 +42,15 @@ public class MenuRunner {
 
     private void startGame() throws Exception{
         try {
-            Scene game = FXMLLoader.load(getClass().getResource("game.fxml"));
-            Main.changeScene(game);
+            //switch scene
+            Parent gameScreen = FXMLLoader.load(getClass().getResource("game.fxml"));
+            Scene gameScene = new Scene(gameScreen);
+            Main.changeScene(gameScene);
 
+            //Create new game object
+            Game game = new Game();
+            game.setUp();
+            game.start();
             //TODO pass code to load the level file
         } catch (Exception e) {
             e.printStackTrace();
