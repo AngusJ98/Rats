@@ -1,9 +1,10 @@
-package application;
+package gameHandler;
+
+import entity.*;
+import tiles.Tile;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 
 public class Game {	
 	//this is a pretty static way of doing things, but it's very functional

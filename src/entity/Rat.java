@@ -1,6 +1,6 @@
-package application;
+package entity;
 
-import application.Game.TileManager;
+import gameHandler.Game.*;
 import javafx.scene.image.Image;
 
 enum ratTypes {
@@ -47,8 +47,7 @@ public abstract class Rat extends Entity {
 	private void setPos(int[] pos) {
 		this.pos = pos;
 	}
-	public boolean move() {
-		
+	public boolean move() {	
 		int movesLeft = moveSpeed;
 		//   if moveDirection = null, pick a direction from directions enum at random
 		if (moveDirection.equals(null)) {
@@ -74,28 +73,28 @@ public abstract class Rat extends Entity {
 			movesLeft --;
 			//    move one square
 			/**   rats with a higher movespeed (baby rats or rats on crack will loop and 
-			 *    go through this process again so they do not end up inside walls) */		
+			 *    go through this process again so they do not end up inside walls) */				
+			checkCurrentTile();	
 		}
 		return true;
 	}
-
+	public abstract void checkCurrentTile();		
 	public Rat(ratTypes type, Image image, int[] pos) {
 		super(image);
+		super.setIsRat(true);
 		setPos(pos);
 		setRatType(type);
+		setMoveStatus(true);
 		switch (type) {						
 		case BABY:
-			setMoveStatus(true);
-			setMateStatus(true);
+			setMateStatus(false);
 			setMoveSpeed(2);
 			break;
 		case DEATH:
-			setMoveStatus(true);
-			setMateStatus(true);
+			setMateStatus(false);
 			setMoveSpeed(1);
 			break;	
-		default:
-			setMoveStatus(true);
+		default:			
 			setMateStatus(true);
 			setMoveSpeed(1);
 			break;	

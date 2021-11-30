@@ -16,6 +16,13 @@ public abstract class Entity {
         this.image = image;
         this.collisionGroup = collisionGroup;
     }
+
+    public boolean getIsRat() {
+        return collisionGroup == CollisionType.RAT;
+    }
+    public void setIsRat() {
+        this.collisionGroup = CollisionType.RAT;
+    }
     public Image getImage() {
         return image;
     }

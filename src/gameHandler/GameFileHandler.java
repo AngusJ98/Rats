@@ -1,10 +1,11 @@
+package gameHandler;
+
 import java.io.FileReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import entity.BasicRat;
 import entity.RatTypes;
 import javafx.scene.image.Image;
 import org.json.simple.JSONArray;

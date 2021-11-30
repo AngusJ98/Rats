@@ -1,38 +1,19 @@
 package entity;
 
+import java.util.ArrayList;
+
+import gameHandler.Game;
 import javafx.scene.image.Image;
 
 public class BasicRat extends Rat {
-	private boolean isBaby;
-	private boolean canMate;
-	private boolean canMove;
-	private Image image;
-	private int timeToGrowth;
-	private int timeToBirth;
-	private int numChildren;
-	private int moveSpeed;
-	private int hp;
-	private int[] position;
-	private RatTypes gender;
-	public RatTypes getGender() {
-		return gender;
+	protected int hitPoints;
+	private int timeToGrowth; 
+	private int numChildren; //if this is above zero, implies the rat is pregnant
+	public int getHP() {
+		return hitPoints;
 	}
-	public void ratActions() {}
-    public void onRatCollision() {}
-
-    void kill() {
-
-    }
-
-    public void onCollision(Entity entity) {}
-	public void setGender(RatTypes gender) {
-		this.gender = gender;
-	}
-	public boolean isBaby() {
-		return isBaby;
-	}
-	private void setIsBaby(boolean isBaby) {
-		this.isBaby = isBaby;
+	public void setHP(int hitPoints) {
+		this.hitPoints = hitPoints;
 	}
 	private int getTimeToGrowth() {
 		return timeToGrowth;
@@ -46,42 +27,51 @@ public class BasicRat extends Rat {
 	public int getNumChildren() {
 		return numChildren;
 	}
-	public BasicRat(RatTypes type, Image image) {
-        super(type, image);
+	public void checkCurrentTile() {
+		ArrayList<Entity> entities = Game.TileManager.getEntities(pos);
+		for (int i = 0; i<entities.size(); i++) {
+			//check if rat/cast to rat
+			if (entities.get(i).isRat) {	
+				Rat rat = (Rat) entities.get(i);
+				if (rat.getRatType().equals(ratTypes.DEATH)) {
+					rat.checkCurrentTile(); //death rat eats this rat
+				} else if (!rat.getRatType().equals(this.ratType) && !rat.getRatType().equals(ratTypes.BABY)) {
+					//check if adult rat of opposing gender
+					if (rat.getMateStatus() == true && this.getMateStatus() == true) {
+						//if not pregnant/sterile/baby, reproduce
+						BasicRat basicRat = (BasicRat) rat;
+						if (this.ratType.equals(ratTypes.FEMALE)) {
+							this.canMate = false;
+							this.setNumChildren((int) (Math.random() * 10000)); 
+						} else {
+							basicRat.canMate = false;
+							basicRat.setNumChildren((int) (Math.random() * 10000)); 
+						}
+					}
+				}			
+			} else {
+				//assume item
+				//code to activate item goes here
+				//need all items to have a universal onCollision method 
+				//-either an abstract method in entity or creating an abstract class under entity for items would work
+			}
+		}	
+	}
+	public BasicRat(ratTypes type, Image image, int[] pos) {
+		super(type, image, pos);
+		setHP(100);
 		switch (type) {
 		case BABY:
 			int minGrowthTime = 1000;
 			int growthMultiplier = 4000;
 			timeToGrowth = (int) (Math.random() * growthMultiplier) + minGrowthTime; //ms to growth (min 1000, max 5000)
 			setTimeToGrowth(timeToGrowth);
-			setIsBaby(true);
 			break;
 		case FEMALE:
-			setIsBaby(false);
-			setGender(RatTypes.FEMALE);
 			setNumChildren(0);
 			break;
 		default:
-			setIsBaby(false);
-			setGender(RatTypes.MALE);
 			break;
-		}
+		}			
 	}
-
-	public BasicRat(RatTypes gender, boolean isBaby, boolean canMate,
-                    boolean canMove, int moveSpeed, int timeToGrowth,
-                    int numChildren, int timeToBirth, int hp, int[] position,
-                    Image image) {
-	    super(gender, image);
-	    this.gender = gender;
-	    this.isBaby = isBaby;
-	    this.canMate = canMate;
-	    this.canMove = canMove;
-	    this.moveSpeed = moveSpeed;
-	    this.timeToGrowth = timeToGrowth;
-	    this.numChildren = numChildren;
-	    this.timeToBirth = timeToBirth;
-	    this.hp = hp;
-	    this.position = position;
-    }
 }
