@@ -6,7 +6,6 @@
   "rats": [
     {
       "type": "FEMALE",
-      "isBaby": false,
       "canMate": false,
       "canMove": true,
       "moveSpeed": 10,
@@ -18,7 +17,6 @@
     },
     {
       "type": "MALE",
-      "isBaby": false,
       "canMate": true,
       "canMove": true,
       "moveSpeed": 10,
@@ -30,7 +28,6 @@
     },
     {
       "type": "BABY",
-      "isBaby": true,
       "canMate": false,
       "canMove": true,
       "moveSpeed": 10,
