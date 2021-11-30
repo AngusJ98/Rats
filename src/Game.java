@@ -1,20 +1,29 @@
+import entity.Rat;
+import tiles.Tile;
+
+import java.util.ArrayList;
+
 public class Game {
     private char[][] map;
     private int timeLeft;
     private Board board;
 
-    public Game(char[][] map, int timeLeft) {
-        this.map = map;
-        this.timeLeft = timeLeft;
+    public static class TileManager {
+        private Tile[][] board;
+
+
     }
 
-    private void loadBoard() {
-        this.board = new Board(this.map);
-    }
+    public static class RatManager {
+        private ArrayList<Rat> rats = new ArrayList<>();
+        private Rat[][][] ratsByPosition;
 
-    //calls all object managers here
-    private void tick() {
+        private void indexRatsByPosition() {
+            for (Rat rat : this.rats) {
+                int[] pos = rat.getPos();
 
+            }
+        }
     }
 
 }
