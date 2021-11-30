@@ -3,16 +3,13 @@ package entity;
 import gameHandler.Game.*;
 import javafx.scene.image.Image;
 
-enum ratTypes {
-	MALE, FEMALE, BABY, DEATH;
-}
 enum Direction {
 	NORTH, EAST, SOUTH, WEST
 }
 public abstract class Rat extends Entity {
 	protected boolean canMate;
 	protected boolean canMove;
-	protected ratTypes ratType;
+	protected RatTypes ratType;
 	protected int moveSpeed;	
 	protected int[] pos;
 	protected Direction moveDirection;
@@ -29,10 +26,10 @@ public abstract class Rat extends Entity {
 	public void setMoveStatus(boolean canMove) {
 		this.canMove = canMove;
 	}
-	public ratTypes getRatType() {
+	public RatTypes getRatType() {
 		return ratType;
 	}
-	public void setRatType(ratTypes type) {
+	public void setRatType(RatTypes type) {
 		this.ratType = type;
 	}
 	public int getMoveSpeed() {
@@ -79,7 +76,7 @@ public abstract class Rat extends Entity {
 		return true;
 	}
 	public abstract void checkCurrentTile();		
-	public Rat(ratTypes type, Image image, int[] pos) {
+	public Rat(RatTypes type, Image image, int[] pos) {
 		super(image, CollisionType.RAT);
 		setPos(pos);
 		setRatType(type);
