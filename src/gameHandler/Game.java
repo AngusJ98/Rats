@@ -13,13 +13,11 @@ public class Game {
 	//this is a pretty static way of doing things, but it's very functional
 	private static ArrayList<BasicRat> rats = new ArrayList<BasicRat>();
 	private static String levelPath;
-	private Runner runner;
 
-	public Game() {
-	    runner = new Runner();
-    }
+	public Game() {}
 
     public void start() {
+		//start ticking
     }
 
 
@@ -76,6 +74,8 @@ public class Game {
 	}
 	private static HashMap<int[], Tile> tiles = new HashMap<int[], Tile>();
 	public static class TileManager {
+		private static int numTileWidth = 0;
+		private static int numTileHeight = 0;
 		//main purpose is to store tiles and allow entities to access them
 		public static Tile getTile(int[] pos) {
 			return tiles.get(pos);
@@ -86,10 +86,24 @@ public class Game {
 		public static ArrayList<Entity> getEntities(int[] pos) {
 			return tiles.get(pos).getItems();
 		}
+		public static int getNumTileWidth() {
+			return numTileWidth;
+		}
+		public static void setNumTileWidth(int numTileWidth) {
+			TileManager.numTileWidth = numTileWidth;
+		}
+
+		public static int getNumTileHeight() {
+			return numTileHeight;
+		}
+
+		public static void setNumTileHeight(int numTileHeight) {
+			TileManager.numTileHeight = numTileHeight;
+		}
 	}
 	public static void main(String[] args) {
 		Game game = new Game();
-		Runner runner = new Runner();
+		// Runner runner = new Runner(); Runner is not needed and will be loaded as part of the javafx stuff so no need to worry about that
         try {
             game.setUp();
         } catch (ParseException e) {
@@ -100,6 +114,11 @@ public class Game {
             e.printStackTrace();
         }
     }
+
+	public static HashMap<int[], Tile> getTiles() {
+		return tiles;
+	}
+
 	public void setUp() throws ParseException, IOException {
 		//file reader class goes here, reads file and passes data to this method
         Tuple<BasicRat[], Entity[][], char[][], int[], int[], int[]>
@@ -119,7 +138,9 @@ public class Game {
 
 	}
 	public void constructTileMap(char[][] map) {
-        runner.createBoardFromChar(map);
+		TileManager.numTileHeight = map[0].length;
+		TileManager.numTileHeight = map.length;
+        //runner.createBoardFromChar(map); this just draws the board
 
     }
 	public void constructRatList() {}	

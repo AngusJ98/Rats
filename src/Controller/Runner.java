@@ -1,5 +1,6 @@
 package Controller;
 import entity.*;
+import gameHandler.Game;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -15,6 +16,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 
+
+import java.util.HashMap;
+import java.util.Map;
 
 import static java.lang.Math.min;
 
@@ -64,7 +68,6 @@ public class Runner {
         this.redrawEntities(entities);
     }
 
-
     public void createBoardFromChar(char[][] tiles) {
         this.width = tiles[0].length;
         this.height = tiles.length;
@@ -108,7 +111,7 @@ public class Runner {
 
 
     public void drawBoard(Tile[][] tiles, Entity[] entities) {
-        drawTiles(tiles);
+        drawTiles();
         redrawEntities(entities);
     }
 
@@ -132,46 +135,48 @@ public class Runner {
 
 
     //This only needs to be called once... probably
-    public void drawTiles(Tile[][] tiles) {
-        for (int y = 0; y < tiles.length; y++) {
-            for (int x = 0; x < tiles[y].length; x++) {
-                StackPane tile = new StackPane();
-                Tile gameTile = tiles[y][x];
-                ImageView pic = new ImageView();
-                pic.setImage(gameTile.getImage());
-                pic.setFitHeight(this.tilePixelSize);
-                pic.setFitWidth(this.tilePixelSize);
-                tile.getChildren().add(pic);
-                board.add(tile, x, y);
+    public void drawTiles() {
+        this.tilePixelSize = min((int) pixelWidth / Game.TileManager.getNumTileHeight(), (int) pixelWidth / Game.TileManager.getNumTileWidth());//Min statement to account for rectangular board
+        HashMap<int[], Tile> tiles = Game.getTiles();
+        for (HashMap.Entry<int[], Tile> tileEntry : Game.getTiles().entrySet()) {
+            Tile tile = tileEntry.getValue();
+            int[] tilePos = tileEntry.getKey();
+            int x = tilePos[0];
+            int y = tilePos[1];
+            StackPane paneToAdd = new StackPane();
+            ImageView pic = new ImageView();
+            pic.setImage(tile.getImage());
+            pic.setFitHeight(this.tilePixelSize);
+            pic.setFitWidth(this.tilePixelSize);
+            paneToAdd.getChildren().add(pic);
+            board.add(paneToAdd, x, y);
 
-                //add a transparent button on top so we can add items
-                Button b = new Button();
-                b.setMaxSize(this.tilePixelSize,this.tilePixelSize);
-                b.setPrefSize(this.tilePixelSize,this.tilePixelSize);
-                b.setStyle(
-                        "    -fx-border-color: transparent;\n" +
-                        "    -fx-border-width: 0;\n" +
-                        "    -fx-background-radius: 0;\n" +
-                        "    -fx-background-color: transparent;\n" +
-                        "    -fx-text-fill: #828282;"
-                );
+            //add a transparent button on top so we can add items
+            Button b = new Button();
+            b.setMaxSize(this.tilePixelSize,this.tilePixelSize);
+            b.setPrefSize(this.tilePixelSize,this.tilePixelSize);
+            b.setStyle(
+                    "    -fx-border-color: transparent;\n" +
+                    "    -fx-border-width: 0;\n" +
+                    "    -fx-background-radius: 0;\n" +
+                    "    -fx-background-color: transparent;\n" +
+                    "    -fx-text-fill: #828282;"
+            );
 
-                //set button action
-                if (gameTile.getType() == TileTypes.PATH) {
-                    b.setOnAction(new EventHandler<ActionEvent>() {
-                        @Override public void handle(ActionEvent e) {
-                            int buttonX = GridPane.getRowIndex(b.getParent());
-                            int buttonY = GridPane.getColumnIndex(b.getParent());
-                            ToggleButton selectedButton = (ToggleButton)itemToggle.getSelectedToggle();
-                            String itemString = selectedButton.getId();
-                            ItemManager.tryPlace(itemString, buttonX ,buttonY);
-                            //TODO Correct to item placement method
-                        }
-                    });
-                }
-
-                board.add(b, x, y);
+            //set button action if items can be placed
+            if (tile.areItemsPlaceable()) {
+                b.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override public void handle(ActionEvent e) {
+                        int buttonX = GridPane.getRowIndex(b.getParent());
+                        int buttonY = GridPane.getColumnIndex(b.getParent());
+                        ToggleButton selectedButton = (ToggleButton)itemToggle.getSelectedToggle();
+                        String itemString = selectedButton.getId();
+                        ItemManager.tryPlace(itemString, buttonX ,buttonY);
+                        //TODO Correct to item placement method
+                    }
+                });
             }
+            board.add(b, x, y);
         }
     }
 

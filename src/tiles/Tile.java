@@ -92,4 +92,7 @@ public abstract class Tile { // Does tile need to be an entity.Entity? Tiles don
 			}
 		}
 	}
+	public boolean areItemsPlaceable() {
+		return this.getType() == TileTypes.PATH;
+	}
 }
