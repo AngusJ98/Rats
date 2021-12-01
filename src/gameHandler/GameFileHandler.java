@@ -5,8 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import entity.BasicRat;
 import entity.RatTypes;
 import javafx.scene.image.Image;
@@ -243,8 +243,17 @@ public class GameFileHandler {
         return items;
     }
 
-    private static int[] parseLevelStats(JSONObject json) {
-        return new int[]{};
+    private static HashMap<String, Integer> parseLevelStats(JSONObject json) {
+        HashMap<String, Integer> levelStats = new HashMap<>();
+        JSONObject jLevelStats = (JSONObject) json.get("levelStats");
+        String[] keys = {
+            "timeLeft", "ratLimite", "bomb", "gas", "sterilise", "poison",
+            "mSexChange", "fSexChange", "noEntry", "deathRat"
+        };
+        for (String key: keys) {
+            levelStats.put(key, objToInt(jLevelStats, key));
+        }
+        return levelStats;
     }
 
     private static int[] parsePlayerStats(JSONObject json) {
@@ -259,12 +268,12 @@ public class GameFileHandler {
 
     }
 
-    private static Tuple<BasicRat[], Entity[][], char[][], int[], int[], int[]> parseJSON(JSONObject json) {
+    private static Tuple<BasicRat[], Entity[][], char[][], HashMap<String, Integer>, int[], int[]> parseJSON(JSONObject json) {
          BasicRat[] rats = parseRats(json);
          Entity[][] items = parseItemsOnMap(json);
          char[][] map = parseMap(json);
-         int[] levelStats = parseLevelStats(json);
-         int[] playerStats = parseLevelStats(json);
+         HashMap<String, Integer> levelStats = parseLevelStats(json);
+         int[] playerStats = parsePlayerStats(json);
          int[] inventory = parseInventory(json);
 
          return new Tuple<>(rats, items, map, levelStats, playerStats, inventory);
@@ -282,13 +291,13 @@ public class GameFileHandler {
     // loadGame() and newGame() will both return Tuples containing everything
     // needed to resume or start a game
     // void atm so it still compiles.
-    public static Tuple<BasicRat[], Entity[][], char[][], int[], int[], int[]>
+    public static Tuple<BasicRat[], Entity[][], char[][], HashMap<String, Integer>, int[], int[]>
     loadGame(String name) throws ParseException, IOException {
         JSONObject json = readJSON(name, false);
         return parseJSON(json);
     }
 
-    public static Tuple<BasicRat[], Entity[][], char[][], int[], int[], int[]>
+    public static Tuple<BasicRat[], Entity[][], char[][], HashMap<String, Integer>, int[], int[]>
     newGame(String name) throws ParseException, IOException {
         JSONObject json = readJSON(name, true);
         return parseJSON(json);

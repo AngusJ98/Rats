@@ -43,16 +43,15 @@
     "mSexChange": [], "fSexChange": [], "noEntry": [], "deathRat": []
   },
   "levelStats": {
-    "timeLeft": 60,
+    "timeLeft": 30,
     "ratLimit": 10,
-    "itemFrequencies": {
-      "bomb": 1, "gas": 2, "sterilise": 2, "poison": 3,
-      "mSexChange": 4, "fSexChange": 4, "noEntry": 4, "deathRat": 1
-    }
+    "bombFreq": 1, "gasFreq": 2, "steriliseFreq": 2, "poisonFreq": 3,
+    "mSexChangeFreq": 4, "fSexChangeFreq": 4, "noEntryFreq": 4, "deathRatFreq": 1
+
   },
   "playerStats": {
     "name": "Dave",
-    "score": 0,
+    "score": 50,
     "maxLevel": 3
   },
   "inventory": {

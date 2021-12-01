@@ -102,7 +102,7 @@ public class Game {
     }
 	public void setUp() throws ParseException, IOException {
 		//file reader class goes here, reads file and passes data to this method
-        Tuple<BasicRat[], Entity[][], char[][], int[], int[], int[]>
+        Tuple<BasicRat[], Entity[][], char[][], HashMap<String, Integer>, int[], int[]>
             gameObjects = GameFileHandler.newGame(levelPath);
         constructTileMap(gameObjects.getThird());
 		constructRatList();

@@ -6,7 +6,6 @@
   "rats": [
     {
       "gender": "MALE",
-      "isBaby": false,
       "canMate": true,
       "canMove": true,
       "moveSpeed": 10,
@@ -18,7 +17,6 @@
     },
     {
       "gender": "FEMALE",
-      "isBaby": false,
       "canMate": true,
       "canMove": true,
       "moveSpeed": 10,
@@ -30,7 +28,6 @@
     },
     {
       "gender": "MALE",
-      "isBaby": false,
       "canMate": true,
       "canMove": true,
       "moveSpeed": 10,
@@ -42,7 +39,6 @@
     },
     {
       "gender": "MALE",
-      "isBaby": false,
       "canMate": true,
       "canMove": true,
       "moveSpeed": 10,
@@ -53,15 +49,14 @@
       "position": [13, 5]
     },
     {
-      "gender": "MALE",
-      "isBaby": true,
+      "gender": "BABY",
       "canMate": false,
       "canMove": true,
       "moveSpeed": 10,
       "timeToGrowth": 60,
       "numChildren": 0,
       "timeToBirth": 0,
-      "hp": 100,
+      "hp": 50,
       "position": [5, 5]
     }
   ],
@@ -72,10 +67,8 @@
   "levelStats": {
     "timeLeft": 60,
     "ratLimit": 10,
-    "itemFrequencies": {
-      "bomb": 1, "gas": 2, "sterilise": 2, "poison": 3,
-      "mSexChange": 4, "fSexChange": 4, "noEntry": 4, "deathRat": 1
-    }
+    "bombFreq": 1, "gasFreq": 2, "steriliseFreq": 2, "poisonFreq": 3,
+    "mSexChangeFreq": 4, "fSexChangeFreq": 4, "noEntryFreq": 4, "deathRatFreq": 1
   },
   "playerStats": {
     "name": "Dave",
