@@ -3,10 +3,18 @@ package entity;
 import javafx.scene.image.Image;
 
 public class Poison extends Entity{
-    private int range;
+    private static final int DEFAULT_TIME = 4000;
+    private static final int RANGE = 1;
+    private int timer;
 
     public Poison(int[] position) {
         super(new Image(""), CollisionType.ITEM, position);
+        timer = DEFAULT_TIME;
+    }
+
+    public Poison(int[] position, int timeLeft) {
+        super(new Image(""), CollisionType.ITEM, position);
+        timer = timeLeft;
     }
 
     @Override

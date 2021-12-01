@@ -3,10 +3,18 @@ package entity;
 import javafx.scene.image.Image;
 
 public class Sterilization extends Entity{
-    private int range;
+    private static final int DEFAULT_TIME = 4000; // idk how long it's meant to stay for
+    private static final int RANGE = 3; //idk what range should be either
+    private int timer;
 
     public Sterilization(int[] position) {
         super(new Image(""), CollisionType.ITEM, position);
+        timer = DEFAULT_TIME;
+    }
+
+    public Sterilization(int[] position, int timeLeft) {
+        super(new Image(""), CollisionType.ITEM, position);
+        timer = timeLeft;
     }
 
     @Override
