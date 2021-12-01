@@ -19,7 +19,7 @@ import java.io.InputStream;
 public class MenuRunner {
 
     @FXML private AnchorPane menuBase;
-    
+
 
     public MenuRunner() {
 

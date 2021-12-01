@@ -89,7 +89,7 @@ public class GameFileHandler {
         BasicRat[] rats = new BasicRat[ratsJArray.size()];
         for (int i = 0; i < rats.length; i++) {
             rat = (JSONObject) ratsJArray.get(i);
-            switch ((String) rat.get("type")) {
+            switch ((String) rat.get("gender")) {
                 case "MALE":
                     type = RatTypes.MALE;
                     imagePath = MALE_RAT_IMG;
