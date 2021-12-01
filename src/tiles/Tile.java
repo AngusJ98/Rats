@@ -40,10 +40,17 @@ public class Tile { // Does tile need to be an entity.Entity? Tiles don't
 			setType(type);
 			this.image = new Image("file:resources/speedTile.png");
 			break;
+		case PATH:
+			setHidesRats(false);
+			setPassable(true);
+			setType(type);
+			this.image = new Image("file:resources/dirtBlock.png");
+			break;
 		default:
 			setHidesRats(false);
 			setPassable(true);
 			setType(type);
+			System.out.println("Error in getting tile type: " + type);
 			this.image = new Image("file:resources/cornTun.png");
 			break;
 		}
@@ -99,16 +106,16 @@ public class Tile { // Does tile need to be an entity.Entity? Tiles don't
 	public static Tile createTileFromLetter(char typeLetter) {
 		TileTypes tileType = TileTypes.UNKNOWN;
 		switch (typeLetter) {
-			case 'p':
+			case 'P':
 				tileType = TileTypes.PATH;
 				break;
-			case 'g':
+			case 'G':
 				tileType = TileTypes.GRASS;
 				break;
-			case 's':
+			case 'S':
 				tileType = TileTypes.SPEEDTILE;
 				break;
-			case 't':
+			case 'T':
 				tileType = TileTypes.TUNNEL;
 				break;
 			default:

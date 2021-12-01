@@ -156,7 +156,6 @@ public class Game {
 	}
 
 	public void constructTileMap(char[][] map) {
-		System.out.println(Arrays.deepToString(map));
 		Game.tiles = new HashMap<>();//set to new hashmap so we don't accidentally keep old boards
 		TileManager.numTileWidth = map[0].length;
 		TileManager.numTileHeight = map.length;

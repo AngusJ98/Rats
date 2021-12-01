@@ -167,7 +167,7 @@ public class Runner {
                     }
                 });
             }
-            board.add(b, x, y);
+            paneToAdd.getChildren().add(b);
         }
     }
 
