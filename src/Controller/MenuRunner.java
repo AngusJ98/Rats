@@ -59,12 +59,12 @@ public class MenuRunner {
     }
 
     public void level1(ActionEvent actionEvent) throws Exception {
-        Game.setLevelPath("file:levelFiles/testLevel.json");
+        Game.setLevelPath("testLevel");
         this.startGame();
     }
 
     public void level2(ActionEvent actionEvent) throws Exception {
-        Game.setLevelPath("file:levelFiles/level2.json");
+        Game.setLevelPath("level2");
         this.startGame();
     }
 }
