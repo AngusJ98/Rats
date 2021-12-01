@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import entity.BasicRat;
 import entity.RatTypes;
 import javafx.scene.image.Image;
@@ -21,7 +22,6 @@ public class GameFileHandler {
     public static final String MALE_RAT_IMG = "boyRat.png";
     public static final String FEMALE_RAT_IMG = "girlRat.png";
     public static final String BABY_RAT_IMG = "babyRat.png";
-    public static final int NUMBER_OF_ITEMS = 8;
 
     private GameFileHandler() {}
 
@@ -81,7 +81,6 @@ public class GameFileHandler {
         Image image;
         String imagePath;
         RatTypes type;
-        boolean isBaby;
         int[] position = new int[2];
         JSONArray positionJObj;
         JSONArray ratsJArray = (JSONArray) json.get("rats");
@@ -223,7 +222,7 @@ public class GameFileHandler {
         return itemArr;
     }
 
-    // TODO: change this to Item[] if we make an abstract Item class
+    // TODO: change this to Item[][] if we make an abstract Item class
     private static Entity[][] parseItemsOnMap(JSONObject json) {
         JSONObject itemsOnMap = (JSONObject)json.get("itemsOnMap");
         String[] itemKeys = {
@@ -243,22 +242,31 @@ public class GameFileHandler {
         return items;
     }
 
-//    private static int[] parseLevelStats(JSONObject json) {
-//
-//    }
-//
-//    private static int[] parseInventory(JSONObject json) {
-//
-//    }
-//
-//    private static void writeSaveFile(String saveString) {
-//
-//    }
+    private static int[] parseLevelStats(JSONObject json) {
+        return new int[]{};
+    }
 
-    private static ArrayList<Object> parseJSON(JSONObject json) {
-         ArrayList<Object> objects = new ArrayList<>();
+    private static int[] parsePlayerStats(JSONObject json) {
+        return new int[]{};
+    }
 
-         return objects;
+    private static int[] parseInventory(JSONObject json) {
+        return new int[]{};
+    }
+
+    private static void writeSaveFile(String saveString) {
+
+    }
+
+    private static Tuple<BasicRat[], Entity[][], char[][], int[], int[], int[]> parseJSON(JSONObject json) {
+         BasicRat[] rats = parseRats(json);
+         Entity[][] items = parseItemsOnMap(json);
+         char[][] map = parseMap(json);
+         int[] levelStats = parseLevelStats(json);
+         int[] playerStats = parseLevelStats(json);
+         int[] inventory = parseInventory(json);
+
+         return new Tuple<>(rats, items, map, levelStats, playerStats, inventory);
     }
 
 
@@ -274,12 +282,16 @@ public class GameFileHandler {
     // loadGame() and newGame() will both return Tuples containing everything
     // needed to resume or start a game
     // void atm so it still compiles.
-    public static void loadGame() {
-
+    public static Tuple<BasicRat[], Entity[][], char[][], int[], int[], int[]>
+    loadGame(String name) throws ParseException, IOException {
+        JSONObject json = readJSON(name, false);
+        return parseJSON(json);
     }
 
-    public static void newGame() {
-        // will need to check player's maxLevel to make sure they've unlocked it
+    public static Tuple<BasicRat[], Entity[][], char[][], int[], int[], int[]>
+    newGame(String name) throws ParseException, IOException {
+        JSONObject json = readJSON(name, true);
+        return parseJSON(json);
     }
 
     // For testing //

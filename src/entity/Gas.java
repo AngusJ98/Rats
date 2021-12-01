@@ -7,6 +7,8 @@ public class Gas extends Entity {
         super(new Image(""), CollisionType.ITEM, position);
     }
 
+
+
     @Override
     public void onCollision(Entity t) {
 
