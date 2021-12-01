@@ -1,8 +1,11 @@
 package gameHandler;
 
+import Controller.Runner;
 import entity.*;
+import org.json.simple.parser.ParseException;
 import tiles.Tile;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -10,6 +13,11 @@ public class Game {
 	//this is a pretty static way of doing things, but it's very functional
 	private static ArrayList<BasicRat> rats = new ArrayList<BasicRat>();
 	private static String levelPath;
+	private Runner runner;
+
+	public Game() {
+	    runner = new Runner();
+    }
 
     public void start() {
     }
@@ -81,11 +89,22 @@ public class Game {
 	}
 	public static void main(String[] args) {
 		Game game = new Game();
-		game.setUp();
-	}
-	public void setUp() {
+		Runner runner = new Runner();
+        try {
+            game.setUp();
+        } catch (ParseException e) {
+            //handle here
+            e.printStackTrace();
+        } catch (IOException e) {
+            //handle here
+            e.printStackTrace();
+        }
+    }
+	public void setUp() throws ParseException, IOException {
 		//file reader class goes here, reads file and passes data to this method
-		constructTileMap();
+        Tuple<BasicRat[], Entity[][], char[][], int[], int[], int[]>
+            gameObjects = GameFileHandler.newGame(levelPath);
+        constructTileMap(gameObjects.getThird());
 		constructRatList();
 		otherShit();
 	}
@@ -99,7 +118,10 @@ public class Game {
 	public void tick() {
 
 	}
-	public void constructTileMap() {}
+	public void constructTileMap(char[][] map) {
+        runner.createBoardFromChar(map);
+
+    }
 	public void constructRatList() {}	
 	public void otherShit() {}
 }
