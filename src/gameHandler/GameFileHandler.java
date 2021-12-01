@@ -19,6 +19,7 @@ public class GameFileHandler {
     public static final String ERROR_MSG_FILE_NOT_FOUND = "Could not find %s.";
     public static final String SAVE_PATH = "saveFiles/";
     public static final String LEVEL_PATH = "levelFiles/";
+    public static final String SAVE_FILE_EXT = ".json";
     public static final String MALE_RAT_IMG = "boyRat.png";
     public static final String FEMALE_RAT_IMG = "girlRat.png";
     public static final String BABY_RAT_IMG = "babyRat.png";
@@ -28,7 +29,7 @@ public class GameFileHandler {
     private static JSONObject readJSON(String fileName, boolean isLevel)
     throws ParseException, IOException {
         String filePath = isLevel ? LEVEL_PATH : SAVE_PATH;
-        filePath = filePath + fileName;
+        filePath = filePath + fileName + SAVE_FILE_EXT;
         JSONParser jsonParser = new JSONParser();
         try {
             FileReader reader = new FileReader(filePath);
@@ -269,7 +270,6 @@ public class GameFileHandler {
          return new Tuple<>(rats, items, map, levelStats, playerStats, inventory);
     }
 
-
     private static String generateJSON(ArrayList<Object> objects) {
         String saveString = "";
         return saveString;
@@ -310,7 +310,7 @@ public class GameFileHandler {
 //            System.out.println("poop");
 //            System.out.println(Arrays.toString(e.getStackTrace()));
 //        }
-        JSONObject json = readJSON("testLevel.json", true);
+        JSONObject json = readJSON("testLevel", true);
         println(json + "\n");
 
         parseMap(json);
