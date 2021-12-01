@@ -104,7 +104,7 @@ public class GameFileHandler {
                     break;
             }
 
-            image = new Image("resources/" + imagePath, true);
+            image = new Image("file:resources/" + imagePath, true);
             positionJObj = (JSONArray) rat.get("position");
             position = objToPos(positionJObj);
             rats[i] = new BasicRat(
@@ -247,8 +247,8 @@ public class GameFileHandler {
         HashMap<String, Integer> levelStats = new HashMap<>();
         JSONObject jLevelStats = (JSONObject) json.get("levelStats");
         String[] keys = {
-            "timeLeft", "ratLimite", "bomb", "gas", "sterilise", "poison",
-            "mSexChange", "fSexChange", "noEntry", "deathRat"
+            "timeLeft", "ratLimit", "bombFreq", "gasFreq", "steriliseFreq", "poisonFreq",
+            "mSexChangeFreq", "fSexChangeFreq", "noEntryFreq", "deathRatFreq"
         };
         for (String key: keys) {
             levelStats.put(key, objToInt(jLevelStats, key));
