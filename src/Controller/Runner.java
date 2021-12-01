@@ -38,9 +38,6 @@ public class Runner {
     private final double pixelWidth = 600; //this is how wide the board section of the game is
     private StackPane[][] stackPaneArray = null; // a list of stackpanes indexed by row and col so we can add children later!
     private int tilePixelSize = 1; //Set as default, will be changed later
-    private int width = 0; //How many tiles wide the board is
-    private int height = 0; //How many tiles high the board is
-
 
     public Runner() {
         Game.setRunner(this); //I hate doing this but is what it is
@@ -110,7 +107,7 @@ public class Runner {
     }
 
     private void generateStackPaneArray() {
-        this.stackPaneArray = new StackPane[width][height];
+        this.stackPaneArray = new StackPane[Game.TileManager.getNumTileWidth()][Game.TileManager.getNumTileHeight()];
         for (Node pane : this.board.getChildren()) {
             this.stackPaneArray[GridPane.getRowIndex(pane)][GridPane.getColumnIndex(pane)] = (StackPane) pane;
         }
@@ -130,7 +127,7 @@ public class Runner {
 
     //This only needs to be called once... probably
     public void drawTiles() {
-        this.tilePixelSize = min((int) pixelWidth / Game.TileManager.getNumTileHeight(), (int) pixelWidth / Game.TileManager.getNumTileWidth());//Min statement to account for rectangular board
+        this.tilePixelSize = min((int) pixelWidth / Game.TileManager.getNumTileWidth(), (int) pixelWidth / Game.TileManager.getNumTileWidth());//Min statement to account for rectangular board
         HashMap<int[], Tile> tiles = Game.getTiles();
         for (HashMap.Entry<int[], Tile> tileEntry : Game.getTiles().entrySet()) {
             Tile tile = tileEntry.getValue();

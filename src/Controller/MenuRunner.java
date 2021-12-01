@@ -20,7 +20,6 @@ public class MenuRunner {
 
     @FXML private AnchorPane menuBase;
 
-    private final Button mainmenuButton = new Button("Main Menu");
 
     public MenuRunner() {
 
@@ -32,7 +31,6 @@ public class MenuRunner {
         HBox table = new HBox(2);
         table.setAlignment(Pos.TOP_CENTER);
 
-        table.getChildren().addAll(mainmenuButton);
 
         table.setStyle("-fx-background-color:GREY");
 
