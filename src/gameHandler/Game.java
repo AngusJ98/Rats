@@ -24,20 +24,18 @@ public class Game {
 	}
 
 	public void start() {
-		this.createCombinedEntityList();
-		Game.runner.redrawBoard((Entity[])Game.entities.toArray());
+		Game.runner.redrawBoard(this.createCombinedEntityList());
     }
 
 	public void tick() {
-		this.createCombinedEntityList();
+		Game.runner.redrawBoard(this.createCombinedEntityList());
 	}
 
-	private void createCombinedEntityList() {
+	private Entity[] createCombinedEntityList() {
 		ArrayList<Entity> entities = new ArrayList<>();
 		entities.addAll(Game.rats);
 		Entity[] entityArray = new Entity[entities.size()];
-		entities.toArray(entityArray);
-		Game.runner.redrawEntities(entityArray);
+		return entities.toArray(entityArray);
 	}
 
 
@@ -159,7 +157,7 @@ public class Game {
 
 		Game.tiles = new HashMap<>();//set to new hashmap so we don't accidentally keep old boards
 		TileManager.numTileHeight = map[0].length;
-		TileManager.numTileHeight = map.length;
+		TileManager.numTileWidth = map.length;
         //runner.createBoardFromChar(map); this just draws the board
 		for (int y = 0; y < TileManager.numTileHeight; y++) {
 			for (int x = 0; x < TileManager.numTileHeight; x++) {
