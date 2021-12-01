@@ -138,11 +138,20 @@ public class Game {
 
 	}
 	public void constructTileMap(char[][] map) {
+
+		Game.tiles = new HashMap<>();//set to new hashmap so we don't accidentally keep old boards
 		TileManager.numTileHeight = map[0].length;
 		TileManager.numTileHeight = map.length;
         //runner.createBoardFromChar(map); this just draws the board
-
+		for (int y = 0; y < TileManager.numTileHeight; y++) {
+			for (int x = 0; x < TileManager.numTileHeight; x++) {
+				Tile tileToAdd = Tile.createTileFromLetter(map[y][x]);
+				int[] pos = {x,y};
+				Game.tiles.put(pos, tileToAdd);
+			}
+		}
     }
+
 	public void constructRatList() {}	
 	public void otherShit() {}
 }
