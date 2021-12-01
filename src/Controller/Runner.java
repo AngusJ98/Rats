@@ -43,7 +43,7 @@ public class Runner {
 
 
     public Runner() {
-
+        Game.setRunner(this); //I hate doing this but is what it is
     }
 
     public void initialize() {
@@ -52,15 +52,7 @@ public class Runner {
         board.setHgap(0);
         board.setVgap(0);
         base.getChildren().add(board);
-        char[][] testTiles =
-                {{'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G'},
-                        {'G', 'P', 'P', 'P', 'T', 'T', 'P', 'P', 'P', 'T', 'T', 'P', 'P', 'P', 'G'},
-                        {'G', 'G', 'G', 'P', 'G', 'G', 'G', 'G', 'P', 'G', 'G', 'P', 'G', 'P', 'G'},
-                        {'G', 'P', 'P', 'P', 'G', 'G', 'P', 'P', 'P', 'G', 'G', 'P', 'G', 'P', 'G'},
-                        {'G', 'P', 'G', 'G', 'G', 'G', 'G', 'G', 'P', 'G', 'G', 'P', 'G', 'P', 'G'},
-                        {'G', 'P', 'P', 'P', 'T', 'T', 'P', 'P', 'P', 'T', 'T', 'P', 'P', 'P', 'G'},
-                        {'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G'}};
-        createBoardFromChar(testTiles);
+
     }
 
     public void normalTickDrawing(Entity[] entities) {
@@ -68,6 +60,8 @@ public class Runner {
         this.redrawEntities(entities);
     }
 
+    /*
+    This method should not be used, see drawBoard instead
     public void createBoardFromChar(char[][] tiles) {
         this.width = tiles[0].length;
         this.height = tiles.length;
@@ -107,10 +101,10 @@ public class Runner {
 
         board.setHgap(0);
         board.setVgap(0);
-    }
+    }*/
 
 
-    public void drawBoard(Tile[][] tiles, Entity[] entities) {
+    public void drawBoard(Entity[] entities) {
         drawTiles();
         redrawEntities(entities);
     }
@@ -123,9 +117,9 @@ public class Runner {
     }
 
     //Completely redraws board, don't think it's needed
-    public void redrawBoard(Tile[][] tiles, Entity[] entities) {
+    public void redrawBoard(Entity[] entities) {
         this.board.getChildren().clear();
-        this.drawBoard(tiles, entities);
+        this.drawBoard(entities);
     }
 
     public void redrawEntities(Entity[] entities) {

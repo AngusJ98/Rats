@@ -2,6 +2,7 @@ package gameHandler;
 
 import Controller.Runner;
 import entity.*;
+import javafx.fxml.FXMLLoader;
 import org.json.simple.parser.ParseException;
 import tiles.Tile;
 
@@ -12,13 +13,31 @@ import java.util.HashMap;
 public class Game {	
 	//this is a pretty static way of doing things, but it's very functional
 	private static ArrayList<BasicRat> rats = new ArrayList<BasicRat>();
+	private static ArrayList<Entity> entities; //a list
 	private static String levelPath;
+	private static Runner runner;
+	public Game() {
 
-	public Game() {}
+	}
 
-    public void start() {
-		//start ticking
+	public static void setRunner(Runner runner) {
+		Game.runner = runner;
+	}
+
+	public void start() {
+		this.createCombinedEntityList();
+		Game.runner.redrawBoard((Entity[])Game.entities.toArray());
     }
+
+	public void tick() {
+		this.createCombinedEntityList();
+	}
+
+	private void createCombinedEntityList() {
+		Game.entities = new ArrayList<>();
+		Game.entities.addAll(Game.rats);
+		Game.runner.redrawEntities((Entity[])Game.entities.toArray());
+	}
 
 
     public static class RatManager {
@@ -134,9 +153,7 @@ public class Game {
 	public static void setLevelPath(String levelPath) {
 		Game.levelPath = levelPath;
 	}
-	public void tick() {
 
-	}
 	public void constructTileMap(char[][] map) {
 
 		Game.tiles = new HashMap<>();//set to new hashmap so we don't accidentally keep old boards
