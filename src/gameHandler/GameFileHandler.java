@@ -264,12 +264,22 @@ public class GameFileHandler {
         playerStats.put("score", objToInt(jPlayerStats, "score"));
         playerStats.put("maxLevel", objToInt(jPlayerStats, "maxLevel"));
         player.put((String) jPlayerStats.get("name"), playerStats);
-
         return player;
     }
 
     private static int[] parseInventory(JSONObject json) {
-        return new int[]{};
+        JSONObject jInventory = (JSONObject) json.get("inventory");
+        String[] keys = {
+            "bomb", "gas", "sterilise", "poison",
+            "mSexChange", "fSexChange", "noEntry", "deathRat"
+        };
+        int[] inventory = new int[keys.length];
+
+        for (int i = 0; i < keys.length; i++) {
+            inventory[i] = objToInt(jInventory, keys[i]);
+        }
+
+        return inventory;
     }
 
     private static void writeSaveFile(String saveString) {
