@@ -103,7 +103,6 @@ public class GameFileHandler {
                     imagePath = FEMALE_RAT_IMG;
                     break;
             }
-
             image = new Image("resources/" + imagePath, true);
             positionJObj = (JSONArray) rat.get("position");
             position = objToPos(positionJObj);
@@ -256,8 +255,15 @@ public class GameFileHandler {
         return levelStats;
     }
 
-    private static int[] parsePlayerStats(JSONObject json) {
-        return new int[]{};
+    private static HashMap<String, HashMap<String, Integer>> parsePlayerStats(JSONObject json) {
+        HashMap<String, HashMap<String, Integer>> player = new HashMap<>();
+        HashMap<String, Integer> playerStats = new HashMap<>();
+        JSONObject jPlayerStats = (JSONObject) json.get("playerStats");
+        playerStats.put("score", objToInt(jPlayerStats, "score"));
+        playerStats.put("maxLevel", objToInt(jPlayerStats, "maxLevel"));
+        player.put((String) jPlayerStats.get("name"), playerStats);
+
+        return player;
     }
 
     private static int[] parseInventory(JSONObject json) {
@@ -268,15 +274,16 @@ public class GameFileHandler {
 
     }
 
-    private static Tuple<BasicRat[], Entity[][], char[][], HashMap<String, Integer>, int[], int[]> parseJSON(JSONObject json) {
-         BasicRat[] rats = parseRats(json);
-         Entity[][] items = parseItemsOnMap(json);
-         char[][] map = parseMap(json);
-         HashMap<String, Integer> levelStats = parseLevelStats(json);
-         int[] playerStats = parsePlayerStats(json);
-         int[] inventory = parseInventory(json);
+    private static Tuple<BasicRat[], Entity[][], char[][], HashMap<String, Integer>,
+        HashMap<String, HashMap<String, Integer>>, int[]> parseJSON(JSONObject json) {
+        BasicRat[] rats = parseRats(json);
+        Entity[][] items = parseItemsOnMap(json);
+        char[][] map = parseMap(json);
+        HashMap<String, Integer> levelStats = parseLevelStats(json);
+        HashMap<String, HashMap<String, Integer>> playerStats = parsePlayerStats(json);
+        int[] inventory = parseInventory(json);
 
-         return new Tuple<>(rats, items, map, levelStats, playerStats, inventory);
+        return new Tuple<>(rats, items, map, levelStats, playerStats, inventory);
     }
 
     private static String generateJSON(ArrayList<Object> objects) {
@@ -291,13 +298,15 @@ public class GameFileHandler {
     // loadGame() and newGame() will both return Tuples containing everything
     // needed to resume or start a game
     // void atm so it still compiles.
-    public static Tuple<BasicRat[], Entity[][], char[][], HashMap<String, Integer>, int[], int[]>
+    public static Tuple<BasicRat[], Entity[][], char[][], HashMap<String, Integer>,
+        HashMap<String, HashMap<String, Integer>>, int[]>
     loadGame(String name) throws ParseException, IOException {
         JSONObject json = readJSON(name, false);
         return parseJSON(json);
     }
 
-    public static Tuple<BasicRat[], Entity[][], char[][], HashMap<String, Integer>, int[], int[]>
+    public static Tuple<BasicRat[], Entity[][], char[][], HashMap<String, Integer>,
+        HashMap<String, HashMap<String, Integer>>, int[]>
     newGame(String name) throws ParseException, IOException {
         JSONObject json = readJSON(name, true);
         return parseJSON(json);
