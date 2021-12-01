@@ -256,7 +256,8 @@ public class GameFileHandler {
         return levelStats;
     }
 
-    private static HashMap<String, HashMap<String, Integer>> parsePlayerStats(JSONObject json) {
+    private static HashMap<String, HashMap<String, Integer>>
+    parsePlayerStats(JSONObject json) {
         HashMap<String, HashMap<String, Integer>> player = new HashMap<>();
         HashMap<String, Integer> playerStats = new HashMap<>();
         JSONObject jPlayerStats = (JSONObject) json.get("playerStats");
@@ -276,7 +277,8 @@ public class GameFileHandler {
     }
 
     private static Tuple<BasicRat[], Entity[][], char[][], HashMap<String, Integer>,
-        HashMap<String, HashMap<String, Integer>>, int[]> parseJSON(JSONObject json) {
+        HashMap<String, HashMap<String, Integer>>, int[]>
+    parseJSON(JSONObject json) {
         BasicRat[] rats = parseRats(json);
         Entity[][] items = parseItemsOnMap(json);
         char[][] map = parseMap(json);
