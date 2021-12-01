@@ -13,7 +13,6 @@ import java.util.HashMap;
 public class Game {	
 	//this is a pretty static way of doing things, but it's very functional
 	private static ArrayList<BasicRat> rats = new ArrayList<BasicRat>();
-	private static ArrayList<Entity> entities; //a list
 	private static String levelPath;
 	private static Runner runner;
 	public Game() {
@@ -34,9 +33,11 @@ public class Game {
 	}
 
 	private void createCombinedEntityList() {
-		Game.entities = new ArrayList<>();
-		Game.entities.addAll(Game.rats);
-		Game.runner.redrawEntities((Entity[])Game.entities.toArray());
+		ArrayList<Entity> entities = new ArrayList<>();
+		entities.addAll(Game.rats);
+		Entity[] entityArray = new Entity[entities.size()];
+		entities.toArray(entityArray);
+		Game.runner.redrawEntities(entityArray);
 	}
 
 
