@@ -6,7 +6,7 @@ import entity.Entity;
 import entity.Rat;
 import javafx.scene.image.Image;
 
-public abstract class Tile { // Does tile need to be an entity.Entity? Tiles don't
+public class Tile { // Does tile need to be an entity.Entity? Tiles don't
                              // move or perform any actions etc.
 	private boolean isPassable;
 	private boolean hidesRats;	
@@ -17,7 +17,7 @@ public abstract class Tile { // Does tile need to be an entity.Entity? Tiles don
 
 
 
-	public Tile(TileTypes type, Image image) {
+	public Tile(TileTypes type) {
 //		super(image, type);
 		setItems(new ArrayList<Entity>());
 		switch (type) {
@@ -91,5 +91,29 @@ public abstract class Tile { // Does tile need to be an entity.Entity? Tiles don
 				}
 			}
 		}
+	}
+	public boolean areItemsPlaceable() {
+		return this.getType() == TileTypes.PATH;
+	}
+
+	public static Tile createTileFromLetter(char typeLetter) {
+		TileTypes tileType = TileTypes.UNKNOWN;
+		switch (typeLetter) {
+			case 'p':
+				tileType = TileTypes.PATH;
+				break;
+			case 'g':
+				tileType = TileTypes.GRASS;
+				break;
+			case 's':
+				tileType = TileTypes.SPEEDTILE;
+				break;
+			case 't':
+				tileType = TileTypes.TUNNEL;
+				break;
+			default:
+				break;
+		}
+		return new Tile(tileType);
 	}
 }
