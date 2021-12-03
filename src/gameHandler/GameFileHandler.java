@@ -82,7 +82,7 @@ public class GameFileHandler {
         Image image;
         String imagePath;
         RatTypes type;
-        int[] position = new int[2];
+        Pos position;
         JSONArray positionJObj;
         JSONArray ratsJArray = (JSONArray) json.get("rats");
         JSONObject rat;
