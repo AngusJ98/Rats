@@ -23,8 +23,8 @@ public class DeathRat extends Rat {
 	private int killCount;
 
 	/**
-	 *
-	 * @param pos
+	 * Constructor 
+	 * @param takes in the coordinates of
 	 */
 	public DeathRat(Pos pos) {
 		super(RatTypes.DEATH, new Image(""), pos);
