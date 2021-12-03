@@ -24,7 +24,7 @@ public class DeathRat extends Rat {
 
 	/**
 	 * 1st Constructor.
-	 * <p> no side-effects</p>
+	 * <p> side-effects</p>
 	 * <p> not referentially transparent</p>
 	 * @param pos takes coordinates of death rat to be placed.
 	 */
@@ -47,12 +47,18 @@ public class DeathRat extends Rat {
 
 	/**
 	 *  Setting KillCount
-	 * @param killCount takes in kill count of
+	 *  <p> no side-effects</p>
+	 * 	<p> not referentially transparent</p>
+	 * @param killCount takes kill count of death rat.
 	 */
     private void setKillCount(int killCount) {
         this.killCount = killCount;
 	}
 
+	/**
+	 * Checks the current tile if the death rate is above 5 kills or more
+	 * if so then the Death Rat Dies.
+	 */
     public void checkCurrentTile() {
     	if (killCount < MAX_KILLS) {
 			ArrayList<BasicRat> ratsToKill = RatManager.getRatsAtPos(pos); 
