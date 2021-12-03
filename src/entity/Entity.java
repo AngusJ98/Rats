@@ -9,7 +9,7 @@ enum CollisionType {
 public abstract class Entity {
     protected Image image;
     protected CollisionType collisionGroup; //what this entity is
-    protected Pos position;//protected pos;?
+    protected Pos pos;//protected pos;?
 
 
 
@@ -17,7 +17,7 @@ public abstract class Entity {
     public Entity(Image image, CollisionType collisionGroup, Pos position) {
         this.image = image;
         this.collisionGroup = collisionGroup;
-        this.position = position;
+        this.pos = position;
     }
 
     public boolean isRat() {
@@ -39,10 +39,10 @@ public abstract class Entity {
     public abstract void onCollision(Entity t);
 
     public void setPosition(Pos position) {
-        this.position = position;
+        this.pos = position;
     }
 
     public Pos getPosition() {
-        return position;
+        return pos;
     };
 }

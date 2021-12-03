@@ -152,11 +152,11 @@ public class GameRenderer {
     public void drawTiles() {
         this.tilePixelSize = min((int) pixelWidth / Game.TileManager.getNumTileWidth(), (int) pixelWidth / Game.TileManager.getNumTileHeight());//Min statement to account for rectangular board
 
-        HashMap<int[], Tile> tiles = Game.getTiles();
-        for (int[] tilePos : Game.getTiles().keySet()) {
+        HashMap<Pos, Tile> tiles = Game.getTiles();
+        for (Pos tilePos : Game.getTiles().keySet()) {
             Tile tile = tiles.get(tilePos);
-            int x = tilePos[0];
-            int y = tilePos[1];
+            int x = tilePos.x;
+            int y = tilePos.y;
             ImageView pic = new ImageView();
             pic.setImage(tile.getImage());
             pic.setFitHeight(this.tilePixelSize);
