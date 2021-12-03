@@ -3,6 +3,7 @@ package entity;
 import java.util.ArrayList;
 
 import gameHandler.Game;
+import gameHandler.Pos;
 import javafx.scene.image.Image;
 
 public class BasicRat extends Rat {
@@ -14,7 +15,7 @@ public class BasicRat extends Rat {
 	private int timeToGrowth; 
 	private int numChildren; //if this is above zero, implies the rat is pregnant
     private int timeToBirth;
-    public BasicRat(RatTypes type, Image image, int[] pos) {
+    public BasicRat(RatTypes type, Image image, Pos pos) {
         super(type, image, pos);
         setHP(ADULT_MAX_HP);
         setTimeToBirth(0);
@@ -34,7 +35,7 @@ public class BasicRat extends Rat {
 
     public BasicRat(RatTypes type, boolean canMate, boolean canMove,
                     int moveSpeed, int timeToGrowth, int numChildren,
-                    int timeToBirth, int hp, int[] position, Image image) {
+                    int timeToBirth, int hp, Pos position, Image image) {
         super(type, image, position);
         setMateStatus(canMate);
         setMoveStatus(canMove);
