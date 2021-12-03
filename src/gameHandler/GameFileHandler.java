@@ -65,9 +65,9 @@ public class GameFileHandler {
 
         int timeLeft = objToInt(levelStatsObj, "timeLeft");
 
-        int[] dimensions = objToPos(dimensionsJObj);
+        Pos dimensions = objToPos(dimensionsJObj);
         
-        char[][] map = new char[dimensions[1]][dimensions[0]];
+        char[][] map = new char[dimensions.x][dimensions.y];
         String[] rows = tilesString.split("\n");
         for (int i = 0; i < rows.length; i++) {
             map[i] = rows[i].toCharArray();
@@ -82,7 +82,7 @@ public class GameFileHandler {
         Image image;
         String imagePath;
         RatTypes type;
-        int[] position = new int[2];
+        Pos position;
         JSONArray positionJObj;
         JSONArray ratsJArray = (JSONArray) json.get("rats");
         JSONObject rat;
