@@ -1,9 +1,10 @@
 package Controller;
 import entity.*;
 import gameHandler.Game;
+import gameHandler.Pos;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
+
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -152,11 +153,11 @@ public class GameRenderer {
     public void drawTiles() {
         this.tilePixelSize = min((int) pixelWidth / Game.TileManager.getNumTileWidth(), (int) pixelWidth / Game.TileManager.getNumTileHeight());//Min statement to account for rectangular board
 
-        HashMap<int[], Tile> tiles = Game.getTiles();
-        for (int[] tilePos : Game.getTiles().keySet()) {
+        HashMap<Pos, Tile> tiles = Game.getTiles();
+        for (Pos tilePos : Game.getTiles().keySet()) {
             Tile tile = tiles.get(tilePos);
-            int x = tilePos[0];
-            int y = tilePos[1];
+            int x = tilePos.x;
+            int y = tilePos.y;
             ImageView pic = new ImageView();
             pic.setImage(tile.getImage());
             pic.setFitHeight(this.tilePixelSize);
@@ -207,9 +208,9 @@ public class GameRenderer {
             pic.setImage(entity.getImage());
             pic.setFitHeight(this.tilePixelSize);
             pic.setFitWidth(this.tilePixelSize);
-            int[] position = entity.getPosition();
-            int x = position[0];
-            int y = position[1];
+            Pos position = entity.getPosition();
+            int x = position.x;
+            int y = position.y;
             entityBoard.add(pic,x,y);
             System.out.println(x + "-" + y);
         }
