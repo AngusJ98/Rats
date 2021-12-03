@@ -47,6 +47,7 @@ public class GameRenderer {
     private GridPane buttonBoard;
     private GridPane tileBoard;
     public GameRenderer() {
+
         Game.setRunner(this); //I hate doing this but is what it is
     }
 
@@ -150,10 +151,10 @@ public class GameRenderer {
             b.setStyle(
                     "    -fx-border-color: transparent;\n" +
                     "    -fx-border-width: 0;\n" +
-                    "    -fx-background-radius: 0;\n" +
-                    "    -fx-background-color: transparent;\n" +
-                    "    -fx-text-fill: #828282;"
+                    "    -fx-background-radius: 10;\n" +
+                    "    -fx-background-color: transparent\n"
             );
+            b.setText("A");
 
             //set button action if items can be placed
             if (tile.areItemsPlaceable()) {
@@ -168,7 +169,7 @@ public class GameRenderer {
                     }
                 });
             }
-            buttonBoard.getChildren().add(b);
+            buttonBoard.add(b,x,y);
         }
     }
 

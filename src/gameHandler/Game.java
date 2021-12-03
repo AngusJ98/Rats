@@ -2,13 +2,12 @@ package gameHandler;
 
 import Controller.GameRenderer;
 import entity.*;
+import javafx.application.Platform;
 import org.json.simple.parser.ParseException;
 import tiles.Tile;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
+import java.util.*;
 
 public class Game {	
 	//this is a pretty static way of doing things, but it's very functional
@@ -27,9 +26,23 @@ public class Game {
 		Game.runner.redrawBoard(this.createCombinedEntityList());
 		System.out.println(this.rats.size());
 		System.out.println(Arrays.toString(this.createCombinedEntityList()));
+		this.startTimer();
     }
 
+    private void startTimer() {
+		Timer timer = new Timer();
+		TimerTask task = new TimerTask() {
+			@Override
+			public void run() {
+				RatManager.performRatActions();
+				Platform.runLater(() -> runner.redrawEntities(createCombinedEntityList()));
+			}
+		};
+		timer.scheduleAtFixedRate(task, 1000, 1000);
+	}
+
 	public void tick() {
+		RatManager.performRatActions();
 		Game.runner.redrawBoard(this.createCombinedEntityList());
 	}
 
