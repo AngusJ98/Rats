@@ -9,6 +9,7 @@
 
 //Yo Andrew, decided not to add copy right, and version history for the java docs.
 //make neccessary changes if need be, regardless delete this comment after.
+//Add a creation date if need be
 
 package entity;
 
@@ -23,7 +24,7 @@ public class DeathRat extends Rat {
 
 	/**
 	 *
-	 * @param pos 
+	 * @param pos
 	 */
 	public DeathRat(Pos pos) {
 		super(RatTypes.DEATH, new Image(""), pos);
