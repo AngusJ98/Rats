@@ -46,8 +46,27 @@ public class GameRenderer {
     private GridPane entityBoard;
     private GridPane buttonBoard;
     private GridPane tileBoard;
-    public GameRenderer() {
 
+   /*
+                                    xxxxxxx
+                               x xxxxxxxxxxxxx x
+                            x     xxxxxxxxxxx     x
+                                   xxxxxxxxx
+                         x          xxxxxxx          x
+                                     xxxxx
+                        x             xxx             x
+                                       x
+                       xxxxxxxxxxxxxxx   xxxxxxxxxxxxxxx
+                        xxxxxxxxxxxxx     xxxxxxxxxxxxx
+                         xxxxxxxxxxx       xxxxxxxxxxx
+                          xxxxxxxxx         xxxxxxxxx
+                            xxxxxx           xxxxxx
+                              xxx             xxx
+                                  x         x
+                                       x
+                        BAD CODE WARNING, DO NOT LOOK HERE
+    */
+    public GameRenderer() {
         Game.setRunner(this); //I hate doing this but is what it is
     }
 
