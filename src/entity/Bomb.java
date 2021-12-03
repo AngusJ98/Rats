@@ -52,6 +52,7 @@ public class Bomb extends Item{
     @Override
     public void ratCollision(Rat target) {}
 	public void itemCollision(Item target) {}
+	public void onPlacement() {}	
 }
 
 //From the Spec:

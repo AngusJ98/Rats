@@ -20,4 +20,6 @@ public class NoEntrySign extends Item {//?? acts like a tile so maybe it should 
 	@Override
     public void ratCollision(Rat target) {}
 	public void itemCollision(Item target) {}
+	public void onPlacement() {}	
+	public void tick() {}
 }

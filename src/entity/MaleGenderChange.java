@@ -22,4 +22,8 @@ public class MaleGenderChange extends Item {
 		targer.setGender(RatTypes.MALE);
 	}
 	public void itemCollision(Item target) {}
+	public void onPlacement() {}	
+	public void tick() {
+		
+	}
 }

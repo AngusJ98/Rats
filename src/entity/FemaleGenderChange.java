@@ -22,4 +22,8 @@ public class FemaleGenderChange extends Item {
 		target.setGender(RatTypes.FEMALE);
 	}
 	public void itemCollision(Item target) {}
+	public void onPlacement() {}	
+	public void tick() {
+		//decrease a variable somewhere so this item is removed after a certain time idk
+	}
 }

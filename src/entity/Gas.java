@@ -7,7 +7,7 @@ public class Gas extends Item {
     public Gas(Pos position) {
         super(new Image(""), EntityType.ITEM, position);
     }
-	public void spread() {//eventually will call this something more generic so i can have an itemmanager call it for each item
+	public void tick() {
 		
 	}
 	@Override
@@ -16,4 +16,5 @@ public class Gas extends Item {
 		//ratManager should check if any rat's hp is 0 after moving and kill those rats 
 	}
 	public void itemCollision(Item target) {}
+	public void onPlacement() {}	
 }

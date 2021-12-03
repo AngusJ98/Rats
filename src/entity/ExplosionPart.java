@@ -9,7 +9,7 @@ public class ExplosionPart extends Item {
     public ExplosionPart(Image image, Pos position) {
         super(image, EntityType.ITEM, position);
     }
-	public void move() {
+	public void tick() {
 		//bunch of switch cases to move the explosionpart in it's direction 
 		//get entities from tilemanager
         //call super.oncollision(entities)		
@@ -24,4 +24,5 @@ public class ExplosionPart extends Item {
     public void itemCollision(Entity target) {
         // Guessing we'll need a damage/destroy method in entity.Entity maybe?
     }
+	public void onPlacement() {}	
 }
