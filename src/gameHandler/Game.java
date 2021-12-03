@@ -56,7 +56,7 @@ public class Game {
 
     public static class RatManager {
 		private static ArrayList<DeathRat> deathRats = new ArrayList<DeathRat>();
-		public static ArrayList<BasicRat> getRatsAtPos(int[] pos) {	
+		public static ArrayList<BasicRat> getRatsAtPos(Pos pos) {
 			ArrayList<BasicRat> ratsAtPos = new ArrayList<BasicRat>();
 			for (int i = 0; i < rats.size(); i++) {
 				BasicRat currentRat = rats.get(i);
@@ -66,7 +66,7 @@ public class Game {
 			}
 			return ratsAtPos;
 		}
-		public static boolean killBasicRatsAtPos(int[] pos) {
+		public static boolean killBasicRatsAtPos(Pos pos) {
 			ArrayList<BasicRat> ratsToKill = getRatsAtPos(pos);
 			if (ratsToKill!= null) {
 				rats.removeAll(ratsToKill); //currently kills all basicrats on a square
@@ -99,18 +99,18 @@ public class Game {
 			}
 		}		
 	}
-	private static HashMap<int[], Tile> tiles = new HashMap<int[], Tile>();
+	private static HashMap<Pos, Tile> tiles = new HashMap<Pos, Tile>();
 	public static class TileManager {
 		private static int numTileWidth = 0;
 		private static int numTileHeight = 0;
 		//main purpose is to store tiles and allow entities to access them
-		public static Tile getTile(int[] pos) {
+		public static Tile getTile(Pos pos) {
 			return tiles.get(pos);
 		}
-		public static boolean getPassableTile(int[] pos) {
+		public static boolean getPassableTile(Pos pos) {
 			return tiles.get(pos).isPassable();
 		}	
-		public static ArrayList<Entity> getEntities(int[] pos) {
+		public static ArrayList<Entity> getEntities(Pos pos) {
 			return tiles.get(pos).getItems();
 		}
 		public static int getNumTileWidth() {
@@ -142,7 +142,7 @@ public class Game {
         }
     }
 
-	public static HashMap<int[], Tile> getTiles() {
+	public static HashMap<Pos, Tile> getTiles() {
 		return tiles;
 	}
 
@@ -171,7 +171,7 @@ public class Game {
 		for (int y = 0; y < TileManager.numTileHeight; y++) {
 			for (int x = 0; x < TileManager.numTileWidth; x++) {
 				Tile tileToAdd = Tile.createTileFromLetter(map[y][x]);
-				int[] pos = {x,y};
+				Pos pos = new Pos(x,y);
 				Game.tiles.put(pos, tileToAdd);
 			}
 		}
