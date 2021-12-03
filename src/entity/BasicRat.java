@@ -1,3 +1,12 @@
+/**
+ *
+ <p> 1. File-name: Basic Rat.java</p>
+ <p> 2. Creation Date: (N/A) </p>
+ <p> 3. Last modification date:</p>
+ <p> 4. Purpose of the program: Basic Rat Implementation</p>
+ * @author Andrew
+ */
+
 package entity;
 
 import java.util.ArrayList;
@@ -15,6 +24,16 @@ public class BasicRat extends Rat {
 	private int timeToGrowth; 
 	private int numChildren; //if this is above zero, implies the rat is pregnant
     private int timeToBirth;
+
+    /**
+     * 1st Constuctor, intializes a basic rat in the Rat Class with
+     * it's type and position depending on the case.
+     * <p> no side-effects</p>
+     * <p> not referentially transparent</p>
+     * @param type takes in the rat type of basic rat.
+     * @param image takes in the image of the rat
+     * @param pos takes coordinates of the position of the rat.
+     */
     public BasicRat(RatTypes type, Image image, Pos pos) {
         super(type, image, pos);
         setHP(ADULT_MAX_HP);
@@ -33,6 +52,23 @@ public class BasicRat extends Rat {
         }
     }
 
+    /**
+     * 2nd Constucter, initializes a basic rat in the Rat Class with
+     * it's type, MateStatus, MoveStatus, MoveSpeed, Time to Grow,
+     * No of Children and time to give birth.
+     * <p> no side-effects</p>
+     * <p> not referentially transparent</p>
+     * @param type takes in the rat type of basic rat.
+     * @param canMate takes in boolean for whether or not it can mate.
+     * @param canMove takes in boolean for whether or not it can move.
+     * @param moveSpeed takes it's movement speed.
+     * @param timeToGrowth stores it's time of growth.
+     * @param numChildren stores the number of Children this rat has.
+     * @param timeToBirth stores the time to birth for the rat.
+     * @param hp stores the rat's hp.
+     * @param position stores the current position of the rat.
+     * @param image stores the image of the rat.
+     */
     public BasicRat(RatTypes type, boolean canMate, boolean canMove,
                     int moveSpeed, int timeToGrowth, int numChildren,
                     int timeToBirth, int hp, Pos position, Image image) {
@@ -44,6 +80,7 @@ public class BasicRat extends Rat {
         setNumChildren(numChildren);
         setTimeToBirth(timeToBirth);
     }
+
 
 	private void setTimeToGrowth(int timeToGrowth) {
 		this.timeToGrowth = timeToGrowth;
