@@ -1,6 +1,7 @@
 package entity;
 
 import gameHandler.Game.*;
+import gameHandler.Pos;
 import javafx.scene.image.Image;
 
 enum Direction {
@@ -11,7 +12,7 @@ public abstract class Rat extends Entity {
 	protected boolean canMove;
 	protected RatTypes ratType;
 	protected int moveSpeed;	
-	protected int[] pos;
+	protected Pos pos;
 	protected Direction moveDirection;
 	public boolean getMateStatus() {
 		return canMate;
@@ -37,7 +38,7 @@ public abstract class Rat extends Entity {
 	public void setMoveSpeed(int moveSpeed) {
 		this.moveSpeed = moveSpeed;
 	}
-	private void setPos(int[] pos) {
+	private void setPos(Pos pos) {
 		this.pos = pos;
 	}
 	public boolean move() {	
@@ -48,11 +49,11 @@ public abstract class Rat extends Entity {
 		}		
 		while (movesLeft > 0) {
 			//	  get adjacent tiles  (REQUIRES TILEMANAGER CLASS)
-			int[] northTile = {pos[0], pos[1]-1}; //x, y, increasing number = further south/east on the board
-			int[] eastTile = {pos[0]+1, pos[1]};
-			int[] southTile = {pos[0], pos[1]+1};
-			int[] westTile = {pos[0]-1, pos[1]};
-			int[][] directionTiles = {northTile, eastTile, southTile, westTile};
+			Pos northTile = new Pos(pos.x, pos.y + 1); //x, y, increasing number = further south/east on the board
+			Pos eastTile = new Pos(pos.x + 1, pos.y);
+			Pos southTile = new Pos(pos.x, pos.y - 1);
+			Pos westTile = new Pos(pos.x-1, pos.y);
+			Pos[] directionTiles = {northTile, eastTile, southTile, westTile};
 			//	  check if there is no path in the direction of travel, if this is the case turn right and try again. 
 			//	  keep turning until a path is found (if all paths are blocked the rat will keep turning right indefinitely and it will be funny)
 			while (!TileManager.getPassableTile(directionTiles[moveDirection.ordinal()])) {
