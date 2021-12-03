@@ -39,9 +39,7 @@ public abstract class Rat extends Entity {
 	}
 	public boolean move() {	
 		int movesLeft = moveSpeed;
-		System.out.println(this.getRatType());
-		System.out.println(this.moveSpeed);
-		System.out.println(movesLeft);
+
 		//   if moveDirection = null, pick a direction from directions enum at random
 		if (moveDirection.equals(null)) {
 			moveDirection = Direction.values()[((int)(Math.random() * 4))];
@@ -69,8 +67,7 @@ public abstract class Rat extends Entity {
 			 *    go through this process again so they do not end up inside walls) */				
 			checkCurrentTile();	
 		}
-		System.out.println(this.getRatType());
-		System.out.println(this.pos.x + "-" + this.pos.y + "\n");
+
 		return true;
 	}
 	public abstract void checkCurrentTile();
