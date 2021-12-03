@@ -1,9 +1,9 @@
 package Controller;
 import entity.*;
 import gameHandler.Game;
+import gameHandler.Pos;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -207,9 +207,9 @@ public class GameRenderer {
             pic.setImage(entity.getImage());
             pic.setFitHeight(this.tilePixelSize);
             pic.setFitWidth(this.tilePixelSize);
-            int[] position = entity.getPosition();
-            int x = position[0];
-            int y = position[1];
+            Pos position = entity.getPosition();
+            int x = position.x;
+            int y = position.y;
             entityBoard.add(pic,x,y);
             System.out.println(x + "-" + y);
         }
