@@ -38,13 +38,9 @@ public class Game {
 				Platform.runLater(() -> runner.redrawEntities(createCombinedEntityList()));
 			}
 		};
-		timer.scheduleAtFixedRate(task, 1000, 1000);
+		timer.scheduleAtFixedRate(task, 1000, 2000);
 	}
 
-	public void tick() {
-		RatManager.performRatActions();
-		Game.runner.redrawBoard(this.createCombinedEntityList());
-	}
 
 	private Entity[] createCombinedEntityList() {
 		ArrayList<Entity> entities = new ArrayList<>();
@@ -167,7 +163,8 @@ public class Game {
 		Game.tiles = new HashMap<>();//set to new hashmap so we don't accidentally keep old boards
 		TileManager.numTileWidth = map[0].length;
 		TileManager.numTileHeight = map.length;
-        //runner.createBoardFromChar(map); this just draws the board
+		System.out.println(Arrays.deepToString(map));
+		System.out.println(TileManager.getNumTileHeight()+ "-" + TileManager.getNumTileWidth());
 		for (int y = 0; y < TileManager.numTileHeight; y++) {
 			for (int x = 0; x < TileManager.numTileWidth; x++) {
 				Tile tileToAdd = Tile.createTileFromLetter(map[y][x]);

@@ -11,8 +11,7 @@ public abstract class Rat extends Entity {
 	protected boolean canMate;
 	protected boolean canMove;
 	protected RatTypes ratType;
-	protected int moveSpeed;	
-	protected Pos pos;
+	protected int moveSpeed;
 	protected Direction moveDirection;
 	public boolean getMateStatus() {
 		return canMate;
@@ -38,9 +37,6 @@ public abstract class Rat extends Entity {
 	public void setMoveSpeed(int moveSpeed) {
 		this.moveSpeed = moveSpeed;
 	}
-	private void setPos(Pos pos) {
-		this.pos = pos;
-	}
 	public boolean move() {	
 		int movesLeft = moveSpeed;
 		//   if moveDirection = null, pick a direction from directions enum at random
@@ -49,7 +45,7 @@ public abstract class Rat extends Entity {
 		}		
 		while (movesLeft > 0) {
 			//	  get adjacent tiles  (REQUIRES TILEMANAGER CLASS)
-			Pos northTile = new Pos(pos.x, pos.y + 1); //x, y, increasing number = further south/east on the board
+			Pos northTile = new Pos(this.pos.x, this.pos.y + 1); //x, y, increasing number = further south/east on the board
 			Pos eastTile = new Pos(pos.x + 1, pos.y);
 			Pos southTile = new Pos(pos.x, pos.y - 1);
 			Pos westTile = new Pos(pos.x-1, pos.y);
@@ -70,6 +66,8 @@ public abstract class Rat extends Entity {
 			 *    go through this process again so they do not end up inside walls) */				
 			checkCurrentTile();	
 		}
+		System.out.println(this.getRatType());
+		System.out.println(this.pos.x + "-" + this.pos.y + "\n");
 		return true;
 	}
 	public abstract void checkCurrentTile();

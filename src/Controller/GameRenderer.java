@@ -211,7 +211,7 @@ public class GameRenderer {
             int x = position.x;
             int y = position.y;
             entityBoard.add(pic,x,y);
-            System.out.println(x + "-" + y);
+
         }
     }
 
