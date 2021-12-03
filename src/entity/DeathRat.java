@@ -47,7 +47,7 @@ public class DeathRat extends Rat {
 
 	/**
 	 *  Setting KillCount
-	 * @param killCount takes in kill count of 
+	 * @param killCount takes in kill count of
 	 */
     private void setKillCount(int killCount) {
         this.killCount = killCount;
