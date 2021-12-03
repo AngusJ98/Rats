@@ -3,10 +3,14 @@ import entity.*;
 import gameHandler.Game;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import tiles.*;
 import javafx.event.ActionEvent;
@@ -17,10 +21,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 import static java.lang.Math.min;
+import static java.lang.Math.toIntExact;
 
 
 public class GameRenderer {
@@ -33,30 +39,26 @@ public class GameRenderer {
     @FXML private Text femaleCount;
     @FXML private AnchorPane base;
     @FXML private ToggleGroup itemToggle;
+    @FXML private StackPane board;
 
-    private StackPane board;
-    private GridPane tileBoard;
-    private GridPane entityBoard;
-    private GridPane buttonBoard;
     private final double pixelWidth = 600; //this is how wide the board section of the game is
     private int tilePixelSize = 1; //Set as default, will be changed later
-
+    private GridPane entityBoard;
+    private GridPane buttonBoard;
+    private GridPane tileBoard;
     public GameRenderer() {
         Game.setRunner(this); //I hate doing this but is what it is
     }
 
     public void initialize() {
-
-        board = new StackPane();
-        board.prefHeightProperty().bind(base.heightProperty());
-        board.prefWidthProperty().bind(base.widthProperty());
-        tileBoard = new GridPane();
-        entityBoard = new GridPane();
-        buttonBoard = new GridPane();
-        //board.setHgap(0);
-        //board.setVgap(0);
-        base.getChildren().add(board);
+        for (Tile tile : Game.getTiles().values()) {
+            System.out.println(tile.getType());
+        }
+        this.tileBoard = new GridPane();
+        this.entityBoard = new GridPane();
+        this.buttonBoard = new GridPane();
         board.getChildren().addAll(tileBoard,entityBoard,buttonBoard);
+        tileBoard.setGridLinesVisible(true);
 
     }
 
@@ -112,12 +114,15 @@ public class GameRenderer {
     public void drawBoard(Entity[] entities) {
         drawTiles();
         redrawEntities(entities);
+        System.out.println("Pixel width: " + this.tilePixelSize);
+        System.out.println("Tiles wide: " + Game.TileManager.getNumTileWidth());
+        System.out.println("TIles tall: " + Game.TileManager.getNumTileHeight());
     }
 
 
     //Completely redraws board, don't think it's needed
     public void redrawBoard(Entity[] entities) {
-        this.board.getChildren().clear();
+        this.entityBoard.getChildren().clear();
         this.drawBoard(entities);
     }
 
@@ -129,19 +134,21 @@ public class GameRenderer {
 
     //This only needs to be called once... probably
     public void drawTiles() {
-        this.tilePixelSize = min((int) pixelWidth / Game.TileManager.getNumTileWidth(), (int) pixelWidth / Game.TileManager.getNumTileWidth());//Min statement to account for rectangular board
+        System.out.println(base.heightProperty());
+        this.tilePixelSize = min((int) pixelWidth / Game.TileManager.getNumTileWidth(), (int) pixelWidth / Game.TileManager.getNumTileHeight());//Min statement to account for rectangular board
+
         HashMap<int[], Tile> tiles = Game.getTiles();
-        for (HashMap.Entry<int[], Tile> tileEntry : Game.getTiles().entrySet()) {
-            Tile tile = tileEntry.getValue();
-            int[] tilePos = tileEntry.getKey();
+        for (int[] tilePos : Game.getTiles().keySet()) {
+            Tile tile = tiles.get(tilePos);
             int x = tilePos[0];
             int y = tilePos[1];
+            System.out.println(x + "-" + y);
             ImageView pic = new ImageView();
             pic.setImage(tile.getImage());
             pic.setFitHeight(this.tilePixelSize);
             pic.setFitWidth(this.tilePixelSize);
-            tileBoard.add(pic, x,y);
 
+            tileBoard.add(pic, x,y);
             //add a transparent button on top so we can add items
             Button b = new Button();
             b.setMaxSize(this.tilePixelSize,this.tilePixelSize);
