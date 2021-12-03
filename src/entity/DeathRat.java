@@ -1,3 +1,15 @@
+/**
+ *
+  <p> 1. File-name: DeathRat.java</p>
+  <p> 2. Creation Date: (N/A) </p>
+  <p> 3. Last modification date:</p>
+  <p> 4. Purpose of the program: Death Rat implementation</p>
+* @author Andrew
+*/
+
+//Yo Andrew, decided not to add copy right, and version history for the java docs.
+//make neccessary changes if need be, regardless delete this comment after.
+
 package entity;
 
 import gameHandler.Game.RatManager;
@@ -9,6 +21,10 @@ public class DeathRat extends Rat {
     private static final int MAX_KILLS = 5;
 	private int killCount;
 
+	/**
+	 *
+	 * @param pos 
+	 */
 	public DeathRat(Pos pos) {
 		super(RatTypes.DEATH, new Image(""), pos);
 		setKillCount(0);
