@@ -23,7 +23,7 @@ import java.util.Map;
 import static java.lang.Math.min;
 
 
-public class Runner {
+public class GameRenderer {
 
     @FXML private Text bombCount;
     @FXML private Text gasCount;
@@ -34,21 +34,29 @@ public class Runner {
     @FXML private AnchorPane base;
     @FXML private ToggleGroup itemToggle;
 
-    private GridPane board;
+    private StackPane board;
+    private GridPane tileBoard;
+    private GridPane entityBoard;
+    private GridPane buttonBoard;
     private final double pixelWidth = 600; //this is how wide the board section of the game is
-    private StackPane[][] stackPaneArray = null; // a list of stackpanes indexed by row and col so we can add children later!
     private int tilePixelSize = 1; //Set as default, will be changed later
 
-    public Runner() {
+    public GameRenderer() {
         Game.setRunner(this); //I hate doing this but is what it is
     }
 
     public void initialize() {
 
-        board = new GridPane();
-        board.setHgap(0);
-        board.setVgap(0);
+        board = new StackPane();
+        board.prefHeightProperty().bind(base.heightProperty());
+        board.prefWidthProperty().bind(base.widthProperty());
+        tileBoard = new GridPane();
+        entityBoard = new GridPane();
+        buttonBoard = new GridPane();
+        //board.setHgap(0);
+        //board.setVgap(0);
         base.getChildren().add(board);
+        board.getChildren().addAll(tileBoard,entityBoard,buttonBoard);
 
     }
 
@@ -106,12 +114,6 @@ public class Runner {
         redrawEntities(entities);
     }
 
-    private void generateStackPaneArray() {
-        this.stackPaneArray = new StackPane[Game.TileManager.getNumTileWidth()][Game.TileManager.getNumTileHeight()];
-        for (Node pane : this.board.getChildren()) {
-            this.stackPaneArray[GridPane.getRowIndex(pane)][GridPane.getColumnIndex(pane)] = (StackPane) pane;
-        }
-    }
 
     //Completely redraws board, don't think it's needed
     public void redrawBoard(Entity[] entities) {
@@ -134,13 +136,11 @@ public class Runner {
             int[] tilePos = tileEntry.getKey();
             int x = tilePos[0];
             int y = tilePos[1];
-            StackPane paneToAdd = new StackPane();
             ImageView pic = new ImageView();
             pic.setImage(tile.getImage());
             pic.setFitHeight(this.tilePixelSize);
             pic.setFitWidth(this.tilePixelSize);
-            paneToAdd.getChildren().add(pic);
-            board.add(paneToAdd, x, y);
+            tileBoard.add(pic, x,y);
 
             //add a transparent button on top so we can add items
             Button b = new Button();
@@ -167,7 +167,7 @@ public class Runner {
                     }
                 });
             }
-            paneToAdd.getChildren().add(b);
+            buttonBoard.getChildren().add(b);
         }
     }
 
@@ -182,19 +182,12 @@ public class Runner {
             int[] position = entity.getPosition();
             int x = position[0];
             int y = position[1];
-            StackPane targetTile = this.stackPaneArray[x][y];
-            targetTile.getChildren().add(pic);
+            entityBoard.add(pic,x,y);
         }
     }
 
     public void removeEntities() {
-        for (Node node : board.getChildren()) {
-            StackPane pane = (StackPane) node;
-            int size = pane.getChildren().size();
-            if (size > 1) {
-                pane.getChildren().remove(2, size); //first 2 are tile and button for item placement
-            }
-        }
+        entityBoard.getChildren().clear();
     }
 
     public void updateCount() {

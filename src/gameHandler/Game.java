@@ -1,26 +1,24 @@
 package gameHandler;
 
-import Controller.Runner;
+import Controller.GameRenderer;
 import entity.*;
-import javafx.fxml.FXMLLoader;
 import org.json.simple.parser.ParseException;
 import tiles.Tile;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 
 public class Game {	
 	//this is a pretty static way of doing things, but it's very functional
 	private static ArrayList<BasicRat> rats = new ArrayList<BasicRat>();
 	private static String levelPath;
-	private static Runner runner;
+	private static GameRenderer runner;
 	public Game() {
 
 	}
 
-	public static void setRunner(Runner runner) {
+	public static void setRunner(GameRenderer runner) {
 		Game.runner = runner;
 	}
 
