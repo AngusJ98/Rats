@@ -71,13 +71,9 @@ public abstract class Rat extends Entity {
 		}
 		return true;
 	}
-	public abstract void checkCurrentTile();		
+	public abstract void checkCurrentTile();
 	public Rat(RatTypes type, Image image, int[] pos) {
 		super(image, CollisionType.RAT, pos);
-		setPosition(pos);
-	}
-	public Rat(ratTypes type, Image image, int[] pos) {
-		super(image);
 		setPos(pos);
 		setRatType(type);
 		setMoveStatus(true);
@@ -95,6 +91,10 @@ public abstract class Rat extends Entity {
 			setMoveSpeed(1);
 			break;	
 		}		
+	}
+
+	public void kill() {
+		RatManager.killSingleRat(this);
 	}
 
 }
