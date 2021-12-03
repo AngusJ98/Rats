@@ -38,7 +38,7 @@ public class Game {
 				Platform.runLater(() -> runner.redrawEntities(createCombinedEntityList()));
 			}
 		};
-		timer.scheduleAtFixedRate(task, 1000, 2000);
+		timer.scheduleAtFixedRate(task, 1000, 1000);
 	}
 
 

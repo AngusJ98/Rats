@@ -39,6 +39,9 @@ public abstract class Rat extends Entity {
 	}
 	public boolean move() {	
 		int movesLeft = moveSpeed;
+		System.out.println(this.getRatType());
+		System.out.println(this.moveSpeed);
+		System.out.println(movesLeft);
 		//   if moveDirection = null, pick a direction from directions enum at random
 		if (moveDirection.equals(null)) {
 			moveDirection = Direction.values()[((int)(Math.random() * 4))];
