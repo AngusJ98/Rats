@@ -89,17 +89,11 @@ public class Game {
 			rats.removeAll(ratsToKill);
 		}
 		public static void performRatActions() {
-			for (int i = 0; i < rats.size(); i++) {
-				//do rat shit
-				//draw rats in list
-				//move rats in list
-				//check if rats in list can mate
-				//check if rats in list should die
-				//check if bay rats should grow up
+			for (Rat rat : rats) {
+				rat.move();
 			}
 			for (int i = 0; i < deathRats.size(); i++) {
 				//do metal rat shit
-				//draw death rat
 				//move
 				//process rat kill requests
 			}

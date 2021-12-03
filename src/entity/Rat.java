@@ -77,6 +77,7 @@ public abstract class Rat extends Entity {
 		setPos(pos);
 		setRatType(type);
 		setMoveStatus(true);
+		moveDirection = Direction.NORTH;
 		switch (type) {						
 		case BABY:
 			setMateStatus(false);
