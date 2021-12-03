@@ -1,5 +1,6 @@
 package entity;
 
+import gameHandler.Game;
 import javafx.scene.image.Image;
 
 public class Poison extends Entity{
@@ -29,8 +30,7 @@ public class Poison extends Entity{
     }
 
     private void ratCollision(Rat target) {
-        target.kill();
-        //Still needs the part where the poison is used up and removed from the path.
+        Game.RatManager.killSingleRat(target);        //Still needs the part where the poison is used up and removed from the path.
     }
 }
 

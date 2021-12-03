@@ -1,5 +1,6 @@
 package entity;
 
+import gameHandler.Game;
 import javafx.scene.image.Image;
 
 public class Bomb extends Entity{
@@ -22,7 +23,7 @@ public class Bomb extends Entity{
     // touching the bomb shouldn't kill the rat.
     private void ratCollision(Rat target) {
         if (true) {
-            target.kill();
+            Game.RatManager.killSingleRat(target);
         };
     }
 

@@ -1,5 +1,6 @@
 package entity;
 
+import gameHandler.Game;
 import javafx.scene.image.Image;
 public class ExplosionPart extends Entity {
     private Image image;
@@ -23,7 +24,7 @@ public class ExplosionPart extends Entity {
         // Could potentially use a damage/destroy method for entity
         // that's then used on both rats and items? I guess killing a rat and
         // destroying an item are pretty similar.
-        target.kill();
+        Game.RatManager.killSingleRat(target);
     }
 
     private void itemCollision(Entity target) {
