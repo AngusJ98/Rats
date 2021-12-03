@@ -124,6 +124,11 @@ public class Game {
 			TileManager.numTileHeight = numTileHeight;
 		}
 	}
+	private static HashMap<Pos, Item> items = new HashMap<Pos, Item>();
+	public static class ItemManager {
+		//h
+	}
+		
 	public static void main(String[] args) {
 		Game game = new Game();
 		// Runner runner = new Runner(); Runner is not needed and will be loaded as part of the javafx stuff so no need to worry about that
@@ -138,9 +143,9 @@ public class Game {
         }
     }
 
-	public static HashMap<Pos, Tile> getTiles() {
-		return tiles;
-	}
+	public static HashMap<Pos, Tile> getTiles() { //no
+		return tiles; //bad
+	} //use TileManager.GetTile();
 
 	public void setUp() throws ParseException, IOException {
 		//file reader class goes here, reads file and passes data to this method
@@ -177,5 +182,4 @@ public class Game {
 	public void constructRatList(BasicRat[] rats) {
 		Game.rats = new ArrayList<BasicRat>(Arrays.asList(rats));
 	}
-	public void otherShit() {}
 }
