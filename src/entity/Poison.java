@@ -4,35 +4,28 @@ import gameHandler.Game;
 import gameHandler.Pos;
 import javafx.scene.image.Image;
 
-public class Poison extends Entity{
+public class Poison extends Item{
     private static final int DEFAULT_TIME = 4000;
     private static final int RANGE = 1;
     private int timer;
 
     public Poison(Pos position) {
-        super(new Image(""), CollisionType.ITEM, position);
+        super(new Image(""), EntityType.ITEM, position);
         timer = DEFAULT_TIME;
     }
 
     public Poison(Pos position, int timeLeft) {
-        super(new Image(""), CollisionType.ITEM, position);
+        super(new Image(""), EntityType.ITEM, position);
         timer = timeLeft;
     }
 
-    @Override
-    public void onCollision(Entity target) {
-        switch (target.getCollisionGroup()) {
-            case RAT:
-                ratCollision((Rat)target);
-                break;
-            case ITEM:
-                break;
-        }
-    }
-
+	@Override
     private void ratCollision(Rat target) {
         Game.RatManager.killSingleRat(target);        //Still needs the part where the poison is used up and removed from the path.
     }
+	public void itemCollision(Item target) {}
+	public void onPlacement() {}	
+	public void tick() {}
 }
 
 

@@ -4,34 +4,37 @@ import gameHandler.Game;
 import gameHandler.Pos;
 import javafx.scene.image.Image;
 
-public class Bomb extends Entity{
+public class Bomb extends Item{
     public static final int DEFAULT_BOMB_TIME = 4000;
     public static final int TICKS_PER_SECOND = 1000;
     private int range;
     private int timer;
 
     public Bomb(Pos position) {
-        super(new Image(""), CollisionType.ITEM, position);
+        super(new Image(""), EntityType.ITEM, position);
         timer = DEFAULT_BOMB_TIME;
     }
 
     public Bomb(Pos position, int timeLeft) {
-        super(new Image(""), CollisionType.ITEM, position);
+        super(new Image(""), position);
         timer = timeLeft;
     }
 
 
-    // touching the bomb shouldn't kill the rat.
-    private void ratCollision(Rat target) {
-        if (true) {
-            Game.RatManager.killSingleRat(target);
-        };
-    }
+
+	//=========================================IMPORTANT========================================
+	// bomb shouldn't have the ability to kill, but it will spawn bombparts that kill on contact
+    // bomb itsself is essentially just a glorified countdown timer
+	// all it needs is the tick() and boom() methods
+    //==========================================================================================	
+
+
 
     // if anyone renames this method to something more sensible
     // i will personally feel very offended
     private void boom() {
-        // create ExplosionParts etc
+        // create 4 explosionparts, 1 for each direction 
+		// remove self from board
     }
 
     public void tick() {
@@ -45,17 +48,11 @@ public class Bomb extends Entity{
         return (int) Math.ceil((float) timer / TICKS_PER_SECOND);
     }
 
+	// shouldn't do anything
     @Override
-    // shouldn't do anything
-    public void onCollision(Entity target) {
-        switch (target.getCollisionGroup()) {
-            case RAT:
-                ratCollision((Rat)target);
-                break;
-            case ITEM:
-                break;
-        }
-    }
+    public void ratCollision(Rat target) {}
+	public void itemCollision(Item target) {}
+	public void onPlacement() {}	
 }
 
 //From the Spec:
