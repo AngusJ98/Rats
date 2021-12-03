@@ -23,22 +23,32 @@ public class DeathRat extends Rat {
 	private int killCount;
 
 	/**
-	 * Constructor that takes the coordinates of where the Death Rat is to be placed.
-	 * and the rat has a kill count.
+	 * 1st Constructor.
 	 * <p> no side-effects</p>
-	 * <p> not referencially transparent</p>
-	 * @param takes in the coordinates of the death rat to be placed
+	 * <p> not referentially transparent</p>
+	 * @param pos takes coordinates of death rat to be placed.
 	 */
 	public DeathRat(Pos pos) {
 		super(RatTypes.DEATH, new Image(""), pos);
 		setKillCount(0);
 	}
 
+	/**
+	 * 2nd Constructor.
+	 * <p> no side-effects</p>
+	 * <p> not referentially transparent</p>
+	 * @param pos takes coordinates of death rat to be placed.
+	 * @param killCount takes kill count of death rat.
+	 */
 	public DeathRat(Pos pos, int killCount) {
 		super(RatTypes.DEATH, new Image(""), pos);
 		this.killCount = killCount;
 	}
 
+	/**
+	 *  Setting KillCount
+	 * @param killCount takes in kill count of 
+	 */
     private void setKillCount(int killCount) {
         this.killCount = killCount;
 	}
