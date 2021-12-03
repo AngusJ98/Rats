@@ -154,7 +154,6 @@ public class GameRenderer {
                     "    -fx-background-radius: 10;\n" +
                     "    -fx-background-color: transparent\n"
             );
-            b.setText("A");
 
             //set button action if items can be placed
             if (tile.areItemsPlaceable()) {
@@ -176,6 +175,14 @@ public class GameRenderer {
 
 
     public void drawEntities(Entity[] entities) {
+        for (int x = 0; x < Game.TileManager.getNumTileWidth(); x++) {
+            for (int y = 0; y < Game.TileManager.getNumTileHeight(); y++) {
+                ImageView fill = new ImageView();
+                fill.setFitHeight(this.tilePixelSize);
+                fill.setFitWidth(this.tilePixelSize);
+                entityBoard.add(fill,x,y);
+            }
+        }
         for (Entity entity : entities) {
             ImageView pic = new ImageView();
             pic.setImage(entity.getImage());
