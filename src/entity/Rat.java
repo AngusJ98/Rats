@@ -37,7 +37,10 @@ public abstract class Rat extends Entity {
 	public void setMoveSpeed(int moveSpeed) {
 		this.moveSpeed = moveSpeed;
 	}
-	public boolean move() {
+	private void setPos(int[] pos) {
+		this.pos = pos;
+	}
+	public boolean move() {	
 		int movesLeft = moveSpeed;
 		//   if moveDirection = null, pick a direction from directions enum at random
 		if (moveDirection.equals(null)) {
@@ -72,6 +75,10 @@ public abstract class Rat extends Entity {
 	public Rat(RatTypes type, Image image, int[] pos) {
 		super(image, CollisionType.RAT, pos);
 		setPosition(pos);
+	}
+	public Rat(ratTypes type, Image image, int[] pos) {
+		super(image);
+		setPos(pos);
 		setRatType(type);
 		setMoveStatus(true);
 		switch (type) {						
@@ -90,5 +97,4 @@ public abstract class Rat extends Entity {
 		}		
 	}
 
-    public abstract void kill();
 }
