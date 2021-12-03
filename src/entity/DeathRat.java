@@ -1,6 +1,7 @@
 package entity;
 
 import gameHandler.Game.RatManager;
+import gameHandler.Pos;
 import javafx.scene.image.Image;
 import java.util.ArrayList;
 
@@ -8,12 +9,12 @@ public class DeathRat extends Rat {
     private static final int MAX_KILLS = 5;
 	private int killCount;
 
-	public DeathRat(int[] pos) {
+	public DeathRat(Pos pos) {
 		super(RatTypes.DEATH, new Image(""), pos);
 		setKillCount(0);
 	}
 
-	public DeathRat(int[] pos, int killCount) {
+	public DeathRat(Pos pos, int killCount) {
 		super(RatTypes.DEATH, new Image(""), pos);
 		this.killCount = killCount;
 	}

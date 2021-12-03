@@ -1,6 +1,7 @@
 package entity;
 
 import gameHandler.Game;
+import gameHandler.Pos;
 import javafx.scene.image.Image;
 
 public class Bomb extends Entity{
@@ -9,12 +10,12 @@ public class Bomb extends Entity{
     private int range;
     private int timer;
 
-    public Bomb(int[] position) {
+    public Bomb(Pos position) {
         super(new Image(""), CollisionType.ITEM, position);
         timer = DEFAULT_BOMB_TIME;
     }
 
-    public Bomb(int[] position, int timeLeft) {
+    public Bomb(Pos position, int timeLeft) {
         super(new Image(""), CollisionType.ITEM, position);
         timer = timeLeft;
     }

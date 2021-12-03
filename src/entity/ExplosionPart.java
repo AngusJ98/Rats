@@ -1,10 +1,11 @@
 package entity;
 
 import gameHandler.Game;
+import gameHandler.Pos;
 import javafx.scene.image.Image;
 public class ExplosionPart extends Entity {
     private Image image;
-    public ExplosionPart(Image image, int[] position) {
+    public ExplosionPart(Image image, Pos position) {
         super(image, CollisionType.ITEM, position);
     }
 

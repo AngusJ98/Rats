@@ -1,9 +1,10 @@
 package entity;
 
+import gameHandler.Pos;
 import javafx.scene.image.Image;
 
 public class Gas extends Entity {
-    public Gas(int[] position) {
+    public Gas(Pos position) {
         super(new Image(""), CollisionType.ITEM, position);
     }
 
