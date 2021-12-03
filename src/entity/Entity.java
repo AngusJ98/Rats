@@ -1,5 +1,6 @@
 package entity;
 
+import gameHandler.Pos;
 import javafx.scene.image.Image;
 enum CollisionType {
     RAT, ITEM, TILE, NONE
@@ -8,15 +9,15 @@ enum CollisionType {
 public abstract class Entity {
     protected Image image;
     protected CollisionType collisionGroup; //what this entity is
-    protected int[] position;//protected pos;?
+    protected Pos pos;//protected pos;?
 
 
 
 
-    public Entity(Image image, CollisionType collisionGroup, int[] position) {
+    public Entity(Image image, CollisionType collisionGroup, Pos position) {
         this.image = image;
         this.collisionGroup = collisionGroup;
-        this.position = position;
+        this.pos = position;
     }
 
     public boolean isRat() {
@@ -37,11 +38,11 @@ public abstract class Entity {
 
     public abstract void onCollision(Entity t);
 
-    public void setPosition(int[] position) {
-        this.position = position;
+    public void setPosition(Pos position) {
+        this.pos = position;
     }
 
-    public int[] getPosition() {
-        return position;
+    public Pos getPosition() {
+        return pos;
     };
 }
