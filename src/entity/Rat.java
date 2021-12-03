@@ -66,6 +66,8 @@ public abstract class Rat extends Entity {
 			 *    go through this process again so they do not end up inside walls) */				
 			checkCurrentTile();	
 		}
+		System.out.println(this.getRatType());
+		System.out.println(this.pos.x + "-" + this.pos.y + "\n");
 		return true;
 	}
 	public abstract void checkCurrentTile();

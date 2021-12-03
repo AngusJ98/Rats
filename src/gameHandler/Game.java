@@ -38,13 +38,9 @@ public class Game {
 				Platform.runLater(() -> runner.redrawEntities(createCombinedEntityList()));
 			}
 		};
-		timer.scheduleAtFixedRate(task, 1000, 1000);
+		timer.scheduleAtFixedRate(task, 1000, 2000);
 	}
 
-	public void tick() {
-		RatManager.performRatActions();
-		Game.runner.redrawBoard(this.createCombinedEntityList());
-	}
 
 	private Entity[] createCombinedEntityList() {
 		ArrayList<Entity> entities = new ArrayList<>();
