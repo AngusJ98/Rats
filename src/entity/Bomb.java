@@ -4,7 +4,7 @@ import gameHandler.Game;
 import gameHandler.Pos;
 import javafx.scene.image.Image;
 
-public class Bomb extends Entity{
+public class Bomb extends Item{
     public static final int DEFAULT_BOMB_TIME = 4000;
     public static final int TICKS_PER_SECOND = 1000;
     private int range;

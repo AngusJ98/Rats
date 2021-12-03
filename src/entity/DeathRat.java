@@ -62,9 +62,4 @@ public class DeathRat extends Rat {
 			RatManager.killSingleRat(this);
 		}
     }
-
-    @Override
-    public void onCollision(Entity t) {
-
-    }
 }

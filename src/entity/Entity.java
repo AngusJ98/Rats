@@ -2,7 +2,7 @@ package entity;
 
 import gameHandler.Pos;
 import javafx.scene.image.Image;
-enum CollisionType {
+enum CollisionType { //remove at some point pls
     RAT, ITEM, TILE, NONE
 }
 //poggers

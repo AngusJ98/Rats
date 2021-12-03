@@ -3,7 +3,7 @@ package entity;
 import gameHandler.Pos;
 import javafx.scene.image.Image;
 
-public class Sterilization extends Entity{
+public class Sterilization extends Item{
     private static final int DEFAULT_TIME = 4000; // idk how long it's meant to stay for
     private static final int RANGE = 3; //idk what range should be either
     private int timer;

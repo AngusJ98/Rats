@@ -4,7 +4,7 @@ import gameHandler.Game;
 import gameHandler.Pos;
 import javafx.scene.image.Image;
 
-public class Poison extends Entity{
+public class Poison extends Item{
     private static final int DEFAULT_TIME = 4000;
     private static final int RANGE = 1;
     private int timer;

@@ -3,7 +3,7 @@ package entity;
 import gameHandler.Pos;
 import javafx.scene.image.Image;
 
-public class MaleGenderChange extends Entity {
+public class MaleGenderChange extends Item {
     private static final int DEFAULT_TIME = 4000;
     private static final int RANGE = 1;
     private int timer;

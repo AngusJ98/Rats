@@ -111,16 +111,13 @@ public class BasicRat extends Rat {
 					}
 				}			
 			} else {
-				//assume item
-				//code to activate item goes here
-				//need all items to have a universal onCollision method 
-				//-either an abstract method in entity or creating an abstract class under entity for items would work
+				try {
+				Item item = (Item) entities.get(i);
+				item.activateItem();
+				} catch (Exception e)) {
+					System.out.println("Rat tried to activate an item but could not cast to Item")
+				}
 			}
 		}	
 	}
-
-    @Override
-    public void onCollision(Entity t) {
-
-    }
 }
