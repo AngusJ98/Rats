@@ -4,6 +4,7 @@ import javafx.scene.image.Image;
 enum CollisionType {
     RAT, ITEM, TILE, NONE
 }
+//poggers
 public abstract class Entity {
     protected Image image;
     protected CollisionType collisionGroup; //what this entity is
