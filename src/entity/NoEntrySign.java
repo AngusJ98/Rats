@@ -8,17 +8,16 @@ public class NoEntrySign extends Item {//?? acts like a tile so maybe it should 
     private int hp;
 
     public NoEntrySign(Pos position) {
-        super(new Image(""), CollisionType.ITEM, position);
+        super(new Image(""), EntityType.ITEM, position);
         hp = MAX_HP;
     }
 
     public NoEntrySign(Pos position, int currentHp) {
-        super(new Image(""), CollisionType.ITEM, position);
+        super(new Image(""), EntityType.ITEM, position);
         hp = currentHp;
     }
-
-    @Override
-    public void onCollision(Entity t) {
-
-    }
+	
+	@Override
+    public void ratCollision(Rat target) {}
+	public void itemCollision(Item target) {}
 }

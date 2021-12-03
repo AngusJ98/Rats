@@ -70,7 +70,7 @@ public abstract class Rat extends Entity {
 	}
 	public abstract void checkCurrentTile();
 	public Rat(RatTypes type, Image image, Pos pos) {
-		super(image, CollisionType.RAT, pos);
+		super(image, EntityType.RAT, pos);
 
 		setRatType(type);
 		setMoveStatus(true);

@@ -5,13 +5,15 @@ import javafx.scene.image.Image;
 
 public class Gas extends Item {
     public Gas(Pos position) {
-        super(new Image(""), CollisionType.ITEM, position);
+        super(new Image(""), EntityType.ITEM, position);
     }
-
-
-
-    @Override
-    public void onCollision(Entity t) {
-
-    }
+	public void spread() {//eventually will call this something more generic so i can have an itemmanager call it for each item
+		
+	}
+	@Override
+    public void ratCollision(Rat target) {
+		//reduce rat hp by <25>
+		//ratManager should check if any rat's hp is 0 after moving and kill those rats 
+	}
+	public void itemCollision(Item target) {}
 }

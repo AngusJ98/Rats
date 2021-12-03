@@ -42,7 +42,7 @@ public class DeathRat extends Rat {
 
     public void checkCurrentTile() {
     	if (killCount < MAX_KILLS) {
-			ArrayList<BasicRat> ratsToKill = RatManager.getRatsAtPos(pos); //checkRatCollision(pos);	
+			ArrayList<BasicRat> ratsToKill = RatManager.getRatsAtPos(pos); 
 			//check if rat on current tile			
 			if (ratsToKill != null) {
 				//send kill request(s) for rat and increase killcount
