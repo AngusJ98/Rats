@@ -66,14 +66,13 @@ public class GameFileHandler {
         int timeLeft = objToInt(levelStatsObj, "timeLeft");
 
         Pos dimensions = objToPos(dimensionsJObj);
-        
-        char[][] map = new char[dimensions.x][dimensions.y];
+
+        char[][] map = new char[dimensions.y][dimensions.x];
         String[] rows = tilesString.split("\n");
         for (int i = 0; i < rows.length; i++) {
             map[i] = rows[i].toCharArray();
         }
-
-        println(Arrays.deepToString(map));
+        System.out.println(map.length);
 
         return map;
     }
