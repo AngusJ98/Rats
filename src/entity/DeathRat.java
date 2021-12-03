@@ -22,11 +22,6 @@ public class DeathRat extends Rat {
         this.killCount = killCount;
 	}
 
-    @Override
-    public void kill() {
-
-    }
-
     public void checkCurrentTile() {
     	if (killCount < MAX_KILLS) {
 			ArrayList<BasicRat> ratsToKill = RatManager.getRatsAtPos(pos); //checkRatCollision(pos);	

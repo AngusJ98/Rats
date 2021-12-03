@@ -32,11 +32,6 @@ public class BasicRat extends Rat {
         }
     }
 
-    @Override
-    public void kill() {
-
-    }
-
     public BasicRat(RatTypes type, boolean canMate, boolean canMove,
                     int moveSpeed, int timeToGrowth, int numChildren,
                     int timeToBirth, int hp, int[] position, Image image) {
