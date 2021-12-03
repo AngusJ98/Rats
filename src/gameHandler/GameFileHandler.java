@@ -49,11 +49,11 @@ public class GameFileHandler {
         return Math.toIntExact((long) obj.get(key));
     }
 
-    private static int[] objToPos(JSONArray obj) {
-        return new int[] {objToInt(obj, 0), objToInt(obj, 1)};
+    private static Pos objToPos(JSONArray obj) {
+        return new Pos(objToInt(obj, 0), objToInt(obj, 1));
     }
 
-    private static int[] objToPos(JSONObject obj) {
+    private static Pos objToPos(JSONObject obj) {
         return objToPos((JSONArray) obj.get("position"));
     }
 
