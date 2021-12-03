@@ -61,5 +61,7 @@ public class DeathRat extends Rat {
 			//kill the death rat after 5 kills
 			RatManager.killSingleRat(this);
 		}
+		//get entities on tile
+		//check for no entry tiles
     }
 }
