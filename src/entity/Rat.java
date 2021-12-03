@@ -92,9 +92,4 @@ public abstract class Rat extends Entity {
 			break;	
 		}		
 	}
-
-	public void kill() {
-		RatManager.killSingleRat(this);
-	}
-
 }
