@@ -1,13 +1,13 @@
 /**
+ * <p> 1. File-name: Player.java</p>
+ * <p> 2. Creation Date: 19/11/21 </p>
+ * <p> 3. Last modification date: 03/12/21 </p>
+ * <p> 4. Purpose of the program: Creation of players</p>
  *
- <p> 1. File-name: Player.java</p>
- <p> 2. Creation Date: 19/11/21 </p>
- <p> 3. Last modification date: 03/12/21 </p>
- <p> 4. Purpose of the program: Creation of players</p>
  * @author Isaac
  */
 
-public class Player{
+public class Player {
 
     private int score;
     private String playerName;
@@ -17,8 +17,9 @@ public class Player{
      * Constructor used to format a player`s information.
      * <p> no side-effects</p>
      * <p> not referentially transparent</p>
-     * @param playerName the name of this player
-     * @param score the score of this player
+     *
+     * @param playerName       the name of this player
+     * @param score            the score of this player
      * @param maxLevelUnlocked the maximum level unlocked by this player
      */
     Player(String playerName, int score, int maxLevelUnlocked) {
@@ -31,6 +32,7 @@ public class Player{
      * Method used to provide an output string for the class
      * <p> no side-effects</p>
      * <p> not referentially transparent</p>
+     *
      * @return playerName, score and maxLevelUnlocked neatly formatted
      */
     public String toString() {
@@ -41,6 +43,7 @@ public class Player{
      * Method used to return the score of the player it is called on.
      * <p> no side-effects</p>
      * <p> not referentially transparent</p>
+     *
      * @return the score of the player
      */
     public int getScore() {
@@ -51,6 +54,7 @@ public class Player{
      * Method used to return the max level in which the player has unlocked.
      * <p> no side-effects</p>
      * <p> not referentially transparent</p>
+     *
      * @return the max level unlocked of a player
      */
     public int getMaxLevelUnlocked() {
