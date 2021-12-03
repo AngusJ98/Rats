@@ -1,5 +1,6 @@
 package entity;
 
+import gameHandler.Pos;
 import javafx.scene.image.Image;
 
 public class Sterilization extends Entity{
@@ -7,12 +8,12 @@ public class Sterilization extends Entity{
     private static final int RANGE = 3; //idk what range should be either
     private int timer;
 
-    public Sterilization(int[] position) {
+    public Sterilization(Pos position) {
         super(new Image(""), CollisionType.ITEM, position);
         timer = DEFAULT_TIME;
     }
 
-    public Sterilization(int[] position, int timeLeft) {
+    public Sterilization(Pos position, int timeLeft) {
         super(new Image(""), CollisionType.ITEM, position);
         timer = timeLeft;
     }
