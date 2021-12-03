@@ -51,9 +51,7 @@ public class GameRenderer {
     }
 
     public void initialize() {
-        for (Tile tile : Game.getTiles().values()) {
-            System.out.println(tile.getType());
-        }
+
         this.tileBoard = new GridPane();
         this.entityBoard = new GridPane();
         this.buttonBoard = new GridPane();
@@ -114,9 +112,7 @@ public class GameRenderer {
     public void drawBoard(Entity[] entities) {
         drawTiles();
         redrawEntities(entities);
-        System.out.println("Pixel width: " + this.tilePixelSize);
-        System.out.println("Tiles wide: " + Game.TileManager.getNumTileWidth());
-        System.out.println("TIles tall: " + Game.TileManager.getNumTileHeight());
+
     }
 
 
@@ -134,7 +130,6 @@ public class GameRenderer {
 
     //This only needs to be called once... probably
     public void drawTiles() {
-        System.out.println(base.heightProperty());
         this.tilePixelSize = min((int) pixelWidth / Game.TileManager.getNumTileWidth(), (int) pixelWidth / Game.TileManager.getNumTileHeight());//Min statement to account for rectangular board
 
         HashMap<int[], Tile> tiles = Game.getTiles();
@@ -142,7 +137,6 @@ public class GameRenderer {
             Tile tile = tiles.get(tilePos);
             int x = tilePos[0];
             int y = tilePos[1];
-            System.out.println(x + "-" + y);
             ImageView pic = new ImageView();
             pic.setImage(tile.getImage());
             pic.setFitHeight(this.tilePixelSize);
@@ -190,6 +184,7 @@ public class GameRenderer {
             int x = position[0];
             int y = position[1];
             entityBoard.add(pic,x,y);
+            System.out.println(x + "-" + y);
         }
     }
 

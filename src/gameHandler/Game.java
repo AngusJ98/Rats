@@ -7,6 +7,7 @@ import tiles.Tile;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class Game {	
@@ -24,6 +25,8 @@ public class Game {
 
 	public void start() {
 		Game.runner.redrawBoard(this.createCombinedEntityList());
+		System.out.println(this.rats.size());
+		System.out.println(Arrays.toString(this.createCombinedEntityList()));
     }
 
 	public void tick() {
@@ -142,7 +145,7 @@ public class Game {
             HashMap<String, HashMap<String, Integer>>, int[]>
             gameObjects = GameFileHandler.newGame(levelPath);
         constructTileMap(gameObjects.getThird());
-		constructRatList();
+		constructRatList(gameObjects.getFirst());
 		otherShit();
 	}
 	public static String getLevelPath() {
@@ -167,6 +170,8 @@ public class Game {
 		}
     }
 
-	public void constructRatList() {}	
+	public void constructRatList(BasicRat[] rats) {
+		Game.rats = new ArrayList<BasicRat>(Arrays.asList(rats));
+	}
 	public void otherShit() {}
 }
