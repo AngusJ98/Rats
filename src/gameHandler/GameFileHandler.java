@@ -125,7 +125,7 @@ public class GameFileHandler {
 
     private static Entity[] makeItemArray(JSONArray jItems, String key) {
         int size = jItems.size();
-        int[] position = new int[2];
+        Pos position;
         JSONObject jItem;
         Entity[] itemArr;
         switch (key) {
