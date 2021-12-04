@@ -193,7 +193,7 @@ public class BasicRat extends Rat {
 				Item item = (Item) entities.get(i);
 				item.activateItem();
 				} catch (Exception e) {
-					System.out.println("Rat tried to activate an item but could not cast to Item")
+					System.out.println("Rat tried to activate an item but could not cast to Item");
 				}
 			}
 		}	

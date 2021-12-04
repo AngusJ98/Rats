@@ -41,7 +41,7 @@ public class Gas extends Item {
 					unvisitedTiles.add(new Pos(pos.x, pos.y+1));
 				}
 			}
-			if (pos.x-1 >= 0) && Game.TileManager.getPassableTile(new Pos(pos.x-1, pos.y)) {
+			if ((pos.x-1 >= 0) && Game.TileManager.getPassableTile(new Pos(pos.x-1, pos.y))) {
 				if (!unvisitedTiles.contains(new Pos(pos.x-1, pos.y))) {
 					unvisitedTiles.add(new Pos(pos.x-1, pos.y));
 				}
@@ -58,7 +58,7 @@ public class Gas extends Item {
 	}
 	@Override
 	public void onCollision(){};
-
+	public void activateItem(){}; //TODO this I guess
     public void ratCollision(Rat target) {}
 	public void itemCollision(Item target) {}
 	public void onPlacement() {}	
