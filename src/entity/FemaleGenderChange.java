@@ -8,8 +8,8 @@ public class FemaleGenderChange extends Item {
     private static final int RANGE = 1;
     private int timer;
 
-    public FemaleGenderChange(Image image, Pos position) {
-        super(image, position);
+    public FemaleGenderChange(Pos position) {
+        super(new Image(""), position);
         timer = DEFAULT_TIME;
     }
 

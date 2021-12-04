@@ -56,7 +56,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <ToggleButton fx:id="Bomb" mnemonicParsing="false" prefHeight="319.0" prefWidth="467.0">
+                  <ToggleButton fx:id="bomb" mnemonicParsing="false" prefHeight="319.0" prefWidth="467.0">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
@@ -71,7 +71,7 @@
                         </ImageView>
                      </graphic>
                   </ToggleButton>
-                  <ToggleButton fx:id="Poison" layoutX="15.0" layoutY="15.0" mnemonicParsing="false" prefHeight="319.0" prefWidth="467.0" GridPane.rowIndex="1">
+                  <ToggleButton fx:id="poison" layoutX="15.0" layoutY="15.0" mnemonicParsing="false" prefHeight="319.0" prefWidth="467.0" GridPane.rowIndex="1">
                      <toggleGroup>
                         <ToggleGroup fx:id="itemToggle1" />
                      </toggleGroup>
@@ -86,7 +86,7 @@
                         </ImageView>
                      </graphic>
                   </ToggleButton>
-                  <ToggleButton fx:id="Sterilisation" mnemonicParsing="false" prefHeight="319.0" prefWidth="467.0" GridPane.rowIndex="2">
+                  <ToggleButton fx:id="sterile" mnemonicParsing="false" prefHeight="319.0" prefWidth="467.0" GridPane.rowIndex="2">
                      <toggleGroup>
                         <ToggleGroup fx:id="itemToggle11" />
                      </toggleGroup>
@@ -101,7 +101,7 @@
                         </ImageView>
                      </graphic>
                   </ToggleButton>
-                  <ToggleButton fx:id="NoEntry" mnemonicParsing="false" prefHeight="319.0" prefWidth="467.0" GridPane.rowIndex="3">
+                  <ToggleButton fx:id="noEnt" mnemonicParsing="false" prefHeight="319.0" prefWidth="467.0" GridPane.rowIndex="3">
                      <toggleGroup>
                         <ToggleGroup fx:id="itemToggle12" />
                      </toggleGroup>
@@ -116,7 +116,7 @@
                         </ImageView>
                      </graphic>
                   </ToggleButton>
-                  <ToggleButton fx:id="Male" mnemonicParsing="false" prefHeight="319.0" prefWidth="467.0" GridPane.rowIndex="4">
+                  <ToggleButton fx:id="male" mnemonicParsing="false" prefHeight="319.0" prefWidth="467.0" GridPane.rowIndex="4">
                      <toggleGroup>
                         <ToggleGroup fx:id="itemToggle13" />
                      </toggleGroup>
@@ -131,7 +131,7 @@
                         </ImageView>
                      </graphic>
                   </ToggleButton>
-                  <ToggleButton fx:id="Female" mnemonicParsing="false" prefHeight="319.0" prefWidth="467.0" GridPane.rowIndex="5">
+                  <ToggleButton fx:id="female" mnemonicParsing="false" prefHeight="319.0" prefWidth="467.0" GridPane.rowIndex="5">
                      <toggleGroup>
                         <ToggleGroup fx:id="itemToggle14" />
                      </toggleGroup>

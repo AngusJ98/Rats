@@ -184,7 +184,7 @@ public class GameRenderer {
                         int buttonY = GridPane.getColumnIndex(b);
                         ToggleButton selectedButton = (ToggleButton)itemToggle.getSelectedToggle();
                         String itemString = selectedButton.getId();
-                        ItemManager.tryPlace(itemString, buttonX ,buttonY);
+                        Game.ItemManager.tryPlace(itemString, new Pos(buttonX, buttonY));
                         //TODO Correct to item placement method
                     }
                 });

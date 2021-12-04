@@ -9,7 +9,7 @@ public class MaleGenderChange extends Item {
     private int timer;
 
     public MaleGenderChange(Pos position) {
-        super(new Image(""), position);
+        super(new Image("file:resources/male.png"), position);
         timer = DEFAULT_TIME;
     }
 

@@ -11,7 +11,7 @@ public class Gas extends Item {
 	GasPart[] gasArray = new GasPart[6];
 
     public Gas(Pos position) {
-        super(new Image(""), position);
+        super(new Image("file:resources/gas.png"), position);
 		//gas will have no sprite and be responsible for the spread of gasparts
 		//gasparts will be visible and deal damage to rats
     }

@@ -29,7 +29,7 @@ public class DeathRat extends Rat {
 	 * @param pos takes coordinates of death rat to be placed.
 	 */
 	public DeathRat(Pos pos) {
-		super(RatTypes.DEATH, new Image(""), pos);
+		super(RatTypes.DEATH, new Image("file:resources/deathRat.png"), pos);
 		setKillCount(0);
 	}
 

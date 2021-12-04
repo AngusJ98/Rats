@@ -19,7 +19,7 @@ public class Bomb extends Item{
     private int timer;
 
     public Bomb(Pos position) {
-        super(new Image(""), position);
+        super(new Image("file:resources/bomb.png"), position);
         timer = DEFAULT_BOMB_TIME;
     }
 

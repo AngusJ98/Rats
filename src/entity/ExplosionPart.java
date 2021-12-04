@@ -7,7 +7,7 @@ public class ExplosionPart extends Item {
     private Image image;
 	private Direction direction;
     public ExplosionPart(Pos position, Direction direction) {
-        super(new Image(""), position);
+        super(new Image("file:resources/explosionPart.png"), position);
         this.direction = direction;
 
     }

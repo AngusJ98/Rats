@@ -9,7 +9,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class GasPart extends Item {
 	public GasPart(Pos position) {
-		super(new Image(""), position);
+		super(new Image("file:resources/gasPart.png"), position);
 	}
 	public void tick() {} 
     public void ratCollision(Rat target) {

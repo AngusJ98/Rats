@@ -147,7 +147,34 @@ public class Game {
 	}
 	private static HashMap<Pos, Item> items = new HashMap<Pos, Item>();
 	public static class ItemManager {
-		//h
+		public static void tryPlace(String itemString, Pos pos) {
+			if (true /*TODO Stock check here*/) {
+				System.out.println(itemString);
+				switch (itemString) {
+					case "bomb":
+						Game.items.put(pos, new Bomb(pos));
+						break;
+					case "gas":
+						Game.items.put(pos, new Gas(pos));
+						break;
+					case "sterile":
+						Game.items.put(pos, new Sterilization(pos));
+						break;
+					case "noEnt":
+						Game.items.put(pos, new NoEntrySign(pos));
+						break;
+					case "male":
+						Game.items.put(pos, new MaleGenderChange(pos));
+						break;
+					case "female":
+						Game.items.put(pos, new FemaleGenderChange(pos));
+						break;
+					case "deathRat":
+						RatManager.deathRats.add(new DeathRat(pos));
+						break;
+				}
+			}
+		}
 	}
 		
 	public static void main(String[] args) {

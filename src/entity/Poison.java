@@ -10,7 +10,7 @@ public class Poison extends Item{
     private int timer;
 
     public Poison(Pos position) {
-        super(new Image(""), position);
+        super(new Image("file:resources/poison.png"), position);
         timer = DEFAULT_TIME;
     }
 

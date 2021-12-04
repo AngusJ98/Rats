@@ -8,7 +8,7 @@ public class NoEntrySign extends Item {//?? acts like a tile so maybe it should 
     private int hp;
 
     public NoEntrySign(Pos position) {
-        super(new Image(""), position);
+        super(new Image("file:resources/noEnt.png"), position);
         hp = MAX_HP;
     }
 
