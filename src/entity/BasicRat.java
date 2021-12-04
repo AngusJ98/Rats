@@ -79,6 +79,7 @@ public class BasicRat extends Rat {
         setTimeToGrowth(timeToGrowth);
         setNumChildren(numChildren);
         setTimeToBirth(timeToBirth);
+        setHP(50);
     }
 
     /**

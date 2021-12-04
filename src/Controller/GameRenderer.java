@@ -144,11 +144,6 @@ public class GameRenderer {
     }
 
     public void redrawEntities(Entity[] entities) {
-        ToggleButton select = (ToggleButton)itemToggle.getSelectedToggle();
-        if (select != null) {
-            System.out.println(select.getId());
-        }
-        System.out.println(itemToggle.getToggles());
         this.removeEntities();
         this.drawEntities(entities);
     }
@@ -184,7 +179,6 @@ public class GameRenderer {
             if (tile.areItemsPlaceable()) {
                 b.setOnAction(new EventHandler<ActionEvent>() {
                     @Override public void handle(ActionEvent e) {
-                        System.out.println("Poggers");
                         int buttonY = GridPane.getRowIndex(b);
                         int buttonX = GridPane.getColumnIndex(b);
                         ToggleButton selectedButton = (ToggleButton)itemToggle.getSelectedToggle();
