@@ -64,6 +64,8 @@ public class Game {
 	private Entity[] createCombinedEntityList() {
 		ArrayList<Entity> entities = new ArrayList<>();
 		entities.addAll(Game.rats);
+		Collection<Item> itemsArr = Game.items.values();
+		entities.addAll(itemsArr);
 		Entity[] entityArray = new Entity[entities.size()];
 		return entities.toArray(entityArray);
 	}
