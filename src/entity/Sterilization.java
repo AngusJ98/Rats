@@ -27,7 +27,7 @@ public class Sterilization extends Item{
 	public void tick() {
 		for (int yoffset = -RANGE; yoffset < RANGE; yoffset++) {
 			for (int xoffset = -RANGE; xoffset < RANGE; xoffset++) {
-				ArrayList<BasicRat> rats = Game.RatManager.getRatsAtPos(new pos(this.pos.x + xoffset, this.pos.y + yoffset));
+				ArrayList<BasicRat> rats = Game.RatManager.getRatsAtPos(new Pos(this.pos.x + xoffset, this.pos.y + yoffset));
 				if (!(rats == null) && rats.size() > 0) {
 					for (BasicRat rat : rats) {
 						rat.setMateStatus(false);
