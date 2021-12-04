@@ -5,6 +5,8 @@ import gameHandler.Game.*;
 import gameHandler.Pos;
 import javafx.scene.image.Image;
 
+import java.util.ArrayList;
+
 enum Direction {
 	NORTH, EAST, SOUTH, WEST;
 }
@@ -42,19 +44,26 @@ public abstract class Rat extends Entity {
 	public Direction getMoveDirection() {
 		return moveDirection;
 	}	
+
 	public Direction getInverseMoveDirection() {
-		return Direction.values()[(moveDirection.ordinal()+2) % 4]
+		return Direction.values()[(moveDirection.ordinal()+2) % 4];
 	}	
 	
 	public boolean move() {	
-		int movesLeft = moveSpeed;
+
+
 		//   if moveDirection = null, pick a direction from directions enum at random
 		if (moveDirection.equals(null)) {
 			moveDirection = Direction.values()[((int)(Math.random() * 4))];
 		}		
-		while (movesLeft > 0) {
+
+		if (Game.getTimeLeft() % (int)(5/this.moveSpeed) == 0) {
+
+			//	  check if there is no path in the direction of travel, if this is the case turn right and try again. 
+			//	  keep turning until a path is found (if all paths are blocked the rat will keep turning right indefinitely and it will be funny)
+
 	
-			/*						GUS'S MOVEMENT CODE	
+			/*						GUS'S MOVEMENT CODE
 			if (!TileManager.getPassableTile(getPosFromDir(moveDirection, pos))) {
 				boolean tryLeftFirst = Math.random() < 0.5;
 				Direction leftDir = Direction.values()[((moveDirection.ordinal() + 3) % 4)];
@@ -93,35 +102,35 @@ public abstract class Rat extends Entity {
 			// check in front, left and right
 			Direction leftDir = Direction.values()[((moveDirection.ordinal() + 3) % 4)];
 			Direction rightDir = Direction.values()[((moveDirection.ordinal() + 1) % 4)];
-			ArrayList<Direction>() availablePaths = new ArrayList<Direction>();
+			ArrayList<Direction> availablePaths = new ArrayList<Direction>();
 			//add directions to a list if they are passable
-			if (TileManager.getPassableTile(getPosFromDir(moveDirection))) {
+			if (TileManager.getPassableTile(getPosFromDir(moveDirection, this.pos))) {
 				availablePaths.add(moveDirection);	
 			}
-			if (TileManager.getPassableTile(getPosFromDir(leftDir))) {
+
+			if (TileManager.getPassableTile(getPosFromDir(leftDir, this.pos))) {
 				availablePaths.add(leftDir);	
 			}
-			if (TileManager.getPassableTile(getPosFromDir(rightDir))) {
+			if (TileManager.getPassableTile(getPosFromDir(rightDir, this.pos))) {
 				availablePaths.add(rightDir);	
 			}
-			Direction chosenDirection;
+			Direction chosenDirection = this.moveDirection;
 			if (availablePaths.size() == 0) {	
 				//if no paths ahead, turn around
-				if (TileManager.getPassableTile(getPosFromDir(getInverseMoveDirection()))) {
-					chosenDirection = getInverseMoveDirection()
+				if (TileManager.getPassableTile(getPosFromDir(getInverseMoveDirection(), this.pos))) {
+					chosenDirection = getInverseMoveDirection();
 				} else {
-					System.out.println("A rat got stuck and can't move")
+					System.out.println("A rat got stuck and can't move");
 				}	
-			} else if (availablePaths.size == 1) {
+			} else if (availablePaths.size() == 1) {
 				//if only one path is available, take it
-				chosenDirection = availablePaths.get(0)
+				chosenDirection = availablePaths.get(0);
 			} else {
 				//randomly chose a direction from the options available
-				chosenDirection = availablePaths(math.random() * availablePaths.size())
+				chosenDirection = availablePaths.get((int) Math.random() * availablePaths.size());
 			}
 			moveDirection = chosenDirection;
 			setPosition(getPosFromDir(moveDirection,pos));
-			movesLeft--;
 			//    move one square
 			/**   rats with a higher movespeed (baby rats or rats under the influence of speedtiles will loop and 
 			 *    go through this process again so they do not end up inside walls) */				
@@ -169,8 +178,8 @@ public abstract class Rat extends Entity {
 	
 	
 	public abstract void checkCurrentTile();
-	public Rat(RatTypes type, Image image, Pos pos) {
-		super(image, EntityType.RAT, pos);
+	public Rat(RatTypes type, Pos pos) {
+		super(new Image("File:resources/male.png"), EntityType.RAT, pos);
 		setScore(0);
 		setRatType(type);
 		setMoveStatus(true);
@@ -179,14 +188,27 @@ public abstract class Rat extends Entity {
 		case BABY:
 			setMateStatus(false);
 			setMoveSpeed(2);
+			this.image = new Image("File:resources/babyRat.png");
 			break;
 		case DEATH:
 			setMateStatus(false);
 			setMoveSpeed(1);
-			break;	
+			this.image = new Image("File:resources/deathRat.png");
+			break;
+		case MALE:
+			setMateStatus(true);
+			setMoveSpeed(1);
+			this.image = new Image("File:resources/maleRat.png");
+			break;
+		case FEMALE:
+			setMateStatus(true);
+			setMoveSpeed(1);
+			this.image = new Image("File:resources/femaleRat.png");
+			break;
 		default:			
 			setMateStatus(true);
 			setMoveSpeed(1);
+			this.image = new Image("File:resources/male.png");
 			break;	
 		}		
 	}
@@ -199,4 +221,4 @@ public abstract class Rat extends Entity {
 		this.score = score;
 	}
 }
-}
+
