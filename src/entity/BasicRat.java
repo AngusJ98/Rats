@@ -1,3 +1,11 @@
+package entity;
+
+import java.util.ArrayList;
+
+import gameHandler.Game;
+import gameHandler.Pos;
+import javafx.scene.image.Image;
+
 /**
  *
  <p> 1. File-name: Basic Rat.java</p>
@@ -6,14 +14,6 @@
  <p> 4. Purpose of the program: Basic Rat Implementation</p>
  * @author Andrew
  */
-
-package entity;
-
-import java.util.ArrayList;
-
-import gameHandler.Game;
-import gameHandler.Pos;
-import javafx.scene.image.Image;
 
 public class BasicRat extends Rat {
     private static final int MIN_GROWTH_TIME = 1000;

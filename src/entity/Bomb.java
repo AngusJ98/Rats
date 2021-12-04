@@ -4,6 +4,15 @@ import gameHandler.Game;
 import gameHandler.Pos;
 import javafx.scene.image.Image;
 
+/**
+ *
+ <p> 1. File-name: Basic Rat.java</p>
+ <p> 2. Creation Date: (N/A) </p>
+ <p> 3. Last modification date: </p>
+ <p> 4. Purpose of the program: Basic Rat Implementation</p>
+ * @author ??
+ */
+
 public class Bomb extends Item{
 	//=========================================IMPORTANT========================================
 	// bomb shouldn't have the ability to kill, but it will spawn bombparts that kill on contact
@@ -18,11 +27,23 @@ public class Bomb extends Item{
     private int range;
     private int timer;
 
+    /**
+     * 1st Constructor, initializes Bomb via it's
+     * Image and Coordinates, and sets a DEFAULT timer
+     * for when it explodes
+     * @param position takes in the coordinates of the Bomb
+     */
     public Bomb(Pos position) {
         super(new Image("file:resources/bomb.png"), position);
         timer = DEFAULT_BOMB_TIME;
     }
 
+    /**
+     * 2nd Constructor, intializes Bomb via it's Image and Coordinates,
+     * and can set a specific custom timer that differs from the Default.
+     * @param position takes in the coordinates of the Bomb
+     * @param timeLeft takes in the time left for the bomb to explode
+     */
     public Bomb(Pos position, int timeLeft) {
         super(new Image(""), position);
         timer = timeLeft;
