@@ -25,10 +25,10 @@ public class Sterilization extends Item{
     public void ratCollision(Rat target) {}
 	public void itemCollision(Item target) {}	
 	public void tick() {
-		for (yoffset = -RANGE; yoffset < RANGE; yoffset++) {
-			for (xoffset = -RANGE; xoffset < RANGE; xoffset++) {
+		for (int yoffset = -RANGE; yoffset < RANGE; yoffset++) {
+			for (int xoffset = -RANGE; xoffset < RANGE; xoffset++) {
 				ArrayList<BasicRat> rats = Game.RatManager.getRatsAtPos(new pos(this.pos.x + xoffset, this.pos.y + yoffset));
-				if (!rats == null && rats.size > 0) {
+				if (!(rats == null) && rats.size() > 0) {
 					for (BasicRat rat : rats) {
 						rat.setMateStatus(false);
 					}	
