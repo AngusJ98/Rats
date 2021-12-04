@@ -191,7 +191,12 @@ public abstract class Rat extends Entity {
 		return newPos;
 	}
 
-
+	/**
+	 * Used by other entities to move rats in a different way.
+	 * @param movesLeft takes how many moves are needed for moving
+	 * @param direction takes direction to move in
+	 * @return (?)
+	 */
 	public boolean forceMove(int movesLeft, Direction direction) {
 		//forces the entity to move when it is not the rat's turn to move
 		//used by noEntrySign
