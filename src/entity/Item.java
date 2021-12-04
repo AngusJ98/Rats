@@ -7,10 +7,10 @@ public abstract class Item extends Entity {
 	public Item(Image image, Pos pos) {
         super(image, EntityType.ITEM, pos);
 	}	
-	public abstract void onPlacement() {}	
-	public abstract void tick() {}
+	public abstract void onPlacement();
+	public abstract void tick();
     public void onCollision(Entity target) {
-		if !(target == null) { 
+		if (!(target == null)) {
 			switch (target.getEntityType()) {
 			case RAT:
 				ratCollision((Rat) target);
@@ -21,6 +21,6 @@ public abstract class Item extends Entity {
 			}
 		}
     }
-    private abstract void ratCollision(Rat target);
+    protected abstract void ratCollision(Rat target);
 	public abstract void itemCollision(Item target);
 }
