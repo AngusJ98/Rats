@@ -69,8 +69,7 @@ public class Game {
 	private Entity[] createCombinedEntityList() {
 		ArrayList<Entity> entities = new ArrayList<>();
 		entities.addAll(Game.rats);
-		Collection<Item> itemsArr = Game.items.values();
-		entities.addAll(itemsArr);
+		entities.addAll(Game.items);
 		Entity[] entityArray = new Entity[entities.size()];
 		return entities.toArray(entityArray);
 	}
@@ -120,7 +119,7 @@ public class Game {
 				}	
 			}
 			//Have to do this to avoid concurrency modification error
-			for (Rat toKill: rats) {
+			for (Rat toKill: ratsToKill) {
 				killSingleRat(toKill);
 			}
 			for (DeathRat deathRat : deathRats) {
@@ -165,7 +164,7 @@ public class Game {
 	public static class ItemManager {
 		public static void tryPlace(String itemString, Pos pos) {
 			if (true /*TODO Stock check here*/) {
-				Item placedItem;
+				Item placedItem = null;
 				System.out.println(itemString);
 				switch (itemString) {
 					//TODO: call onPlacement() whenever an item is placed					
@@ -178,7 +177,7 @@ public class Game {
 						items.add(placedItem);
 						break;
 					case "sterile":
-						placedItem = new Sterilization(Pos);
+						placedItem = new Sterilization(pos);
 						items.add(placedItem);
 						break;
 					case "noEnt":
@@ -198,7 +197,7 @@ public class Game {
 						RatManager.deathRats.add(new DeathRat(pos));
 						break;
 				}
-				if (!placedItem == null) { 
+				if (!(placedItem == null)) {
 					placedItem.onPlacement();
 				}
 			}

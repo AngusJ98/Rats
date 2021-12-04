@@ -106,11 +106,9 @@ public class MessageOfTheDay {
 	}
 
 	public static String getMotd() {
-		System.out.println(getSolution());
-		System.out.println(getInfoFromUrl("http://cswebcat.swansea.ac.uk/puzzle"));
 		String solutionPart = getSolution();
 		solutionPart = solutionPart.length() + solutionPart;
-		System.out.println(solutionPart);
+
 		return getInfoFromUrl("http://cswebcat.swansea.ac.uk/message?solution=" + solutionPart);
 	}
 
