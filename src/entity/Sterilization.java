@@ -23,7 +23,6 @@ public class Sterilization extends Item{
 		//delete them all when the item expires
 	}
 
-	public void onCollision(){}
     public void ratCollision(Rat target) {
 		target.setMateStatus(false);
 	}
