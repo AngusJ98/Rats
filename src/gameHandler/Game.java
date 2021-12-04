@@ -57,6 +57,7 @@ public class Game {
 			@Override
 			public void run() {
 				RatManager.performRatActions();
+				ItemManager.performItemActions();
 				Platform.runLater(() -> runner.redrawEntities(createCombinedEntityList()));
 				Game.checkVictory();
 				timeLeft--;
