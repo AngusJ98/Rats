@@ -1,12 +1,3 @@
-/**
- *
-  <p> 1. File-name: DeathRat.java</p>
-  <p> 2. Creation Date: (N/A) </p>
-  <p> 3. Last modification date:</p>
-  <p> 4. Purpose of the program: Death Rat implementation</p>
-* @author Andrew
-*/
-
 //Yo Andrew, decided not to add copy right, and version history for the java docs.
 //make neccessary changes if need be, regardless delete this comment after.
 //Add a creation date if need be
@@ -17,6 +8,15 @@ import gameHandler.Game.RatManager;
 import gameHandler.Pos;
 import javafx.scene.image.Image;
 import java.util.ArrayList;
+
+/**
+ *
+ <p> 1. File-name: DeathRat.java</p>
+ <p> 2. Creation Date: (N/A) </p>
+ <p> 3. Last modification date:</p>
+ <p> 4. Purpose of the program: Death Rat implementation</p>
+ * @author Andrew
+ */
 
 public class DeathRat extends Rat {
     private static final int MAX_KILLS = 5;
