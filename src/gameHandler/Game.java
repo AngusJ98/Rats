@@ -22,6 +22,14 @@ public class Game {
 
 	}
 
+	public static int getTimeLeft() {
+		return timeLeft;
+	}
+
+	public static ArrayList<BasicRat> getRats() {
+		return rats;
+	}
+
 	public static Timer getTimer() {
 		return timer;
 	}
@@ -54,7 +62,7 @@ public class Game {
 				timeLeft--;
 			}
 		};
-		timer.scheduleAtFixedRate(task, 1000, 1000);
+		timer.scheduleAtFixedRate(task, 0, 100);
 	}
 	public static void checkVictory() {
 		if (rats.size() == 0) {
@@ -123,6 +131,7 @@ public class Game {
 			ArrayList<BasicRat> ratsToKill = new ArrayList<>();
 			for (BasicRat rat : rats) {
 				rat.move();
+				rat.ratActions();
 				rat.updateScore();
 				if (rat.getHP() <= 0) {
 					ratsToKill.add(rat);
@@ -276,6 +285,6 @@ public class Game {
 	}
 
 	private void setUpLevelStats(HashMap<String, Integer> stats) {
-		this.timeLeft = stats.get("timeLeft");
+		this.timeLeft = stats.get("timeLeft") * 10;
 	}
 }

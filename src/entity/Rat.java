@@ -44,13 +44,12 @@ public abstract class Rat extends Entity {
 		return moveDirection;
 	}	
 		
-	public boolean move() {	
-		int movesLeft = moveSpeed;
+	public boolean move() {
 		//   if moveDirection = null, pick a direction from directions enum at random
 		if (moveDirection.equals(null)) {
 			moveDirection = Direction.values()[((int)(Math.random() * 4))];
 		}		
-		while (movesLeft > 0) {
+		if (Game.getTimeLeft() % (int)(5/this.moveSpeed) == 0) {
 
 			//	  check if there is no path in the direction of travel, if this is the case turn right and try again. 
 			//	  keep turning until a path is found (if all paths are blocked the rat will keep turning right indefinitely and it will be funny)
@@ -90,7 +89,6 @@ public abstract class Rat extends Entity {
 			if (TileManager.getPassableTile(getPosFromDir(moveDirection, pos))) {
 				setPosition(getPosFromDir(moveDirection,pos));
 			}
-			movesLeft--;
 			//    move one square
 			/**   rats with a higher movespeed (baby rats or rats on crack will loop and 
 			 *    go through this process again so they do not end up inside walls) */				
@@ -138,8 +136,8 @@ public abstract class Rat extends Entity {
 	
 
 	public abstract void checkCurrentTile();
-	public Rat(RatTypes type, Image image, Pos pos) {
-		super(image, EntityType.RAT, pos);
+	public Rat(RatTypes type, Pos pos) {
+		super(new Image("File:resources/male.png"), EntityType.RAT, pos);
 		setScore(0);
 		setRatType(type);
 		setMoveStatus(true);
@@ -148,14 +146,27 @@ public abstract class Rat extends Entity {
 		case BABY:
 			setMateStatus(false);
 			setMoveSpeed(2);
+			this.image = new Image("File:resources/babyRat.png");
 			break;
 		case DEATH:
 			setMateStatus(false);
 			setMoveSpeed(1);
-			break;	
+			this.image = new Image("File:resources/deathRat.png");
+			break;
+		case MALE:
+			setMateStatus(true);
+			setMoveSpeed(1);
+			this.image = new Image("File:resources/maleRat.png");
+			break;
+		case FEMALE:
+			setMateStatus(true);
+			setMoveSpeed(1);
+			this.image = new Image("File:resources/femaleRat.png");
+			break;
 		default:			
 			setMateStatus(true);
 			setMoveSpeed(1);
+			this.image = new Image("File:resources/male.png");
 			break;	
 		}		
 	}
