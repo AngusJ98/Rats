@@ -9,12 +9,12 @@ public class Sterilization extends Item{
     private int timer;
 
     public Sterilization(Pos position) {
-        super(new Image(""), EntityType.ITEM, position);
+        super(new Image(""), position);
         timer = DEFAULT_TIME;
     }
 
     public Sterilization(Pos position, int timeLeft) {
-        super(new Image(""), EntityType.ITEM, position);
+        super(new Image(""), position);
         timer = timeLeft;
     }
 	
@@ -22,7 +22,8 @@ public class Sterilization extends Item{
 		//spawn a bunch of sterilizationparts (invisible) on all passable tiles in a radius x radius area
 		//delete them all when the item expires
 	}
-	
+
+	public void onCollision(){}
     public void ratCollision(Rat target) {
 		target.setMateStatus(false);
 	}

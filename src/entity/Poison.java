@@ -10,16 +10,17 @@ public class Poison extends Item{
     private int timer;
 
     public Poison(Pos position) {
-        super(new Image(""), EntityType.ITEM, position);
+        super(new Image(""), position);
         timer = DEFAULT_TIME;
     }
 
     public Poison(Pos position, int timeLeft) {
-        super(new Image(""), EntityType.ITEM, position);
+        super(new Image(""), position);
         timer = timeLeft;
     }
 
 	@Override
+    public void onCollision(){}
     private void ratCollision(Rat target) {
         Game.RatManager.killSingleRat(target);        //Still needs the part where the poison is used up and removed from the path.
     }

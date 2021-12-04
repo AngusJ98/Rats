@@ -11,7 +11,6 @@ public class GasPart extends Item {
 	public GasPart(Pos position) {
 		super(new Image(""), position);
 	}
-	@Override
 	public void tick() {} 
     public void ratCollision(Rat target) {
 		//decrease hp by 25
