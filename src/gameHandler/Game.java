@@ -14,6 +14,8 @@ public class Game {
 	private static ArrayList<BasicRat> rats = new ArrayList<BasicRat>();
 	private static String levelPath;
 	private static GameRenderer runner;
+	private static Timer timer = new Timer();
+	private static int timeLeft = -1;
 	public Game() {
 
 	}
@@ -30,15 +32,28 @@ public class Game {
     }
 
     private void startTimer() {
-		Timer timer = new Timer();
+
 		TimerTask task = new TimerTask() {
 			@Override
 			public void run() {
 				RatManager.performRatActions();
 				Platform.runLater(() -> runner.redrawEntities(createCombinedEntityList()));
+				Game.checkVictory();
 			}
 		};
 		timer.scheduleAtFixedRate(task, 1000, 1000);
+	}
+
+	public static void checkVictory() {
+		if (rats.size() == 0) {
+			System.out.println("VICTORY!!");
+			Game.timer.cancel();
+			Game.runner.victoryScreen();
+		} else if (timeLeft <= 0) {
+			System.out.println("DEFEAT :c");
+			Game.timer.cancel();
+			Game.runner.lossScreen();
+		}
 	}
 
 
@@ -88,10 +103,10 @@ public class Game {
 			for (BasicRat rat : rats) {
 				rat.move();
 				if (rat.getHP() <= 0) {
-					killSingleRat(rat)
+					killSingleRat(rat);
 				}	
 			}
-			for (DeathRat deathRat : rats) {
+			for (DeathRat deathRat : deathRats) {
 				deathRat.move();
 			}
 		}		
@@ -155,7 +170,7 @@ public class Game {
             gameObjects = GameFileHandler.newGame(levelPath);
         constructTileMap(gameObjects.getThird());
 		constructRatList(gameObjects.getFirst());
-		otherShit();
+		setUpLevelStats(gameObjects.getFourth());
 	}
 	public static String getLevelPath() {
 		return levelPath;
@@ -182,5 +197,9 @@ public class Game {
 
 	public void constructRatList(BasicRat[] rats) {
 		Game.rats = new ArrayList<BasicRat>(Arrays.asList(rats));
+	}
+
+	private void setUpLevelStats(HashMap<String, Integer> stats) {
+		this.timeLeft = stats.get("timeLeft");
 	}
 }

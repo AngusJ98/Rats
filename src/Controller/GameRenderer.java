@@ -236,4 +236,12 @@ public class GameRenderer {
             System.exit(1);
         }
     }
+
+    public void lossScreen() {
+
+    }
+
+    public void victoryScreen(){
+        
+    }
 }
