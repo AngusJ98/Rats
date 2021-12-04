@@ -104,20 +104,20 @@ public abstract class Rat extends Entity {
 			Direction rightDir = Direction.values()[((moveDirection.ordinal() + 1) % 4)];
 			ArrayList<Direction> availablePaths = new ArrayList<Direction>();
 			//add directions to a list if they are passable
-			if (TileManager.getPassableTile(getPosFromDir(moveDirection, this.pos))) {
+			if (TileManager.getPassableTile(TileManager.getPosFromDir(moveDirection, this.pos))) {
 				availablePaths.add(moveDirection);	
 			}
 
-			if (TileManager.getPassableTile(getPosFromDir(leftDir, this.pos))) {
+			if (TileManager.getPassableTile(TileManager.getPosFromDir(leftDir, this.pos))) {
 				availablePaths.add(leftDir);	
 			}
-			if (TileManager.getPassableTile(getPosFromDir(rightDir, this.pos))) {
+			if (TileManager.getPassableTile(TileManager.getPosFromDir(rightDir, this.pos))) {
 				availablePaths.add(rightDir);	
 			}
 			Direction chosenDirection = this.moveDirection;
 			if (availablePaths.size() == 0) {	
 				//if no paths ahead, turn around
-				if (TileManager.getPassableTile(getPosFromDir(getInverseMoveDirection(), this.pos))) {
+				if (TileManager.getPassableTile(TileManager.getPosFromDir(getInverseMoveDirection(), this.pos))) {
 					chosenDirection = getInverseMoveDirection();
 				} else {
 					System.out.println("A rat got stuck and can't move");
@@ -130,36 +130,14 @@ public abstract class Rat extends Entity {
 				chosenDirection = availablePaths.get((int) (Math.random() * (availablePaths.size())));
 			}
 			moveDirection = chosenDirection;
-			setPosition(getPosFromDir(moveDirection,pos));
+			setPosition(TileManager.getPosFromDir(moveDirection,pos));
 			//    move one square
 			/**   rats with a higher movespeed (baby rats or rats under the influence of speedtiles will loop and 
 			 *    go through this process again so they do not end up inside walls) */				
 			checkCurrentTile();	
 		}
 		return true;
-	}
-	public Pos getPosFromDir(Direction dir, Pos pos){
-		Pos newPos;
-		switch (dir) {
-			case NORTH:
-				newPos = new Pos(pos.x, pos.y+1);
-				break;
-			case EAST:
-				newPos = new Pos(pos.x+1, pos.y);
-				break;
-			case SOUTH:
-				newPos = new Pos(pos.x, pos.y-1);
-				break;
-			case WEST:
-				newPos = new Pos(pos.x-1, pos.y);
-				break;
-			default:
-				newPos = new Pos(0,0);
-				System.out.println("enum error");
-				break;
-		}
-		return newPos;
-	}
+	}	
 	public boolean forceMove(int movesLeft, Direction direction) {
 		//forces the entity to move when it is not the rat's turn to move
 		//used by noEntrySign

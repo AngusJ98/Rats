@@ -86,7 +86,6 @@ public class Bomb extends Item{
         return (int) Math.ceil((float) timer / TICKS_PER_SECOND);
     }
 
-	// shouldn't do anything
     @Override
     public void ratCollision(Rat target) {}
 	public void itemCollision(Item target) {}

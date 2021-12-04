@@ -178,6 +178,28 @@ public class Game {
 		public static void setNumTileHeight(int numTileHeight) {
 			TileManager.numTileHeight = numTileHeight;
 		}
+		public static Pos getPosFromDir(Direction dir, Pos pos){
+			Pos newPos;
+			switch (dir) {
+			case NORTH:
+				newPos = new Pos(pos.x, pos.y+1);
+				break;
+			case EAST:
+				newPos = new Pos(pos.x+1, pos.y);
+				break;
+			case SOUTH:
+				newPos = new Pos(pos.x, pos.y-1);
+				break;
+			case WEST:
+				newPos = new Pos(pos.x-1, pos.y);
+				break;
+			default:
+				newPos = new Pos(0,0);
+				System.out.println("enum error");
+				break;
+			}
+		return newPos;
+		}
 	}
 	
 	
