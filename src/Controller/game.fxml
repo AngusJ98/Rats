@@ -66,7 +66,7 @@
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../resources/bomb.png" />
+                              <Image url="file:resources/bomb.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -81,7 +81,7 @@
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../resources/gasCan.png" />
+                              <Image url="file:resources/gasCan.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -96,7 +96,7 @@
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../resources/sterile.png" />
+                              <Image url="file:resources/sterile.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -111,7 +111,7 @@
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../resources/noEnt.png" />
+                              <Image url="file:resources/noEnt.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -126,7 +126,7 @@
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../resources/male.png" />
+                              <Image url="file:resources/male.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -141,7 +141,7 @@
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../resources/female.png" />
+                              <Image url="file:resources/female.png" />
                            </image>
                         </ImageView>
                      </graphic>
