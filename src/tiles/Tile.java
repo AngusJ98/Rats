@@ -173,17 +173,6 @@ public class Tile { // Does tile need to be an entity.Entity? Tiles don't
         this.hidesRats = hidesRats;
     }
 
-    public void checkCollision() {
-        ArrayList<Entity> occupants = new ArrayList<>(this.rats);
-        occupants.addAll(this.items);
-        if (occupants.size() >= 2) {
-            for (Entity o : occupants) {
-                for (Entity t : occupants) {
-                    o.onCollision(t);
-                }
-            }
-        }
-    }
 
     public boolean areItemsPlaceable() {
         return this.getType() == TileTypes.PATH;

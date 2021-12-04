@@ -18,7 +18,7 @@ public abstract class Entity {
     }
 
     public boolean isRat() {
-        return EntityType == entityType.RAT;
+        return this.getEntityType() == EntityType.RAT;
     }
     public Image getImage() {
         return image;
