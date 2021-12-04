@@ -197,24 +197,23 @@ public class GameRenderer {
     public void drawEntities(Entity[] entities) {
         for (int x = 0; x < Game.TileManager.getNumTileWidth(); x++) {
             for (int y = 0; y < Game.TileManager.getNumTileHeight(); y++) {
-                if(!Game.TileManager.getTile(new Pos(x, y)).getHidesRats()) {
-                    ImageView fill = new ImageView();
-                    fill.setFitHeight(this.tilePixelSize);
-                    fill.setFitWidth(this.tilePixelSize);
-                    entityBoard.add(fill, x, y);
-                }
+                ImageView fill = new ImageView();
+                fill.setFitHeight(this.tilePixelSize);
+                fill.setFitWidth(this.tilePixelSize);
+                entityBoard.add(fill, x, y);
             }
         }
         for (Entity entity : entities) {
-            ImageView pic = new ImageView();
-            pic.setImage(entity.getImage());
-            pic.setFitHeight(this.tilePixelSize);
-            pic.setFitWidth(this.tilePixelSize);
-            Pos position = entity.getPosition();
-            int x = position.x;
-            int y = position.y;
-            entityBoard.add(pic,x,y);
-
+            if(!Game.TileManager.getTile(entity.getPosition()).getHidesRats()) {
+                ImageView pic = new ImageView();
+                pic.setImage(entity.getImage());
+                pic.setFitHeight(this.tilePixelSize);
+                pic.setFitWidth(this.tilePixelSize);
+                Pos position = entity.getPosition();
+                int x = position.x;
+                int y = position.y;
+                entityBoard.add(pic, x, y);
+            }
         }
     }
 
