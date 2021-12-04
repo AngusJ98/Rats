@@ -9,5 +9,5 @@ public abstract class Item extends Entity {
         super(image, EntityType.ITEM, pos);
     }
     public abstract void onCollision();
-    public abstract void activateItem();
+    //public abstract void activateItem();
 }

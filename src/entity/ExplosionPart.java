@@ -7,8 +7,9 @@ public class ExplosionPart extends Item {
     private Image image;
 	private Direction direction;
     public ExplosionPart(Pos position, Direction direction) {
-		Image image = new Image("");
-        super(image, EntityType.ITEM, position, direction);
+        super(new Image(""), position);
+        this.direction = direction;
+
     }
 	public void tick() {
 		//bunch of switch cases to move the explosionpart in it's direction 
@@ -22,6 +23,7 @@ public class ExplosionPart extends Item {
         Game.RatManager.killSingleRat(target);
     }
 
+    public void onCollision(){};
     public void itemCollision(Entity target) {
         // Guessing we'll need a damage/destroy method in entity.Entity maybe?
     }

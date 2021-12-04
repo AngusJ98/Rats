@@ -9,18 +9,22 @@ public class FemaleGenderChange extends Item {
     private int timer;
 
     public FemaleGenderChange(Image image, Pos position) {
-        super(image, EntityType.ITEM, position);
+        super(image, position);
         timer = DEFAULT_TIME;
     }
 
     public FemaleGenderChange(Pos position, int timeLeft) {
-        super(new Image(""), EntityType.ITEM, position);
+        super(new Image(""), position);
         timer = timeLeft;
     }
 
     public void ratCollision(Rat target) {
-		target.setGender(RatTypes.FEMALE);
+        if(target instanceof BasicRat) {
+            target.setRatType(RatTypes.FEMALE);
+        }
 	}
+
+	public void onCollision(){}
 	public void itemCollision(Item target) {}
 	public void onPlacement() {}	
 	public void tick() {

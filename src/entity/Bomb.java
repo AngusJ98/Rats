@@ -19,7 +19,7 @@ public class Bomb extends Item{
     private int timer;
 
     public Bomb(Pos position) {
-        super(new Image(""), EntityType.ITEM, position);
+        super(new Image(""), position);
         timer = DEFAULT_BOMB_TIME;
     }
 
@@ -51,6 +51,7 @@ public class Bomb extends Item{
 
 	// shouldn't do anything
     @Override
+    public void onCollision(){};
     public void ratCollision(Rat target) {}
 	public void itemCollision(Item target) {}
 	public void onPlacement() {}	

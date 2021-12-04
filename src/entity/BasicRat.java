@@ -191,7 +191,7 @@ public class BasicRat extends Rat {
 			} else {
 				try {
 				Item item = (Item) entities.get(i);
-				item.activateItem();
+				//item.activateItem(); I don't know how we're doing this but it stops code compiling for now
 				} catch (Exception e) {
 					System.out.println("Rat tried to activate an item but could not cast to Item");
 				}
