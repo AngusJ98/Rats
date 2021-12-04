@@ -14,10 +14,20 @@ public class Game {
 	private static ArrayList<BasicRat> rats = new ArrayList<BasicRat>();
 	private static String levelPath;
 	private static GameRenderer runner;
+
+
 	private static Timer timer = new Timer();
 	private static int timeLeft = -1;
 	public Game() {
 
+	}
+
+	public static Timer getTimer() {
+		return timer;
+	}
+
+	public static void setTimer(Timer timer) {
+		Game.timer = timer;
 	}
 
 	public static void setRunner(GameRenderer runner) {
@@ -46,10 +56,10 @@ public class Game {
 	}
 
 	public static void checkVictory() {
-		System.out.println(timeLeft);
 		if (rats.size() == 0) {
 			System.out.println("VICTORY!!");
 			Game.timer.cancel();
+			Game.timer = null;
 			//TODO updatePlayerStats();
 			Platform.runLater(() -> Game.runner.victoryScreen());
 		} else if (timeLeft <= 0) {

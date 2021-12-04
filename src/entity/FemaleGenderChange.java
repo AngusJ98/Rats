@@ -9,12 +9,12 @@ public class FemaleGenderChange extends Item {
     private int timer;
 
     public FemaleGenderChange(Pos position) {
-        super(new Image(""), position);
+        super(new Image("File:resources/female.png"), position);
         timer = DEFAULT_TIME;
     }
 
     public FemaleGenderChange(Pos position, int timeLeft) {
-        super(new Image(""), position);
+        super(new Image("File:resources/female.png"), position);
         timer = timeLeft;
     }
 

@@ -56,7 +56,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <ToggleButton fx:id="bomb" mnemonicParsing="false" prefHeight="319.0" prefWidth="467.0">
+                  <ToggleButton fx:id="bomb" mnemonicParsing="false" prefHeight="319.0" prefWidth="467.0" selected="true">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
@@ -71,10 +71,7 @@
                         </ImageView>
                      </graphic>
                   </ToggleButton>
-                  <ToggleButton fx:id="poison" layoutX="15.0" layoutY="15.0" mnemonicParsing="false" prefHeight="319.0" prefWidth="467.0" GridPane.rowIndex="1">
-                     <toggleGroup>
-                        <ToggleGroup fx:id="itemToggle1" />
-                     </toggleGroup>
+                  <ToggleButton fx:id="gas" layoutX="15.0" layoutY="15.0" mnemonicParsing="false" prefHeight="319.0" prefWidth="467.0" toggleGroup="$itemToggle" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
@@ -86,10 +83,7 @@
                         </ImageView>
                      </graphic>
                   </ToggleButton>
-                  <ToggleButton fx:id="sterile" mnemonicParsing="false" prefHeight="319.0" prefWidth="467.0" GridPane.rowIndex="2">
-                     <toggleGroup>
-                        <ToggleGroup fx:id="itemToggle11" />
-                     </toggleGroup>
+                  <ToggleButton fx:id="sterile" mnemonicParsing="false" prefHeight="319.0" prefWidth="467.0" toggleGroup="$itemToggle" GridPane.rowIndex="2">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
@@ -101,10 +95,7 @@
                         </ImageView>
                      </graphic>
                   </ToggleButton>
-                  <ToggleButton fx:id="noEnt" mnemonicParsing="false" prefHeight="319.0" prefWidth="467.0" GridPane.rowIndex="3">
-                     <toggleGroup>
-                        <ToggleGroup fx:id="itemToggle12" />
-                     </toggleGroup>
+                  <ToggleButton fx:id="noEnt" mnemonicParsing="false" prefHeight="319.0" prefWidth="467.0" toggleGroup="$itemToggle" GridPane.rowIndex="3">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
@@ -116,10 +107,7 @@
                         </ImageView>
                      </graphic>
                   </ToggleButton>
-                  <ToggleButton fx:id="male" mnemonicParsing="false" prefHeight="319.0" prefWidth="467.0" GridPane.rowIndex="4">
-                     <toggleGroup>
-                        <ToggleGroup fx:id="itemToggle13" />
-                     </toggleGroup>
+                  <ToggleButton fx:id="male" mnemonicParsing="false" prefHeight="319.0" prefWidth="467.0" toggleGroup="$itemToggle" GridPane.rowIndex="4">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
@@ -131,10 +119,7 @@
                         </ImageView>
                      </graphic>
                   </ToggleButton>
-                  <ToggleButton fx:id="female" mnemonicParsing="false" prefHeight="319.0" prefWidth="467.0" GridPane.rowIndex="5">
-                     <toggleGroup>
-                        <ToggleGroup fx:id="itemToggle14" />
-                     </toggleGroup>
+                  <ToggleButton fx:id="female" mnemonicParsing="false" prefHeight="319.0" prefWidth="467.0" toggleGroup="$itemToggle" GridPane.rowIndex="5">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>

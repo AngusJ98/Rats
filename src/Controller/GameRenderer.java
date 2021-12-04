@@ -144,6 +144,11 @@ public class GameRenderer {
     }
 
     public void redrawEntities(Entity[] entities) {
+        ToggleButton select = (ToggleButton)itemToggle.getSelectedToggle();
+        if (select != null) {
+            System.out.println(select.getId());
+        }
+        System.out.println(itemToggle.getToggles());
         this.removeEntities();
         this.drawEntities(entities);
     }
@@ -180,8 +185,8 @@ public class GameRenderer {
                 b.setOnAction(new EventHandler<ActionEvent>() {
                     @Override public void handle(ActionEvent e) {
                         System.out.println("Poggers");
-                        int buttonX = GridPane.getRowIndex(b);
-                        int buttonY = GridPane.getColumnIndex(b);
+                        int buttonY = GridPane.getRowIndex(b);
+                        int buttonX = GridPane.getColumnIndex(b);
                         ToggleButton selectedButton = (ToggleButton)itemToggle.getSelectedToggle();
                         String itemString = selectedButton.getId();
                         Game.ItemManager.tryPlace(itemString, new Pos(buttonX, buttonY));
@@ -235,6 +240,8 @@ public class GameRenderer {
     public void returnToMenu() {
         try {
             Main.changeScene(Main.getMenuScene());
+            Game.getTimer().cancel();
+            Game.setTimer(null);
         } catch (Exception e) {
             e.printStackTrace();
             System.exit(1);
