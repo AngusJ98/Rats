@@ -5,6 +5,15 @@ import gameHandler.Pos;
 import java.util.ArrayList;
 import javafx.scene.image.Image;
 
+/**
+ *
+ <p> 1. File-name: Gas.java</p>
+ <p> 2. Creation Date: (N/A) </p>
+ <p> 3. Last modification date:</p>
+ <p> 4. Purpose of the program: Gas item implementation</p>
+ * @author Andrew
+ */
+
 public class Gas extends Item {
 	int gasNum = 0;
 	ArrayList<Pos> unvisitedTiles = new ArrayList<Pos>();
