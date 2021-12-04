@@ -14,6 +14,7 @@ public class Game {
 	private static ArrayList<BasicRat> rats = new ArrayList<BasicRat>();
 	private static String levelPath;
 	private static GameRenderer runner;
+	public static int score;
 
 
 	private static Timer timer = new Timer();
@@ -36,6 +37,7 @@ public class Game {
 
 	public void start() {
 		Game.runner.redrawBoard(this.createCombinedEntityList());
+		Game.score = 0;
 		System.out.println(this.rats.size());
 		System.out.println(Arrays.toString(this.createCombinedEntityList()));
 		this.startTimer();
@@ -116,12 +118,17 @@ public class Game {
 			rats.removeAll(ratsToKill);
 		}
 		public static void performRatActions() {
+			ArrayList<BasicRat> ratsToKill = new ArrayList<>();
 			for (BasicRat rat : rats) {
 				rat.move();
 				if (rat.getHP() <= 0) {
-
+					ratsToKill.add(rat);
 					//killSingleRat(rat);
 				}	
+			}
+			//Have to do this to avoid concurrency modification error
+			for (Rat toKill: rats) {
+				killSingleRat(toKill);
 			}
 			for (DeathRat deathRat : deathRats) {
 				deathRat.move();

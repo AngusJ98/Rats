@@ -11,13 +11,13 @@ public class MessageOfTheDay {
 
 	private static HttpURLConnection connection;
 	
-	public static String getMotd() {
+	private static String getInfoFromUrl(String urlStr) {
 		BufferedReader reader;
 		String line;
 		StringBuffer responseContent = new StringBuffer();
 		
 		try {
-			URL url = new URL("http://cswebcat.swansea.ac.uk/puzzle");
+			URL url = new URL(urlStr);
 			connection = (HttpURLConnection) url.openConnection();
 			
 			connection.setRequestMethod("GET");
@@ -40,9 +40,9 @@ public class MessageOfTheDay {
 				}
 				reader.close();
 			}
-			String unsolvedMessage = responseContent.toString();
-			return unsolvedMessage;
-			
+			String message = responseContent.toString();
+			return message;
+
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 			return "URL Error";
@@ -53,6 +53,65 @@ public class MessageOfTheDay {
 			connection.disconnect();
 		}
 		
+	}
+
+	private static String getSolution() {
+		String unsolvedMessage = getInfoFromUrl("http://cswebcat.swansea.ac.uk/puzzle");
+		char[] solutionArr = new char[unsolvedMessage.length()];
+		int shift = 1;
+		for (int i = 0; i < unsolvedMessage.length();i++) {
+			char newLetter;
+			if(i % 2 == 0) {
+				newLetter = shiftLetterBack(unsolvedMessage.charAt(i), shift);
+			} else {
+				newLetter = shiftLetterForward(unsolvedMessage.charAt(i), shift);
+			}
+			solutionArr[i] = newLetter;
+			shift++;
+
+		}
+		return (new String(solutionArr) + "CS-230");
+	}
+
+	private static char shiftLetterForward(char c, int shift) {
+		char next = c;
+		for (int i = 0; i < shift; i++) {
+			if (next == 'z') {
+				next = 'a';
+			} else if (next == 'Z') {
+				next = 'A';
+			} else {
+				//convert to int and add 1
+				int nextAsInt = (int) next;
+				next = (char) (nextAsInt + 1);
+			}
+		}
+		return next;
+	}
+
+	private static char shiftLetterBack(char c, int shift) {
+		char next = c;
+		for (int i = 0; i < shift; i++) {
+			if (next == 'a') {
+				next = 'z';
+			} else if (next == 'A') {
+				next = 'Z';
+			} else {
+				//conver
+				int nextAsInt = (int) next;
+				next = (char) (nextAsInt - 1);
+			}
+		}
+		return next;
+	}
+
+	public static String getMotd() {
+		System.out.println(getSolution());
+		System.out.println(getInfoFromUrl("http://cswebcat.swansea.ac.uk/puzzle"));
+		String solutionPart = getSolution();
+		solutionPart = solutionPart.length() + solutionPart;
+		System.out.println(solutionPart);
+		return getInfoFromUrl("http://cswebcat.swansea.ac.uk/message?solution=" + solutionPart);
 	}
 
 }
