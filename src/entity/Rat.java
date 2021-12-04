@@ -7,6 +7,19 @@ import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 
+/**
+ *
+ <p> 1. File-name: Rat.java</p>
+ <p> 2. Creation Date: (N/A) </p>
+ <p> 3. Last modification date:</p>
+ <p> 4. Purpose of the program: Rat Implementation</p>
+ * @author Andrew
+ */
+
+/**
+ * Types of directions rats can move in.
+ * North, Eat, South, West
+ */
 enum Direction {
 	NORTH, EAST, SOUTH, WEST;
 }
@@ -43,8 +56,13 @@ public abstract class Rat extends Entity {
 	}
 	public Direction getMoveDirection() {
 		return moveDirection;
-	}	
+	}
 
+
+	/**
+	 * 
+	 * @return
+	 */
 	public Direction getInverseMoveDirection() {
 		return Direction.values()[(moveDirection.ordinal()+2) % 4];
 	}	
