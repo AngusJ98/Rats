@@ -127,7 +127,7 @@ public abstract class Rat extends Entity {
 				chosenDirection = availablePaths.get(0);
 			} else {
 				//randomly chose a direction from the options available
-				chosenDirection = availablePaths.get((int) Math.random() * availablePaths.size());
+				chosenDirection = availablePaths.get((int) Math.random() * (availablePaths.size()+1));
 			}
 			moveDirection = chosenDirection;
 			setPosition(getPosFromDir(moveDirection,pos));
