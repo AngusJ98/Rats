@@ -54,26 +54,26 @@ public abstract class Rat extends Entity {
 			//	  check if there is no path in the direction of travel, if this is the case turn right and try again. 
 			//	  keep turning until a path is found (if all paths are blocked the rat will keep turning right indefinitely and it will be funny)
 
-			if (!TileManager.getPassableTile(getPos(moveDirection, pos))) {
+			if (!TileManager.getPassableTile(getPosFromDir(moveDirection, pos))) {
 				boolean tryLeftFirst = Math.random() < 0.5;
 				Direction leftDir = Direction.values()[((moveDirection.ordinal() + 3) % 4)];
 				Direction rightDir = Direction.values()[((moveDirection.ordinal() + 1) % 4)];
 				Direction backDir = Direction.values()[((moveDirection.ordinal() + 2) % 4)];
 
 				if (tryLeftFirst) {
-					if(TileManager.getPassableTile(getPos(leftDir, pos))){
+					if(TileManager.getPassableTile(getPosFromDir(leftDir, pos))){
 						this.moveDirection = leftDir;
-					} else if (TileManager.getPassableTile(getPos(rightDir, pos))) {
+					} else if (TileManager.getPassableTile(getPosFromDir(rightDir, pos))) {
 						this.moveDirection = rightDir;
-					} else if (TileManager.getPassableTile(getPos(backDir, pos))) {
+					} else if (TileManager.getPassableTile(getPosFromDir(backDir, pos))) {
 						this.moveDirection = backDir;
 					}
 				} else {
-					if(TileManager.getPassableTile(getPos(rightDir, pos))){
+					if(TileManager.getPassableTile(getPosFromDir(rightDir, pos))){
 						this.moveDirection = rightDir;
-					} else if (TileManager.getPassableTile(getPos(leftDir, pos))) {
+					} else if (TileManager.getPassableTile(getPosFromDir(leftDir, pos))) {
 						this.moveDirection = leftDir;
-					} else if (TileManager.getPassableTile(getPos(backDir, pos))) {
+					} else if (TileManager.getPassableTile(getPosFromDir(backDir, pos))) {
 						this.moveDirection = backDir;
 					}
 				}
@@ -86,8 +86,8 @@ public abstract class Rat extends Entity {
 				}
 			}*/
 			//only move if front tile is empty
-			if (TileManager.getPassableTile(getPos(moveDirection, pos))) {
-				setPosition(getPos(moveDirection,pos));
+			if (TileManager.getPassableTile(getPosFromDir(moveDirection, pos))) {
+				setPosition(getPosFromDir(moveDirection,pos));
 			}
 			movesLeft--;
 			//    move one square
@@ -97,7 +97,7 @@ public abstract class Rat extends Entity {
 		}
 		return true;
 	}
-	public Pos getPos(Direction dir, Pos pos){
+	public Pos getPosFromDir(Direction dir, Pos pos){
 		Pos newPos;
 		switch (dir) {
 			case NORTH:
