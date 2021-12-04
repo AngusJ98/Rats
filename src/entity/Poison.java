@@ -21,7 +21,8 @@ public class Poison extends Item{
 
 	@Override
     protected void ratCollision(Rat target) {
-        Game.RatManager.killSingleRat(target);        //Still needs the part where the poison is used up and removed from the path.
+        RatManager.killSingleRat(target);        
+		ItemManager.killItem(this);
     }
 	public void itemCollision(Item target) {}
 	public void onPlacement() {}	

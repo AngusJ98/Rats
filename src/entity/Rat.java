@@ -37,6 +37,10 @@ public abstract class Rat extends Entity {
 	public void setMoveSpeed(int moveSpeed) {
 		this.moveSpeed = moveSpeed;
 	}
+	public Direction getMoveDirection() {
+		return moveDirection;
+	}	
+		
 	public boolean move() {	
 		int movesLeft = moveSpeed;
 		//   if moveDirection = null, pick a direction from directions enum at random
@@ -60,7 +64,7 @@ public abstract class Rat extends Entity {
 				}
 			}
 			setPosition(directionTiles[moveDirection.ordinal()]);
-			movesLeft --;
+			movesLeft--;
 			//    move one square
 			/**   rats with a higher movespeed (baby rats or rats on crack will loop and 
 			 *    go through this process again so they do not end up inside walls) */				
@@ -68,6 +72,22 @@ public abstract class Rat extends Entity {
 		}
 		return true;
 	}
+	public boolean forceMove(int movesLeft, Direction direction) {
+		//forces the entity to move when it is not the rat's turn to move
+		//used by noEntrySign
+		moveDirection = direction;
+		while (movesLeft > 0) {
+			Pos northTile = new Pos(this.pos.x, this.pos.y + 1); 
+			Pos eastTile = new Pos(pos.x + 1, pos.y);
+			Pos southTile = new Pos(pos.x, pos.y - 1);
+			Pos westTile = new Pos(pos.x-1, pos.y);
+			Pos[] directionTiles = {northTile, eastTile, southTile, westTile};
+			setPosition(directionTiles[moveDirection.ordinal()]);
+			movesLeft--;
+		}		
+	}
+	
+	
 	public abstract void checkCurrentTile();
 	public Rat(RatTypes type, Image image, Pos pos) {
 		super(image, EntityType.RAT, pos);
