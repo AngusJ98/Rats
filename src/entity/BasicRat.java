@@ -81,17 +81,34 @@ public class BasicRat extends Rat {
         setTimeToBirth(timeToBirth);
     }
 
-
+    /**
+     * Setter for Time to Growth
+     * @param timeToGrowth
+     */
 	private void setTimeToGrowth(int timeToGrowth) {
 		this.timeToGrowth = timeToGrowth;
 	}
+
+    /**
+     * Setter for Num of Children
+     * @param numChildren
+     */
 	private void setNumChildren(int numChildren) {
 		this.numChildren = numChildren;
 	}
+
+    /**
+     * Setter for Time To Birth
+     * @param timeToBirth
+     */
 	private void setTimeToBirth(int timeToBirth){
         this.timeToBirth = timeToBirth;
     }
 
+    /**
+     * Setter for Gender
+     * @param gender
+     */
     public void setGender(RatTypes gender) {
         // Changing to male won't affect existing males because they won't have
         // babies anyway. Changing to female doesn't alter babies or time to
@@ -105,26 +122,50 @@ public class BasicRat extends Rat {
         }
     }
 
+    /**
+     * Setter for HP
+     * @param hitPoints
+     */
     public void setHP(int hitPoints) {
         this.hitPoints = hitPoints;
     }
 
+    /**
+     * Getter for Time to Growth
+     * @return the time it takes for the rat to grow.
+     */
     public int getTimeToGrowth() {
         return timeToGrowth;
     }
 
+    /**
+     * Getter for Num of Children
+     * @return the number of children the female rat has.
+     */
 	public int getNumChildren() {
 		return numChildren;
 	}
 
+    /**
+     * Getter for Hit Points
+     * @return the number of hit points the rats have.
+     */
     public int getHP() {
         return hitPoints;
     }
 
+    /**
+     * Getter for Time To Birth
+     * @return the time of birth
+     */
     public int getTimeToBirth() {
         return timeToBirth;
     }
 
+    /**
+     * Checks the current tile if any other entities are in it,
+     * then relevant actions are made if neccessary.
+     */
 	public void checkCurrentTile() {
 		ArrayList<Entity> entities = Game.TileManager.getEntities(pos);
 		for (int i = 0; i<entities.size(); i++) {
@@ -143,7 +184,7 @@ public class BasicRat extends Rat {
 							this.setNumChildren((int) (Math.random() * 10000)); 
 						} else {
 							basicRat.canMate = false;
-							basicRat.setNumChildren((int) (Math.random() * 10000)); 
+							basicRat.setNumChildren((int) (Math.random() * 10000));
 						}
 					}
 				}			
