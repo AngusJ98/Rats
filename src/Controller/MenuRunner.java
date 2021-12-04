@@ -7,10 +7,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import messageOfTheDay.MessageOfTheDay;
 import sun.audio.AudioStream;
 
 import java.io.File;
@@ -30,7 +32,11 @@ public class MenuRunner {
     public void initialize() {
         HBox table = new HBox(2);
         table.setAlignment(Pos.TOP_CENTER);
-
+        Alert motd = new Alert(Alert.AlertType.INFORMATION);
+        motd.setTitle("Message of the day!");
+        motd.setHeaderText("");
+        motd.setContentText(MessageOfTheDay.getMotd());
+        motd.showAndWait();
 
         table.setStyle("-fx-background-color:GREY");
 
