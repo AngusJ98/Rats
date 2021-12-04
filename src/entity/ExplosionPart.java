@@ -23,8 +23,7 @@ public class ExplosionPart extends Item {
         Game.RatManager.killSingleRat(target);
     }
 
-    public void onCollision(){};
-    public void itemCollision(Entity target) {
+    public void itemCollision(Item target) {
         // Guessing we'll need a damage/destroy method in entity.Entity maybe?
     }
 	public void onPlacement() {}	

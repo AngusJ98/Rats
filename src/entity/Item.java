@@ -16,7 +16,7 @@ public abstract class Item extends Entity {
 				ratCollision((Rat) target);
 				break;
 			case ITEM:
-				itemCollision((Item) target)
+				itemCollision((Item) target);
 				break;
 			}
 		}

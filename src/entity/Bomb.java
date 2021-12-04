@@ -51,7 +51,6 @@ public class Bomb extends Item{
 
 	// shouldn't do anything
     @Override
-    public void onCollision(){};
     public void ratCollision(Rat target) {}
 	public void itemCollision(Item target) {}
 	public void onPlacement() {}	

@@ -45,8 +45,10 @@ public class MessageOfTheDay {
 			
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
+			return "URL Error";
 		} catch (IOException e) {
 			e.printStackTrace();
+			return "IO Error";
 		} finally {
 			connection.disconnect();
 		}

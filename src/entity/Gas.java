@@ -57,8 +57,6 @@ public class Gas extends Item {
 		
 	}
 	@Override
-	public void onCollision(){};
-	public void activateItem(){}; //TODO this I guess
     public void ratCollision(Rat target) {}
 	public void itemCollision(Item target) {}
 	public void onPlacement() {}	
