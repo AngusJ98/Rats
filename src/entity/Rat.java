@@ -7,15 +7,14 @@ import javafx.scene.image.Image;
 
 enum Direction {
 	NORTH, EAST, SOUTH, WEST;
-
 }
 public abstract class Rat extends Entity {
 	protected boolean canMate;
 	protected boolean canMove;
 	protected RatTypes ratType;
 	protected int moveSpeed;
-	protected int score;
 	protected Direction moveDirection;
+	protected int score;
 	public boolean getMateStatus() {
 		return canMate;
 	}
@@ -43,7 +42,10 @@ public abstract class Rat extends Entity {
 	public Direction getMoveDirection() {
 		return moveDirection;
 	}	
-		
+	public Direction getInverseMoveDirection() {
+		return Direction.values()[(moveDirection.ordinal()+2) % 4]
+	}	
+	
 	public boolean move() {	
 		int movesLeft = moveSpeed;
 		//   if moveDirection = null, pick a direction from directions enum at random
@@ -51,10 +53,8 @@ public abstract class Rat extends Entity {
 			moveDirection = Direction.values()[((int)(Math.random() * 4))];
 		}		
 		while (movesLeft > 0) {
-
-			//	  check if there is no path in the direction of travel, if this is the case turn right and try again. 
-			//	  keep turning until a path is found (if all paths are blocked the rat will keep turning right indefinitely and it will be funny)
-
+	
+			/*						GUS'S MOVEMENT CODE	
 			if (!TileManager.getPassableTile(getPosFromDir(moveDirection, pos))) {
 				boolean tryLeftFirst = Math.random() < 0.5;
 				Direction leftDir = Direction.values()[((moveDirection.ordinal() + 3) % 4)];
@@ -78,7 +78,8 @@ public abstract class Rat extends Entity {
 						this.moveDirection = backDir;
 					}
 				}
-			}
+			}		
+			*/
 			/*while (!TileManager.getPassableTile(directionTiles[moveDirection.ordinal()])) {
 				if (moveDirection.ordinal() < 3) {
 					moveDirection = Direction.values()[moveDirection.ordinal()+1];
@@ -87,12 +88,42 @@ public abstract class Rat extends Entity {
 				}
 			}*/
 			//only move if front tile is empty
-			if (TileManager.getPassableTile(getPosFromDir(moveDirection, pos))) {
-				setPosition(getPosFromDir(moveDirection,pos));
+			
+			//      ANDREW'S MOVEMENT CODE (partially stolen from gus)
+			// check in front, left and right
+			Direction leftDir = Direction.values()[((moveDirection.ordinal() + 3) % 4)];
+			Direction rightDir = Direction.values()[((moveDirection.ordinal() + 1) % 4)];
+			ArrayList<Direction>() availablePaths = new ArrayList<Direction>();
+			//add directions to a list if they are passable
+			if (TileManager.getPassableTile(getPosFromDir(moveDirection))) {
+				availablePaths.add(moveDirection);	
 			}
+			if (TileManager.getPassableTile(getPosFromDir(leftDir))) {
+				availablePaths.add(leftDir);	
+			}
+			if (TileManager.getPassableTile(getPosFromDir(rightDir))) {
+				availablePaths.add(rightDir);	
+			}
+			Direction chosenDirection;
+			if (availablePaths.size() == 0) {	
+				//if no paths ahead, turn around
+				if (TileManager.getPassableTile(getPosFromDir(getInverseMoveDirection()))) {
+					chosenDirection = getInverseMoveDirection()
+				} else {
+					System.out.println("A rat got stuck and can't move")
+				}	
+			} else if (availablePaths.size == 1) {
+				//if only one path is available, take it
+				chosenDirection = availablePaths.get(0)
+			} else {
+				//randomly chose a direction from the options available
+				chosenDirection = availablePaths(math.random() * availablePaths.size())
+			}
+			moveDirection = chosenDirection;
+			setPosition(getPosFromDir(moveDirection,pos));
 			movesLeft--;
 			//    move one square
-			/**   rats with a higher movespeed (baby rats or rats on crack will loop and 
+			/**   rats with a higher movespeed (baby rats or rats under the influence of speedtiles will loop and 
 			 *    go through this process again so they do not end up inside walls) */				
 			checkCurrentTile();	
 		}
@@ -136,7 +167,7 @@ public abstract class Rat extends Entity {
 		return true; //Idk i just want to compile
 	}
 	
-
+	
 	public abstract void checkCurrentTile();
 	public Rat(RatTypes type, Image image, Pos pos) {
 		super(image, EntityType.RAT, pos);
@@ -159,7 +190,7 @@ public abstract class Rat extends Entity {
 			break;	
 		}		
 	}
-
+	
 	public int getScore() {
 		return score;
 	}
@@ -167,4 +198,5 @@ public abstract class Rat extends Entity {
 	public void setScore(int score) {
 		this.score = score;
 	}
+}
 }
