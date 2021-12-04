@@ -1,3 +1,5 @@
+import java.io.*;
+
 /**
  * <p> 1. File-name: Player.java</p>
  * <p> 2. Creation Date: 19/11/21 </p>
@@ -57,8 +59,24 @@ public class Player {
      *
      * @return the max level unlocked of a player
      */
+
     public int getMaxLevelUnlocked() {
         return maxLevelUnlocked;
     }
+
+
+    // this puts the score of the current player into a txt file
+    public void saveScore(){
+        Writer output = null;
+        File file = new File("scores.txt");
+        output = new BufferedWriter(new FileWriter(file,true));
+        output.write(playerName);
+        output.write(",");
+        output.write(maxLevelUnlocked);
+        output.write(",");
+        output.write("" + score);
+        output.write("\n");
+        output.close();
+        }
 
 }
