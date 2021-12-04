@@ -196,10 +196,12 @@ public class GameRenderer {
     public void drawEntities(Entity[] entities) {
         for (int x = 0; x < Game.TileManager.getNumTileWidth(); x++) {
             for (int y = 0; y < Game.TileManager.getNumTileHeight(); y++) {
-                ImageView fill = new ImageView();
-                fill.setFitHeight(this.tilePixelSize);
-                fill.setFitWidth(this.tilePixelSize);
-                entityBoard.add(fill,x,y);
+                if(!Game.TileManager.getTile(new Pos(x, y)).getHidesRats()) {
+                    ImageView fill = new ImageView();
+                    fill.setFitHeight(this.tilePixelSize);
+                    fill.setFitWidth(this.tilePixelSize);
+                    entityBoard.add(fill, x, y);
+                }
             }
         }
         for (Entity entity : entities) {
@@ -242,6 +244,6 @@ public class GameRenderer {
     }
 
     public void victoryScreen(){
-        
+
     }
 }
