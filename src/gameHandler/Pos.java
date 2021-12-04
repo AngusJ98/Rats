@@ -21,4 +21,13 @@ public class Pos {
         hash = hash * 31 + y;
         return hash;
     }
+
+
+    @Override
+    public String toString() {
+        return "Pos{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
+    }
 }

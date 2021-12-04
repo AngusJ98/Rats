@@ -16,7 +16,8 @@ public class NoEntrySign extends Item {
         super(new Image(""), position);
         hp = currentHp;
     }
-    public void ratCollision(Rat target) {	
+    public void ratCollision(Rat target) {
+    	/*
 		//invert the direction the rat is moving
 		int newDirectionIndex = target.getMoveDirection();
 		if (target.getMoveDirection.ordinal() > 2) {
@@ -29,7 +30,9 @@ public class NoEntrySign extends Item {
 		hp--;
 		if (hp <= 0) {
 			ItemManager.killItem(this);
-		}	
+		}
+
+    	 */
 	}
 	public void itemCollision(Item target) {}
 	public void onPlacement() {}	

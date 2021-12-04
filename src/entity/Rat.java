@@ -1,11 +1,13 @@
 package entity;
 
+import gameHandler.Game;
 import gameHandler.Game.*;
 import gameHandler.Pos;
 import javafx.scene.image.Image;
 
 enum Direction {
-	NORTH, EAST, SOUTH, WEST
+	NORTH, EAST, SOUTH, WEST;
+
 }
 public abstract class Rat extends Entity {
 	protected boolean canMate;
@@ -48,22 +50,45 @@ public abstract class Rat extends Entity {
 			moveDirection = Direction.values()[((int)(Math.random() * 4))];
 		}		
 		while (movesLeft > 0) {
-			//	  get adjacent tiles  
-			Pos northTile = new Pos(this.pos.x, this.pos.y + 1); //x, y, increasing number = further south/east on the board
-			Pos eastTile = new Pos(pos.x + 1, pos.y);
-			Pos southTile = new Pos(pos.x, pos.y - 1);
-			Pos westTile = new Pos(pos.x-1, pos.y);
-			Pos[] directionTiles = {northTile, eastTile, southTile, westTile};
+
 			//	  check if there is no path in the direction of travel, if this is the case turn right and try again. 
 			//	  keep turning until a path is found (if all paths are blocked the rat will keep turning right indefinitely and it will be funny)
-			while (!TileManager.getPassableTile(directionTiles[moveDirection.ordinal()])) {
+
+			if (!TileManager.getPassableTile(getPos(moveDirection, pos))) {
+				boolean tryLeftFirst = Math.random() < 0.5;
+				Direction leftDir = Direction.values()[((moveDirection.ordinal() + 3) % 4)];
+				Direction rightDir = Direction.values()[((moveDirection.ordinal() + 1) % 4)];
+				Direction backDir = Direction.values()[((moveDirection.ordinal() + 2) % 4)];
+
+				if (tryLeftFirst) {
+					if(TileManager.getPassableTile(getPos(leftDir, pos))){
+						this.moveDirection = leftDir;
+					} else if (TileManager.getPassableTile(getPos(rightDir, pos))) {
+						this.moveDirection = rightDir;
+					} else if (TileManager.getPassableTile(getPos(backDir, pos))) {
+						this.moveDirection = backDir;
+					}
+				} else {
+					if(TileManager.getPassableTile(getPos(rightDir, pos))){
+						this.moveDirection = rightDir;
+					} else if (TileManager.getPassableTile(getPos(leftDir, pos))) {
+						this.moveDirection = leftDir;
+					} else if (TileManager.getPassableTile(getPos(backDir, pos))) {
+						this.moveDirection = backDir;
+					}
+				}
+			}
+			/*while (!TileManager.getPassableTile(directionTiles[moveDirection.ordinal()])) {
 				if (moveDirection.ordinal() < 3) {
 					moveDirection = Direction.values()[moveDirection.ordinal()+1];
 				} else {
 					moveDirection = Direction.NORTH;
 				}
+			}*/
+			//only move if front tile is empty
+			if (TileManager.getPassableTile(getPos(moveDirection, pos))) {
+				setPosition(getPos(moveDirection,pos));
 			}
-			setPosition(directionTiles[moveDirection.ordinal()]);
 			movesLeft--;
 			//    move one square
 			/**   rats with a higher movespeed (baby rats or rats on crack will loop and 
@@ -71,6 +96,28 @@ public abstract class Rat extends Entity {
 			checkCurrentTile();	
 		}
 		return true;
+	}
+	public Pos getPos(Direction dir, Pos pos){
+		Pos newPos;
+		switch (dir) {
+			case NORTH:
+				newPos = new Pos(pos.x, pos.y+1);
+				break;
+			case EAST:
+				newPos = new Pos(pos.x+1, pos.y);
+				break;
+			case SOUTH:
+				newPos = new Pos(pos.x, pos.y-1);
+				break;
+			case WEST:
+				newPos = new Pos(pos.x-1, pos.y);
+				break;
+			default:
+				newPos = new Pos(0,0);
+				System.out.println("enum error");
+				break;
+		}
+		return newPos;
 	}
 	public boolean forceMove(int movesLeft, Direction direction) {
 		//forces the entity to move when it is not the rat's turn to move
@@ -84,7 +131,8 @@ public abstract class Rat extends Entity {
 			Pos[] directionTiles = {northTile, eastTile, southTile, westTile};
 			setPosition(directionTiles[moveDirection.ordinal()]);
 			movesLeft--;
-		}		
+		}
+		return true; //Idk i just want to compile
 	}
 	
 	
