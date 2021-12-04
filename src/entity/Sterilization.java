@@ -1,6 +1,7 @@
 package entity;
 
-import gameHandler.Pos;
+import gameHandler.*;
+
 import javafx.scene.image.Image;
 import java.util.ArrayList;
 
@@ -26,7 +27,7 @@ public class Sterilization extends Item{
 	public void tick() {
 		for (yoffset = -RANGE; yoffset < RANGE; yoffset++) {
 			for (xoffset = -RANGE; xoffset < RANGE; xoffset++) {
-				ArrayList<BasicRat> rats = RatManager.getRatsAtPos(new pos(this.pos.x + xoffset, this.pos.y + yoffset));
+				ArrayList<BasicRat> rats = Game.RatManager.getRatsAtPos(new pos(this.pos.x + xoffset, this.pos.y + yoffset));
 				if (!rats == null && rats.size > 0) {
 					for (BasicRat rat : rats) {
 						rat.setMateStatus(false);
