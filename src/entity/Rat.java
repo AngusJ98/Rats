@@ -60,13 +60,17 @@ public abstract class Rat extends Entity {
 
 
 	/**
-	 * 
-	 * @return
+	 *
+	 * @return inverse move direction
 	 */
 	public Direction getInverseMoveDirection() {
 		return Direction.values()[(moveDirection.ordinal()+2) % 4];
-	}	
-	
+	}
+
+	/**
+	 *
+	 * @return (Not Sure what this does)
+	 */
 	public boolean move() {	
 
 
@@ -156,6 +160,14 @@ public abstract class Rat extends Entity {
 		}
 		return true;
 	}
+
+	/**
+	 * Gets the new position as a result of the current positon and direction
+	 *
+	 * @param dir takes the direction to be looking towards
+	 * @param pos takes the current coordinates
+	 * @return returns the new coordinates
+	 */
 	public Pos getPosFromDir(Direction dir, Pos pos){
 		Pos newPos;
 		switch (dir) {
@@ -178,6 +190,8 @@ public abstract class Rat extends Entity {
 		}
 		return newPos;
 	}
+
+
 	public boolean forceMove(int movesLeft, Direction direction) {
 		//forces the entity to move when it is not the rat's turn to move
 		//used by noEntrySign

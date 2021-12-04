@@ -12,18 +12,15 @@ public class NoEntrySign extends Item {
         hp = MAX_HP;
     }
 
-    public void ratCollision(Rat target) {
-    	/*
+    public void ratCollision(Rat target) { 	
 		//invert the direction the rat is moving		
 		Direction newDirection = target.getInverseMoveDirection();
 		target.forceMove(1, newDirection);
 		//lower my hp
-		hp--;
-		if (hp <= 0) {
+		this.hp--;
+		if (this.hp <= 0) {
 			ItemManager.killItem(this);
-		}
-
-    	 */
+		}  
 	}
 	public void itemCollision(Item target) {}
 	public void onPlacement() {}	
