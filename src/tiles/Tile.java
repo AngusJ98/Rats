@@ -41,7 +41,7 @@ public class Tile { // Does tile need to be an entity.Entity? Tiles don't
                 setHidesRats(true);
                 setPassable(true);
                 setType(type);
-                this.image = new Image("file:resources/strightTun.png");
+                this.image = new Image("file:resources/tunnel.png");
                 break;
             case GRASS:
                 setHidesRats(false);
