@@ -18,13 +18,8 @@ public class NoEntrySign extends Item {
     }
     public void ratCollision(Rat target) {
     	/*
-		//invert the direction the rat is moving
-		int newDirectionIndex = target.getMoveDirection();
-		if (target.getMoveDirection.ordinal() > 2) {
-			newDirectionIndex -= 4;
-		}	
-		newDirectionIndex += 2;
-		Direction newDirection = Direction.values()[newDirectionIndex];
+		//invert the direction the rat is moving		
+		Direction newDirection = target.getInverseMoveDirection();
 		target.forceMove(1, newDirection);
 		//lower my hp
 		hp--;
