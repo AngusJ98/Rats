@@ -1,3 +1,11 @@
+package entity;
+
+import java.util.ArrayList;
+
+import gameHandler.Game;
+import gameHandler.Pos;
+import javafx.scene.image.Image;
+
 /**
  *
  <p> 1. File-name: Basic Rat.java</p>
@@ -6,14 +14,6 @@
  <p> 4. Purpose of the program: Basic Rat Implementation</p>
  * @author Andrew
  */
-
-package entity;
-
-import java.util.ArrayList;
-
-import gameHandler.Game;
-import gameHandler.Pos;
-import javafx.scene.image.Image;
 
 public class BasicRat extends Rat {
     private static final int MIN_GROWTH_TIME = 1000;
@@ -34,8 +34,8 @@ public class BasicRat extends Rat {
      * @param image takes in the image of the rat
      * @param pos takes coordinates of the position of the rat.
      */
-    public BasicRat(RatTypes type, Image image, Pos pos) {
-        super(type, image, pos);
+    public BasicRat(RatTypes type,  Pos pos) {
+        super(type, pos);
         setHP(ADULT_MAX_HP);
         setTimeToBirth(0);
         setScore(10);
@@ -47,6 +47,8 @@ public class BasicRat extends Rat {
                 break;
             case FEMALE:
                 setNumChildren(0);
+                break;
+            case MALE:
                 break;
             default:
                 break;
@@ -73,7 +75,7 @@ public class BasicRat extends Rat {
     public BasicRat(RatTypes type, boolean canMate, boolean canMove,
                     int moveSpeed, int timeToGrowth, int numChildren,
                     int timeToBirth, int hp, Pos position, Image image) {
-        super(type, image, position);
+        super(type, position);
         setMateStatus(canMate);
         setMoveStatus(canMove);
         setMoveSpeed(moveSpeed);
@@ -81,6 +83,7 @@ public class BasicRat extends Rat {
         setNumChildren(numChildren);
         setTimeToBirth(timeToBirth);
         setHP(50);
+        this.image = image;
     }
 
     /**
@@ -123,7 +126,23 @@ public class BasicRat extends Rat {
             setRatType(gender);
         }
     }
-
+    public void ratActions() {
+        if (this.getRatType() == RatTypes.BABY) {
+            System.out.println(timeToGrowth);
+            timeToGrowth--;
+        }
+        if (this.getRatType() == RatTypes.BABY && this.timeToGrowth <= 0) {
+            RatTypes gender;
+            if (Math.random() < 0.5) {
+                gender = RatTypes.FEMALE;
+            } else {
+                gender = RatTypes.MALE;
+            }
+            BasicRat grownRat = new BasicRat(gender, this.getPosition());
+            Game.getRats().add(grownRat);
+            Game.getRats().remove(this);
+        }
+    }
     /**
      * Setter for HP
      * @param hitPoints

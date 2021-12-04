@@ -52,7 +52,7 @@
       "gender": "BABY",
       "canMate": false,
       "canMove": true,
-      "moveSpeed": 1,
+      "moveSpeed": 2,
       "timeToGrowth": 60,
       "numChildren": 0,
       "timeToBirth": 0,
@@ -65,7 +65,7 @@
     "mSexChange": [], "fSexChange": [], "noEntry": [], "deathRat": []
   },
   "levelStats": {
-    "timeLeft": 120,
+    "timeLeft": 10000,
     "ratLimit": 10,
     "bombFreq": 1, "gasFreq": 2, "steriliseFreq": 2, "poisonFreq": 3,
     "mSexChangeFreq": 4, "fSexChangeFreq": 4, "noEntryFreq": 4, "deathRatFreq": 1
