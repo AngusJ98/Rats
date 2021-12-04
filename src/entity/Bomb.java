@@ -53,10 +53,21 @@ public class Bomb extends Item{
 
     // if anyone renames this method to something more sensible
     // i will personally feel very offended
+
+    /**
+     * Method for the explosion of the Bomb?
+     * BOOM!!!!!!!!!!!!
+     */
     private void boom() {
         
     }
 
+    /**
+     * Method for the ticking of the bomb
+     * Stars decremental timer,
+     * if it reaches zero,
+     * the bomb explodes.
+     */
     public void tick() {
         timer--;
 		if (timer <= 0) { //idk how you're envisioning this working but without this if statement the bomb detonates instantly
@@ -66,7 +77,12 @@ public class Bomb extends Item{
 
     //Each bomb should display a count down: 4, 3, 2, 1.
 	// god damn i hate java so much look at this shit
-    public int getSeconds() {      
+
+    /**
+     * Gets how many seconds are left for the bomb?
+     * @return
+     */
+    public int getSeconds() {
         return (int) Math.ceil((float) timer / TICKS_PER_SECOND);
     }
 
