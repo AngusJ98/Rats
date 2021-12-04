@@ -212,9 +212,18 @@ public abstract class Rat extends Entity {
 		}
 		return true; //Idk i just want to compile
 	}
-	
-	
+
+	/**
+	 * Checks Current Tile
+	 * Work in progress?
+	 */
 	public abstract void checkCurrentTile();
+
+	/**
+	 * 1st Constructor, creates an instance of a rat
+	 * @param type takes in the type of rat
+	 * @param pos takes in the position of the rat
+	 */
 	public Rat(RatTypes type, Pos pos) {
 		super(new Image("File:resources/male.png"), EntityType.RAT, pos);
 		setScore(0);
@@ -249,11 +258,19 @@ public abstract class Rat extends Entity {
 			break;	
 		}		
 	}
-	
+
+	/**
+	 * gets score
+	 * @return score
+	 */
 	public int getScore() {
 		return score;
 	}
 
+	/**
+	 * set score
+	 * @param score
+	 */
 	public void setScore(int score) {
 		this.score = score;
 	}
