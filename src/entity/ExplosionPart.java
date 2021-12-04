@@ -6,8 +6,9 @@ import javafx.scene.image.Image;
 public class ExplosionPart extends Item {
     private Image image;
 	private Direction direction;
-    public ExplosionPart(Image image, Pos position) {
-        super(image, EntityType.ITEM, position);
+    public ExplosionPart(Pos position, Direction direction) {
+		Image image = new Image("");
+        super(image, EntityType.ITEM, position, direction);
     }
 	public void tick() {
 		//bunch of switch cases to move the explosionpart in it's direction 

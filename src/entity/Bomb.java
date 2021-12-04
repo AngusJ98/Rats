@@ -5,8 +5,16 @@ import gameHandler.Pos;
 import javafx.scene.image.Image;
 
 public class Bomb extends Item{
+	//=========================================IMPORTANT========================================
+	// bomb shouldn't have the ability to kill, but it will spawn bombparts that kill on contact
+    // bomb itsself is essentially just a glorified countdown timer
+	// all it needs is the tick() and boom() methods
+    //==========================================================================================	
     public static final int DEFAULT_BOMB_TIME = 4000;
-    public static final int TICKS_PER_SECOND = 1000;
+    public static final int TICKS_PER_SECOND = 1000; 
+	//1000 tps is very, very fast. For reference, minecraft uses 20 tps and 
+	//i expect a tick rate of 1-5 ticks per second would suit the rat game better
+	//unless you meant milliseconds per tick?
     private int range;
     private int timer;
 
@@ -22,29 +30,22 @@ public class Bomb extends Item{
 
 
 
-	//=========================================IMPORTANT========================================
-	// bomb shouldn't have the ability to kill, but it will spawn bombparts that kill on contact
-    // bomb itsself is essentially just a glorified countdown timer
-	// all it needs is the tick() and boom() methods
-    //==========================================================================================	
-
-
-
     // if anyone renames this method to something more sensible
     // i will personally feel very offended
     private void boom() {
-        // create 4 explosionparts, 1 for each direction 
-		// remove self from board
+        
     }
 
     public void tick() {
         timer--;
-        boom();
+		if (timer <= 0) { //idk how you're envisioning this working but without this if statement the bomb detonates instantly
+			boom();
+		}		
     }
 
     //Each bomb should display a count down: 4, 3, 2, 1.
-    public int getSeconds() {
-        // god damn i hate java so much look at this shit
+	// god damn i hate java so much look at this shit
+    public int getSeconds() {      
         return (int) Math.ceil((float) timer / TICKS_PER_SECOND);
     }
 

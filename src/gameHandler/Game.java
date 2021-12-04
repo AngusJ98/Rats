@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.*;
 
 public class Game {	
-	//this is a pretty static way of doing things, but it's very functional
+	//this is a pretty static way of doing things, but it just works
 	private static ArrayList<BasicRat> rats = new ArrayList<BasicRat>();
 	private static String levelPath;
 	private static GameRenderer runner;
@@ -85,13 +85,14 @@ public class Game {
 			rats.removeAll(ratsToKill);
 		}
 		public static void performRatActions() {
-			for (Rat rat : rats) {
+			for (BasicRat rat : rats) {
 				rat.move();
+				if (rat.getHP() <= 0) {
+					killSingleRat(rat)
+				}	
 			}
-			for (int i = 0; i < deathRats.size(); i++) {
-				//do metal rat shit
-				//move
-				//process rat kill requests
+			for (DeathRat deathRat : rats) {
+				deathRat.move();
 			}
 		}		
 	}
