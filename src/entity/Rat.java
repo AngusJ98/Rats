@@ -114,6 +114,9 @@ public abstract class Rat extends Entity {
 			if (TileManager.getPassableTile(getPosFromDir(rightDir, this.pos))) {
 				availablePaths.add(rightDir);	
 			}
+			if(this.getRatType() == RatTypes.FEMALE) {
+				System.out.println(availablePaths);
+			}
 			Direction chosenDirection = this.moveDirection;
 			if (availablePaths.size() == 0) {	
 				//if no paths ahead, turn around
@@ -127,7 +130,7 @@ public abstract class Rat extends Entity {
 				chosenDirection = availablePaths.get(0);
 			} else {
 				//randomly chose a direction from the options available
-				chosenDirection = availablePaths.get((int) Math.random() * (availablePaths.size()+1));
+				chosenDirection = availablePaths.get((int) (Math.random() * (availablePaths.size()+1)));
 			}
 			moveDirection = chosenDirection;
 			setPosition(getPosFromDir(moveDirection,pos));
