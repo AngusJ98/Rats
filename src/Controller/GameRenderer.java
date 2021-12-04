@@ -4,6 +4,7 @@ import gameHandler.Game;
 import gameHandler.Pos;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -240,10 +241,24 @@ public class GameRenderer {
     }
 
     public void lossScreen() {
-
+        try {
+            Parent gameScreen = FXMLLoader.load(getClass().getResource("defeat.fxml"));
+            Scene gameScene = new Scene(gameScreen);
+            Main.changeScene(gameScene);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
     }
 
     public void victoryScreen(){
-
+        try {
+            Parent gameScreen = FXMLLoader.load(getClass().getResource("victory.fxml"));
+            Scene gameScene = new Scene(gameScreen);
+            Main.changeScene(gameScene);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
     }
 }

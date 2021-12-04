@@ -48,6 +48,7 @@ public class Game {
 		if (rats.size() == 0) {
 			System.out.println("VICTORY!!");
 			Game.timer.cancel();
+			//TODO updatePlayerStats();
 			Game.runner.victoryScreen();
 		} else if (timeLeft <= 0) {
 			System.out.println("DEFEAT :c");
