@@ -14,6 +14,7 @@ public abstract class Rat extends Entity {
 	protected boolean canMove;
 	protected RatTypes ratType;
 	protected int moveSpeed;
+	protected int score;
 	protected Direction moveDirection;
 	public boolean getMateStatus() {
 		return canMate;
@@ -135,11 +136,11 @@ public abstract class Rat extends Entity {
 		return true; //Idk i just want to compile
 	}
 	
-	
+
 	public abstract void checkCurrentTile();
 	public Rat(RatTypes type, Image image, Pos pos) {
 		super(image, EntityType.RAT, pos);
-
+		setScore(0);
 		setRatType(type);
 		setMoveStatus(true);
 		moveDirection = Direction.NORTH;
@@ -157,5 +158,13 @@ public abstract class Rat extends Entity {
 			setMoveSpeed(1);
 			break;	
 		}		
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
 	}
 }

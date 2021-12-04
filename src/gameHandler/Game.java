@@ -31,6 +31,9 @@ public class Game {
 	public static void setRunner(GameRenderer runner) {
 		Game.runner = runner;
 	}
+	public static void addScore(int addition) {
+		Game.score += addition;
+	}
 
 	public void start() {
 		Game.runner.redrawBoard(this.createCombinedEntityList());
@@ -103,6 +106,7 @@ public class Game {
 		}		
 		public static boolean killSingleRat(Rat rat) { //so i made this method for when we need to kill individual rats
 			if (rats.contains(rat)) {
+				Game.addScore(rat.getScore());
 				rats.remove(rat);
 				return true;
 			} else if (deathRats.contains(rat)) {
@@ -119,6 +123,7 @@ public class Game {
 			ArrayList<BasicRat> ratsToKill = new ArrayList<>();
 			for (BasicRat rat : rats) {
 				rat.move();
+				rat.updateScore();
 				if (rat.getHP() <= 0) {
 					ratsToKill.add(rat);
 					//killSingleRat(rat);

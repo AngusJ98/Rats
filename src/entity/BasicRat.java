@@ -20,7 +20,6 @@ public class BasicRat extends Rat {
     private static final int GROWTH_MULTIPLIER = 4000;
     private static final int ADULT_MAX_HP = 100;
     private static final int BABY_MAX_HP = 50;
-    private int score = 10;
 	protected int hitPoints;
 	private int timeToGrowth; 
 	private int numChildren; //if this is above zero, implies the rat is pregnant
@@ -39,6 +38,7 @@ public class BasicRat extends Rat {
         super(type, image, pos);
         setHP(ADULT_MAX_HP);
         setTimeToBirth(0);
+        setScore(10);
         switch (type) {
             case BABY:
                 timeToGrowth = (int) (Math.random() * GROWTH_MULTIPLIER) + MIN_GROWTH_TIME; //ms to growth (min 1000, max 5000)
@@ -162,6 +162,10 @@ public class BasicRat extends Rat {
      */
     public int getTimeToBirth() {
         return timeToBirth;
+    }
+
+    public void updateScore() {
+        this.setScore(this.getNumChildren() * 10);
     }
 
     /**
