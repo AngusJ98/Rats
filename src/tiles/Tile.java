@@ -1,3 +1,11 @@
+package tiles;
+
+import java.util.ArrayList;
+
+import entity.Entity;
+import entity.Rat;
+import javafx.scene.image.Image;
+
 /**
  * <p> 1. File-name: Tile.java</p>
  * <p> 2. Creation Date: XX/XX/XX </p>
@@ -7,14 +15,6 @@
  * @author ??
  */
 //whoever`s class this is please fill in missing information in Javadoc
-package tiles;
-
-import java.util.ArrayList;
-
-import entity.Entity;
-import entity.Rat;
-import javafx.scene.image.Image;
-
 public class Tile { // Does tile need to be an entity.Entity? Tiles don't
     // move or perform any actions etc.
     private boolean isPassable;
@@ -74,8 +74,6 @@ public class Tile { // Does tile need to be an entity.Entity? Tiles don't
 
     /**
      * Method used to return the image of a tile
-     * <p> no side-effects</p>
-     * <p> not referentially transparent</p>
      *
      * @return the image of any given tile
      */
@@ -85,8 +83,6 @@ public class Tile { // Does tile need to be an entity.Entity? Tiles don't
 
     /**
      * Method used to return the type of tile
-     * <p> no side-effects</p>
-     * <p> not referentially transparent</p>
      *
      * @return the type of tile
      */
@@ -96,8 +92,6 @@ public class Tile { // Does tile need to be an entity.Entity? Tiles don't
 
     /**
      * Method used to set the type of tile
-     * <p> no side-effects</p>
-     * <p> not referentially transparent</p>
      *
      * @param type the type of tile
      */
@@ -107,8 +101,6 @@ public class Tile { // Does tile need to be an entity.Entity? Tiles don't
 
     /**
      * Method used to check if the tile is passable
-     * <p> no side-effects</p>
-     * <p> not referentially transparent</p>
      *
      * @return true if the tile is passable, else false
      */
@@ -118,8 +110,6 @@ public class Tile { // Does tile need to be an entity.Entity? Tiles don't
 
     /**
      * Method used to set a tile to be Passable
-     * <p> no side-effects</p>
-     * <p> not referentially transparent</p>
      *
      * @param isPassable whether a tile is passable eg.T/F
      */
@@ -128,36 +118,43 @@ public class Tile { // Does tile need to be an entity.Entity? Tiles don't
     }
 
     /**
-     * @return
+     * Method used to return all the items in the Arraylist
+     *
+     * @return all the items in the ArrayList
      */
     public ArrayList<Entity> getItems() {
         return items;
     }
 
     /**
-     * @param items
+     * Method used to set the items in the Arraylist
+     *
+     * @param items list of items
      */
     public void setItems(ArrayList<Entity> items) {
         this.items = items;
     }
 
     /**
+     * Method used to add an item to items
      *
-     * @param item
+     * @param item a single item to be added
      */
     public void addItem(Entity item) {
         this.items.add(item);
     }
 
     /**
+     * Method used to remove a specific item from items
      *
-     * @param item
+     * @param item a single item to be removed
      */
     public void removeItem(Entity item) {
         this.items.remove(item);
     }
 
     /**
+     * Method
      *
      * @return
      */
@@ -166,7 +163,6 @@ public class Tile { // Does tile need to be an entity.Entity? Tiles don't
     }
 
     /**
-     *
      * @param hidesRats
      */
     private void setHidesRats(boolean hidesRats) {
@@ -186,10 +182,22 @@ public class Tile { // Does tile need to be an entity.Entity? Tiles don't
         }
     }
     */
+
+    /**
+     * Method used to check if items are placeable
+     *
+     * @return true or false depending on whether the tile type is path or not
+     */
     public boolean areItemsPlaceable() {
         return this.getType() == TileTypes.PATH;
     }
 
+    /**
+     * Method used to represent tiles as single letters
+     *
+     * @param typeLetter represents different tiles
+     * @return typeLetter as the individual letters for each case
+     */
     public static Tile createTileFromLetter(char typeLetter) {
         TileTypes tileType = TileTypes.UNKNOWN;
         switch (typeLetter) {
