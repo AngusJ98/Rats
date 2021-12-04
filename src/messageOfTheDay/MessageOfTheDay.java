@@ -40,7 +40,8 @@ public class MessageOfTheDay {
 				}
 				reader.close();
 			}
-			System.out.println(responseContent.toString());
+			String unsolvedMessage = responseContent.toString();
+			System.out.println(unsolvedMessage);
 			
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
