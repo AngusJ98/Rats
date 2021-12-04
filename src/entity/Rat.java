@@ -221,4 +221,4 @@ public abstract class Rat extends Entity {
 		this.score = score;
 	}
 }
-}
+
