@@ -15,7 +15,6 @@ public class Game {
 	private static String levelPath;
 	private static GameRenderer runner;
 
-
 	private static Timer timer = new Timer();
 	private static int timeLeft = -1;
 	public Game() {
@@ -25,11 +24,9 @@ public class Game {
 	public static Timer getTimer() {
 		return timer;
 	}
-
 	public static void setTimer(Timer timer) {
 		Game.timer = timer;
 	}
-
 	public static void setRunner(GameRenderer runner) {
 		Game.runner = runner;
 	}
@@ -40,7 +37,6 @@ public class Game {
 		System.out.println(Arrays.toString(this.createCombinedEntityList()));
 		this.startTimer();
     }
-
     private void startTimer() {
 		Game.timer = new Timer();
 		TimerTask task = new TimerTask() {
@@ -54,7 +50,6 @@ public class Game {
 		};
 		timer.scheduleAtFixedRate(task, 1000, 1000);
 	}
-
 	public static void checkVictory() {
 		if (rats.size() == 0) {
 			System.out.println("VICTORY!!");
@@ -69,8 +64,6 @@ public class Game {
 			Platform.runLater(() -> Game.runner.lossScreen());
 		}
 	}
-
-
 	private Entity[] createCombinedEntityList() {
 		ArrayList<Entity> entities = new ArrayList<>();
 		entities.addAll(Game.rats);
@@ -128,6 +121,8 @@ public class Game {
 			}
 		}		
 	}
+	
+	
 	private static HashMap<Pos, Tile> tiles = new HashMap<Pos, Tile>();
 	public static class TileManager {
 		private static int numTileWidth = 0;
@@ -157,38 +152,58 @@ public class Game {
 			TileManager.numTileHeight = numTileHeight;
 		}
 	}
-	private static HashMap<Pos, Item> items = new HashMap<Pos, Item>();
+	
+	
+	private static ArrayList<Item> items = new ArrayList<Item>(); //should've made this an Arraylist before sorry
 	public static class ItemManager {
 		public static void tryPlace(String itemString, Pos pos) {
 			if (true /*TODO Stock check here*/) {
+				Item placedItem;
 				System.out.println(itemString);
 				switch (itemString) {
+					//TODO: call onPlacement() whenever an item is placed					
 					case "bomb":
-						Game.items.put(pos, new Bomb(pos));
+						placedItem = new Bomb(pos);
+						items.add(placedItem);
 						break;
 					case "gas":
-						Game.items.put(pos, new Gas(pos));
+						placedItem = new Gas(pos);
+						items.add(placedItem);
 						break;
 					case "sterile":
-						Game.items.put(pos, new Sterilization(pos));
+						placedItem = new Sterilization(Pos);
+						items.add(placedItem);
 						break;
 					case "noEnt":
-						Game.items.put(pos, new NoEntrySign(pos));
+						placedItem = new NoEntrySign(pos);
+						items.add(placedItem);
 						break;
 					case "male":
-						Game.items.put(pos, new MaleGenderChange(pos));
+						placedItem = new MaleGenderChange(pos);
+						items.add(placedItem);
 						break;
 					case "female":
-						Game.items.put(pos, new FemaleGenderChange(pos));
+						placedItem = new FemaleGenderChange(pos);
+						items.add(placedItem);
 						break;
 					case "deathRat":
+						//not using placedItem here cause deathrat doesn't inherit from entity
 						RatManager.deathRats.add(new DeathRat(pos));
 						break;
 				}
+				if (!placedItem == null) { 
+					placedItem.onPlacement();
+				}
 			}
 		}
+		public static void killItem(Item item) {
+			if (items.contains(item)) {
+				items.remove(item); 
+			}	
+		}
 	}
-		
+	
+	
 	public static void main(String[] args) {
 		Game game = new Game();
 		// Runner runner = new Runner(); Runner is not needed and will be loaded as part of the javafx stuff so no need to worry about that
