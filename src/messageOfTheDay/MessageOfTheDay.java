@@ -11,7 +11,7 @@ public class MessageOfTheDay {
 
 	private static HttpURLConnection connection;
 	
-	public static void main(String[] args) {
+	public static String getMotd() {
 		BufferedReader reader;
 		String line;
 		StringBuffer responseContent = new StringBuffer();
@@ -41,7 +41,7 @@ public class MessageOfTheDay {
 				reader.close();
 			}
 			String unsolvedMessage = responseContent.toString();
-			System.out.println(unsolvedMessage);
+			return unsolvedMessage;
 			
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
