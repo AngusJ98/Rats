@@ -7,7 +7,6 @@ public class SterilizationPart extends Item{
 	public SterilizationPart(Pos pos) {
 		super(new Image(""), pos);
 	}
-
 	public void onPlacement() {}	
 	public void tick() {}
 	public void activateItem(){};
