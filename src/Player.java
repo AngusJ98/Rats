@@ -68,7 +68,7 @@ public class Player {
     // this puts the score of the current player into a txt file
     public void saveScore(){
         Writer output = null;
-        File file = new File("scores.txt");
+        File file = new File("profile.txt");
         output = new BufferedWriter(new FileWriter(file,true));
         output.write(playerName);
         output.write(",");
