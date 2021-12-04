@@ -180,8 +180,8 @@ public class GameRenderer {
                 b.setOnAction(new EventHandler<ActionEvent>() {
                     @Override public void handle(ActionEvent e) {
                         System.out.println("Poggers");
-                        int buttonX = GridPane.getRowIndex(b.getParent());
-                        int buttonY = GridPane.getColumnIndex(b.getParent());
+                        int buttonX = GridPane.getRowIndex(b);
+                        int buttonY = GridPane.getColumnIndex(b);
                         ToggleButton selectedButton = (ToggleButton)itemToggle.getSelectedToggle();
                         String itemString = selectedButton.getId();
                         ItemManager.tryPlace(itemString, buttonX ,buttonY);
@@ -190,9 +190,9 @@ public class GameRenderer {
                 });
             }
             buttonBoard.add(b,x,y);
+
         }
     }
-
 
 
     public void drawEntities(Entity[] entities) {

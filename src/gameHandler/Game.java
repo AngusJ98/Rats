@@ -32,28 +32,31 @@ public class Game {
     }
 
     private void startTimer() {
-
+		Game.timer = new Timer();
 		TimerTask task = new TimerTask() {
 			@Override
 			public void run() {
 				RatManager.performRatActions();
 				Platform.runLater(() -> runner.redrawEntities(createCombinedEntityList()));
 				Game.checkVictory();
+				timeLeft--;
 			}
 		};
 		timer.scheduleAtFixedRate(task, 1000, 1000);
 	}
 
 	public static void checkVictory() {
+		System.out.println(timeLeft);
 		if (rats.size() == 0) {
 			System.out.println("VICTORY!!");
 			Game.timer.cancel();
 			//TODO updatePlayerStats();
-			Game.runner.victoryScreen();
+			Platform.runLater(() -> Game.runner.victoryScreen());
 		} else if (timeLeft <= 0) {
 			System.out.println("DEFEAT :c");
 			Game.timer.cancel();
-			Game.runner.lossScreen();
+			Game.timer = null;
+			Platform.runLater(() -> Game.runner.lossScreen());
 		}
 	}
 
@@ -104,7 +107,8 @@ public class Game {
 			for (BasicRat rat : rats) {
 				rat.move();
 				if (rat.getHP() <= 0) {
-					killSingleRat(rat);
+
+					//killSingleRat(rat);
 				}	
 			}
 			for (DeathRat deathRat : deathRats) {
