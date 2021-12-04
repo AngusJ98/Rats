@@ -6,10 +6,10 @@ import javafx.scene.image.Image;
 
 /**
  *
- <p> 1. File-name: Basic Rat.java</p>
+ <p> 1. File-name: Bomb.java</p>
  <p> 2. Creation Date: (N/A) </p>
  <p> 3. Last modification date: </p>
- <p> 4. Purpose of the program: Basic Rat Implementation</p>
+ <p> 4. Purpose of the program: Bomb Implementation</p>
  * @author ??
  */
 
