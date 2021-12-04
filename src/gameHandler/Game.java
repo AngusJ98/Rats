@@ -199,7 +199,7 @@ public class Game {
 				break;
 			}
 		return newPos;
-		}
+		}		
 	}
 	
 	
@@ -245,6 +245,9 @@ public class Game {
 				}
 			}
 		}
+		public static void addItem(Item item) {
+			items.add(item);
+		}	
 		public static void killItem(Item item) {
 			if (items.contains(item)) {
 				items.remove(item); 

@@ -59,7 +59,11 @@ public class Bomb extends Item{
      * BOOM!!!!!!!!!!!!
      */
     private void boom() {
-        
+		Game.ItemManager.addItem(new ExplosionPart(this.pos, NORTH))
+		Game.ItemManager.addItem(new ExplosionPart(this.pos, EAST))
+		Game.ItemManager.addItem(new ExplosionPart(this.pos, SOUTH))
+		Game.ItemManager.addItem(new ExplosionPart(this.pos, WEST))
+		Game.ItemManager.killItem(this)
     }
 
     /**
@@ -69,8 +73,8 @@ public class Bomb extends Item{
      * the bomb explodes.
      */
     public void tick() {
-        timer--;
-		if (timer <= 0) { //idk how you're envisioning this working but without this if statement the bomb detonates instantly
+        timer-= 100;
+		if (timer <= 0) { 
 			boom();
 		}		
     }

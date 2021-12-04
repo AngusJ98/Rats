@@ -29,8 +29,7 @@ public class ExplosionPart extends Item {
 		} else {
 			//if not passable kill me
 			Game.ItemManager.killItem(this);
-		}	
-	
+		}		
 	}	
 	
 	// Could potentially use a damage/destroy method for entity
