@@ -227,6 +227,11 @@ public class Game {
 				items.remove(item); 
 			}	
 		}
+		public static void performItemActions() {
+			for (Item item : items) {
+				item.tick();				
+			}	
+		}	
 	}
 	
 	
