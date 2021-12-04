@@ -50,7 +50,7 @@ public abstract class Rat extends Entity {
 	}	
 	
 	public boolean move() {	
-		int movesLeft = moveSpeed;
+
 
 		//   if moveDirection = null, pick a direction from directions enum at random
 		if (moveDirection.equals(null)) {
