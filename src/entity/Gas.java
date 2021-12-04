@@ -1,15 +1,17 @@
 package entity;
 
+import gameHandler.Game;
 import gameHandler.Pos;
 import java.util.ArrayList;
 import javafx.scene.image.Image;
 
 public class Gas extends Item {
 	int gasNum = 0;
-	GasPart[] gasArray = new GasPart[6];  
-	ArrayList<Pos>() unvisitedTiles = new ArrayList<Pos>(); 
+	ArrayList<Pos> unvisitedTiles = new ArrayList<Pos>();
+	GasPart[] gasArray = new GasPart[6];
+
     public Gas(Pos position) {
-        super(new Image(""), EntityType.ITEM, position);
+        super(new Image(""), position);
 		//gas will have no sprite and be responsible for the spread of gasparts
 		//gasparts will be visible and deal damage to rats
     }
@@ -29,32 +31,34 @@ public class Gas extends Item {
 			//search nearby tiles (in a + shape) for tiles that are passable and add them to the list of possible locations
 			//tiles must not be outside the board or be already in the list as that could lead to recursion 
 			//and multiple gasparts being created in the same location
-			if ((pos.y-1 >= 0) && TileManager.getPassableTile(pos.x, pos.y-1)) {
-				if (!unvisitedTiles.contains(pos.x, pos.y-1)) {
-					unvisitedTiles.add(pos.x, pos.y-1);
+			if ((pos.y-1 >= 0) && Game.TileManager.getPassableTile(new Pos(pos.x, pos.y-1))) {
+				if (!unvisitedTiles.contains(new Pos(pos.x, pos.y-1))) {
+					unvisitedTiles.add(new Pos(pos.x, pos.y-1));
 				}
 			}
-			if (pos.y+1 <= TileManager.getNumTileHeight) && TileManager.getPassableTile(pos.x, pos.y+1)) {
-				if (!unvisitedTiles.contains(pos.x, pos.y+1)) {
-					unvisitedTiles.add(pos.x, pos.y+1);
+			if (pos.y+1 <= Game.TileManager.getNumTileHeight() && Game.TileManager.getPassableTile(new Pos(pos.x, pos.y+1))) {
+				if (!unvisitedTiles.contains(new Pos (pos.x, pos.y+1))) {
+					unvisitedTiles.add(new Pos(pos.x, pos.y+1));
 				}
 			}
-			if (pos.x-1 >= 0) && TileManager.getPassableTile(pos.x-1, pos.y)) {
-				if (!unvisitedTiles.contains(pos.x-1, pos.y)) {
-					unvisitedTiles.add(pos.x-1, pos.y);
+			if (pos.x-1 >= 0) && Game.TileManager.getPassableTile(new Pos(pos.x-1, pos.y)) {
+				if (!unvisitedTiles.contains(new Pos(pos.x-1, pos.y))) {
+					unvisitedTiles.add(new Pos(pos.x-1, pos.y));
 				}
 			}
-			if (pos.x+1 <= TileManager.getNumTileWidth) && TileManager.getPassableTile(pos.x+1, pos.y)) {
-				if (!unvisitedTiles.contains(pos.x+1, pos.y)) {
-					unvisitedTiles.add(pos.x+1, pos.y);
+			if (pos.x+1 <= Game.TileManager.getNumTileWidth() && Game.TileManager.getPassableTile(new Pos(pos.x+1, pos.y))) {
+				if (!unvisitedTiles.contains(new Pos(pos.x+1, pos.y))) {
+					unvisitedTiles.add(new Pos(pos.x+1, pos.y));
 				}
 			}
 			//remove the tile we just placed a gasPart on from the list of possible tiles
 			unvisitedTiles.remove(pos);
 		}	
 		
-	}			
+	}
 	@Override
+	public void onCollision(){};
+
     public void ratCollision(Rat target) {}
 	public void itemCollision(Item target) {}
 	public void onPlacement() {}	

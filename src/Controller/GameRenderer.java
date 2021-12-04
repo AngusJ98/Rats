@@ -179,6 +179,7 @@ public class GameRenderer {
             if (tile.areItemsPlaceable()) {
                 b.setOnAction(new EventHandler<ActionEvent>() {
                     @Override public void handle(ActionEvent e) {
+                        System.out.println("Poggers");
                         int buttonX = GridPane.getRowIndex(b.getParent());
                         int buttonY = GridPane.getColumnIndex(b.getParent());
                         ToggleButton selectedButton = (ToggleButton)itemToggle.getSelectedToggle();
