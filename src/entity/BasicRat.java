@@ -20,6 +20,7 @@ public class BasicRat extends Rat {
     private static final int GROWTH_MULTIPLIER = 4000;
     private static final int ADULT_MAX_HP = 100;
     private static final int BABY_MAX_HP = 50;
+    private int score = 10;
 	protected int hitPoints;
 	private int timeToGrowth; 
 	private int numChildren; //if this is above zero, implies the rat is pregnant

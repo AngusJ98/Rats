@@ -182,9 +182,10 @@ public class GameRenderer {
                         int buttonY = GridPane.getRowIndex(b);
                         int buttonX = GridPane.getColumnIndex(b);
                         ToggleButton selectedButton = (ToggleButton)itemToggle.getSelectedToggle();
-                        String itemString = selectedButton.getId();
-                        Game.ItemManager.tryPlace(itemString, new Pos(buttonX, buttonY));
-                        //TODO Correct to item placement method
+                        if (selectedButton != null) {
+                            String itemString = selectedButton.getId();
+                            Game.ItemManager.tryPlace(itemString, new Pos(buttonX, buttonY));
+                        }
                     }
                 });
             }
