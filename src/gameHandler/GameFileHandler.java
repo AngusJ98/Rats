@@ -198,10 +198,7 @@ public class GameFileHandler {
                 for (int i = 0; i < size; i++) {
                     jItem = (JSONObject) jItems.get(i);
                     position = objToPos(jItem);
-                    itemArr[i] = new NoEntrySign(
-                        position,
-                        objToInt(jItem, "currentHp")
-                    );
+                    itemArr[i] = new NoEntrySign(position);
                 }
                 break;
             case "deathRat":
@@ -209,10 +206,7 @@ public class GameFileHandler {
                 for (int i = 0; i < size; i++) {
                     jItem = (JSONObject) jItems.get(i);
                     position = objToPos(jItem);
-                    itemArr[i] = new DeathRat(
-                        position,
-                        objToInt(jItem, "killCount")
-                    );
+                    itemArr[i] = new DeathRat(position);
                 }
                 break;
             default:

@@ -12,10 +12,6 @@ public class NoEntrySign extends Item {
         hp = MAX_HP;
     }
 
-    public NoEntrySign(Pos position, int currentHp) {
-        super(new Image(""), position);
-        hp = currentHp;
-    }
     public void ratCollision(Rat target) {
     	/*
 		//invert the direction the rat is moving		
