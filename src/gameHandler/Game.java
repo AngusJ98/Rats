@@ -37,6 +37,7 @@ public class Game {
 		Game.score = 0;
 		System.out.println(this.rats.size());
 		System.out.println(Arrays.toString(this.createCombinedEntityList()));
+		this.items = new ArrayList<>();
 		this.startTimer();
     }
     private void startTimer() {
@@ -55,16 +56,21 @@ public class Game {
 	public static void checkVictory() {
 		if (rats.size() == 0) {
 			System.out.println("VICTORY!!");
-			Game.timer.cancel();
-			Game.timer = null;
 			//TODO updatePlayerStats();
+			Game.cleanUp();
 			Platform.runLater(() -> Game.runner.victoryScreen());
 		} else if (timeLeft <= 0) {
 			System.out.println("DEFEAT :c");
-			Game.timer.cancel();
-			Game.timer = null;
+			Game.cleanUp();
 			Platform.runLater(() -> Game.runner.lossScreen());
 		}
+	}
+
+	public static void cleanUp() {
+		Game.timer.cancel();
+		Game.timer = null;
+		Game.items = new ArrayList<>(); //clear off old items
+		Platform.runLater(() -> Game.runner.removeEntities());
 	}
 	private Entity[] createCombinedEntityList() {
 		ArrayList<Entity> entities = new ArrayList<>();

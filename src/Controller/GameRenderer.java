@@ -234,8 +234,7 @@ public class GameRenderer {
     public void returnToMenu() {
         try {
             Main.changeScene(Main.getMenuScene());
-            Game.getTimer().cancel();
-            Game.setTimer(null);
+            Game.cleanUp();
         } catch (Exception e) {
             e.printStackTrace();
             System.exit(1);
