@@ -2,6 +2,15 @@ package gameHandler;
 
 import java.util.HashMap;
 
+/**
+ * <p> 1. File-name: Inventory.java</p>
+ * <p> 2. Creation Date: XX/XX/XX </p>
+ * <p> 3. Last modification date: XX/XX/XX </p>
+ * <p> 4. Purpose of the program: Used to hold and restock items which can be placed</p>
+ *
+ * @author
+ */
+
 public class Inventory {
 
     private static int bombCount;
@@ -22,6 +31,10 @@ public class Inventory {
     private int deathRestockRate;
     private int poisonRestockRate;
 
+    /**
+     * @param stats
+     * @param inventory
+     */
     public Inventory(HashMap<String, Integer> stats, int[] inventory) {
         this.bombRestockRate = stats.get("bombFreq");
         this.gasRestockRate = stats.get("gasFreq");
@@ -41,39 +54,83 @@ public class Inventory {
         poisonCount = inventory[7];
     }
 
+    /**
+     * Method which returns the number of Poison in the Inventory
+     *
+     * @return poison count
+     */
     public static int getPoisonCount() {
         return poisonCount;
     }
 
+    /**
+     * Method which sets the amount of Poison in the Inventory
+     *
+     * @param poisonCount the amount of poison in the Inventory
+     */
     public static void setPoisonCount(int poisonCount) {
         Inventory.poisonCount = poisonCount;
     }
 
-    // TODO:
+    /**
+     * Method which returns the number of Bombs in the Inventory
+     *
+     * @return bomb count
+     */
     public static int getBombCount() {
         return bombCount;
     }
 
+    /**
+     * Method which returns the number of Gas` in the Inventory
+     *
+     * @return gas count
+     */
     public static int getGasCount() {
         return gasCount;
     }
 
+    /**
+     * Method which returns the number of Sterilizations in the Inventory
+     *
+     * @return Sterilization count
+     */
     public static int getSterileCount() {
         return sterileCount;
     }
 
+    /**
+     * Method which returns the number of No Entry Sings in the Inventory
+     *
+     * @return No Entry Sign count
+     */
     public static int getNoEntryCount() {
         return noEntryCount;
     }
 
+    /**
+     * Method which returns the number of Male Gender Changes in the Inventory
+     *
+     * @return Male gender change count
+     */
     public static int getMaleCount() {
         return maleCount;
     }
 
+    /**
+     * Method which returns the number of Female Gender Changes in the Inventory
+     *
+     * @return Female gender change count
+     */
     public static int getFemaleCount() {
         return femaleCount;
     }
 
+    /**
+     * Method which returns the number of Death Rats in the Inventory
+     *
+     * @return Death rat count in Inventory
+     */
     public static int getDeathCount() {
         return deathCount;
     }
