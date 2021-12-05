@@ -8,10 +8,16 @@ import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class GasPart extends Item {
+	private final int LIFETIME = 50; //measured in ticks
+	private int currentExist = 0;
 	public GasPart(Pos position) {
 		super(new Image("file:resources/gas.png"), position);
 	}
-	public void tick() {}
+	public void tick() {
+		if(this.currentExist > LIFETIME) {
+			Game.ItemManager.killItem(this);
+		}
+	}
     public void ratCollision(Rat target) {
 		//decrease hp by 25
 		//ratmanager will check the hp of rats 

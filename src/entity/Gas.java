@@ -3,6 +3,9 @@ package entity;
 import gameHandler.Game;
 import gameHandler.Pos;
 import java.util.ArrayList;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
+
 import javafx.scene.image.Image;
 
 /**
@@ -16,8 +19,11 @@ import javafx.scene.image.Image;
 
 public class Gas extends Item {
 	int gasNum = 0;
+	private final int RANGE = 2;
+	private final int PLACE_INTERVAL = 10;
+	private final int MAX_GAS = 8;
 	ArrayList<Pos> unvisitedTiles = new ArrayList<Pos>();
-	GasPart[] gasArray = new GasPart[6];
+	GasPart[] gasArray = new GasPart[MAX_GAS];
 
     public Gas(Pos position) {
         super(new Image("file:resources/gasCan.png"), position);
@@ -26,22 +32,28 @@ public class Gas extends Item {
     }
 	public void tick() { 
 		//if there are less than <6> gas clouds, this method will attempt to place one each game tick
-		if (gasNum < 6) {
+		if (gasNum < MAX_GAS && Game.getTimeLeft() % PLACE_INTERVAL == 0) {
+
+			//simplified code by checking positions at start
+			if (unvisitedTiles.size() > 0) {
+				int randomPlace = ThreadLocalRandom.current().nextInt(0, unvisitedTiles.size());
+				gasArray[gasNum] = new GasPart(unvisitedTiles.get(randomPlace));
+				Game.ItemManager.addItem(gasArray[gasNum]);
+				unvisitedTiles.remove(randomPlace);
+				gasNum++;
+			}
+
 			//if the list is empty, either the algorithm hasn't run or there
 			//are less than 6 tiles available. If there are less than 6 tiles available 
 			//(which should never happen - who would design a map where one gas is enough to win?)
 			//,this will just place multiple gasparts in one location, and will not break
-			if (unvisitedTiles.size() == 0) {
-				//add my location to a list of possible locations				
-				unvisitedTiles.add(pos);
-			}	
-			//create a gasPart at the location in the first index of the locations array 
-			gasArray[gasNum] = new GasPart(unvisitedTiles.get(0));
-			Game.ItemManager.addItem(gasArray[gasNum]);
+			//create a gasPart at the next unvisited location
+
 			//search nearby tiles (in a + shape) for tiles that are passable and add them to the list of possible locations
 			//tiles must not be outside the board or be already in the list as that could lead to recursion 
 			//and multiple gasparts being created in the same location
-			if ((pos.y-1 >= 0) && Game.TileManager.getPassableTile(new Pos(pos.x, pos.y-1))) {
+
+			/*if ((pos.y-1 >= 0) && Game.TileManager.getPassableTile(new Pos(pos.x, pos.y-1))) {
 				if (!unvisitedTiles.contains(new Pos(pos.x, pos.y-1))) {
 					unvisitedTiles.add(new Pos(pos.x, pos.y-1));
 				}
@@ -60,14 +72,24 @@ public class Gas extends Item {
 				if (!unvisitedTiles.contains(new Pos(pos.x+1, pos.y))) {
 					unvisitedTiles.add(new Pos(pos.x+1, pos.y));
 				}
-			}
+			}*/
 			//remove the tile we just placed a gasPart on from the list of possible tiles
-			unvisitedTiles.remove(pos);
+			//unvisitedTiles.remove(pos);
+
 		}	
 		
 	}
 	@Override
     public void ratCollision(Rat target) {}
 	public void itemCollision(Item target) {}
-	public void onPlacement() {}	
+	public void onPlacement() {
+		for (int x = -RANGE; x <= RANGE; x++) {
+			for (int y = -RANGE; y <= RANGE; y++) {
+				Pos maybe = new Pos(this.pos.x + x,this.pos.y + y);
+				if (Game.TileManager.getTile(maybe) != null) {
+					unvisitedTiles.add(maybe);
+				}
+			}
+		}
+	}
 }
