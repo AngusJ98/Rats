@@ -53,6 +53,17 @@ public class Inventory {
         return deathCount;
     }
 
+    public void restock() {
+        if (Game.getTimeLeft() % bombRestockRate == 0) {
+            bombCount += 1;
+        }
+
+        if (Game.getTimeLeft() % gasRestockRate == 0) {
+            gasCount += 1;
+        }
+    }
+
+    /*
     public String toString() {
         String result = "Remaining Items:\n";
         //gets information from the "ItemsLeft" Attribute
@@ -61,10 +72,6 @@ public class Inventory {
         	result += itemsLeft[i] + "\n";
         }  
         return result;
-    }
-
-    public void restock() {
-
     }
 
     
@@ -79,6 +86,6 @@ public class Inventory {
     		//not sure what javafx uses to print text but use that instead
     	}   	
     }
-
+    */
 }
 	
