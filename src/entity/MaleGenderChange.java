@@ -6,7 +6,7 @@ import javafx.scene.image.Image;
 
 /**
  *
- <p> 1. File-name: DeathRat.java</p>
+ <p> 1. File-name: MaleGenderChange.java</p>
  <p> 2. Creation Date: (N/A) </p>
  <p> 3. Last modification date:</p>
  <p> 4. Purpose of the program: Male gender change implementation</p>
@@ -31,7 +31,7 @@ public class MaleGenderChange extends Item {
      *  Check if rat has touched change gender item
      *  <p> no side-effects</p>
      * 	<p> not referentially transparent</p>
-     * @param takes the spesific rat in to change its geender
+     * @param takes the spesific rat in to change its gender
      *              if all conditions are met.
      */
 
