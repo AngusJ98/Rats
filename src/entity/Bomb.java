@@ -52,8 +52,9 @@ public class Bomb extends Item{
     // i will personally feel very offended
 
     /**
-     * Method for the explosion of the Bomb?
-     * BOOM!!!!!!!!!!!!
+     * Method for the explosion of the Bomb
+     * <p> side-effects</p>
+     * <p> not referentially transparent</p>
      */
     private void boom() {
 		Game.ItemManager.addItem(new ExplosionPart(this.pos, NORTH));
@@ -68,6 +69,8 @@ public class Bomb extends Item{
      * Stars decremental timer,
      * if it reaches zero,
      * the bomb explodes.
+     * <p> no side-effects</p>
+     * <p> not referentially transparent</p>
      */
     public void tick() {
         timer-= 100;
@@ -77,6 +80,11 @@ public class Bomb extends Item{
 		updateImage();
     }
 
+    /**
+     * Method for updating the image of the file throughout the bomb animation
+     * <p> side-effects</p>
+     * <p> not referentially transparent</p>
+     */
     private void updateImage() {
         int secsLeft = 1 + timer/1000;
         this.image = new Image("file:resources/bomb" + secsLeft + ".png");
@@ -86,7 +94,9 @@ public class Bomb extends Item{
 	// god damn i hate java so much look at this shit
 
     /**
-     * Gets how many seconds are left for the bomb?
+     * Gets how many seconds are left
+     * <p> no side-effects</p>
+     * <p> not referentially transparent</p>
      * @return
      */
     public int getSeconds() {

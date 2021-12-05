@@ -180,6 +180,9 @@ public class BasicRat extends Rat {
         timeToGrowth--;
     }
 
+    /**
+     * femaleRatActions
+     */
     private void femaleRatActions() {
         if (this.timeToBirth < -PREGNANCY_COOLDOWN && !this.sterile) {
             this.canMate = true;
@@ -238,6 +241,8 @@ public class BasicRat extends Rat {
     /**
      * Checks the current tile if any other entities are in it,
      * then relevant actions are made if neccessary.
+     * <p> side-effects</p>
+     * <p> not referentially transparent</p>
      */
 	public void checkCurrentTile() {
 

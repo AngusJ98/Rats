@@ -4,22 +4,47 @@ import gameHandler.Game;
 import gameHandler.Pos;
 import javafx.scene.image.Image;
 
+/**
+ *
+ <p> 1. File-name: Poison.java</p>
+ <p> 2. Creation Date: (N/A) </p>
+ <p> 3. Last modification date:</p>
+ <p> 4. Purpose of the program: Poison Implementation</p>
+ * @author Andrew
+ */
+
 public class Poison extends Item{
     private static final int DEFAULT_TIME = 4000;
     private static final int RANGE = 1;
     private int timer;
 
+    /**
+     *  1st Constructor, intializes the Poison
+     * @param position coordinates of the rat
+     */
     public Poison(Pos position) {
         super(new Image("file:resources/poison.png"), position);
     }
 
+    /**
+     * For when poison collides with rats
+     * rats are killed and item is removed as well
+     * <p> side-effects</p>
+     * <p> not referentially transparent</p>
+     * @param target the rat to be targetted
+     */
 	@Override
     protected void ratCollision(Rat target) {
         Game.RatManager.killSingleRat(target);
 		Game.ItemManager.killItem(this);
     }
+
+    /**
+     * No Implementation needed for
+     * itemCollision, onPlacement, tick
+     */
 	public void itemCollision(Item target) {}
-	public void onPlacement() {}	
+	public void onPlacement() {}
 	public void tick() {}
 }
 

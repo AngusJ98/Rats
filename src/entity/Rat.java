@@ -76,7 +76,9 @@ public abstract class Rat extends Entity {
 	}
 
 	/**
-	 *
+	 * gets inverse move direction
+	 * <p> side-effects</p>
+	 * <p> not referentially transparent</p>
 	 * @return inverse move direction
 	 */
 	public Direction getInverseMoveDirection() {
@@ -84,8 +86,9 @@ public abstract class Rat extends Entity {
 	}
 
 	/**
-	 *
-	 * @return (Not Sure what this does)
+	 * move function for the rat
+	 *<p> side-effects</p>
+	 *<p> not referentially transparent</p>
 	 */
 	public boolean move() {	
 		if (Game.getTiles().get(this.pos).getType() == TileTypes.SPEEDTILE){
@@ -189,7 +192,8 @@ public abstract class Rat extends Entity {
 
 	/**
 	 * Gets the new position as a result of the current positon and direction
-	 *
+	 * <p> side-effects</p>
+	 * <p> not referentially transparent</p>
 	 * @param dir takes the direction to be looking towards
 	 * @param pos takes the current coordinates
 	 * @return returns the new coordinates
@@ -219,9 +223,11 @@ public abstract class Rat extends Entity {
 
 	/**
 	 * Used by other entities to move rats in a different way.
+	 * <p> side-effects</p>
+	 * <p> not referentially transparent</p>
 	 * @param movesLeft takes how many moves are needed for moving
 	 * @param direction takes direction to move in
-	 * @return (?)
+	 * @return boolean if true for force move
 	 */
 	public boolean forceMove(int movesLeft, Direction direction) {
 		//forces the entity to move when it is not the rat's turn to move
@@ -240,13 +246,14 @@ public abstract class Rat extends Entity {
 	}
 
 	/**
-	 * Checks Current Tile
-	 * Work in progress?
+	 * abtstract method not to be used, no implementation needed
 	 */
 	public abstract void checkCurrentTile();
 
 	/**
 	 * 1st Constructor, creates an instance of a rat
+	 * <p> side-effects</p>
+	 * <p> not referentially transparent</p>
 	 * @param type takes in the type of rat
 	 * @param pos takes in the position of the rat
 	 */
