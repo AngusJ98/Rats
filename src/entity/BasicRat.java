@@ -55,6 +55,25 @@ public class BasicRat extends Rat {
         }
     }
 
+    public BasicRat(RatTypes type, Pos pos, int hitPoints, int timeToGrowth, int numChildren, int timeToBirth, boolean canMate, boolean canMove) {
+        super(type, pos);
+        this.hitPoints = hitPoints;
+        this.canMate = canMate;
+        this.canMove = canMove;
+        switch (type) {
+            case BABY:
+                setTimeToGrowth(timeToGrowth);
+                break;
+            case FEMALE:
+                setNumChildren(numChildren);
+                setTimeToBirth(timeToBirth);
+                break;
+            case MALE:
+                break;
+            default:
+                break;
+        }
+    }
 
     public void updateImage() {
         switch (this.getRatType()) {

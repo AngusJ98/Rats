@@ -6,12 +6,17 @@ import javafx.scene.image.Image;
 
 public class NoEntrySign extends Item {
     public static final int MAX_HP = 4;
+    private static Image noEntImg = new Image("file:resources/noEnt.png");
     private int hp;
 
     public NoEntrySign(Pos position) {
-        super(new Image("file:resources/noEnt.png"), position);
+        super(noEntImg , position);
         hp = MAX_HP;
     }
+	public NoEntrySign(Pos position, int hp) {
+		super(noEntImg , position);
+		this.hp = hp;
+	}
 
     public void ratCollision(Rat target) { 	
 		//invert the direction the rat is moving		

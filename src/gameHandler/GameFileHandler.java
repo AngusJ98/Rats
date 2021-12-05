@@ -27,16 +27,16 @@ public class GameFileHandler {
     private GameFileHandler() {}
 
     private static JSONObject readJSON(String fileName, boolean isLevel)
-    throws ParseException, IOException {
+            throws ParseException, IOException {
         String filePath = isLevel ? LEVEL_PATH : SAVE_PATH;
         filePath = filePath + fileName + SAVE_FILE_EXT;
         JSONParser jsonParser = new JSONParser();
         try {
             FileReader reader = new FileReader(filePath);
-			return (JSONObject) jsonParser.parse(reader);
-		} catch (FileNotFoundException e) {
+            return (JSONObject) jsonParser.parse(reader);
+        } catch (FileNotFoundException e) {
             throw new FileNotFoundException(
-                String.format(ERROR_MSG_FILE_NOT_FOUND, filePath)
+                    String.format(ERROR_MSG_FILE_NOT_FOUND, filePath)
             );
         }
     }
@@ -91,20 +91,35 @@ public class GameFileHandler {
             switch ((String) rat.get("gender")) {
                 case "MALE":
                     type = RatTypes.MALE;
+                    imagePath = MALE_RAT_IMG;
                     break;
                 case "BABY":
                     type = RatTypes.BABY;
+                    imagePath = BABY_RAT_IMG;
                     break;
                 default:
                     type = RatTypes.FEMALE;
+                    imagePath = FEMALE_RAT_IMG;
                     break;
             }
 
+            image = new Image("file:resources/" + imagePath, true);
             positionJObj = (JSONArray) rat.get("position");
             position = objToPos(positionJObj);
-            rats[i] = new BasicRat(type, position);
+            rats[i] = new BasicRat(
+                    type,
+                    (boolean) rat.get("canMate"),
+                    (boolean) rat.get("canMove"),
+                    objToInt(rat, "moveSpeed"),
+                    objToInt(rat, "timeToGrowth"),
+                    objToInt(rat, "numChildren"),
+                    objToInt(rat, "timeToBirth"),
+                    objToInt(rat, "hp"),
+                    position,
+                    image
+            );
         }
-            return rats;
+        return rats;
     }
 
     private static Entity[] makeItemArray(JSONArray jItems, String key) {
@@ -119,8 +134,8 @@ public class GameFileHandler {
                     jItem = (JSONObject) jItems.get(i);
                     position = objToPos(jItem);
                     itemArr[i] = new Bomb(
-                        position,
-                        objToInt(jItem, "timeLeft")
+                            position,
+                            objToInt(jItem, "timeLeft")
                     );
                 }
                 break;
@@ -130,7 +145,7 @@ public class GameFileHandler {
                     jItem = (JSONObject) jItems.get(i);
                     position = objToPos(jItem);
                     itemArr[i] = new Gas(
-                        position
+                            position
                     );
                 }
                 break;
@@ -140,8 +155,8 @@ public class GameFileHandler {
                     jItem = (JSONObject) jItems.get(i);
                     position = objToPos(jItem);
                     itemArr[i] = new Sterilization(
-                        position,
-                        objToInt(jItem, "timeLeft")
+                            position,
+                            objToInt(jItem, "timeLeft")
                     );
                 }
                 break;
@@ -151,8 +166,8 @@ public class GameFileHandler {
                     jItem = (JSONObject) jItems.get(i);
                     position = objToPos(jItem);
                     itemArr[i] = new Poison(
-                        position,
-                        objToInt(jItem, "timeLeft")
+                            position,
+                            objToInt(jItem, "timeLeft")
                     );
                 }
                 break;
@@ -177,7 +192,10 @@ public class GameFileHandler {
                 for (int i = 0; i < size; i++) {
                     jItem = (JSONObject) jItems.get(i);
                     position = objToPos(jItem);
-                    itemArr[i] = new NoEntrySign(position);
+                    itemArr[i] = new NoEntrySign(
+                            position,
+                            objToInt(jItem, "currentHp")
+                    );
                 }
                 break;
             case "deathRat":
@@ -185,7 +203,10 @@ public class GameFileHandler {
                 for (int i = 0; i < size; i++) {
                     jItem = (JSONObject) jItems.get(i);
                     position = objToPos(jItem);
-                    itemArr[i] = new DeathRat(position);
+                    itemArr[i] = new DeathRat(
+                            position,
+                            objToInt(jItem, "killCount")
+                    );
                 }
                 break;
             default:
@@ -199,8 +220,8 @@ public class GameFileHandler {
     private static Entity[][] parseItemsOnMap(JSONObject json) {
         JSONObject itemsOnMap = (JSONObject)json.get("itemsOnMap");
         String[] itemKeys = {
-            "bomb", "gas", "sterilise", "poison", "mSexChange",
-            "fSexChange", "noEntry", "deathRat"
+                "bomb", "gas", "sterilise", "poison", "mSexChange",
+                "fSexChange", "noEntry", "deathRat"
         };
         int nItems = itemKeys.length;
         Entity[][] items = new Entity[nItems][];
@@ -209,7 +230,7 @@ public class GameFileHandler {
         for (int i = 0; i < nItems; i++) {
             currentKey = itemKeys[i];
             items[i] =
-                makeItemArray((JSONArray) itemsOnMap.get(currentKey), currentKey);
+                    makeItemArray((JSONArray) itemsOnMap.get(currentKey), currentKey);
         }
 
         return items;
@@ -219,8 +240,8 @@ public class GameFileHandler {
         HashMap<String, Integer> levelStats = new HashMap<>();
         JSONObject jLevelStats = (JSONObject) json.get("levelStats");
         String[] keys = {
-            "timeLeft", "ratLimit", "bombFreq", "gasFreq", "steriliseFreq", "poisonFreq",
-            "mSexChangeFreq", "fSexChangeFreq", "noEntryFreq", "deathRatFreq"
+                "timeLeft", "ratLimit", "bombFreq", "gasFreq", "steriliseFreq", "poisonFreq",
+                "mSexChangeFreq", "fSexChangeFreq", "noEntryFreq", "deathRatFreq"
         };
         for (String key: keys) {
             levelStats.put(key, objToInt(jLevelStats, key));
@@ -242,8 +263,8 @@ public class GameFileHandler {
     private static int[] parseInventory(JSONObject json) {
         JSONObject jInventory = (JSONObject) json.get("inventory");
         String[] keys = {
-            "bomb", "gas", "sterilise", "poison",
-            "mSexChange", "fSexChange", "noEntry", "deathRat"
+                "bomb", "gas", "sterilise", "poison",
+                "mSexChange", "fSexChange", "noEntry", "deathRat"
         };
         int[] inventory = new int[keys.length];
 
@@ -259,7 +280,7 @@ public class GameFileHandler {
     }
 
     private static Tuple<BasicRat[], Entity[][], char[][], HashMap<String, Integer>,
-        HashMap<String, HashMap<String, Integer>>, int[]>
+            HashMap<String, HashMap<String, Integer>>, int[]>
     parseJSON(JSONObject json) {
         BasicRat[] rats = parseRats(json);
         Entity[][] items = parseItemsOnMap(json);
@@ -284,14 +305,14 @@ public class GameFileHandler {
     // needed to resume or start a game
     // void atm so it still compiles.
     public static Tuple<BasicRat[], Entity[][], char[][], HashMap<String, Integer>,
-        HashMap<String, HashMap<String, Integer>>, int[]>
+            HashMap<String, HashMap<String, Integer>>, int[]>
     loadGame(String name) throws ParseException, IOException {
         JSONObject json = readJSON(name, false);
         return parseJSON(json);
     }
 
     public static Tuple<BasicRat[], Entity[][], char[][], HashMap<String, Integer>,
-        HashMap<String, HashMap<String, Integer>>, int[]>
+            HashMap<String, HashMap<String, Integer>>, int[]>
     newGame(String name) throws ParseException, IOException {
         JSONObject json = readJSON(name, true);
         return parseJSON(json);
