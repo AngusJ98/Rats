@@ -1,11 +1,11 @@
 package gameHandler;
 
 /**
+ * <p> 1. File-name: Tuple.java</p>
+ * <p> 2. Creation Date: (N/A) </p>
+ * <p> 3. Last modification date:</p>
+ * <p> 4. Purpose of the program: storing objects of different types together</p>
  *
- <p> 1. File-name: Tuple.java</p>
- <p> 2. Creation Date: (N/A) </p>
- <p> 3. Last modification date:</p>
- <p> 4. Purpose of the program: storing objects of different types together</p>
  * @author Jonny
  */
 
@@ -21,6 +21,7 @@ public class Tuple<T1, T2, T3, T4, T5, T6> {
      * Constructor.
      * <p> side-effects</p>
      * <p> not referentially transparent</p>
+     *
      * @param pos takes all six tuples.
      */
 
@@ -36,6 +37,7 @@ public class Tuple<T1, T2, T3, T4, T5, T6> {
 
     /**
      * method to get the first tuple
+     *
      * @return frist tuple
      */
 
@@ -45,6 +47,7 @@ public class Tuple<T1, T2, T3, T4, T5, T6> {
 
     /**
      * method to get the second tuple
+     *
      * @return second tuple
      */
 
@@ -54,6 +57,7 @@ public class Tuple<T1, T2, T3, T4, T5, T6> {
 
     /**
      * method to get the third tuple
+     *
      * @return third tuple
      */
 
@@ -63,6 +67,7 @@ public class Tuple<T1, T2, T3, T4, T5, T6> {
 
     /**
      * method to get the fourth tuple
+     *
      * @return fourth tuple
      */
 
@@ -72,6 +77,7 @@ public class Tuple<T1, T2, T3, T4, T5, T6> {
 
     /**
      * method to get the fifth tuple
+     *
      * @return fifth tuple
      */
 
@@ -81,6 +87,7 @@ public class Tuple<T1, T2, T3, T4, T5, T6> {
 
     /**
      * method to get the sixth tuple
+     *
      * @return sixth tuple
      */
 
