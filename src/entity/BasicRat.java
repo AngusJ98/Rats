@@ -171,7 +171,7 @@ public class BasicRat extends Rat {
             this.numChildren = 0;
         }
         timeToBirth--;
-        if (numChildren > 0) System.out.println(timeToBirth);
+
     }
 
 
@@ -234,7 +234,6 @@ public class BasicRat extends Rat {
 				if (rat.getRatType().equals(RatTypes.DEATH)) {
 					rat.checkCurrentTile(); //death rat eats this rat
 				} else if (!rat.getRatType().equals(this.ratType) && !rat.getRatType().equals(RatTypes.BABY)) {
-                    System.out.println("Found rat at " + this.pos);
 					//check if adult rat of opposing gender
 					if (rat.getMateStatus() && this.getMateStatus()) {
 						//if not pregnant/sterile/baby, reproduce

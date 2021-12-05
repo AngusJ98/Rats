@@ -30,7 +30,7 @@ public class Gas extends Item {
 		//gas will have no sprite and be responsible for the spread of gasparts
 		//gas parts will be visible and deal damage to rats
     }
-	public void tick() { 
+	public void tick() {
 		//if there are less than <6> gas clouds, this method will attempt to place one each game tick
 
 		if (gasNum < MAX_GAS && Game.getTimeLeft() % PLACE_INTERVAL == 0) {
@@ -39,44 +39,45 @@ public class Gas extends Item {
 			//the algorithm i'm using is similar to the start of dijkstra's algorithm and
 			//works based around checking positions in real time rather than all at the beginning
 
-		if (gasNum < 6) {
-			//if the list is empty, either the algorithm hasn't run or there
-			//are less than 6 tiles available. If there are less than 6 tiles available 
-			//(which should never happen - who would design a map where one gas is enough to win?)
-			//,this will just place multiple gasparts in one location, and will not break
-			if (unvisitedTiles.size() == 0) {
-				//add my location to a list of possible locations				
-				unvisitedTiles.add(pos);
-			}	
-			//create a gasPart at the location specified by unvisitedTiles(gasNum)
-			//this should stop tiles being removed from the array, then re-added by other tiles
-			gasArray[gasNum] = new GasPart(unvisitedTiles.get(gasNum));
-			Game.ItemManager.addItem(gasArray[gasNum]);
-			//search nearby tiles (in a + shape) for tiles that are passable and add them to the list of possible locations
-			//tiles must not be outside the board or be already in the list as that could lead to recursion 
-			//and multiple gasparts being created in the same location
-			Pos newPos = unvisitedTiles.get(gasNum);
-			if ((newPos.y-1 >= 0) && Game.TileManager.getPassableTile(new Pos(newPos.x, newPos.y-1))) {
-				if (!unvisitedTiles.contains(new Pos(newPos.x, newPos.y-1))) {
-					unvisitedTiles.add(new Pos(newPos.x, newPos.y-1));
+			if (gasNum < 6) {
+				//if the list is empty, either the algorithm hasn't run or there
+				//are less than 6 tiles available. If there are less than 6 tiles available
+				//(which should never happen - who would design a map where one gas is enough to win?)
+				//,this will just place multiple gasparts in one location, and will not break
+				if (unvisitedTiles.size() == 0) {
+					//add my location to a list of possible locations
+					unvisitedTiles.add(pos);
+				}
+				//create a gasPart at the location specified by unvisitedTiles(gasNum)
+				//this should stop tiles being removed from the array, then re-added by other tiles
+				gasArray[gasNum] = new GasPart(unvisitedTiles.get(gasNum));
+				Game.ItemManager.addItem(gasArray[gasNum]);
+				//search nearby tiles (in a + shape) for tiles that are passable and add them to the list of possible locations
+				//tiles must not be outside the board or be already in the list as that could lead to recursion
+				//and multiple gasparts being created in the same location
+				Pos newPos = unvisitedTiles.get(gasNum);
+				if ((newPos.y - 1 >= 0) && Game.TileManager.getPassableTile(new Pos(newPos.x, newPos.y - 1))) {
+					if (!unvisitedTiles.contains(new Pos(newPos.x, newPos.y - 1))) {
+						unvisitedTiles.add(new Pos(newPos.x, newPos.y - 1));
+					}
+				}
+				if (newPos.y + 1 <= Game.TileManager.getNumTileHeight() && Game.TileManager.getPassableTile(new Pos(newPos.x, newPos.y + 1))) {
+					if (!unvisitedTiles.contains(new Pos(newPos.x, newPos.y + 1))) {
+						unvisitedTiles.add(new Pos(newPos.x, newPos.y + 1));
+					}
+				}
+				if ((newPos.x - 1 >= 0) && Game.TileManager.getPassableTile(new Pos(newPos.x - 1, newPos.y))) {
+					if (!unvisitedTiles.contains(new Pos(newPos.x - 1, newPos.y))) {
+						unvisitedTiles.add(new Pos(newPos.x - 1, newPos.y));
+					}
+				}
+				if (newPos.x + 1 <= Game.TileManager.getNumTileWidth() && Game.TileManager.getPassableTile(new Pos(newPos.x + 1, newPos.y))) {
+					if (!unvisitedTiles.contains(new Pos(newPos.x + 1, newPos.y))) {
+						unvisitedTiles.add(new Pos(newPos.x + 1, newPos.y));
+					}
 				}
 			}
-			if (newPos.y+1 <= Game.TileManager.getNumTileHeight() && Game.TileManager.getPassableTile(new Pos(newPos.x, newPos.y+1))) {
-				if (!unvisitedTiles.contains(new Pos (newPos.x, newPos.y+1))) {
-					unvisitedTiles.add(new Pos(newPos.x, newPos.y+1));
-				}
-			}
-			if ((newPos.x-1 >= 0) && Game.TileManager.getPassableTile(new Pos(newPos.x-1, newPos.y))) {
-				if (!unvisitedTiles.contains(new Pos(newPos.x-1, newPos.y))) {
-					unvisitedTiles.add(new Pos(newPos.x-1, newPos.y));
-				}
-			}
-			if (newPos.x+1 <= Game.TileManager.getNumTileWidth() && Game.TileManager.getPassableTile(new Pos(newPos.x+1, newPos.y))) {
-				if (!unvisitedTiles.contains(new Pos(newPos.x+1, newPos.y))) {
-					unvisitedTiles.add(new Pos(newPos.x+1, newPos.y));
-				}
-			}			
-		}		
+		}
 	}
 	@Override
     public void ratCollision(Rat target) {}
