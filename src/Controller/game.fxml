@@ -171,7 +171,7 @@
                         </ImageView>
                      </graphic>
                   </ToggleButton>
-                  <Text fx:id="deathCount" strokeType="OUTSIDE" strokeWidth="0.0" text="femaleCount" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                  <Text fx:id="deathCount" strokeType="OUTSIDE" strokeWidth="0.0" text="deathCount" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="6">
                      <font>
                         <Font name="Arial" size="18.0" />
                      </font>
