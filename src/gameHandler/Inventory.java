@@ -6,8 +6,19 @@ public class Inventory {
 	//or we could have lil icons which would be pretty neat
 	//would require a hashmap of <screenCoordinate, image> then when an item is used
 	//we can set screenCoordinate to a large number
-    private int[] itemsLeft;
-    private int[] itemNames;
+    private static int[] itemsLeft;
+    private static int[] itemNames;
+    private static int bombRestockRate;
+    private static int gasRestockRate;
+    private static int sterileRestockRate;
+    private static int noEntRestockRate;
+    private static int maleRestockRate;
+    private static int femaleRestockRate;
+    private static int deathRestockRate;
+
+    public Inventory() {
+        
+    }
 
     // TODO:
     public static int getBombCount() {
@@ -49,12 +60,7 @@ public class Inventory {
     }
 
     public void restock() {
-        //????
-    	//idk if we need this
-        //
-        //might make sense if it takes an item as an arg, then it
-        //could be called by the game for each item when they're due to be
-        //refreshed (different items will have different frequencies)
+
     }
 
     
