@@ -1,5 +1,6 @@
 package entity;
 
+import gameHandler.Game;
 import gameHandler.Pos;
 import javafx.scene.image.Image;
 
@@ -19,7 +20,7 @@ public class NoEntrySign extends Item {
 		//lower my hp
 		this.hp--;
 		if (this.hp <= 0) {
-			ItemManager.killItem(this);
+			Game.ItemManager.killItem(this);
 		}  
 	}
 	public void itemCollision(Item target) {}
