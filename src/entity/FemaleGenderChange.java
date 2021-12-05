@@ -9,7 +9,7 @@ import javafx.scene.image.Image;
  <p> 1. File-name: FemaleGenderChange.java</p>
  <p> 2. Creation Date: 30/11/2021 </p>
  <p> 3. Last modification date: 5/12/2021</p>
- <p> 4. Purpose of the program: Female fender change implementation</p>
+ <p> 4. Purpose of the program: Female gender change implementation</p>
  * @author Andrew
  */
 
@@ -52,7 +52,7 @@ public class FemaleGenderChange extends Item {
      */
 
 	public void itemCollision(Item target) {}
-	public void onPlacement() {}	
+	public void onPlacement() {}
 	public void tick() {
 		//decrease a variable somewhere so this item is removed after a certain time idk
 	}
