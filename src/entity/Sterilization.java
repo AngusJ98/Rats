@@ -32,7 +32,7 @@ public class Sterilization extends Item{
     }
 
 	/**
-	 * 2st Constructor for save file.
+	 *2nd Constructor for save file.
 	 * <p> side-effects</p>
 	 * <p> not referentially transparent</p>
 	 * @param pos takes coordinates of Sterilization to be placed.

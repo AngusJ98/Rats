@@ -34,7 +34,7 @@ public class DeathRat extends Rat {
 	}
 
 	/**
-	 * 2st Constructor for save file.
+	 * 2nd Constructor for save file.
 	 * <p> no side-effects</p>
 	 * <p> not referentially transparent</p>
 	 * @param pos takes coordinates of death rat to be placed.
