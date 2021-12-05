@@ -33,13 +33,13 @@ public class Gas extends Item {
 	public void tick() {
 		//if there are less than <6> gas clouds, this method will attempt to place one each game tick
 
-		if (gasNum < MAX_GAS && Game.getTimeLeft() % PLACE_INTERVAL == 0) {
+		if (gasNum < MAX_GAS) {
 
 			//simplified code by checking positions at start
 			//the algorithm i'm using is similar to the start of dijkstra's algorithm and
 			//works based around checking positions in real time rather than all at the beginning
 
-			if (gasNum < 6) {
+			if (Game.getTimeLeft() % PLACE_INTERVAL == 0) {
 				//if the list is empty, either the algorithm hasn't run or there
 				//are less than 6 tiles available. If there are less than 6 tiles available
 				//(which should never happen - who would design a map where one gas is enough to win?)
@@ -76,7 +76,10 @@ public class Gas extends Item {
 						unvisitedTiles.add(new Pos(newPos.x + 1, newPos.y));
 					}
 				}
+				gasNum++;
 			}
+		} else {
+			Game.ItemManager.killItem(this);
 		}
 	}
 	@Override
