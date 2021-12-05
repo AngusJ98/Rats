@@ -546,7 +546,7 @@ public class Game {
 
 
 	/**
-	 * 
+	 * sets up 
 	 * @throws ParseException
 	 * @throws IOException
 	 */
