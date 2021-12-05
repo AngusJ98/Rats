@@ -200,9 +200,9 @@ public abstract class Rat extends Entity {
 		//used by noEntrySign
 		moveDirection = direction;
 		while (movesLeft > 0) {
-			Pos northTile = new Pos(this.pos.x, this.pos.y + 1); 
+			Pos northTile = new Pos(this.pos.x, this.pos.y - 1);
 			Pos eastTile = new Pos(pos.x + 1, pos.y);
-			Pos southTile = new Pos(pos.x, pos.y - 1);
+			Pos southTile = new Pos(pos.x, pos.y + 1);
 			Pos westTile = new Pos(pos.x-1, pos.y);
 			Pos[] directionTiles = {northTile, eastTile, southTile, westTile};
 			setPosition(directionTiles[moveDirection.ordinal()]);
