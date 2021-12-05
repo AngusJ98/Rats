@@ -13,6 +13,7 @@
             <items>
               <MenuItem mnemonicParsing="false" onAction="#level1" text="Level 1" />
                   <MenuItem mnemonicParsing="false" onAction="#level2" text="Level 2" />
+                  <MenuItem mnemonicParsing="false" onAction="#liam" text="Liam" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
