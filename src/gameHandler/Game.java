@@ -187,6 +187,12 @@ public class Game {
 			}
 			return ratsAtPos;
 		}
+
+		/**
+		 * method to kill basic rats at certain positions
+		 * @param pos coordinates of rats to be killed
+		 * @return returns true if rats are killed, false otherwise
+		 */
 		public static boolean killBasicRatsAtPos(Pos pos) {
 			ArrayList<BasicRat> toKill = getRatsAtPos(pos);
 			if (ratsToKill!= null) {
@@ -194,7 +200,13 @@ public class Game {
 				return true;
 			}
 			return false;
-		}		
+		}
+
+		/**
+		 * method to kill a single rat
+		 * @param rat to kill
+		 * @return true if rat is in a list or rats or is a death rat, false otherwise
+		 */
 		public static boolean killSingleRat(Rat rat) { //so i made this method for when we need to kill individual rats
 			if (rats.contains(rat)) {
 				ratsToKill.add((BasicRat)rat);
@@ -209,7 +221,7 @@ public class Game {
 
 		/**
 		 * method to kill all rats
-		 * <p> side-effects</p>
+		 * <p> no side-effects</p>
 		 * <p> not referentially transparent</p>
 		 * @param toKill
 		 */
