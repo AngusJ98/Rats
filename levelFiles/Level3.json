@@ -1,0 +1,84 @@
+{
+  "map": {
+    "dimensions": [22, 15],
+    "tiles": "GGGGGGGGGGGGGGGGGGGGGG\nGPPPPPPPPPPPPPPPPPPPPG\nGPGGGGGGPGGPGPGGGGGGPG\nGPPPSPPPPTTPGPGGGGGGPG\nGPGGGGGGPGGPGPGGGGGGPG\nGPPPTTPPPTTPSPPTTTPSPG\nGPGGGGGPGGTGGGPGGGGGPG\nGPGGGGGPGGTGGGPGGGGGPG\nGPGGGGGPGGTGGGPGGGGGPG\nGPSPPPPPPPPPPPPGGGGGPG\nGPGGGTGGGGGPGGGGGGGGPG\nGPGGGTGGGGGPPPPSPPPPPG\nGPGGGTGGGGGPGGGGGGGGPG\nGPPPPPPPPSPPPPSPPPPPPG\nGPGGPGGGTGGGGGPGGGGGPG\nGPGGPGGGTGGGGPGGGGGGPG\nGPGGPTTTTPSPPPPPTPPPPG\nGPSPPGGGGGGGPGGGGGGGPG\nGPGGPGGGGGGGPGGGGGGGPG\nGPGGPGGGGGGGPGGGGGGGPG\nGPPPPPPPPPPPPPPPPPPPPG\nGGGGGGGGGGGGGGGGGGGGGG\n"
+
+  },
+  "rats": [
+    {
+      "gender": "BABY",
+      "canMate": true,
+      "canMove": true,
+      "moveSpeed": 2,
+      "timeToGrowth": 60,
+      "numChildren": 0,
+      "timeToBirth": 0,
+      "hp": 100,
+      "position": [1, 1]
+    },
+    {
+      "gender": "BABY",
+      "canMate": true,
+      "canMove": true,
+      "moveSpeed": 2,
+      "timeToGrowth": 60,
+      "numChildren": 0,
+      "timeToBirth": 0,
+      "hp": 100,
+      "position": [12, 2]
+    },
+    {
+      "gender": "BABY",
+      "canMate": true,
+      "canMove": true,
+      "moveSpeed": 2,
+      "timeToGrowth": 60,
+      "numChildren": 0,
+      "timeToBirth": 0,
+      "hp": 100,
+      "position": [1, 8]
+    },
+    {
+      "gender": "BABY",
+      "canMate": true,
+      "canMove": true,
+      "moveSpeed": 2,
+      "timeToGrowth": 60,
+      "numChildren": 0,
+      "timeToBirth": 0,
+      "hp": 100,
+      "position": [9, 2]
+    },
+    {
+      "gender": "BABY",
+      "canMate": false,
+      "canMove": true,
+      "moveSpeed": 2,
+      "timeToGrowth": 60,
+      "numChildren": 0,
+      "timeToBirth": 0,
+      "hp": 50,
+      "position": [5, 5]
+    }
+  ],
+  "itemsOnMap": {
+    "bomb": [], "gas": [], "sterilise": [], "poison": [],
+    "mSexChange": [], "fSexChange": [], "noEntry": [], "deathRat": []
+  },
+  "levelStats": {
+    "timeLeft": 10000,
+    "ratLimit": 10,
+    "loseAmount": 100,
+    "bombFreq": 1, "gasFreq": 2, "steriliseFreq": 2, "poisonFreq": 3,
+    "mSexChangeFreq": 4, "fSexChangeFreq": 4, "noEntryFreq": 4, "deathRatFreq": 1
+  },
+  "playerStats": {
+    "name": "Dave",
+    "score": 0,
+    "maxLevel": 3
+  },
+  "inventory": {
+    "bomb": 3, "gas": 3, "sterilise": 3,
+    "mSexChange": 3, "fSexChange": 3, "noEntry": 3, "deathRat": 1
+  }
+}
