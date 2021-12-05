@@ -363,10 +363,12 @@ public class Game {
 		}
 
 		/**
-		 *
-		 * @param dir
-		 * @param pos
-		 * @return
+		 * gets position from direction
+		 * <p> no side-effects</p>
+		 * <p> not referentially transparent</p>
+		 * @param dir direction facing
+		 * @param pos coordinates
+		 * @return returns the new position depending on the coordinates and direction facing
 		 */
 		public static Pos getPosFromDir(Direction dir, Pos pos){
 			Pos newPos;
@@ -397,6 +399,15 @@ public class Game {
 	public static class ItemManager {
 	    private static ArrayList<Item> itemsToRemove = new ArrayList<>();
 		private static ArrayList<Item> itemsToAdd = new ArrayList<>();
+
+
+		/**
+		 * method to try and place item string in a specific coordinate
+		 * <p> no side-effects</p>
+		 * <p> referentially transparent</p>
+		 * @param itemString item being placed
+		 * @param pos coordinates to be placed
+		 */
 		public static void tryPlace(String itemString, Pos pos) {
 			if (true /*TODO Stock check here*/) {
 				Item placedItem = null;
@@ -467,14 +478,28 @@ public class Game {
 			}
 
 		}
+
+		/**
+		 * adds item to a list
+		 * @param item to be added
+		 */
 		public static void addItem(Item item) {
 			itemsToAdd.add(item);
-		}	
+		}
+
+		/**
+		 * removes a specific item
+		 * @param item to be deleted
+		 */
 		public static void killItem(Item item) {
 			if (items.contains(item)) {
 				itemsToRemove.add(item);
 			}	
 		}
+
+		/**
+		 * performs item actions
+		 */
 		public static void performItemActions() {
 			for (Item item : items) {
 				item.tick();				
@@ -496,7 +521,7 @@ public class Game {
 		}	
 	}
 	
-	
+	//leaving the javadoc out for this one because someone said it's not needed
 	public static void main(String[] args) {
 		Game game = new Game();
 		// Runner runner = new Runner(); Runner is not needed and will be loaded as part of the javafx stuff so no need to worry about that
@@ -511,10 +536,15 @@ public class Game {
         }
     }
 
+	/**
+	 * gets the tiles
+	 * @return tiles
+	 */
 	public static HashMap<Pos, Tile> getTiles() { //no
 		return tiles; //bad
 	} //use TileManager.GetTile();
 
+	
 	public void setUp() throws ParseException, IOException {
 		//file reader class goes here, reads file and passes data to this method
         Tuple<BasicRat[], Entity[][], char[][], HashMap<String, Integer>,
