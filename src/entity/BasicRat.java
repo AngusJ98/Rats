@@ -84,6 +84,11 @@ public class BasicRat extends Rat {
         }
     }
 
+    /**
+     * updates image of the rat
+     * <p> not side-effects</p>
+     * <p> not referentially transparent</p>
+     */
     public void updateImage() {
         switch (this.getRatType()) {
             case BABY:
@@ -98,10 +103,18 @@ public class BasicRat extends Rat {
         }
     }
 
+    /**
+     * returns whether or not it's sterile
+     * @return sterile
+     */
     public boolean isSterile() {
         return sterile;
     }
 
+    /**
+     * sets the sterile booleon for the Basic Rat
+     * @param sterile
+     */
     public void setSterile(boolean sterile) {
         this.sterile = sterile;
     }
@@ -155,6 +168,10 @@ public class BasicRat extends Rat {
         return SCORE_BASE + 10 * this.getNumChildren();
     }
 
+    /**
+     * method for actions on the different rats
+     */
+
     public void ratActions() {
 
         switch (ratType) {
@@ -168,6 +185,9 @@ public class BasicRat extends Rat {
 
     }
 
+    /**
+     * method for baby rats actions
+     */
     private void babyRatActions() {
         if (this.timeToGrowth <= 0) {
             this.setMoveSpeed(DEFAULT_SPEED);
