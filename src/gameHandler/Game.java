@@ -242,7 +242,7 @@ public class Game {
 						if (Inventory.getBombCount() > 0) {
 							placedItem = new Bomb(pos);
 							items.add(placedItem);
-							Inventory.
+							Inventory.setBombCount(Inventory.getBombCount() - 1);
 						}
 						break;
 					case "gas":

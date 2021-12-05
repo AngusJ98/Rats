@@ -4,13 +4,13 @@ import java.util.HashMap;
 
 public class Inventory {
 
-    private int bombCount;
-    private int gasCount;
-    private int sterileCount;
-    private int noEntryCount;
-    private int maleCount;
-    private int femaleCount;
-    private int deathCount;
+    private static int bombCount;
+    private static int gasCount;
+    private static int sterileCount;
+    private static int noEntryCount;
+    private static int maleCount;
+    private static int femaleCount;
+    private static int deathCount;
 
     private int bombRestockRate;
     private int gasRestockRate;
@@ -59,6 +59,34 @@ public class Inventory {
         return deathCount;
     }
 
+    public static void setBombCount(int bombCount) {
+        this.bombCount = bombCount;
+    }
+
+    public static void setGasCount(int gasCount) {
+        this.gasCount = gasCount;
+    }
+
+    public static void setSterileCount(int sterileCount) {
+        this.sterileCount = sterileCount;
+    }
+
+    public static void setNoEntryCount(int noEntryCount) {
+        this.noEntryCount = noEntryCount;
+    }
+
+    public static void setMaleCount(int maleCount) {
+        this.maleCount = maleCount;
+    }
+
+    public static void setFemaleCount(int femaleCount) {
+        this.femaleCount = femaleCount;
+    }
+
+    public static void setDeathCount(int deathCount) {
+        this.deathCount = deathCount;
+    }
+
     public void restock() {
         if (Game.getTimeLeft() % bombRestockRate == 0) {
             bombCount += 1;
@@ -67,6 +95,7 @@ public class Inventory {
         if (Game.getTimeLeft() % gasRestockRate == 0) {
             gasCount += 1;
         }
+
     }
 
     /*
