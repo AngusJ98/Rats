@@ -20,9 +20,7 @@ import java.util.ArrayList;
  * Types of directions rats can move in.
  * North, Eat, South, West
  */
-enum Direction {
-	NORTH, EAST, SOUTH, WEST;
-}
+
 public abstract class Rat extends Entity {
 	protected boolean canMate;
 	protected boolean canMove;
