@@ -1,12 +1,9 @@
 package gameHandler;
 
 import Controller.GameRenderer;
-import Controller.Main;
 import entity.*;
 import javafx.application.Platform;
 import org.json.simple.parser.ParseException;
-import playerProfile.Player;
-import playerProfile.ProfileReader;
 import tiles.Tile;
 
 import java.io.IOException;
@@ -30,7 +27,6 @@ public class Game {
 	private static int loseAmount;
 	private static Inventory inventory;
 	public static int score;
-	private static int levelNum;
 
 	private static Timer timer = new Timer();
 	private static int timeLeft = -1;
@@ -40,14 +36,6 @@ public class Game {
 	 */
 	public Game() {
 
-	}
-
-	public static int getLevelNum() {
-		return levelNum;
-	}
-
-	public static void setLevelNum(int levelNum) {
-		Game.levelNum = levelNum;
 	}
 
 	/**
@@ -143,11 +131,11 @@ public class Game {
 	public static void checkVictory() {
 		if (rats.size() == 0) {
 			System.out.println("VICTORY!!");
+			System.out.println(score);
 			if (timeLeft > 0) {
 				Game.addScore(timeLeft);
 			}
-			updatePlayerStats(score);
-			System.out.println(score);
+			//TODO updatePlayerStats();
 			Game.cleanUp();
 			Platform.runLater(() -> Game.runner.victoryScreen());
 		} else if (rats.size() > loseAmount) {
@@ -155,18 +143,6 @@ public class Game {
 			Game.cleanUp();
 			Platform.runLater(() -> Game.runner.lossScreen());
 		}
-	}
-
-	private static void updatePlayerStats(int score) {
-		Player current = Main.activePlayer;
-		if (current.getMaxLevelUnlocked() == Game.getLevelNum()) {
-			current.setMaxLevelUnlocked(Game.getLevelNum() + 1);
-		}
-		if (score > current.getScores()[Game.getLevelNum()]) {
-			current.getScores()[Game.getLevelNum()] = score;
-		}
-		System.out.println(current.getMaxLevelUnlocked());
-		ProfileReader.updateProfile(current.makeJSON());
 	}
 
 	/**
@@ -201,6 +177,14 @@ public class Game {
 		private static ArrayList<BasicRat> ratsToAdd = new ArrayList<>();
 		private static ArrayList<BasicRat> ratsToKill = new ArrayList<>();
 		private static ArrayList<DeathRat> deathRatsToKill = new ArrayList<>();
+		public static getRatList() {
+			//should only be used by GFH
+			return rats;
+		}
+		public static getDeathRatList() {
+			return deathRats;
+		}	
+		
 		public static ArrayList<BasicRat> getRatsAtPos(Pos pos) {
 			ArrayList<BasicRat> ratsAtPos = new ArrayList<BasicRat>();
 			for (int i = 0; i < rats.size(); i++) {
@@ -211,6 +195,8 @@ public class Game {
 			}
 			return ratsAtPos;
 		}
+		
+		
 
 		/**
 		 * method to kill basic rats at certain positions
@@ -336,10 +322,8 @@ public class Game {
 
 		/**
 		 * gets entities
-		 * <p> no side-effects</p>
-		 * <p> not referentially transparent</p>
-		 * @param pos of entities
-		 * @return returns a list of entities
+		 * @param pos
+		 * @return
 		 */
 		public static ArrayList<Entity> getEntities(Pos pos) {
 			ArrayList<Entity> entities = new ArrayList<>();
@@ -353,47 +337,20 @@ public class Game {
 			}
 			return entitiesOnPos;
 		}
-
-		/**
-		 * gets the No. of Tile width
-		 * @return numTileWidth
-		 */
 		public static int getNumTileWidth() {
 			return numTileWidth;
 		}
-
-		/**
-		 * sets the Num Tile Width
-		 * @param numTileWidth the number of the tile width
-		 */
 		public static void setNumTileWidth(int numTileWidth) {
 			TileManager.numTileWidth = numTileWidth;
 		}
 
-		/**
-		 * gets the No. of Tile Height
-		 * @return No. of Tile Height
-		 */
 		public static int getNumTileHeight() {
 			return numTileHeight;
 		}
 
-		/**
-		 * sets No. of Tile Height
-		 * @param numTileHeight how high the tile is.
-		 */
 		public static void setNumTileHeight(int numTileHeight) {
 			TileManager.numTileHeight = numTileHeight;
 		}
-
-		/**
-		 * gets position from direction
-		 * <p> no side-effects</p>
-		 * <p> not referentially transparent</p>
-		 * @param dir direction facing
-		 * @param pos coordinates
-		 * @return returns the new position depending on the coordinates and direction facing
-		 */
 		public static Pos getPosFromDir(Direction dir, Pos pos){
 			Pos newPos;
 			switch (dir) {
@@ -419,19 +376,14 @@ public class Game {
 	}
 	
 	
-	private static ArrayList<Item> items = new ArrayList<Item>(); //should've made this an Arraylist before sorry
+	private static ArrayList<Item> items = new ArrayList<Item>(); 
 	public static class ItemManager {
 	    private static ArrayList<Item> itemsToRemove = new ArrayList<>();
 		private static ArrayList<Item> itemsToAdd = new ArrayList<>();
-
-
-		/**
-		 * method to try and place item string in a specific coordinate
-		 * <p> no side-effects</p>
-		 * <p> referentially transparent</p>
-		 * @param itemString item being placed
-		 * @param pos coordinates to be placed
-		 */
+		public static getItemList() {
+			//should only be used by GFH
+			return items;
+		}
 		public static void tryPlace(String itemString, Pos pos) {
 			if (true /*TODO Stock check here*/) {
 				Item placedItem = null;
@@ -502,28 +454,14 @@ public class Game {
 			}
 
 		}
-
-		/**
-		 * adds item to a list
-		 * @param item to be added
-		 */
 		public static void addItem(Item item) {
 			itemsToAdd.add(item);
-		}
-
-		/**
-		 * removes a specific item
-		 * @param item to be deleted
-		 */
+		}	
 		public static void killItem(Item item) {
 			if (items.contains(item)) {
 				itemsToRemove.add(item);
 			}	
 		}
-
-		/**
-		 * performs item actions
-		 */
 		public static void performItemActions() {
 			for (Item item : items) {
 				item.tick();				
@@ -545,7 +483,7 @@ public class Game {
 		}	
 	}
 	
-	//leaving the javadoc out for this one because someone said it's not needed
+	
 	public static void main(String[] args) {
 		Game game = new Game();
 		// Runner runner = new Runner(); Runner is not needed and will be loaded as part of the javafx stuff so no need to worry about that
@@ -560,22 +498,10 @@ public class Game {
         }
     }
 
-	/**
-	 * gets the tiles
-	 * @return tiles
-	 */
 	public static HashMap<Pos, Tile> getTiles() { //no
 		return tiles; //bad
 	} //use TileManager.GetTile();
 
-
-	/**
-	 * sets up files that have been read here
-	 * <p> side-effects</p>
-	 * <p> referentially transparent</p>
-	 * @throws ParseException
-	 * @throws IOException
-	 */
 	public void setUp() throws ParseException, IOException {
 		//file reader class goes here, reads file and passes data to this method
         Tuple<BasicRat[], Entity[][], char[][], HashMap<String, Integer>,
@@ -585,29 +511,14 @@ public class Game {
 		constructRatList(gameObjects.getFirst());
 		setUpLevelStats(gameObjects.getFourth(), gameObjects.getSixth());
 	}
-
-	/**
-	 * gets level path
-	 * @return level path
-	 */
 	public static String getLevelPath() {
 		return levelPath;
 	}
 
-	/**
-	 * sets level path
-	 * @param levelPath
-	 */
 	public static void setLevelPath(String levelPath) {
 		Game.levelPath = levelPath;
 	}
 
-	/**
-	 * constructs the tile map
-	 * <p> no side-effects</p>
-	 * <p> referentially transparent</p>
-	 * @param map of the game
-	 */
 	public void constructTileMap(char[][] map) {
 		Game.tiles = new HashMap<>();//set to new hashmap so we don't accidentally keep old boards
 		TileManager.numTileWidth = map[0].length;
@@ -623,23 +534,10 @@ public class Game {
 		}
     }
 
-	/**
-	 * constructs a list of rats
-	 * <p> no side-effects</p>
-	 * <p> not referentially transparent</p>
-	 * @param rats list
-	 */
 	public void constructRatList(BasicRat[] rats) {
 		Game.rats = new ArrayList<BasicRat>(Arrays.asList(rats));
 	}
 
-	/**
-	 * sets up level stats
-	 * <p> no side-effects</p>
-	 * <p> not referentially transparent</p>
-	 * @param stats
-	 * @param inventory
-	 */
 	private void setUpLevelStats(HashMap<String, Integer> stats, int[] inventory) {
 		this.timeLeft = stats.get("timeLeft") * 10;
 		this.loseAmount = stats.get("loseAmount");

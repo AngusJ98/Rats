@@ -3,5 +3,5 @@ package entity;
 
 public enum ItemType {
 
-    Bomb, Poison, Sterilisation, NoEntrySign, Female, Male
+    BOMB, POISON, STERILIZATION, NOENTRYSIGN, FEMALE, MALE, GAS
 }

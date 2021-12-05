@@ -15,15 +15,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.*;
 import entity.*;
 
-/**
- *
- <p> 1. File-name: GameFileHandler.java</p>
- <p> 2. Creation Date: (N/A) </p>
- <p> 3. Last modification date:</p>
- <p> 4. Purpose of the program: To manage all files. </p>
- * @author Jonny
- */
-
 public class GameFileHandler {
     public static final String ERROR_MSG_FILE_NOT_FOUND = "Could not find %s.";
     public static final String SAVE_PATH = "saveFiles/";
@@ -217,14 +208,14 @@ public class GameFileHandler {
     }
 
     // TODO: change this to Item[][] if we make an abstract Item class
-    private static Entity[][] parseItemsOnMap(JSONObject json) {
+    private static Item[][] parseItemsOnMap(JSONObject json) {
         JSONObject itemsOnMap = (JSONObject)json.get("itemsOnMap");
         String[] itemKeys = {
                 "bomb", "gas", "sterilise", "poison", "mSexChange",
                 "fSexChange", "noEntry", "deathRat"
         };
         int nItems = itemKeys.length;
-        Entity[][] items = new Entity[nItems][];
+        Item[][] items = new Item[nItems][];
         String currentKey;
 
         for (int i = 0; i < nItems; i++) {
@@ -250,7 +241,7 @@ public class GameFileHandler {
     }
 
     private static HashMap<String, HashMap<String, Integer>>
-    parsePlayerStats(JSONObject json) {
+		parsePlayerStats(JSONObject json) {
         HashMap<String, HashMap<String, Integer>> player = new HashMap<>();
         HashMap<String, Integer> playerStats = new HashMap<>();
         JSONObject jPlayerStats = (JSONObject) json.get("playerStats");
@@ -273,15 +264,11 @@ public class GameFileHandler {
         }
 
         return inventory;
-    }
-
-    private static void writeSaveFile(String saveString) {
-
-    }
+    }   
 
     private static Tuple<BasicRat[], Entity[][], char[][], HashMap<String, Integer>,
-            HashMap<String, HashMap<String, Integer>>, int[]>
-    parseJSON(JSONObject json) {
+        HashMap<String, HashMap<String, Integer>>, int[]>
+		parseJSON(JSONObject json) {
         BasicRat[] rats = parseRats(json);
         Entity[][] items = parseItemsOnMap(json);
         char[][] map = parseMap(json);
@@ -295,10 +282,6 @@ public class GameFileHandler {
     private static String generateJSON(ArrayList<Object> objects) {
         String saveString = "";
         return saveString;
-    }
-
-    public static void saveGame() {
-
     }
 
     // loadGame() and newGame() will both return Tuples containing everything
@@ -340,6 +323,119 @@ public class GameFileHandler {
         parseMap(json);
 
 
-    }
+    }	
+	public static void saveGame() {
+		//construct map string
+		String mapStr = "";
+		for (y = 0; y < TileManager.getNumTileWidth()) {
+			for (x = 0; x < TileManager.getNumTileHeight()) {
+				TileType type = TileManager.getTile(new Pos(x, y)).getType();
+				switch (type) {
+				case TileTypes.PATH: 
+					mapStr += "P";
+					break;
+				case TileTypes.TUNNEL;
+					mapStr += "T";
+					break;
+				case TileTypes.GRASS:
+					mapStr += "G";
+					break;
+				case TileTypes.SPEEDTILE:
+					mapStr += "S";
+					break;
+				case default:
+					//Unknown Tile
+					//not sure if this would ever trigger cause
+					//errors should arise when the map is loaded but
+					//it's here anyway and you can't stop me 
+					mapStr += "U";
+					break;
+				}	
+			}
+			mapStr += "\\n"; //idk how to print \n without creating a new line but we should be literally appending \n aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+		}
+		//construct dimension string
+		String dimStr = "[" +  TileManager.getNumTileWidth() + "," TileManager.getNumTileHeight() + "],";
+		String fullMapString = "{\n  map: {\n    \"dimensions\": " + dimStr + "\"tiles\": \"" + mapStr + "\"\n  },\n";
+		
+		//construct rat string
+		String ratStr = "  \"rats\": [\n";
+		ArrayList<BasicRat> rats = RatManager.getRatList();
+		for (i = 0; i < rats.size(); i++) {
+			rat = rats.get(i)
+			ratStr += "    {\n";
+			ratStr += "      \"gender\": \"" + rat.getRatType() "\",\n";
+			ratStr += "      \"canMate\": " + rat.getMateStatus() ",\n";
+			ratStr += "      \"canMove\": " + rat.getMoveStatus() ",\n";
+			ratStr += "      \"moveSpeed\": " + rat.getMoveSpeed() ",\n";
+			ratStr += "      \"timeToGrowth\": " + rat.getTimeToGrowth() ",\n";
+			ratStr += "      \"numChildren\": " + rat.getNumChildren() ",\n";
+			ratStr += "      \"timeToBirth\": " + rat.getTimeToBirth() ",\n";
+			ratStr += "      \"hp\": " + rat.getHP() ",\n";
+			ratStr += "      \"position\": [" + rat.getPosition().x + ", " + rat.getPosition().y "],\n";
+			ratStr += "    }";
+			if (!(i == rats.size()-1)) {
+				ratStr += ",";
+			}
+			ratStr += "\n";
+		}
+		ratStr += "  ],\n";
+		
+		//construct item string
+		String itemStr = "  \"itemsOnMap\": {\n    ";
+		ArrayList<Item> items = ItemManager.getItemList(); 
+		for (Item item : items) {
+			//kinda scuffed but jonny made this before itemType so i have no choice
+			ItemType type = item.getType
+			String itemTypeStr
+			switch (type) {
+				case ItemType.BOMB:
+				itemTypeStr = "bomb";
+				break;
+				case ItemType.GAS:
+				itemTypeStr = "gas";
+				break;
+				case ItemType.STERILIZE:
+				itemTypeStr = "sterilize";
+				break;
+				case ItemType.MALE:
+				itemTypeStr = "mSexChange";
+				break;
+				case ItemType.FEMALE:
+				itemTypeStr = "fSexChange";
+				break;
+				case ItemType.NOENTRYSIGN:
+				itemTypeStr = "noEntry";
+				break;
+				case ItemType.POISON:
+				itemTypeStr = "poison";
+				break;
+			}
+			itemStr += "\"" + itemTypeStr + "\": [" + Item.getPosition.x ", " + Item.getPosition.y + "]";
+		}
+		ArrayList<DeathRat> deathRats = getDeathRatList();
+		index = 0;
+		for (DeathRat deathRat : deathRats) {
+			itemStr += "\"deathRat"\": [" + deathRat.getPosition.x ", " + deathRat.getPosition.y + "]";
+			if (index < items.size() -1) {
+				itemStr += ", "
+			}	
+			index++
+		}	
 
+		//construct level stats string
+		String lvlStr = "";
+		
+		//construct player string
+		String playerStr = "";
+		
+		//construct inventory string
+		String inventoryStr = "";
+				
+		String fullGameString = fullMapString + ratStr + itemStr + lvlStr + playerStr + inventoryStr;		
+    }	
+	private static void writeSaveFile(String saveString) {
+		
+    }
+	
 }
