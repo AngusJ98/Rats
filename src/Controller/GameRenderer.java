@@ -38,6 +38,7 @@ public class GameRenderer {
     @FXML private Text noEntCount;
     @FXML private Text maleCount;
     @FXML private Text femaleCount;
+    @FXML private Text deathCount;
     @FXML private AnchorPane base;
     @FXML private ToggleGroup itemToggle;
     @FXML private StackPane board;
@@ -213,6 +214,11 @@ public class GameRenderer {
                 Pos position = entity.getPosition();
                 int x = position.x;
                 int y = position.y;
+
+                if (entity instanceof Rat) {
+                    Rat rat = (Rat)entity;
+                    pic.setRotate(180 + rat.getMoveDirection().ordinal()*90);
+                }
                 entityBoard.add(pic, x, y);
             }
         }
@@ -229,6 +235,7 @@ public class GameRenderer {
         this.noEntCount.setText(String.valueOf(Inventory.getnoEntryCount()));
         this.maleCount.setText(String.valueOf(Inventory.getmaleCount()));
         this.femaleCount.setText(String.valueOf(Inventory.getfemaleCount()));
+        this.deathCount.setText(String.valueOf(Inventory.getDeathCount()));
     }
 
     public void returnToMenu() {

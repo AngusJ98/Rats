@@ -15,6 +15,7 @@ public class Game {
 	private static ArrayList<BasicRat> rats = new ArrayList<BasicRat>();
 	private static String levelPath;
 	private static GameRenderer runner;
+	private static int loseAmount;
 	public static int score;
 
 	private static Timer timer = new Timer();
@@ -72,7 +73,7 @@ public class Game {
 			//TODO updatePlayerStats();
 			Game.cleanUp();
 			Platform.runLater(() -> Game.runner.victoryScreen());
-		} else if (timeLeft <= 0) {
+		} else if (timeLeft <= 0 && rats.size() > loseAmount) {
 			System.out.println("DEFEAT :c");
 			Game.cleanUp();
 			Platform.runLater(() -> Game.runner.lossScreen());
@@ -89,6 +90,7 @@ public class Game {
 		ArrayList<Entity> entities = new ArrayList<>();
 		entities.addAll(Game.rats);
 		entities.addAll(Game.items);
+		entities.addAll(RatManager.deathRats);
 		Entity[] entityArray = new Entity[entities.size()];
 		return entities.toArray(entityArray);
 	}
@@ -346,5 +348,6 @@ public class Game {
 
 	private void setUpLevelStats(HashMap<String, Integer> stats) {
 		this.timeLeft = stats.get("timeLeft") * 10;
+		this.loseAmount = stats.get("loseAmount");
 	}
 }

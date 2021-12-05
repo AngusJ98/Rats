@@ -236,7 +236,7 @@ public class GameFileHandler {
         JSONObject jLevelStats = (JSONObject) json.get("levelStats");
         String[] keys = {
                 "timeLeft", "ratLimit", "bombFreq", "gasFreq", "steriliseFreq", "poisonFreq",
-                "mSexChangeFreq", "fSexChangeFreq", "noEntryFreq", "deathRatFreq"
+                "mSexChangeFreq", "fSexChangeFreq", "noEntryFreq", "deathRatFreq" ,"loseAmount"
         };
         for (String key: keys) {
             levelStats.put(key, objToInt(jLevelStats, key));

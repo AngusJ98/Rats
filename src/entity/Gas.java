@@ -23,8 +23,12 @@ public class Gas extends Item {
 
     public Gas(Pos position) {
         super(new Image("file:resources/gasCan.png"), position);
+
 		//gas will act like a gas canister and be responsible for the spread of gasparts
 		//gasparts will be the entities that deal damage to rats
+
+		//gas will have no sprite and be responsible for the spread of gasparts
+		//gas parts will be visible and deal damage to rats
     }
 	public void tick() { 
 		//if there are less than <6> gas clouds, this method will attempt to place one each game tick
@@ -32,16 +36,8 @@ public class Gas extends Item {
 		if (gasNum < MAX_GAS && Game.getTimeLeft() % PLACE_INTERVAL == 0) {
 
 			//simplified code by checking positions at start
-			if (unvisitedTiles.size() > 0) {
-				int randomPlace = ThreadLocalRandom.current().nextInt(0, unvisitedTiles.size());
-				gasArray[gasNum] = new GasPart(unvisitedTiles.get(randomPlace));
-				Game.ItemManager.addItem(gasArray[gasNum]);
-				unvisitedTiles.remove(randomPlace);
-				gasNum++;
-			}
-		} else if (gasNum >= MAX_GAS) {
-			Game.ItemManager.killItem(this);
-		}
+			//the algorithm i'm using is similar to the start of dijkstra's algorithm and
+			//works based around checking positions in real time rather than all at the beginning
 
 		if (gasNum < 6) {
 			//if the list is empty, either the algorithm hasn't run or there
