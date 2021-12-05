@@ -330,15 +330,21 @@ public class Game {
 
 		/**
 		 * gets the No. of Tile width
-		 * @return 
+		 * @return numTileWidth
 		 */
 		public static int getNumTileWidth() {
 			return numTileWidth;
 		}
+
+		/**
+		 * sets the Num Tile Width
+		 * @param numTileWidth the number of the tile width
+		 */
 		public static void setNumTileWidth(int numTileWidth) {
 			TileManager.numTileWidth = numTileWidth;
 		}
 
+		
 		public static int getNumTileHeight() {
 			return numTileHeight;
 		}
