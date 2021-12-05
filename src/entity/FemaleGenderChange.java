@@ -26,7 +26,7 @@ public class FemaleGenderChange extends Item {
      */
 
     public FemaleGenderChange(Pos position) {
-        super(new Image("File:resources/female.png"), position);
+        super(ItemType.Female ,new Image("File:resources/female.png"), position);
         timer = DEFAULT_TIME;
     }
 

@@ -25,7 +25,7 @@ public class GasPart extends Item {
      * @param position the position of the gas being created
      */
     public GasPart(Pos position) {
-        super(new Image("file:resources/gas.png"), position);
+        super(ItemType.GasPart ,new Image("file:resources/gas.png"), position);
     }
 
     /**
