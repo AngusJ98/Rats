@@ -22,6 +22,14 @@ import java.util.HashMap;
 
 import static java.lang.Math.min;
 
+/**
+ *
+ <p> 1. File-name: GameRenderer.java</p>
+ <p> 2. Creation Date: (N/A) </p>
+ <p> 3. Last modification date:</p>
+ <p> 4. Purpose of the program: To renderer the game </p>
+ * @author Gus
+ */
 
 public class GameRenderer {
 
@@ -62,6 +70,14 @@ public class GameRenderer {
                                        x
                         BAD CODE WARNING, DO NOT LOOK HERE
     */
+
+    /**
+     * Constructor.
+     * <p> side-effects</p>
+     * <p> not referentially transparent</p>
+     * @param i have no clue .
+     */
+
     public GameRenderer() {
         Game.setRunner(this); //I hate doing this but is what it is
     }
@@ -80,49 +96,6 @@ public class GameRenderer {
         this.updateCount();
         this.redrawEntities(entities);
     }
-
-    /*
-    This method should not be used, see drawBoard instead
-    public void createBoardFromChar(char[][] tiles) {
-        this.width = tiles[0].length;
-        this.height = tiles.length;
-        Image grass = new Image("file:resources/grassBlock.png");
-        Image path = new Image("file:resources/dirtBlock.png");
-        Image tun = new Image("file:resources/strightTun.png");
-        Image speed = new Image("file:resources/speedTile.png");
-        this.tilePixelSize = min((int) pixelWidth / this.width, (int) pixelWidth / this.height);//Min statement to account for rectangular board
-
-        for (int y = 0; y < tiles.length; y++) {
-            for (int x = 0; x < tiles[y].length; x++) {
-                StackPane tile = new StackPane();
-                ImageView tileType = new ImageView();
-                switch (tiles[y][x]) {
-
-                    case 'G':
-                        tileType.setImage(grass);
-                        break;
-                    case 'P':
-                        tileType.setImage(path);
-                        //add a button on top to place items
-                        break;
-                    case 'T':
-                        tileType.setImage(tun);
-                        break;
-                    case 'S':
-                        tileType.setImage(speed);
-                        break;
-                }
-                tileType.setFitHeight(this.tilePixelSize);
-                tileType.setFitWidth(this.tilePixelSize);
-                tile.getChildren().add(tileType);
-                board.add(tile, x, y);
-            }
-        }
-
-
-        board.setHgap(0);
-        board.setVgap(0);
-    }*/
 
 
     public void drawBoard(Entity[] entities) {

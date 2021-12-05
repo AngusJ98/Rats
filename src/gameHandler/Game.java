@@ -10,6 +10,15 @@ import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.*;
 
+/**
+ *
+ <p> 1. File-name: Game.java</p>
+ <p> 2. Creation Date: (N/A) </p>
+ <p> 3. Last modification date:</p>
+ <p> 4. Purpose of the program: Game file Implementation</p>
+ * @author ??
+ */
+
 public class Game {	
 	//this is a pretty static way of doing things, but it just works
 	private static ArrayList<BasicRat> rats = new ArrayList<BasicRat>();
@@ -71,13 +80,19 @@ public class Game {
 
 	/**
 	 * adds the score
+	 * <p> no side-effects</p>
+	 * <p> referentially transparent</p>
 	 * @param addition for adding score to the game score
 	 */
 	public static void addScore(int addition) {
 		Game.score += addition;
 	}
 
-	
+	/**
+	 * method to start the game
+	 * <p> side-effects</p>
+	 * <p> referentially transparent</p>
+	 */
 	public void start() {
 		Game.runner.redrawBoard(this.createCombinedEntityList());
 		Game.score = 0;
@@ -86,6 +101,12 @@ public class Game {
 		this.items = new ArrayList<>();
 		this.startTimer();
     }
+
+	/**
+	 * method to start the timer
+	 * <p> side-effects</p>
+	 * <p> not referentially transparent</p>
+	 */
     private void startTimer() {
 		Game.timer = new Timer();
 		TimerTask task = new TimerTask() {
@@ -101,6 +122,12 @@ public class Game {
 		};
 		timer.scheduleAtFixedRate(task, 0, 100);
 	}
+
+	/**
+	 * method to check whether or not the game has been Won.
+	 * <p> side-effects</p>
+	 * <p> not referentially transparent</p>
+	 */
 	public static void checkVictory() {
 		if (rats.size() == 0) {
 			System.out.println("VICTORY!!");
@@ -118,12 +145,24 @@ public class Game {
 		}
 	}
 
+	/**
+	 * Method for cleaning up the game.
+	 * <p> side-effects</p>
+	 * <p> not referentially transparent</p>
+	 */
 	public static void cleanUp() {
 		Game.timer.cancel();
 		Game.timer = null;
 		Game.items = new ArrayList<>(); //clear off old items
 		Platform.runLater(() -> Game.runner.removeEntities());
 	}
+
+	/**
+	 * method to combine Entity List for the game
+	 * 	<p> side-effects</p>
+	 * 	<p> not referentially transparent</p>
+	 * @return List of entities
+	 */
 	private Entity[] createCombinedEntityList() {
 		ArrayList<Entity> entities = new ArrayList<>();
 		entities.addAll(Game.rats);
@@ -132,7 +171,6 @@ public class Game {
 		Entity[] entityArray = new Entity[entities.size()];
 		return entities.toArray(entityArray);
 	}
-
 
     public static class RatManager {
 		private static ArrayList<DeathRat> deathRats = new ArrayList<DeathRat>();
@@ -168,9 +206,22 @@ public class Game {
 			System.out.println("Tried to kill a rat that did not exist");
 			return false;			
 		}
+
+		/**
+		 * method to kill all rats
+		 * <p> side-effects</p>
+		 * <p> not referentially transparent</p>
+		 * @param toKill
+		 */
 		public static void killRatArray(ArrayList<BasicRat> toKill) { //this one kills all basicrats in the array it's passed
 			ratsToKill.addAll(ratsToKill);
 		}
+
+		/**
+		 * method for performing the rat's actions
+		 * <p> no side-effects</p>
+		 * <p> not referentially transparent</p>
+		 */
 		public static void performRatActions() {
 
 			for (BasicRat rat : rats) {
@@ -202,6 +253,13 @@ public class Game {
 			}
 			deathRatsToKill.clear();
 		}
+
+		/**
+		 * Method to add rats to a list
+		 * <p> side-effects</p>
+		 * <p> not referentially transparent</p>
+		 * @param rat
+		 */
 		public static void addRat(BasicRat rat) {
 			ratsToAdd.add(rat);
 		}
