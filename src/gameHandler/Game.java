@@ -1,9 +1,12 @@
 package gameHandler;
 
 import Controller.GameRenderer;
+import Controller.Main;
 import entity.*;
 import javafx.application.Platform;
 import org.json.simple.parser.ParseException;
+import playerProfile.Player;
+import playerProfile.ProfileReader;
 import tiles.Tile;
 
 import java.io.IOException;
@@ -27,6 +30,7 @@ public class Game {
 	private static int loseAmount;
 	private static Inventory inventory;
 	public static int score;
+	private static int levelNum;
 
 	private static Timer timer = new Timer();
 	private static int timeLeft = -1;
@@ -36,6 +40,14 @@ public class Game {
 	 */
 	public Game() {
 
+	}
+
+	public static int getLevelNum() {
+		return levelNum;
+	}
+
+	public static void setLevelNum(int levelNum) {
+		Game.levelNum = levelNum;
 	}
 
 	/**
@@ -131,11 +143,11 @@ public class Game {
 	public static void checkVictory() {
 		if (rats.size() == 0) {
 			System.out.println("VICTORY!!");
-			System.out.println(score);
 			if (timeLeft > 0) {
 				Game.addScore(timeLeft);
 			}
-			//TODO updatePlayerStats();
+			updatePlayerStats(score);
+			System.out.println(score);
 			Game.cleanUp();
 			Platform.runLater(() -> Game.runner.victoryScreen());
 		} else if (rats.size() > loseAmount) {
@@ -143,6 +155,15 @@ public class Game {
 			Game.cleanUp();
 			Platform.runLater(() -> Game.runner.lossScreen());
 		}
+	}
+
+	private static void updatePlayerStats(int score) {
+		Player current = Main.activePlayer;
+		current.setMaxLevelUnlocked(current.getMaxLevelUnlocked()+1);
+		if (score > current.getScores()[Game.getLevelNum()]) {
+			current.getScores()[Game.getLevelNum()] = score;
+		}
+		ProfileReader.updateProfile(current.makeJSON());
 	}
 
 	/**

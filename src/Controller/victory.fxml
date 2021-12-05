@@ -13,5 +13,10 @@
          </font>
       </Text>
       <Button layoutX="265.0" layoutY="372.0" mnemonicParsing="false" onAction="#returnToMenu" prefHeight="79.0" prefWidth="271.0" text="Return to Menu" />
+      <Text fx:id="points" layoutX="262.0" layoutY="321.0" strokeType="OUTSIDE" strokeWidth="0.0" text="xPoints">
+         <font>
+            <Font size="87.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

@@ -27,6 +27,7 @@ public class MenuRunner {
     @FXML private TabPane highscore;
     @FXML private Menu profiles;
     @FXML private Text playerId;
+    @FXML private Menu play;
     public MenuRunner() {
 
     }
@@ -34,6 +35,7 @@ public class MenuRunner {
 
     //shamelessly stolen from highscore
     public void initialize() {
+
         HBox table = new HBox(2);
         table.setAlignment(Pos.TOP_CENTER);
         Alert motd = new Alert(Alert.AlertType.INFORMATION);
@@ -42,11 +44,31 @@ public class MenuRunner {
         motd.setContentText(MessageOfTheDay.getMotd());
         motd.showAndWait();
 
+
+
+
         table.setStyle("-fx-background-color:GREY");
         updateHigh();
         createProfileButtons();
         //add the table to the scene
         menuBase.getChildren().add(table);
+
+        for (int i = 0; i < play.getItems().size(); i++) {
+            play.getItems().get(i).setDisable(false);
+        }
+
+        if (Main.activePlayer == null) {
+            playerId.setText("Select a player profile before playing");
+            for (MenuItem i : play.getItems()) {
+                i.setDisable(true);
+            }
+        } else {
+            for (int i = play.getItems().size() - 1; i > Main.activePlayer.getMaxLevelUnlocked(); i--) {
+                play.getItems().get(i).setDisable(true);
+            }
+        }
+
+
     }
 
     private void startGame() throws Exception{
@@ -82,6 +104,7 @@ public class MenuRunner {
                     Player[] allPs = ProfileReader.retrieveAllPlayers();
                     Main.activePlayer = allPs[Integer.parseInt(m.getId())];
                     playerId.setText(Main.activePlayer.getPlayerName());
+                    initialize();
                 }
             });
             profiles.getItems().add(m);
@@ -127,8 +150,15 @@ public class MenuRunner {
         }
     }
 
+    public void level0(ActionEvent actionEvent) throws Exception {
+        Game.setLevelPath("testLevel");
+        Game.setLevelNum(0);
+        this.startGame();
+    }
+
     public void level1(ActionEvent actionEvent) throws Exception {
         Game.setLevelPath("testLevel");
+        Game.setLevelNum(0);
         this.startGame();
     }
 
