@@ -7,21 +7,23 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ToggleButton;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import messageOfTheDay.MessageOfTheDay;
+import playerProfile.Player;
+import playerProfile.ProfileReader;
 import sun.audio.AudioStream;
 
 import java.io.File;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 public class MenuRunner {
 
     @FXML private AnchorPane menuBase;
-
+    @FXML private TabPane highscore;
 
     public MenuRunner() {
 
@@ -42,6 +44,13 @@ public class MenuRunner {
 
         //add the table to the scene
         menuBase.getChildren().add(table);
+
+        ArrayList<Player> players = new ArrayList<>();
+        players = ProfileReader.getHighScores(1);
+        for (Player player : players) {
+            System.out.println(player);
+        }
+
     }
 
     private void startGame() throws Exception{
@@ -59,6 +68,27 @@ public class MenuRunner {
         } catch (Exception e) {
             e.printStackTrace();
             System.exit(1);
+        }
+    }
+
+    private void updateHigh() {
+        for (int i = 0; i < 6; i++) {
+            Tab newTab = new Tab();
+            TableView highScoreTable = new TableView();
+            ArrayList<Player> highScorers = ProfileReader.getHighScores(i);
+            TableColumn nameCol = new TableColumn("Name");
+            nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+
+            TableColumn scoreCol = new TableColumn("Score");
+            nameCol.setCellValueFactory(new PropertyValueFactory<>("score"));
+
+            highScoreTable.getColumns().addAll(nameCol,scoreCol);
+            newTab.setContent(highScoreTable);
+
+            highScoreTable.getItems().addAll(highScorers);
+
+            highscore.getTabs().add(newTab);
+
         }
     }
 

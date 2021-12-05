@@ -20,9 +20,6 @@ public class GameFileHandler {
     public static final String SAVE_PATH = "saveFiles/";
     public static final String LEVEL_PATH = "levelFiles/";
     public static final String SAVE_FILE_EXT = ".json";
-    public static final String MALE_RAT_IMG = "maleRat.png";
-    public static final String FEMALE_RAT_IMG = "femaleRat.png";
-    public static final String BABY_RAT_IMG = "babyRat.png";
 
     private GameFileHandler() {}
 

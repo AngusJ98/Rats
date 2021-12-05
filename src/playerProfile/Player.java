@@ -1,7 +1,10 @@
+package playerProfile;
+
 import java.io.*;
+import java.util.Arrays;
 
 /**
- * <p> 1. File-name: Player.java</p>
+ * <p> 1. File-name: playerProfile.Player.java</p>
  * <p> 2. Creation Date: 19/11/21 </p>
  * <p> 3. Last modification date: 03/12/21 </p>
  * <p> 4. Purpose of the program: Creation of players</p>
@@ -11,7 +14,7 @@ import java.io.*;
 
 public class Player {
 
-    private int score;
+    private int[] score;
     private String playerName;
     private int maxLevelUnlocked;
 
@@ -24,7 +27,7 @@ public class Player {
      * @param score            the score of this player
      * @param maxLevelUnlocked the maximum level unlocked by this player
      */
-    Player(String playerName, int score, int maxLevelUnlocked) {
+    Player(String playerName, int[] score, int maxLevelUnlocked) {
         this.playerName = playerName;
         this.score = score;
         this.maxLevelUnlocked = maxLevelUnlocked;
@@ -38,7 +41,7 @@ public class Player {
      * @return playerName, score and maxLevelUnlocked neatly formatted
      */
     public String toString() {
-        return playerName + " " + score + " " + maxLevelUnlocked;
+        return playerName + " " + Arrays.toString(score) + " " + maxLevelUnlocked;
     }
 
     /**
@@ -48,7 +51,7 @@ public class Player {
      *
      * @return the score of the player
      */
-    public int getScore() {
+    public int[] getScores() {
         return score;
     }
 
@@ -64,24 +67,6 @@ public class Player {
         return maxLevelUnlocked;
     }
 
-    /**
-     * Method used to save a score to the end of profile.txt
-     */
-    public void saveScore() {
-        try {
-            Writer output = null;
-            File file = new File("profile.txt");
-            output = new BufferedWriter(new FileWriter(file, true));
-            output.write(playerName);
-            output.write(",");
-            output.write(maxLevelUnlocked);
-            output.write(",");
-            output.write("" + score);
-            output.write("\n");
-            output.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+
 
 }

@@ -1,0 +1,17 @@
+{
+  "1": {
+    "name": "Gus",
+    "scores": [10,10,10,10,10,0,0,0],
+    "maxLevel": 7
+  },
+  "2": {
+    "name": "Dylan",
+    "scores": [5,5,5,5,5,5,0,0],
+    "maxLevel": 10
+  },
+  "3": {
+    "name": "Ethan",
+    "scores": [50,500,5,5,5,5,0,0],
+    "maxLevel": 10
+  }
+}
