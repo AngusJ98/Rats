@@ -26,6 +26,7 @@ public class BasicRat extends Rat {
     private static final int MAX_CHILD = 4;
     private static final int BIRTH_TIMER = 100;
     private static final int SCORE_BASE = 10;
+    private static final int DEFAULT_SPEED = 1;
 	protected int hitPoints;
 	private int timeToGrowth; 
 	private int numChildren; //if this is above zero, implies the rat is pregnant
@@ -169,6 +170,7 @@ public class BasicRat extends Rat {
 
     private void babyRatActions() {
         if (this.timeToGrowth <= 0) {
+            this.setMoveSpeed(DEFAULT_SPEED);
             if (Math.random() < 0.5) {
                 this.setGender(RatTypes.FEMALE);
             } else {

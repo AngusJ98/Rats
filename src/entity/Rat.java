@@ -4,6 +4,7 @@ import gameHandler.Game;
 import gameHandler.Game.*;
 import gameHandler.Pos;
 import javafx.scene.image.Image;
+import tiles.TileTypes;
 
 import java.util.ArrayList;
 
@@ -22,6 +23,7 @@ import java.util.ArrayList;
  */
 
 public abstract class Rat extends Entity {
+	private static final int BOOST_DURATION = 10;
 	protected boolean canMate;
 	protected boolean canMove;
 	protected RatTypes ratType;
@@ -54,7 +56,24 @@ public abstract class Rat extends Entity {
 	public Direction getMoveDirection() {
 		return moveDirection;
 	}
+	public int boostRemaining = 0;
+	public boolean moveBoosted = false;
 
+	public int getBoostRemaining() {
+		return boostRemaining;
+	}
+
+	public void setBoostRemaining(int boostRemaining) {
+		this.boostRemaining = boostRemaining;
+	}
+
+	public boolean isMoveBoosted() {
+		return moveBoosted;
+	}
+
+	public void setMoveBoosted(boolean moveBoosted) {
+		this.moveBoosted = moveBoosted;
+	}
 
 	/**
 	 *
@@ -69,14 +88,24 @@ public abstract class Rat extends Entity {
 	 * @return (Not Sure what this does)
 	 */
 	public boolean move() {	
-
+		if (Game.getTiles().get(this.pos).getType() == TileTypes.SPEEDTILE){
+			this.setMoveBoosted(true);
+			this.boostRemaining = BOOST_DURATION;
+		}
 
 		//   if moveDirection = null, pick a direction from directions enum at random
 		if (moveDirection.equals(null)) {
 			moveDirection = Direction.values()[((int)(Math.random() * 4))];
-		}		
-
-		if (Game.getTimeLeft() % (int)(5/this.moveSpeed) == 0) {
+		}
+		int actingMoveSpeed = this.moveSpeed;
+		if (this.moveBoosted) {
+			actingMoveSpeed = actingMoveSpeed * 2;
+			boostRemaining--;
+		}
+		if (this.boostRemaining <= 0) {
+			this.moveBoosted = false;
+		}
+		if (Game.getTimeLeft() % (int)(5/actingMoveSpeed) == 0) {
 
 			//	  check if there is no path in the direction of travel, if this is the case turn right and try again. 
 			//	  keep turning until a path is found (if all paths are blocked the rat will keep turning right indefinitely and it will be funny)
