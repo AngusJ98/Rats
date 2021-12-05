@@ -10,7 +10,7 @@ import javafx.scene.image.Image;
  * <p> 3. Last modification date:</p>
  * <p> 4. Purpose of the program: Poison Implementation</p>
  *
- * @author Andrew
+ * @author Andrew, Ethan
  */
 
 public class Poison extends Item {

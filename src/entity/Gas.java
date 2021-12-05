@@ -22,6 +22,10 @@ public class Gas extends Item {
     ArrayList<Pos> unvisitedTiles = new ArrayList<Pos>();
     GasPart[] gasArray = new GasPart[MAX_GAS];
 
+    /**
+     *
+     * @param position
+     */
     public Gas(Pos position) {
         super(new Image("file:resources/gasCan.png"), position);
 
