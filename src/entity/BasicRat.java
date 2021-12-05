@@ -55,37 +55,20 @@ public class BasicRat extends Rat {
         }
     }
 
-    /**
-     * 2nd Constucter, initializes a basic rat in the Rat Class with
-     * it's type, MateStatus, MoveStatus, MoveSpeed, Time to Grow,
-     * No of Children and time to give birth.
-     * <p> no side-effects</p>
-     * <p> not referentially transparent</p>
-     * @param type takes in the rat type of basic rat.
-     * @param canMate takes in boolean for whether or not it can mate.
-     * @param canMove takes in boolean for whether or not it can move.
-     * @param moveSpeed takes it's movement speed.
-     * @param timeToGrowth stores it's time of growth.
-     * @param numChildren stores the number of Children this rat has.
-     * @param timeToBirth stores the time to birth for the rat.
-     * @param hp stores the rat's hp.
-     * @param position stores the current position of the rat.
-     * @param image stores the image of the rat.
-     */
-    public BasicRat(RatTypes type, boolean canMate, boolean canMove,
-                    int moveSpeed, int timeToGrowth, int numChildren,
-                    int timeToBirth, int hp, Pos position, Image image) {
-        super(type, position);
-        setMateStatus(canMate);
-        setMoveStatus(canMove);
-        setMoveSpeed(moveSpeed);
-        setTimeToGrowth(timeToGrowth);
-        setNumChildren(numChildren);
-        setTimeToBirth(timeToBirth);
-        setHP(50);
-        this.image = image;
-    }
 
+    public void updateImage() {
+        switch (this.getRatType()) {
+            case BABY:
+                this.image = new Image("file:resources/babyRat.png");
+                break;
+            case FEMALE:
+                this.image = new Image("file:resources/femaleRat.png");
+                break;
+            case MALE:
+                this.image = new Image("file:resources/maleRat.png");
+                break;
+        }
+    }
     /**
      * Setter for Time to Growth
      * @param timeToGrowth

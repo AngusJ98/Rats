@@ -14,17 +14,14 @@ public class FemaleGenderChange extends Item {
         timer = DEFAULT_TIME;
     }
 
-    public FemaleGenderChange(Pos position, int timeLeft) {
-        super(new Image("File:resources/female.png"), position);
-        timer = timeLeft;
-    }
 
     public void ratCollision(Rat target) {
-        if(target.getRatType() != RatTypes.DEATH) {
-            target.setRatType(RatTypes.FEMALE);
-            Game.ItemManager.killItem(this);
+        if(target.getRatType() != RatTypes.DEATH && target.getRatType() != RatTypes.BABY) {
+            BasicRat targ = (BasicRat) target;
+            targ.setGender(RatTypes.FEMALE);
         }
-	}
+        Game.ItemManager.killItem(this);
+    }
 
 	public void itemCollision(Item target) {}
 	public void onPlacement() {}	

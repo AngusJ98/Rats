@@ -91,33 +91,18 @@ public class GameFileHandler {
             switch ((String) rat.get("gender")) {
                 case "MALE":
                     type = RatTypes.MALE;
-                    imagePath = MALE_RAT_IMG;
                     break;
                 case "BABY":
                     type = RatTypes.BABY;
-                    imagePath = BABY_RAT_IMG;
                     break;
                 default:
                     type = RatTypes.FEMALE;
-                    imagePath = FEMALE_RAT_IMG;
                     break;
             }
 
-            image = new Image("file:resources/" + imagePath, true);
             positionJObj = (JSONArray) rat.get("position");
             position = objToPos(positionJObj);
-            rats[i] = new BasicRat(
-                type,
-                (boolean) rat.get("canMate"),
-                (boolean) rat.get("canMove"),
-                objToInt(rat, "moveSpeed"),
-                objToInt(rat, "timeToGrowth"),
-                objToInt(rat, "numChildren"),
-                objToInt(rat, "timeToBirth"),
-                objToInt(rat, "hp"),
-                position,
-                image
-            );
+            rats[i] = new BasicRat(type, position);
         }
             return rats;
     }
@@ -176,10 +161,7 @@ public class GameFileHandler {
                 for (int i = 0; i < size; i++) {
                     jItem = (JSONObject) jItems.get(i);
                     position = objToPos(jItem);
-                    itemArr[i] = new MaleGenderChange(
-                        position,
-                        objToInt(jItem, "timeLeft")
-                    );
+                    itemArr[i] = new MaleGenderChange(position);
                 }
                 break;
             case "fSexChange":
@@ -187,10 +169,7 @@ public class GameFileHandler {
                 for (int i = 0; i < size; i++) {
                     jItem = (JSONObject) jItems.get(i);
                     position = objToPos(jItem);
-                    itemArr[i] = new FemaleGenderChange(
-                        position,
-                        objToInt(jItem, "timeLeft")
-                    );
+                    itemArr[i] = new FemaleGenderChange(position);
                 }
                 break;
             case "noEntry":

@@ -1,27 +1,24 @@
 package entity;
 
+import gameHandler.Game;
 import gameHandler.Pos;
 import javafx.scene.image.Image;
 
 public class MaleGenderChange extends Item {
-    private static final int DEFAULT_TIME = 4000;
-    private static final int RANGE = 1;
-    private int timer;
 
     public MaleGenderChange(Pos position) {
         super(new Image("file:resources/male.png"), position);
-        timer = DEFAULT_TIME;
+
     }
 
-    public MaleGenderChange(Pos position, int timeLeft) {
-        super(new Image(""), position);
-        timer = timeLeft;
-    }
+
 
     public void ratCollision(Rat target) {
-        if(target.getRatType() != RatTypes.DEATH) {
-            target.setRatType(RatTypes.MALE);
+        if(target.getRatType() != RatTypes.DEATH && target.getRatType() != RatTypes.BABY) {
+            BasicRat targ = (BasicRat) target;
+            targ.setGender(RatTypes.MALE);
         }
+        Game.ItemManager.killItem(this);
 	}
 	public void itemCollision(Item target) {}
 	public void onPlacement() {}	

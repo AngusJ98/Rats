@@ -59,7 +59,7 @@ public class Game {
 			public void run() {
 				RatManager.performRatActions();
 				ItemManager.performItemActions();
-				Platform.runLater(() -> runner.redrawEntities(createCombinedEntityList()));
+				Platform.runLater(() -> runner.normalTickDrawing(createCombinedEntityList()));
 				Game.checkVictory();
 				timeLeft--;
 			}
@@ -134,6 +134,7 @@ public class Game {
 			for (BasicRat rat : rats) {
 				rat.move();
 				rat.ratActions();
+				rat.updateImage();
 				rat.updateScore();
 				if (rat.getHP() <= 0) {
 					ratsToKill.add(rat);
