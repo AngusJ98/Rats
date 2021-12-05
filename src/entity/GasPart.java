@@ -9,11 +9,11 @@ import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * <p> 1. File-name: GasPart.java</p>
- * <p> 2. Creation Date: (N/A) </p>
+ * <p> 2. Creation Date: 30/11/2021 </p>
  * <p> 3. Last modification date:</p>
  * <p> 4. Purpose of the program: Used in unison with Gas to create the smoke </p>
  *
- * @author
+ * @author Andrew
  */
 
 public class GasPart extends Item {
@@ -22,7 +22,6 @@ public class GasPart extends Item {
 
     /**
      * Constructor used to create a Gas image on a specific position
-     *
      * @param position the position of the gas being created
      */
     public GasPart(Pos position) {
@@ -32,6 +31,8 @@ public class GasPart extends Item {
     /**
      * Removes gas from the board after a certain duration
      * first to be placed is the first to be removed
+     *  <p> no side-effects</p>
+     * 	<p> referentially transparent</p>
      */
     public void tick() {
         if (this.currentExist > LIFETIME) {

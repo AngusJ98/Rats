@@ -9,10 +9,9 @@ import javafx.scene.image.Image;
 
 /**
  * <p> 1. File-name: Gas.java</p>
- * <p> 2. Creation Date: (N/A) </p>
- * <p> 3. Last modification date:</p>
+ * <p> 2. Creation Date: 30/11/2021 </p>
+ * <p> 3. Last modification date: 5/12/2021</p>
  * <p> 4. Purpose of the program: Gas item implementation</p>
- *
  * @author Andrew
  */
 
@@ -23,6 +22,10 @@ public class Gas extends Item {
     ArrayList<Pos> unvisitedTiles = new ArrayList<Pos>();
     GasPart[] gasArray = new GasPart[MAX_GAS];
 
+    /**
+     * 1st Constructor, intializes the position of the gas
+     * @param position coordinates to place the gas in
+     */
     public Gas(Pos position) {
         super(new Image("file:resources/gasCan.png"), position);
 
@@ -33,6 +36,11 @@ public class Gas extends Item {
         //gas parts will be visible and deal damage to rats
     }
 
+    /**
+     * ticks for the gas
+     *  <p> no side-effects</p>
+     * 	<p> not referentially transparent</p>
+     */
     public void tick() {
         //if there are less than <6> gas clouds, this method will attempt to place one each game tick
 

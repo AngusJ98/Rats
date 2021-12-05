@@ -4,11 +4,11 @@ import gameHandler.Pos;
 import javafx.scene.image.Image;
 
 /**
- * <p> 1. File-name: Entity.java</p>
- * <p> 2. Creation Date: 29/11/2021 </p>
- * <p> 3. Last modification date: 5/12/2021</p>
- * <p> 4. Purpose of the program: To implement each item to the board</p>
  *
+ <p> 1. File-name: Entity.java</p>
+ <p> 2. Creation Date: 29/11/2021 </p>
+ <p> 3. Last modification date: 5/12/2021</p>
+ <p> 4. Purpose of the program: To implement each item to the board</p>
  * @author Andrew
  */
 
@@ -23,10 +23,9 @@ public abstract class Entity {
 
     /**
      * 1st constructor, initializes an entity
-     *
-     * @param image      of entity
+     * @param image of entity
      * @param entityType of entity
-     * @param position   of entity
+     * @param position of entity
      */
     public Entity(Image image, EntityType entityType, Pos position) {
         this.image = image;
@@ -36,7 +35,6 @@ public abstract class Entity {
 
     /**
      * checks is entity is a rat
-     *
      * @return true if a rat, false otherwise
      */
     public boolean isRat() {
@@ -45,7 +43,6 @@ public abstract class Entity {
 
     /**
      * gets image
-     *
      * @return image
      */
     public Image getImage() {
@@ -53,7 +50,8 @@ public abstract class Entity {
     }
 
     /**
-     * @return
+     * gets entity type
+     * @ entity type
      */
     public EntityType getEntityType() {
         return entityType;
@@ -64,13 +62,19 @@ public abstract class Entity {
         //or don't idm
     }
 
+    /**
+     * sets the position of the entity
+     * @param position
+     */
     public void setPosition(Pos position) {
         this.pos = position;
     }
 
+    /**
+     * gets the position of the entity
+     * @return positon
+     */
     public Pos getPosition() {
         return pos;
-    }
-
-    ;
+    };
 }
