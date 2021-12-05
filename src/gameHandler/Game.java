@@ -21,31 +21,63 @@ public class Game {
 
 	private static Timer timer = new Timer();
 	private static int timeLeft = -1;
+
+	/**
+	 * Constructer for game
+	 */
 	public Game() {
 
 	}
 
+	/**
+	 * gets time left
+	 * @return timeLeft
+	 */
 	public static int getTimeLeft() {
 		return timeLeft;
 	}
 
+	/**
+	 * gets all the rats
+	 * @return
+	 */
 	public static ArrayList<BasicRat> getRats() {
 		return rats;
 	}
 
+	/**
+	 * gets timer
+	 * @return timer
+	 */
 	public static Timer getTimer() {
 		return timer;
 	}
+
+	/**
+	 * sets timer
+	 * @param timer of the file
+	 */
 	public static void setTimer(Timer timer) {
 		Game.timer = timer;
 	}
+
+	/**
+	 * sets runner
+	 * @param runner
+	 */
 	public static void setRunner(GameRenderer runner) {
 		Game.runner = runner;
 	}
+
+	/**
+	 * adds the score
+	 * @param addition for adding score to the game score
+	 */
 	public static void addScore(int addition) {
 		Game.score += addition;
 	}
 
+	
 	public void start() {
 		Game.runner.redrawBoard(this.createCombinedEntityList());
 		Game.score = 0;
