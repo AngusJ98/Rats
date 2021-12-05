@@ -206,9 +206,22 @@ public class Game {
 			System.out.println("Tried to kill a rat that did not exist");
 			return false;			
 		}
+
+		/**
+		 * method to kill all rats
+		 * <p> side-effects</p>
+		 * <p> not referentially transparent</p>
+		 * @param toKill
+		 */
 		public static void killRatArray(ArrayList<BasicRat> toKill) { //this one kills all basicrats in the array it's passed
 			ratsToKill.addAll(ratsToKill);
 		}
+
+		/**
+		 * method for performing the rat's actions
+		 * <p> no side-effects</p>
+		 * <p> not referentially transparent</p>
+		 */
 		public static void performRatActions() {
 
 			for (BasicRat rat : rats) {
@@ -240,6 +253,13 @@ public class Game {
 			}
 			deathRatsToKill.clear();
 		}
+
+		/**
+		 * Method to add rats to a list
+		 * <p> side-effects</p>
+		 * <p> not referentially transparent</p>
+		 * @param rat
+		 */
 		public static void addRat(BasicRat rat) {
 			ratsToAdd.add(rat);
 		}
