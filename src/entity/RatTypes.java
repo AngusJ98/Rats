@@ -1,12 +1,12 @@
 /**
  * <p> 1. File-name: RatTypes.java</p>
- * <p> 2. Creation Date: XX/XX/XX </p>
- * <p> 3. Last modification date: XX/XX/XX </p>
+ * <p> 2. Creation Date: 1/12/2021 </p>
+ * <p> 3. Last modification date: 5/12/2021 </p>
  * <p> 4. Purpose of the program: Define an enum for the types of Rats there are</p>
  *
- * @author ??
+ * @author Andrew
  */
-//whoever`s class this is please fill in missing information in Javadoc
+
 package entity;
 
 /**
