@@ -162,7 +162,7 @@ public class Game {
 	}
 
 	/**
-	 * 
+	 *
 	 */
     public static class RatManager {
 		private static ArrayList<DeathRat> deathRats = new ArrayList<DeathRat>();
