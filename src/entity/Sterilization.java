@@ -29,7 +29,7 @@ public class Sterilization extends Item {
      */
 
     public Sterilization(Pos position) {
-        super(new Image("file:resources/sterile.png"), position);
+        super(ItemType.Sterilisation ,new Image("file:resources/sterile.png"), position);
         timer = DEFAULT_TIME;
     }
 
@@ -43,7 +43,7 @@ public class Sterilization extends Item {
      */
 
     public Sterilization(Pos position, int timeLeft) {
-        super(new Image("file:resources/sterile.png"), position);
+        super(ItemType.Sterilisation ,new Image("file:resources/sterile.png"), position);
         timer = timeLeft;
     }
 
