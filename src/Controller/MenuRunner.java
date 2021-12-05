@@ -1,6 +1,5 @@
 package Controller;
 import gameHandler.Game;
-import highscore.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,16 +7,16 @@ import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import messageOfTheDay.MessageOfTheDay;
 import playerProfile.Player;
 import playerProfile.ProfileReader;
-import sun.audio.AudioStream;
 
-import java.io.File;
-import java.io.InputStream;
 import java.util.ArrayList;
 
 public class MenuRunner {
@@ -41,15 +40,10 @@ public class MenuRunner {
         motd.showAndWait();
 
         table.setStyle("-fx-background-color:GREY");
-
+        updateHigh();
         //add the table to the scene
         menuBase.getChildren().add(table);
 
-        ArrayList<Player> players = new ArrayList<>();
-        players = ProfileReader.getHighScores(1);
-        for (Player player : players) {
-            System.out.println(player);
-        }
 
     }
 
@@ -72,20 +66,35 @@ public class MenuRunner {
     }
 
     private void updateHigh() {
+
         for (int i = 0; i < 6; i++) {
             Tab newTab = new Tab();
-            TableView highScoreTable = new TableView();
+            newTab.setText("Level " + i);
             ArrayList<Player> highScorers = ProfileReader.getHighScores(i);
-            TableColumn nameCol = new TableColumn("Name");
-            nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
 
-            TableColumn scoreCol = new TableColumn("Score");
-            nameCol.setCellValueFactory(new PropertyValueFactory<>("score"));
+            GridPane table = new GridPane();
+            table.setGridLinesVisible(true);
+            ColumnConstraints colCon = new ColumnConstraints();
+            colCon.setPercentWidth(20);
 
-            highScoreTable.getColumns().addAll(nameCol,scoreCol);
-            newTab.setContent(highScoreTable);
+            table.getColumnConstraints().addAll(colCon,colCon);
+            int j = 0;
+            for (Player mini :highScorers) {
+                Text name = new Text(mini.getPlayerName());
+                Text score = new Text (mini.getScores()[i] + "");
+                name.setFont(new Font(20));
+                score.setFont(new Font(20));
+                table.add(name,0,j);
+                table.add(score, 1, j);
+                j++;
+            }
 
-            highScoreTable.getItems().addAll(highScorers);
+
+
+
+            newTab.setContent(table);
+
+
 
             highscore.getTabs().add(newTab);
 

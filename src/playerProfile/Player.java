@@ -14,7 +14,7 @@ import java.util.Arrays;
 
 public class Player {
 
-    private int[] score;
+    private int[] scores;
     private String playerName;
     private int maxLevelUnlocked;
 
@@ -24,12 +24,12 @@ public class Player {
      * <p> not referentially transparent</p>
      *
      * @param playerName       the name of this player
-     * @param score            the score of this player
+     * @param scores            the score of this player
      * @param maxLevelUnlocked the maximum level unlocked by this player
      */
-    Player(String playerName, int[] score, int maxLevelUnlocked) {
+    Player(String playerName, int[] scores, int maxLevelUnlocked) {
         this.playerName = playerName;
-        this.score = score;
+        this.scores = scores;
         this.maxLevelUnlocked = maxLevelUnlocked;
     }
 
@@ -41,7 +41,7 @@ public class Player {
      * @return playerName, score and maxLevelUnlocked neatly formatted
      */
     public String toString() {
-        return playerName + " " + Arrays.toString(score) + " " + maxLevelUnlocked;
+        return playerName + " " + Arrays.toString(scores) + " " + maxLevelUnlocked;
     }
 
     /**
@@ -52,7 +52,7 @@ public class Player {
      * @return the score of the player
      */
     public int[] getScores() {
-        return score;
+        return scores;
     }
 
     /**
@@ -67,6 +67,7 @@ public class Player {
         return maxLevelUnlocked;
     }
 
-
-
+    public String getPlayerName() {
+        return playerName;
+    }
 }
