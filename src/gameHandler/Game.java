@@ -7,6 +7,7 @@ import org.json.simple.parser.ParseException;
 import tiles.Tile;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class Game {	
@@ -162,7 +163,16 @@ public class Game {
 			return tiles.get(pos).isPassable();
 		}	
 		public static ArrayList<Entity> getEntities(Pos pos) {
-			return tiles.get(pos).getItems();
+			ArrayList<Entity> entities = new ArrayList<>();
+			entities.addAll(Game.rats);
+			entities.addAll(Game.items);
+			ArrayList<Entity> entitiesOnPos = new ArrayList<>();
+			for (Entity entity : entities) {
+				if (entity.getPosition() == pos) {
+					entitiesOnPos.add(entity);
+				}
+			}
+			return entities;
 		}
 		public static int getNumTileWidth() {
 			return numTileWidth;
@@ -205,6 +215,8 @@ public class Game {
 	
 	private static ArrayList<Item> items = new ArrayList<Item>(); //should've made this an Arraylist before sorry
 	public static class ItemManager {
+	    private static ArrayList<Item> itemsToRemove = new ArrayList<>();
+		private static ArrayList<Item> itemsToAdd = new ArrayList<>();
 		public static void tryPlace(String itemString, Pos pos) {
 			if (true /*TODO Stock check here*/) {
 				Item placedItem = null;
@@ -244,19 +256,34 @@ public class Game {
 					placedItem.onPlacement();
 				}
 			}
+
+
 		}
 		public static void addItem(Item item) {
-			items.add(item);
+			itemsToAdd.add(item);
 		}	
 		public static void killItem(Item item) {
 			if (items.contains(item)) {
-				items.remove(item); 
+				itemsToRemove.add(item);
 			}	
 		}
 		public static void performItemActions() {
 			for (Item item : items) {
 				item.tick();				
-			}	
+			}
+
+
+
+			//remove items here to avoid concorrentModification exception
+            for (Item item : itemsToRemove) {
+                Game.items.remove(item);
+            }
+            itemsToRemove.clear();
+
+			for (Item item : itemsToAdd) {
+				Game.items.add(item);
+			}
+			itemsToAdd.clear();
 		}	
 	}
 	

@@ -67,17 +67,21 @@ public class Player {
     /**
      * Method used to save a score to the end of profile.txt
      */
-    public void saveScore(){
-        Writer output = null;
-        File file = new File("profile.txt");
-        output = new BufferedWriter(new FileWriter(file,true));
-        output.write(playerName);
-        output.write(",");
-        output.write(maxLevelUnlocked);
-        output.write(",");
-        output.write("" + score);
-        output.write("\n");
-        output.close();
+    public void saveScore() {
+        try {
+            Writer output = null;
+            File file = new File("profile.txt");
+            output = new BufferedWriter(new FileWriter(file, true));
+            output.write(playerName);
+            output.write(",");
+            output.write(maxLevelUnlocked);
+            output.write(",");
+            output.write("" + score);
+            output.write("\n");
+            output.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+    }
 
 }
