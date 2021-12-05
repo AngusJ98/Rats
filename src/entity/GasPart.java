@@ -10,7 +10,7 @@ import java.util.concurrent.ThreadLocalRandom;
 /**
  * <p> 1. File-name: GasPart.java</p>
  * <p> 2. Creation Date: 30/11/2021 </p>
- * <p> 3. Last modification date:</p>
+ * <p> 3. Last modification date: 5/12/2021</p>
  * <p> 4. Purpose of the program: Used in unison with Gas to create the smoke </p>
  *
  * @author Andrew
@@ -41,6 +41,12 @@ public class GasPart extends Item {
         currentExist++;
     }
 
+    /**
+     * collision for when the gas part collides with the Gas Part
+     *  <p> no side-effects</p>
+     * 	<p> referentially transparent</p>
+     * @param target the rat being collided with
+     */
     public void ratCollision(Rat target) {
         //decrease hp by 25
         //ratmanager will check the hp of rats
