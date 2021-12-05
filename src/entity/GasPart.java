@@ -9,7 +9,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * <p> 1. File-name: GasPart.java</p>
- * <p> 2. Creation Date: (N/A) </p>
+ * <p> 2. Creation Date: 30/11/2021 </p>
  * <p> 3. Last modification date:</p>
  * <p> 4. Purpose of the program: Used in unison with Gas to create the smoke </p>
  *
