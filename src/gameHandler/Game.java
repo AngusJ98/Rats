@@ -614,7 +614,7 @@ public class Game {
 	 * <p> no side-effects</p>
 	 * <p> not referentially transparent</p>
 	 * @param stats
-	 * @param inventory 
+	 * @param inventory
 	 */
 	private void setUpLevelStats(HashMap<String, Integer> stats, int[] inventory) {
 		this.timeLeft = stats.get("timeLeft") * 10;
