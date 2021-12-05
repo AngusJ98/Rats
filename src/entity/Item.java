@@ -13,7 +13,6 @@ public abstract class Item extends Entity {
 	public abstract void tick();
     public void onCollision(Entity target) {
 		if (!(target == null)) {
-			System.out.println(target.getEntityType());
 			switch (target.getEntityType()) {
 				case RAT:
 					ratCollision((Rat) target);

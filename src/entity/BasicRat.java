@@ -111,7 +111,6 @@ public class BasicRat extends Rat {
     }
     public void ratActions() {
         if (this.getRatType() == RatTypes.BABY) {
-            System.out.println(timeToGrowth);
             timeToGrowth--;
         }
         if (this.getRatType() == RatTypes.BABY && this.timeToGrowth <= 0) {

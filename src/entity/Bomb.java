@@ -40,16 +40,6 @@ public class Bomb extends Item{
         timer = DEFAULT_BOMB_TIME;
     }
 
-    /**
-     * 2nd Constructor, intializes Bomb via it's Image and Coordinates,
-     * and can set a specific custom timer that differs from the Default.
-     * @param position takes in the coordinates of the Bomb
-     * @param timeLeft takes in the time left for the bomb to explode
-     */
-    public Bomb(Pos position, int timeLeft) {
-        super(new Image(""), position);
-        timer = timeLeft;
-    }
 
 
 

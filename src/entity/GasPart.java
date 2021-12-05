@@ -14,9 +14,11 @@ public class GasPart extends Item {
 		super(new Image("file:resources/gas.png"), position);
 	}
 	public void tick() {
+		System.out.println("Gas life: " + this.currentExist + "-" + this.LIFETIME);
 		if(this.currentExist > LIFETIME) {
 			Game.ItemManager.killItem(this);
 		}
+		currentExist++;
 	}
     public void ratCollision(Rat target) {
 		//decrease hp by 25
@@ -25,7 +27,7 @@ public class GasPart extends Item {
 		//now with 10 ticks, reducing by 5 instead
 		if (!(target.getRatType() == RatTypes.DEATH)) { //death rats wear gas masks
 			BasicRat targ = (BasicRat)target;
-			targ.setHP(targ.getHP() - 5);
+			targ.setHP(targ.getHP() - 25);
 			System.out.println(targ.getHP());
 		}	
 	}

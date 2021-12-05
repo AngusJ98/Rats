@@ -18,11 +18,13 @@ public class ExplosionPart extends Item {
 		//get the next tile in <direction> direction
 		Pos newPos = Game.TileManager.getPosFromDir(direction, this.pos);
 		//if passable move myself
+		System.out.println(newPos);
 		if (Game.TileManager.getPassableTile(newPos)) {
 			this.setPosition(newPos);
 			//check for entities at my new position
 			ArrayList<Entity> entities = Game.TileManager.getEntities(newPos);
-			if (!(entities == null) && entities.size() > 0) {
+			entities.remove(this);
+			if (entities.size() > 0) {
 				for (int i = 0; i < entities.size(); i++) {
 					//call onCollision for each entity 
 					//to decide what to do with it
@@ -45,7 +47,7 @@ public class ExplosionPart extends Item {
         Game.RatManager.killSingleRat(target);
     }
     public void itemCollision(Item target) {
-        Game.ItemManager.killItem(target);
+    	Game.ItemManager.killItem(target);
     }
 	public void onPlacement() {}	
 }
