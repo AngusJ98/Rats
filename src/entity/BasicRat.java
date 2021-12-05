@@ -62,6 +62,22 @@ public class BasicRat extends Rat {
         }
     }
 
+    /**
+     * 2nd Constuctor, for the save game file
+     * <p> no side-effects</p>
+     * <p> not referentially transparent</p>
+     *
+     * @param type: save what kind of rat
+     * @param pos: save position
+     * @param hitPoints: save the health points
+     * @param timeToGrowth: save time till growth if a baby
+     * @param numChildren: save number of children if female
+     * @param moveSpeed: save the movement speed
+     * @param timeToBirth: save the set time that the female will give birth
+     * @param canMate: save if able to mate
+     * @param canMove: save if able to move
+     */
+
     public BasicRat(RatTypes type, Pos pos, int hitPoints, int timeToGrowth, int numChildren,int moveSpeed,
                     int timeToBirth, boolean canMate, boolean canMove) {
         super(type, pos);
