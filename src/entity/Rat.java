@@ -30,37 +30,91 @@ public abstract class Rat extends Entity {
     protected int moveSpeed;
     protected Direction moveDirection;
 
+    /**
+     * Method to get mate status
+     *
+     * @return able to mate
+     */
+
     public boolean getMateStatus() {
         return canMate;
     }
+
+    /**
+     * Method to set current mate status
+     *
+     * @param canMate: mate status
+     */
 
     public void setMateStatus(boolean canMate) {
         this.canMate = canMate;
     }
 
+    /**
+     * Method to get movement status
+     *
+     * @return able to move
+     */
+
     public boolean getMoveStatus() {
         return canMove;
     }
+
+    /**
+     * Method to set current move status
+     *
+     * @param canMove: move status
+     */
 
     public void setMoveStatus(boolean canMove) {
         this.canMove = canMove;
     }
 
+    /**
+     * Method to get rat type
+     *
+     * @return rat type
+     */
+
     public RatTypes getRatType() {
         return ratType;
     }
+
+    /**
+     * Method to set current rat type
+     *
+     * @param type: rat type
+     */
 
     public void setRatType(RatTypes type) {
         this.ratType = type;
     }
 
+    /**
+     * Method to get movement speed
+     *
+     * @return movement speed
+     */
+
     public int getMoveSpeed() {
         return moveSpeed;
     }
 
+    /**
+     * Method to set current movement speed
+     *
+     * @param moveSpeed: movment speed number
+     */
+
     public void setMoveSpeed(int moveSpeed) {
         this.moveSpeed = moveSpeed;
     }
+
+    /**
+     * Method to get movement direction
+     *
+     * @return direction
+     */
 
     public Direction getMoveDirection() {
         return moveDirection;
@@ -69,17 +123,41 @@ public abstract class Rat extends Entity {
     public int boostRemaining = 0;
     public boolean moveBoosted = false;
 
+    /**
+     * Method to get amount of boost
+     *
+     * @return boost amount
+     */
+
     public int getBoostRemaining() {
         return boostRemaining;
     }
+
+    /**
+     * Method to set the amount of boost remaining
+     *
+     * @param boostRemaining: amount of boost
+     */
 
     public void setBoostRemaining(int boostRemaining) {
         this.boostRemaining = boostRemaining;
     }
 
+    /**
+     * Method to check if it is boosted
+     *
+     * @return boosted status
+     */
+
     public boolean isMoveBoosted() {
         return moveBoosted;
     }
+
+    /**
+     * Method to set movement boost
+     *
+     * @param moveBoosted: movement boost
+     */
 
     public void setMoveBoosted(boolean moveBoosted) {
         this.moveBoosted = moveBoosted;
@@ -89,6 +167,7 @@ public abstract class Rat extends Entity {
      * gets inverse move direction
      * <p> side-effects</p>
      * <p> not referentially transparent</p>
+     *
      * @return inverse move direction
      */
     public Direction getInverseMoveDirection() {
@@ -97,8 +176,8 @@ public abstract class Rat extends Entity {
 
     /**
      * move function for the rat
-     *<p> side-effects</p>
-     *<p> not referentially transparent</p>
+     * <p> side-effects</p>
+     * <p> not referentially transparent</p>
      */
     public boolean move() {
         if (Game.getTiles().get(this.pos).getType() == TileTypes.SPEEDTILE) {
@@ -119,46 +198,6 @@ public abstract class Rat extends Entity {
             this.moveBoosted = false;
         }
         if (Game.getTimeLeft() % (int) (10 / actingMoveSpeed) == 0) {
-
-            //	  check if there is no path in the direction of travel, if this is the case turn right and try again.
-            //	  keep turning until a path is found (if all paths are blocked the rat will keep turning right indefinitely and it will be funny)
-
-	
-			/*						GUS'S MOVEMENT CODE
-			if (!TileManager.getPassableTile(getPosFromDir(moveDirection, pos))) {
-				boolean tryLeftFirst = Math.random() < 0.5;
-				Direction leftDir = Direction.values()[((moveDirection.ordinal() + 3) % 4)];
-				Direction rightDir = Direction.values()[((moveDirection.ordinal() + 1) % 4)];
-				Direction backDir = Direction.values()[((moveDirection.ordinal() + 2) % 4)];
-
-				if (tryLeftFirst) {
-					if(TileManager.getPassableTile(getPosFromDir(leftDir, pos))){
-						this.moveDirection = leftDir;
-					} else if (TileManager.getPassableTile(getPosFromDir(rightDir, pos))) {
-						this.moveDirection = rightDir;
-					} else if (TileManager.getPassableTile(getPosFromDir(backDir, pos))) {
-						this.moveDirection = backDir;
-					}
-				} else {
-					if(TileManager.getPassableTile(getPosFromDir(rightDir, pos))){
-						this.moveDirection = rightDir;
-					} else if (TileManager.getPassableTile(getPosFromDir(leftDir, pos))) {
-						this.moveDirection = leftDir;
-					} else if (TileManager.getPassableTile(getPosFromDir(backDir, pos))) {
-						this.moveDirection = backDir;
-					}
-				}
-			}		
-			*/
-			/*while (!TileManager.getPassableTile(directionTiles[moveDirection.ordinal()])) {
-				if (moveDirection.ordinal() < 3) {
-					moveDirection = Direction.values()[moveDirection.ordinal()+1];
-				} else {
-					moveDirection = Direction.NORTH;
-				}
-			}*/
-            //only move if front tile is empty
-
             //      ANDREW'S MOVEMENT CODE (partially stolen from gus)
             // check in front, left and right
             Direction leftDir = Direction.values()[((moveDirection.ordinal() + 3) % 4)];
@@ -205,6 +244,7 @@ public abstract class Rat extends Entity {
      * Gets the new position as a result of the current positon and direction
      * <p> side-effects</p>
      * <p> not referentially transparent</p>
+     *
      * @param dir takes the direction to be looking towards
      * @param pos takes the current coordinates
      * @return returns the new coordinates
@@ -236,6 +276,7 @@ public abstract class Rat extends Entity {
      * Used by other entities to move rats in a different way.
      * <p> side-effects</p>
      * <p> not referentially transparent</p>
+     *
      * @param movesLeft takes how many moves are needed for moving
      * @param direction takes direction to move in
      * @return boolean if true for force move
@@ -265,8 +306,9 @@ public abstract class Rat extends Entity {
      * 1st Constructor, creates an instance of a rat
      * <p> side-effects</p>
      * <p> not referentially transparent</p>
+     *
      * @param type takes in the type of rat
-     * @param pos takes in the position of the rat
+     * @param pos  takes in the position of the rat
      */
     public Rat(RatTypes type, Pos pos) {
         super(new Image("File:resources/male.png"), EntityType.RAT, pos);

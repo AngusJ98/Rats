@@ -8,8 +8,8 @@ import java.util.ArrayList;
 
 /**
  * <p> 1. File-name: Sterilization.java</p>
- * <p> 2. Creation Date: (N/A) </p>
- * <p> 3. Last modification date:</p>
+ * <p> 2. Creation Date: 1/12/2021 </p>
+ * <p> 3. Last modification date: 5/12/2021</p>
  * <p> 4. Purpose of the program: Sterilization implementation</p>
  *
  * @author Andrew, Ethan
@@ -29,7 +29,7 @@ public class Sterilization extends Item {
      */
 
     public Sterilization(Pos position) {
-        super(new Image("file:resources/sterile.png"), position);
+        super(ItemType.Sterilisation ,new Image("file:resources/sterile.png"), position);
         timer = DEFAULT_TIME;
     }
 
@@ -43,7 +43,7 @@ public class Sterilization extends Item {
      */
 
     public Sterilization(Pos position, int timeLeft) {
-        super(new Image("file:resources/sterile.png"), position);
+        super(ItemType.Sterilisation ,new Image("file:resources/sterile.png"), position);
         timer = timeLeft;
     }
 
@@ -56,6 +56,9 @@ public class Sterilization extends Item {
     public void itemCollision(Item target) {
     }
 
+    /**
+     * Sterlizes the rats
+     */
     public void tick() {
         for (int yoffset = -RANGE; yoffset < RANGE; yoffset++) {
             for (int xoffset = -RANGE; xoffset < RANGE; xoffset++) {

@@ -13,9 +13,19 @@ import javafx.scene.image.Image;
  * @author Andrew
  */
 public abstract class Item extends Entity {
+    private ItemType type;
 
-    public Item(Image image, Pos pos) {
+    public Item(ItemType type, Image image, Pos pos) {
         super(image, EntityType.ITEM, pos);
+        this.type = type;
+    }
+
+    public ItemType getType() {
+        return type;
+    }
+
+    public void setType(ItemType type) {
+        this.type = type;
     }
 
     public abstract void onPlacement();
