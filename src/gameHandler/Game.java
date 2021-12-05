@@ -106,6 +106,7 @@ public class Game {
 		private static ArrayList<DeathRat> deathRats = new ArrayList<DeathRat>();
 		private static ArrayList<BasicRat> ratsToAdd = new ArrayList<>();
 		private static ArrayList<BasicRat> ratsToKill = new ArrayList<>();
+		private static ArrayList<DeathRat> deathRatsToKill = new ArrayList<>();
 		public static ArrayList<BasicRat> getRatsAtPos(Pos pos) {
 			ArrayList<BasicRat> ratsAtPos = new ArrayList<BasicRat>();
 			for (int i = 0; i < rats.size(); i++) {
@@ -129,7 +130,7 @@ public class Game {
 				ratsToKill.add((BasicRat)rat);
 				return true;
 			} else if (deathRats.contains(rat)) {
-				deathRats.remove(rat);
+				deathRatsToKill.add((DeathRat)rat);
 				return true;
 			} 
 			System.out.println("Tried to kill a rat that did not exist");
@@ -163,6 +164,11 @@ public class Game {
 			for (DeathRat deathRat : deathRats) {
 				deathRat.move();
 			}
+
+			for (DeathRat deathRat : deathRatsToKill) {
+				deathRats.remove(deathRat);
+			}
+			deathRatsToKill.clear();
 		}
 		public static void addRat(BasicRat rat) {
 			ratsToAdd.add(rat);

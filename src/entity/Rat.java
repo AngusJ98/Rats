@@ -105,7 +105,7 @@ public abstract class Rat extends Entity {
 		if (this.boostRemaining <= 0) {
 			this.moveBoosted = false;
 		}
-		if (Game.getTimeLeft() % (int)(5/actingMoveSpeed) == 0) {
+		if (Game.getTimeLeft() % (int)(10/actingMoveSpeed) == 0) {
 
 			//	  check if there is no path in the direction of travel, if this is the case turn right and try again. 
 			//	  keep turning until a path is found (if all paths are blocked the rat will keep turning right indefinitely and it will be funny)
@@ -258,27 +258,27 @@ public abstract class Rat extends Entity {
 		switch (type) {						
 		case BABY:
 			setMateStatus(false);
-			setMoveSpeed(2);
+			setMoveSpeed(4);
 			this.image = new Image("File:resources/babyRat.png");
 			break;
 		case DEATH:
 			setMateStatus(false);
-			setMoveSpeed(1);
+			setMoveSpeed(3);
 			this.image = new Image("File:resources/deathRat.png");
 			break;
 		case MALE:
 			setMateStatus(true);
-			setMoveSpeed(1);
+			setMoveSpeed(2);
 			this.image = new Image("File:resources/maleRat.png");
 			break;
 		case FEMALE:
 			setMateStatus(true);
-			setMoveSpeed(1);
+			setMoveSpeed(2);
 			this.image = new Image("File:resources/femaleRat.png");
 			break;
 		default:			
 			setMateStatus(true);
-			setMoveSpeed(1);
+			setMoveSpeed(2);
 			this.image = new Image("File:resources/male.png");
 			break;	
 		}		

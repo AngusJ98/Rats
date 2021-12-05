@@ -67,6 +67,7 @@ public class DeathRat extends Rat {
 				//send kill request(s) for rat and increase killcount
 				if (ratsToKill.size() + killCount <= MAX_KILLS) {
 					RatManager.killBasicRatsAtPos(pos);
+					killCount += ratsToKill.size();
 				} else { 
 					//this should rarely ever be used
 					//only send kill requests if they will not increase the killcount above 5
