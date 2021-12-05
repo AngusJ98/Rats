@@ -23,6 +23,8 @@ public abstract class Entity {
 
     /**
      * 1st constructor, initializes an entity
+     * <p> side-effects</p>
+     * <p> not referentially transparent</p>
      * @param image of entity
      * @param entityType of entity
      * @param position of entity
