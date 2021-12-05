@@ -6,11 +6,11 @@ import javafx.scene.image.Image;
 
 /**
  * <p> 1. File-name: MaleGenderChange.java</p>
- * <p> 2. Creation Date: (N/A) </p>
- * <p> 3. Last modification date:</p>
+ * <p> 2. Creation Date: 1/12/2021 </p>
+ * <p> 3. Last modification date: 5/12/2021</p>
  * <p> 4. Purpose of the program: Male gender change implementation</p>
  *
- * @author
+ * @author Andrew
  */
 
 public class MaleGenderChange extends Item {
