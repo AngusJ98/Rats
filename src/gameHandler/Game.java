@@ -113,6 +113,12 @@ public class Game {
 		};
 		timer.scheduleAtFixedRate(task, 0, 100);
 	}
+
+	/**
+	 * method to check whether or not the game has been Won.
+	 * <p> side-effects</p>
+	 * <p> not referentially transparent</p>
+	 */
 	public static void checkVictory() {
 		if (rats.size() == 0) {
 			System.out.println("VICTORY!!");
@@ -130,6 +136,9 @@ public class Game {
 		}
 	}
 
+	/**
+	 * Method for cleaning up the game
+	 */
 	public static void cleanUp() {
 		Game.timer.cancel();
 		Game.timer = null;
