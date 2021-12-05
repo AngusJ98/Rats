@@ -290,15 +290,27 @@ public class Game {
 
 		/**
 		 * gets the tile at a certain position.
+		 * <p> no side-effects</p>
+		 * <p> not referentially transparent</p>
 		 * @param pos coordinates of a tile
 		 * @return returns position of tile
 		 */
 		public static Tile getTile(Pos pos) {
 			return tiles.get(pos);
 		}
+
+		/**
+		 * checks if a tile is passable or not
+		 * <p> no side-effects</p>
+		 * <p> not referentially transparent</p>
+		 * @param pos coordinates of the tile
+		 * @return returns true if passable, otherwise false
+		 */
 		public static boolean getPassableTile(Pos pos) {
 			return tiles.get(pos).isPassable();
-		}	
+		}
+
+		
 		public static ArrayList<Entity> getEntities(Pos pos) {
 			ArrayList<Entity> entities = new ArrayList<>();
 			entities.addAll(Game.rats);
