@@ -312,6 +312,8 @@ public class Game {
 
 		/**
 		 * gets entities
+		 * <p> no side-effects</p>
+		 * <p> not referentially transparent</p>
 		 * @param pos of entities
 		 * @return returns a list of entities
 		 */
@@ -344,14 +346,28 @@ public class Game {
 			TileManager.numTileWidth = numTileWidth;
 		}
 
-		
+		/**
+		 * gets the No. of Tile Height
+		 * @return No. of Tile Height
+		 */
 		public static int getNumTileHeight() {
 			return numTileHeight;
 		}
 
+		/**
+		 * sets No. of Tile Height
+		 * @param numTileHeight how high the tile is.
+		 */
 		public static void setNumTileHeight(int numTileHeight) {
 			TileManager.numTileHeight = numTileHeight;
 		}
+
+		/**
+		 *
+		 * @param dir
+		 * @param pos
+		 * @return
+		 */
 		public static Pos getPosFromDir(Direction dir, Pos pos){
 			Pos newPos;
 			switch (dir) {
