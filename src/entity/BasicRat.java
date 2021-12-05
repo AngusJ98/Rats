@@ -17,8 +17,8 @@ import javafx.scene.image.Image;
  */
 
 public class BasicRat extends Rat {
-    private static final int MIN_GROWTH_TIME = 1000;
-    private static final int GROWTH_MULTIPLIER = 4000;
+    private static final int MIN_GROWTH_TIME = 100;
+    private static final int MAX_GROWTH_TIME = 1000;
     private static final int ADULT_MAX_HP = 100;
     private static final int BABY_MAX_HP = 50;
     private static final int PREGNANCY_COOLDOWN = 100;
@@ -47,7 +47,7 @@ public class BasicRat extends Rat {
         setScore(10);
         switch (type) {
             case BABY:
-                timeToGrowth = (int) (Math.random() * GROWTH_MULTIPLIER) + MIN_GROWTH_TIME; //ms to growth (min 1000, max 5000)
+                timeToGrowth = ThreadLocalRandom.current().nextInt(MIN_GROWTH_TIME, MAX_GROWTH_TIME); //ms to growth (min 1000, max 5000)
                 setTimeToGrowth(timeToGrowth);
                 setHP(BABY_MAX_HP);
                 break;
@@ -137,9 +137,7 @@ public class BasicRat extends Rat {
         }
     }
     public void ratActions() {
-        if (this.getRatType() == RatTypes.BABY) {
-            timeToGrowth--;
-        }
+
         switch (ratType) {
             case BABY:
                 babyRatActions();
@@ -153,16 +151,13 @@ public class BasicRat extends Rat {
 
     private void babyRatActions() {
         if (this.timeToGrowth <= 0) {
-            RatTypes gender;
             if (Math.random() < 0.5) {
-                gender = RatTypes.FEMALE;
+                this.setGender(RatTypes.FEMALE);
             } else {
-                gender = RatTypes.MALE;
+                this.setGender(RatTypes.MALE);
             }
-            BasicRat grownRat = new BasicRat(gender, this.getPosition());
-            Game.getRats().add(grownRat);
-            Game.getRats().remove(this);
         }
+        timeToGrowth--;
     }
 
     private void femaleRatActions() {

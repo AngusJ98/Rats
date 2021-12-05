@@ -134,7 +134,6 @@ public class Game {
 		}
 		public static void performRatActions() {
 			ArrayList<BasicRat> ratsToKill = new ArrayList<>();
-
 			for (BasicRat rat : rats) {
 				rat.move();
 				rat.ratActions();
