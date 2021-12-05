@@ -6,64 +6,25 @@
   "rats": [
     {
       "gender": "MALE",
-      "canMate": true,
-      "canMove": true,
-      "moveSpeed": 1,
-      "timeToGrowth": 0,
-      "numChildren": 0,
-      "timeToBirth": 0,
-      "hp": 100,
       "position": [1, 1]
     },
     {
       "gender": "FEMALE",
-      "canMate": true,
-      "canMove": true,
-      "moveSpeed": 1,
-      "timeToGrowth": 0,
-      "numChildren": 0,
-      "timeToBirth": 0,
-      "hp": 100,
       "position": [1, 2]
     },
     {
       "gender": "MALE",
-      "canMate": true,
-      "canMove": true,
-      "moveSpeed": 1,
-      "timeToGrowth": 0,
-      "numChildren": 0,
-      "timeToBirth": 0,
-      "hp": 100,
       "position": [13, 1]
     },
     {
       "gender": "MALE",
-      "canMate": true,
-      "canMove": true,
-      "moveSpeed": 1,
-      "timeToGrowth": 0,
-      "numChildren": 0,
-      "timeToBirth": 0,
-      "hp": 100,
       "position": [13, 5]
     },
     {
       "gender": "BABY",
-      "canMate": false,
-      "canMove": true,
-      "moveSpeed": 2,
-      "timeToGrowth": 60,
-      "numChildren": 0,
-      "timeToBirth": 0,
-      "hp": 50,
       "position": [5, 5]
     }
   ],
-  "itemsOnMap": {
-    "bomb": [], "gas": [], "sterilise": [], "poison": [],
-    "mSexChange": [], "fSexChange": [], "noEntry": [], "deathRat": []
-  },
   "levelStats": {
     "timeLeft": 10000,
     "ratLimit": 10,

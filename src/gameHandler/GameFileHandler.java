@@ -78,8 +78,6 @@ public class GameFileHandler {
     }
 
     private static BasicRat[] parseRats(JSONObject json) {
-        Image image;
-        String imagePath;
         RatTypes type;
         Pos position;
         JSONArray positionJObj;
@@ -107,113 +105,8 @@ public class GameFileHandler {
             return rats;
     }
 
-    private static Entity[] makeItemArray(JSONArray jItems, String key) {
-        int size = jItems.size();
-        Pos position;
-        JSONObject jItem;
-        Entity[] itemArr;
-        switch (key) {
-            case "bomb":
-                itemArr = new Bomb[size];
-                for (int i = 0; i < size; i++) {
-                    jItem = (JSONObject) jItems.get(i);
-                    position = objToPos(jItem);
-                    itemArr[i] = new Bomb(
-                        position,
-                        objToInt(jItem, "timeLeft")
-                    );
-                }
-                break;
-            case "gas":
-                itemArr = new Gas[size];
-                for (int i = 0; i < size; i++) {
-                    jItem = (JSONObject) jItems.get(i);
-                    position = objToPos(jItem);
-                    itemArr[i] = new Gas(
-                        position
-                    );
-                }
-                break;
-            case "sterilise":
-                itemArr = new Sterilization[size];
-                for (int i = 0; i < size; i++) {
-                    jItem = (JSONObject) jItems.get(i);
-                    position = objToPos(jItem);
-                    itemArr[i] = new Sterilization(
-                        position,
-                        objToInt(jItem, "timeLeft")
-                    );
-                }
-                break;
-            case "poison":
-                itemArr = new Poison[size];
-                for (int i = 0; i < size; i++) {
-                    jItem = (JSONObject) jItems.get(i);
-                    position = objToPos(jItem);
-                    itemArr[i] = new Poison(
-                        position,
-                        objToInt(jItem, "timeLeft")
-                    );
-                }
-                break;
-            case "mSexChange":
-                itemArr = new MaleGenderChange[size];
-                for (int i = 0; i < size; i++) {
-                    jItem = (JSONObject) jItems.get(i);
-                    position = objToPos(jItem);
-                    itemArr[i] = new MaleGenderChange(position);
-                }
-                break;
-            case "fSexChange":
-                itemArr = new FemaleGenderChange[size];
-                for (int i = 0; i < size; i++) {
-                    jItem = (JSONObject) jItems.get(i);
-                    position = objToPos(jItem);
-                    itemArr[i] = new FemaleGenderChange(position);
-                }
-                break;
-            case "noEntry":
-                itemArr = new NoEntrySign[size];
-                for (int i = 0; i < size; i++) {
-                    jItem = (JSONObject) jItems.get(i);
-                    position = objToPos(jItem);
-                    itemArr[i] = new NoEntrySign(position);
-                }
-                break;
-            case "deathRat":
-                itemArr = new DeathRat[size];
-                for (int i = 0; i < size; i++) {
-                    jItem = (JSONObject) jItems.get(i);
-                    position = objToPos(jItem);
-                    itemArr[i] = new DeathRat(position);
-                }
-                break;
-            default:
-                itemArr = new Entity[]{};
-                break;
-        }
-        return itemArr;
-    }
 
-    // TODO: change this to Item[][] if we make an abstract Item class
-    private static Entity[][] parseItemsOnMap(JSONObject json) {
-        JSONObject itemsOnMap = (JSONObject)json.get("itemsOnMap");
-        String[] itemKeys = {
-            "bomb", "gas", "sterilise", "poison", "mSexChange",
-            "fSexChange", "noEntry", "deathRat"
-        };
-        int nItems = itemKeys.length;
-        Entity[][] items = new Entity[nItems][];
-        String currentKey;
 
-        for (int i = 0; i < nItems; i++) {
-            currentKey = itemKeys[i];
-            items[i] =
-                makeItemArray((JSONArray) itemsOnMap.get(currentKey), currentKey);
-        }
-
-        return items;
-    }
 
     private static HashMap<String, Integer> parseLevelStats(JSONObject json) {
         HashMap<String, Integer> levelStats = new HashMap<>();
@@ -262,7 +155,7 @@ public class GameFileHandler {
         HashMap<String, HashMap<String, Integer>>, int[]>
     parseJSON(JSONObject json) {
         BasicRat[] rats = parseRats(json);
-        Entity[][] items = parseItemsOnMap(json);
+        Entity[][] items = new Entity[0][];
         char[][] map = parseMap(json);
         HashMap<String, Integer> levelStats = parseLevelStats(json);
         HashMap<String, HashMap<String, Integer>> playerStats = parsePlayerStats(json);
