@@ -1,7 +1,7 @@
 {
   "map": {
     "dimensions": [30, 15],
-    "tiles": "GGGGGGGGGGGGGGGGGGGGGGGGGGGGGG\nGPPPSSPPPSSPPPGGPPPSSPPPSSPPPG\nGGGPGGGGPGGPGPGGGGPGGGGPGGPGPG\nGPPPGGPPPGGPGPGGPPPGGPPPGGPGPG\nGPPPGGPPPGGPGPGGPGGGGGGPGGPGPG\nGPPPTTPPPTTPPPGGPPPTTPPPTTPPPG\nGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG\nGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG\nGPPPSSPPPSSPPPGGPPPSSPPPSSPPPG\nGGGPGGGGPGGPGPGGGGPGGGGPGGPGPG\nGPPPGGPPPGGPGPGGPPPGGPPPGGPGPG\nGPPPGGPPPGGPGPGGPGGGGGGPGGPGPG\nGPPPTTPPPTTPPPGGPPPTTPPPTTPPPG\nGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG\nGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG"
+    "tiles": "GGGGGGGGGGGGGGGGGGGGGGGGGGGGGG\nGPPPPPPPPPPPPPPPPPPPPPPPPPPPPG\nGPGGGGGGGGGGGGPPGGGGGGPGGGGGPG\nGPPTTTTTTTPPPPPPPPPSPPPGGGGGPG\nGPGGGGGGGGPGGGPPGGGPGGGGGGGGPG\nGPGGGGGGGGPPPPPPPPPPGGGGGGGGPG\nGPPPPPPPPPPPPPPPPPPPPPPPPPPPPG\nGPPPPPPPPPPPPPPPPPPPPPPPPPPPPG\nGPGGGGGSPPPPPPPPPPPPGGGGGGGGPG\nGPGGGGGPGGGGGGPPGGGGPPPPPPPPPG\nGPGGGGGPGGGGGGPPSPPPPGGGGGGGPG\nGPPPTTTPGGGGGGPPGGGGPPPGGGGGPG\nGPPPGGGGGGGGGGPPGGGGGGSGGGGGPG\nGPPPPPPPPPPPPPPPPPPPPPPPPPPPPG\nGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG\n"
   },
   "rats": [
     {
@@ -24,29 +24,29 @@
       "numChildren": 0,
       "timeToBirth": 0,
       "hp": 100,
-      "position": [1, 2]
+      "position": [28, 1]
     },
     {
-      "gender": "MALE",
+      "gender": "BABY",
       "canMate": true,
       "canMove": true,
-      "moveSpeed": 1,
-      "timeToGrowth": 0,
+      "moveSpeed": 2,
+      "timeToGrowth": 60,
       "numChildren": 0,
       "timeToBirth": 0,
       "hp": 100,
-      "position": [13, 1]
+      "position": [1, 13]
     },
     {
-      "gender": "MALE",
+      "gender": "BABY",
       "canMate": true,
       "canMove": true,
-      "moveSpeed": 1,
-      "timeToGrowth": 0,
+      "moveSpeed": 2,
+      "timeToGrowth": 60,
       "numChildren": 0,
       "timeToBirth": 0,
       "hp": 100,
-      "position": [13, 5]
+      "position": [7, 7]
     },
     {
       "gender": "BABY",
@@ -57,7 +57,7 @@
       "numChildren": 0,
       "timeToBirth": 0,
       "hp": 50,
-      "position": [5, 5]
+      "position": [8, 8]
     }
   ],
   "itemsOnMap": {

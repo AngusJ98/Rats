@@ -31,7 +31,7 @@ public class NoEntrySign extends Item {
     }
 
 	/**
-	 * 2st Constructor for save file.
+	 * 2nd Constructor for save file.
 	 * <p> side-effects</p>
 	 * <p> not referentially transparent</p>
 	 * @param pos takes coordinates of NoEntrySign to be placed.
