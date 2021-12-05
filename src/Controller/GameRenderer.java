@@ -163,6 +163,7 @@ public class GameRenderer {
             Button b = new Button();
             b.setMaxSize(this.tilePixelSize,this.tilePixelSize);
             b.setPrefSize(this.tilePixelSize,this.tilePixelSize);
+            b.setMinSize(this.tilePixelSize,this.tilePixelSize);
             b.setStyle(
                     "    -fx-border-color: transparent;\n" +
                     "    -fx-border-width: 0;\n" +
