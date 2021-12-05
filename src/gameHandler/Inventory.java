@@ -5,6 +5,12 @@ import java.util.HashMap;
 public class Inventory {
 
     private int bombCount;
+    private int gasCount;
+    private int sterileCount;
+    private int noEntryCount;
+    private int maleCount;
+    private int femaleCount;
+    private int deathCount;
 
     private int bombRestockRate;
     private int gasRestockRate;
@@ -16,12 +22,12 @@ public class Inventory {
 
     public Inventory(HashMap<String, Integer> stats) {
         this.bombRestockRate = stats.get("bomb");
-        this.gasRestockRate = gasRestockRate;
-        this.sterileRestockRate = sterileRestockRate;
-        this.noEntRestockRate = noEntRestockRate;
-        this.maleRestockRate = maleRestockRate;
-        this.femaleRestockRate = femaleRestockRate;
-        this.deathRestockRate = deathRestockRate;
+        this.gasRestockRate = stats.get("gas");
+        this.sterileRestockRate = stats.get("sterilise");
+        this.noEntRestockRate = stats.get("noEntry");
+        this.maleRestockRate = stats.get("mSexChange");
+        this.femaleRestockRate = stats.get("fSexChange");
+        this.deathRestockRate = stats.get("deathRat");
     }
 
     // TODO:
