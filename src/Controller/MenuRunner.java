@@ -143,11 +143,13 @@ public class MenuRunner {
 
             newTab.setContent(table);
 
-
-
             highscore.getTabs().add(newTab);
 
         }
+    }
+
+    public void updateScore(ActionEvent actionEvent) throws Exception {
+        this.initialize();
     }
 
     public void level0(ActionEvent actionEvent) throws Exception {
@@ -158,31 +160,33 @@ public class MenuRunner {
 
     public void level1(ActionEvent actionEvent) throws Exception {
         Game.setLevelPath("testLevel");
-        Game.setLevelNum(0);
+        Game.setLevelNum(1);
         this.startGame();
     }
 
     public void level2(ActionEvent actionEvent) throws Exception {
         Game.setLevelPath("level2");
+        Game.setLevelNum(2);
         this.startGame();
     }
 
-    public void level3(ActionEvent actionEvent) throws Exception {
-        Game.setLevelPath("level3");
+    public void gusLevel(ActionEvent actionEvent) throws Exception {
+        Game.setLevelPath("gusSpeedway");
+        Game.setLevelNum(4);
         this.startGame();
     }
+
+    public void dylanLevel(ActionEvent actionEvent) throws Exception {
+        Game.setLevelPath("DylanLevel");
+        Game.setLevelNum(3);
+        this.startGame();
+    }
+
+
 
     public void liam(ActionEvent actionEvent) throws Exception {
         Game.setLevelPath("liam");
-        this.startGame();
-    }
-    public void dylanLevel(ActionEvent actionEvent) throws Exception {
-        Game.setLevelPath("DylanLevel");
-        this.startGame();
-    }
-
-    public void level4(ActionEvent actionEvent) throws Exception {
-        Game.setLevelPath("gusSpeedway");
+        Game.setLevelNum(5);
         this.startGame();
     }
 

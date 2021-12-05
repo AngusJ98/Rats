@@ -159,10 +159,13 @@ public class Game {
 
 	private static void updatePlayerStats(int score) {
 		Player current = Main.activePlayer;
-		current.setMaxLevelUnlocked(current.getMaxLevelUnlocked()+1);
+		if (current.getMaxLevelUnlocked() == Game.getLevelNum()) {
+			current.setMaxLevelUnlocked(Game.getLevelNum() + 1);
+		}
 		if (score > current.getScores()[Game.getLevelNum()]) {
 			current.getScores()[Game.getLevelNum()] = score;
 		}
+		System.out.println(current.getMaxLevelUnlocked());
 		ProfileReader.updateProfile(current.makeJSON());
 	}
 
