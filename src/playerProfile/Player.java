@@ -76,6 +76,9 @@ public class Player {
         return playerName;
     }
 
+    public void setMaxLevelUnlocked(int maxLevelUnlocked) {
+        this.maxLevelUnlocked = maxLevelUnlocked;
+    }
 
     public JSONObject makeJSON() {
         JSONObject jo = new JSONObject();

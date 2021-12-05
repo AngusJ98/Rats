@@ -15,7 +15,7 @@ public class Main extends Application {
     private static int levelNum = 0;
     private static Scene menuScene;
     public static final int LEVEL_COUNT = 6;
-    public static Player activePlayer;
+    public static Player activePlayer = null;
 
     public static Scene getMenuScene() {
         return menuScene;

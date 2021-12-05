@@ -12,7 +12,7 @@
    <children>
       <MenuBar layoutY="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
-          <Menu mnemonicParsing="false" text="Play">
+          <Menu fx:id="play" mnemonicParsing="false" text="Play">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#level1" text="Level 1" />
                   <MenuItem mnemonicParsing="false" onAction="#level2" text="Level 2" />
