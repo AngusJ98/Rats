@@ -98,6 +98,7 @@ public class Game {
 
     public static class RatManager {
 		private static ArrayList<DeathRat> deathRats = new ArrayList<DeathRat>();
+		private static ArrayList<BasicRat> ratsToAdd = new ArrayList<>();
 		public static ArrayList<BasicRat> getRatsAtPos(Pos pos) {
 			ArrayList<BasicRat> ratsAtPos = new ArrayList<BasicRat>();
 			for (int i = 0; i < rats.size(); i++) {
@@ -133,6 +134,7 @@ public class Game {
 		}
 		public static void performRatActions() {
 			ArrayList<BasicRat> ratsToKill = new ArrayList<>();
+
 			for (BasicRat rat : rats) {
 				rat.move();
 				rat.ratActions();
@@ -147,10 +149,16 @@ public class Game {
 			for (Rat toKill: ratsToKill) {
 				killSingleRat(toKill);
 			}
+
+			Game.rats.addAll(ratsToAdd);
+			ratsToAdd.clear();
 			for (DeathRat deathRat : deathRats) {
 				deathRat.move();
 			}
-		}		
+		}
+		public static void addRat(BasicRat rat) {
+			ratsToAdd.add(rat);
+		}
 	}
 	
 	

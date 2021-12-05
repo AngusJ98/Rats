@@ -5,7 +5,7 @@
   },
   "rats": [
     {
-      "gender": "MALE",
+      "gender": "FEMALE",
       "canMate": true,
       "canMove": true,
       "moveSpeed": 1,
