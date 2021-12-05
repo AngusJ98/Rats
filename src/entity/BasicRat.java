@@ -171,7 +171,7 @@ public class BasicRat extends Rat {
     private void babyRatActions() {
         if (this.timeToGrowth <= 0) {
             this.setMoveSpeed(DEFAULT_SPEED);
-            if (Math.random() < 0.5) {
+            if (ThreadLocalRandom.current().nextInt(0,10) < 5) {
                 this.setGender(RatTypes.FEMALE);
             } else {
                 this.setGender(RatTypes.MALE);

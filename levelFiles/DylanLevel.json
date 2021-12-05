@@ -78,7 +78,7 @@
     "maxLevel": 3
   },
   "inventory": {
-    "bomb": 3, "gas": 3, "sterilise": 3,
+    "bomb": 3, "gas": 3, "sterilise": 3, "poison" : 0,
     "mSexChange": 3, "fSexChange": 3, "noEntry": 3, "deathRat": 1
   }
 }
