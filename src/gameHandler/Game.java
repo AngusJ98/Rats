@@ -10,6 +10,15 @@ import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.*;
 
+/**
+ *
+ <p> 1. File-name: Game.java</p>
+ <p> 2. Creation Date: (N/A) </p>
+ <p> 3. Last modification date:</p>
+ <p> 4. Purpose of the program: Game file Implementation</p>
+ * @author ??
+ */
+
 public class Game {	
 	//this is a pretty static way of doing things, but it just works
 	private static ArrayList<BasicRat> rats = new ArrayList<BasicRat>();
@@ -150,6 +159,8 @@ public class Game {
 
 	/**
 	 * method to combine Entity List for the game
+	 * 	<p> side-effects</p>
+	 * 	<p> not referentially transparent</p>
 	 * @return List of entities
 	 */
 	private Entity[] createCombinedEntityList() {
@@ -161,9 +172,6 @@ public class Game {
 		return entities.toArray(entityArray);
 	}
 
-	/**
-	 *
-	 */
     public static class RatManager {
 		private static ArrayList<DeathRat> deathRats = new ArrayList<DeathRat>();
 		private static ArrayList<BasicRat> ratsToAdd = new ArrayList<>();
