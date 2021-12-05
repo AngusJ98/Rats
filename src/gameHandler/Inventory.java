@@ -32,7 +32,9 @@ public class Inventory {
     private int poisonRestockRate;
 
     /**
-     * @param stats
+     * Constructor for Inventory
+     *
+     * @param stats 
      * @param inventory
      */
     public Inventory(HashMap<String, Integer> stats, int[] inventory) {
@@ -135,34 +137,73 @@ public class Inventory {
         return deathCount;
     }
 
+    /**
+     * Method which is used to set the amount of Bombs in Inventory
+     *
+     * @param bombCount number of Bombs
+     */
     public static void setBombCount(int bombCount) {
         Inventory.bombCount = bombCount;
     }
 
+    /**
+     * Method which is used to set the amount of Gas in Inventory
+     *
+     * @param gasCount number of Gas
+     */
     public static void setGasCount(int gasCount) {
         Inventory.gasCount = gasCount;
     }
 
+    /**
+     * Method which is used to set the amount of Sterilization in Inventory
+     *
+     * @param sterileCount number of sterilizers
+     */
     public static void setSterileCount(int sterileCount) {
         Inventory.sterileCount = sterileCount;
     }
 
+    /**
+     * Method which is used to set the amount of No Entry Signs in Inventory
+     *
+     * @param noEntryCount number of No Entry Signs
+     */
     public static void setNoEntryCount(int noEntryCount) {
         Inventory.noEntryCount = noEntryCount;
     }
 
+    /**
+     * Method which is used to set the amount of Male Gender Changes in Inventory
+     *
+     * @param maleCount number of Male Gender Changes
+     */
     public static void setMaleCount(int maleCount) {
         Inventory.maleCount = maleCount;
     }
 
+    /**
+     * Method which is used to set the amount of Female Gender Changes in Inventory
+     *
+     * @param femaleCount number of Female Gender Changes
+     */
     public static void setFemaleCount(int femaleCount) {
         Inventory.femaleCount = femaleCount;
     }
 
+    /**
+     * Method which is used to set the amount of Death Rats in Inventory
+     *
+     * @param deathCount number of Death Rats
+     */
     public static void setDeathCount(int deathCount) {
         Inventory.deathCount = deathCount;
     }
 
+    /**
+     * Method used to restock individual items in the Inventory
+     * after a certain amount of time
+     */
     public void restock() {
         if (Game.getTimeLeft() % bombRestockRate == 0) {
             bombCount += 1;
@@ -196,29 +237,5 @@ public class Inventory {
         }
     }
 
-    /*
-    public String toString() {
-        String result = "Remaining Items:\n";
-        //gets information from the "ItemsLeft" Attribute
-        for (int i = 0; i< itemsLeft.length + 1; i++) {
-        	result += itemNames[i] + " "; 
-        	result += itemsLeft[i] + "\n";
-        }  
-        return result;
-    }
-
-    
-    public void placeItem(int itemArrayPos, int[] itemBoardPos) {
-        //where itemPos is the id of the item's type, and also it's position in the array
-    	if (itemsLeft[itemArrayPos] > 0) {
-    		itemsLeft[itemArrayPos]--;
-    		//send request to place item - probably needs access to board/game to set items or smth
-    		//like a Board.SetItem(itemBoadPos, itemName[itemArrayPos]) type thing
-    	} else {
-    		System.out.println("Ran out of uses of " + itemNames[itemArrayPos]);
-    		//not sure what javafx uses to print text but use that instead
-    	}   	
-    }
-    */
 }
 	
