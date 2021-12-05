@@ -15,6 +15,15 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.*;
 import entity.*;
 
+/**
+ *
+ <p> 1. File-name: GameFileHandler.java</p>
+ <p> 2. Creation Date: (N/A) </p>
+ <p> 3. Last modification date:</p>
+ <p> 4. Purpose of the program: To manage all files. </p>
+ * @author Jonny
+ */
+
 public class GameFileHandler {
     public static final String ERROR_MSG_FILE_NOT_FOUND = "Could not find %s.";
     public static final String SAVE_PATH = "saveFiles/";
