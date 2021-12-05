@@ -310,7 +310,11 @@ public class Game {
 			return tiles.get(pos).isPassable();
 		}
 
-		
+		/**
+		 * gets entities
+		 * @param pos
+		 * @return
+		 */
 		public static ArrayList<Entity> getEntities(Pos pos) {
 			ArrayList<Entity> entities = new ArrayList<>();
 			entities.addAll(Game.rats);
