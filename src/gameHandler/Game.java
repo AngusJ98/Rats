@@ -167,12 +167,12 @@ public class Game {
 			entities.addAll(Game.rats);
 			entities.addAll(Game.items);
 			ArrayList<Entity> entitiesOnPos = new ArrayList<>();
-			for (Entity entity : entities) {
-				if (entity.getPosition() == pos) {
-					entitiesOnPos.add(entity);
+			for (Entity e : entities) {
+				if (e.getPosition().equals(pos)) {
+					entitiesOnPos.add(e);
 				}
 			}
-			return entities;
+			return entitiesOnPos;
 		}
 		public static int getNumTileWidth() {
 			return numTileWidth;
@@ -280,6 +280,7 @@ public class Game {
             }
             itemsToRemove.clear();
 
+            //add items at the end so they can be drawn next tick
 			for (Item item : itemsToAdd) {
 				Game.items.add(item);
 			}

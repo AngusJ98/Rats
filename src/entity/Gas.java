@@ -37,6 +37,7 @@ public class Gas extends Item {
 			}	
 			//create a gasPart at the location in the first index of the locations array 
 			gasArray[gasNum] = new GasPart(unvisitedTiles.get(0));
+			Game.ItemManager.addItem(gasArray[gasNum]);
 			//search nearby tiles (in a + shape) for tiles that are passable and add them to the list of possible locations
 			//tiles must not be outside the board or be already in the list as that could lead to recursion 
 			//and multiple gasparts being created in the same location

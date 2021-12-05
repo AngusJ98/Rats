@@ -192,11 +192,13 @@ public class BasicRat extends Rat {
      * then relevant actions are made if neccessary.
      */
 	public void checkCurrentTile() {
+
 		ArrayList<Entity> entities = Game.TileManager.getEntities(pos);
-		for (int i = 0; i<entities.size(); i++) {
+
+		for (Entity entity : entities) {
 			//check if rat/cast to rat
-			if (entities.get(i).isRat()) {
-				Rat rat = (Rat) entities.get(i);
+			if (entity.isRat()) {
+				Rat rat = (Rat) entity;
 				if (rat.getRatType().equals(RatTypes.DEATH)) {
 					rat.checkCurrentTile(); //death rat eats this rat
 				} else if (!rat.getRatType().equals(this.ratType) && !rat.getRatType().equals(RatTypes.BABY)) {
@@ -215,8 +217,9 @@ public class BasicRat extends Rat {
 				}			
 			} else {
 				try {
-				Item item = (Item) entities.get(i);
-				item.onCollision(this);
+
+                    Item item = (Item) entity;
+                    item.onCollision(this);
 				} catch (Exception e) {
 					System.out.println("Rat tried to activate an item but could not cast to Item");
 				}

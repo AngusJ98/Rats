@@ -1,5 +1,6 @@
 package entity;
 
+import gameHandler.Game;
 import gameHandler.Pos;
 import javafx.scene.image.Image;
 
@@ -12,13 +13,14 @@ public abstract class Item extends Entity {
 	public abstract void tick();
     public void onCollision(Entity target) {
 		if (!(target == null)) {
+			System.out.println(target.getEntityType());
 			switch (target.getEntityType()) {
-			case RAT:
-				ratCollision((Rat) target);
-				break;
-			case ITEM:
-				itemCollision((Item) target);
-				break;
+				case RAT:
+					ratCollision((Rat) target);
+					break;
+				case ITEM:
+					itemCollision((Item) target);
+					break;
 			}
 		}
     }
