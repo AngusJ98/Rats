@@ -73,7 +73,7 @@ public class Game {
 			//TODO updatePlayerStats();
 			Game.cleanUp();
 			Platform.runLater(() -> Game.runner.victoryScreen());
-		} else if (timeLeft <= 0 && rats.size() > loseAmount) {
+		} else if (timeLeft <= 0 || rats.size() > loseAmount) {
 			System.out.println("DEFEAT :c");
 			Game.cleanUp();
 			Platform.runLater(() -> Game.runner.lossScreen());
@@ -113,14 +113,14 @@ public class Game {
 		public static boolean killBasicRatsAtPos(Pos pos) {
 			ArrayList<BasicRat> toKill = getRatsAtPos(pos);
 			if (ratsToKill!= null) {
-				ratsToKill.addAll(ratsToKill)
+				ratsToKill.addAll(toKill);
 				return true;
 			}
 			return false;
 		}		
 		public static boolean killSingleRat(Rat rat) { //so i made this method for when we need to kill individual rats
 			if (rats.contains(rat)) {
-				ratsToKill.add((BasicRat)rat));
+				ratsToKill.add((BasicRat)rat);
 				return true;
 			} else if (deathRats.contains(rat)) {
 				deathRats.remove(rat);

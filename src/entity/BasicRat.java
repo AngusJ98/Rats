@@ -18,7 +18,7 @@ import javafx.scene.image.Image;
 
 public class BasicRat extends Rat {
     private static final int MIN_GROWTH_TIME = 100;
-    private static final int MAX_GROWTH_TIME = 1000;
+    private static final int MAX_GROWTH_TIME = 200;
     private static final int ADULT_MAX_HP = 100;
     private static final int BABY_MAX_HP = 50;
     private static final int PREGNANCY_COOLDOWN = 100;
