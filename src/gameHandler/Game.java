@@ -190,6 +190,8 @@ public class Game {
 
 		/**
 		 * method to kill basic rats at certain positions
+		 * <p> no side-effects</p>
+		 * <p> not referentially transparent</p>
 		 * @param pos coordinates of rats to be killed
 		 * @return returns true if rats are killed, false otherwise
 		 */
@@ -204,6 +206,8 @@ public class Game {
 
 		/**
 		 * method to kill a single rat
+		 * <p> no side-effects</p>
+		 * <p> not referentially transparent</p>
 		 * @param rat to kill
 		 * @return true if rat is in a list or rats or is a death rat, false otherwise
 		 */
@@ -283,6 +287,12 @@ public class Game {
 		private static int numTileWidth = 0;
 		private static int numTileHeight = 0;
 		//main purpose is to store tiles and allow entities to access them
+
+		/**
+		 * gets the tile at a certain position.
+		 * @param pos coordinates of a tile
+		 * @return returns position of tile
+		 */
 		public static Tile getTile(Pos pos) {
 			return tiles.get(pos);
 		}
