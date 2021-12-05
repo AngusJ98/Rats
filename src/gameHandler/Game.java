@@ -312,8 +312,8 @@ public class Game {
 
 		/**
 		 * gets entities
-		 * @param pos
-		 * @return
+		 * @param pos of entities
+		 * @return returns a list of entities
 		 */
 		public static ArrayList<Entity> getEntities(Pos pos) {
 			ArrayList<Entity> entities = new ArrayList<>();
@@ -327,6 +327,11 @@ public class Game {
 			}
 			return entitiesOnPos;
 		}
+
+		/**
+		 * gets the No. of Tile width
+		 * @return 
+		 */
 		public static int getNumTileWidth() {
 			return numTileWidth;
 		}
