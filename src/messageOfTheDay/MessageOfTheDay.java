@@ -17,7 +17,13 @@ import java.net.URL;
 public class MessageOfTheDay {
 
 	private static HttpURLConnection connection;
-	
+
+	/**
+	 *method to get the information from the url
+	 * @param urlStr: the url as a string
+	 * @return the message
+	 */
+
 	private static String getInfoFromUrl(String urlStr) {
 		BufferedReader reader;
 		String line;
@@ -32,7 +38,6 @@ public class MessageOfTheDay {
 			connection.setReadTimeout(5000);
 			
 			int status = connection.getResponseCode();
-			//System.out.println(status);
 			
 			if(status > 299) {
 				reader = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
@@ -62,6 +67,11 @@ public class MessageOfTheDay {
 		
 	}
 
+	/**
+	 * method to get the solved version
+	 * @return solution with 230 added
+	 */
+
 	private static String getSolution() {
 		String unsolvedMessage = getInfoFromUrl("http://cswebcat.swansea.ac.uk/puzzle");
 		char[] solutionArr = new char[unsolvedMessage.length()];
@@ -79,10 +89,11 @@ public class MessageOfTheDay {
 		}
 		return (new String(solutionArr) + "CS-230");
 	}
+
 	/**
 	 * method to make the last letter of
 	 * the alphabet if moved back be the first
-	 * @param c: idervidual character
+	 * @param c: individual character
 	 * @param shift: Forward direction
 	 * @return one character
 	 */

@@ -7,25 +7,25 @@ import javafx.scene.image.Image;
 import static entity.Direction.*;
 
 /**
+ * <p> 1. File-name: Bomb.java</p>
+ * <p> 2. Creation Date: 28/11/2021</p>
+ * <p> 3. Last modification date: 5/12/2021</p>
+ * <p> 4. Purpose of the program: Bomb Implementation</p>
  *
- <p> 1. File-name: Bomb.java</p>
- <p> 2. Creation Date: (N/A) </p>
- <p> 3. Last modification date: </p>
- <p> 4. Purpose of the program: Bomb Implementation</p>
- * @author ??
+ * @author Andrew, Ethan
  */
 
-public class Bomb extends Item{
-	//=========================================IMPORTANT========================================
-	// bomb shouldn't have the ability to kill, but it will spawn bombparts that kill on contact
+public class Bomb extends Item {
+    //=========================================IMPORTANT========================================
+    // bomb shouldn't have the ability to kill, but it will spawn bombparts that kill on contact
     // bomb itsself is essentially just a glorified countdown timer
-	// all it needs is the tick() and boom() methods
+    // all it needs is the tick() and boom() methods
     //==========================================================================================	
     public static final int DEFAULT_BOMB_TIME = 4000;
-    public static final int TICKS_PER_SECOND = 1000; 
-	//1000 tps is very, very fast. For reference, minecraft uses 20 tps and 
-	//i expect a tick rate of 1-5 ticks per second would suit the rat game better
-	//unless you meant milliseconds per tick?
+    public static final int TICKS_PER_SECOND = 1000;
+    //1000 tps is very, very fast. For reference, minecraft uses 20 tps and
+    //i expect a tick rate of 1-5 ticks per second would suit the rat game better
+    //unless you meant milliseconds per tick?
     private int range;
     private int timer;
 
@@ -33,6 +33,7 @@ public class Bomb extends Item{
      * 1st Constructor, initializes Bomb via it's
      * Image and Coordinates, and sets a DEFAULT timer
      * for when it explodes
+     *
      * @param position takes in the coordinates of the Bomb
      */
     public Bomb(Pos position) {
@@ -46,8 +47,6 @@ public class Bomb extends Item{
     }
 
 
-
-
     // if anyone renames this method to something more sensible
     // i will personally feel very offended
 
@@ -57,11 +56,11 @@ public class Bomb extends Item{
      * <p> not referentially transparent</p>
      */
     private void boom() {
-		Game.ItemManager.addItem(new ExplosionPart(this.pos, NORTH));
-		Game.ItemManager.addItem(new ExplosionPart(this.pos, EAST));
-		Game.ItemManager.addItem(new ExplosionPart(this.pos, SOUTH));
-		Game.ItemManager.addItem(new ExplosionPart(this.pos, WEST));
-		Game.ItemManager.killItem(this);
+        Game.ItemManager.addItem(new ExplosionPart(this.pos, NORTH));
+        Game.ItemManager.addItem(new ExplosionPart(this.pos, EAST));
+        Game.ItemManager.addItem(new ExplosionPart(this.pos, SOUTH));
+        Game.ItemManager.addItem(new ExplosionPart(this.pos, WEST));
+        Game.ItemManager.killItem(this);
     }
 
     /**
@@ -73,11 +72,11 @@ public class Bomb extends Item{
      * <p> not referentially transparent</p>
      */
     public void tick() {
-        timer-= 100;
-		if (timer <= 0) { 
-			boom();
-		}
-		updateImage();
+        timer -= 100;
+        if (timer <= 0) {
+            boom();
+        }
+        updateImage();
     }
 
     /**
@@ -86,17 +85,18 @@ public class Bomb extends Item{
      * <p> not referentially transparent</p>
      */
     private void updateImage() {
-        int secsLeft = 1 + timer/1000;
+        int secsLeft = 1 + timer / 1000;
         this.image = new Image("file:resources/bomb" + secsLeft + ".png");
     }
 
     //Each bomb should display a count down: 4, 3, 2, 1.
-	// god damn i hate java so much look at this shit
+    // god damn i hate java so much look at this shit
 
     /**
      * Gets how many seconds are left
      * <p> no side-effects</p>
      * <p> not referentially transparent</p>
+     *
      * @return
      */
     public int getSeconds() {
@@ -104,9 +104,14 @@ public class Bomb extends Item{
     }
 
     @Override
-    public void ratCollision(Rat target) {}
-	public void itemCollision(Item target) {}
-	public void onPlacement() {}	
+    public void ratCollision(Rat target) {
+    }
+
+    public void itemCollision(Item target) {
+    }
+
+    public void onPlacement() {
+    }
 }
 
 //From the Spec:
