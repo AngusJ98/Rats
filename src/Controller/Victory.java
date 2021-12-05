@@ -3,7 +3,13 @@ package Controller;
 import gameHandler.Game;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.text.Text;
+
+import static Controller.Main.WINDOW_HEIGHT;
+import static Controller.Main.WINDOW_WIDTH;
 
 
 /**
@@ -21,7 +27,9 @@ public class Victory {
     Text points;
     public void returnToMenu() {
         try {
-            Main.changeScene(Main.getMenuScene());
+            Parent root = FXMLLoader.load(getClass().getResource("menu.fxml"));
+            Scene menuScene = new Scene(root, WINDOW_WIDTH, WINDOW_HEIGHT);
+            Main.changeScene(menuScene);
 
         } catch (Exception e) {
             e.printStackTrace();

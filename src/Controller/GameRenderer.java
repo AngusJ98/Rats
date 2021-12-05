@@ -20,6 +20,8 @@ import javafx.scene.layout.*;
 
 import java.util.HashMap;
 
+import static Controller.Main.WINDOW_HEIGHT;
+import static Controller.Main.WINDOW_WIDTH;
 import static java.lang.Math.min;
 
 /**
@@ -209,8 +211,10 @@ public class GameRenderer {
 
     public void returnToMenu() {
         try {
-            Main.changeScene(Main.getMenuScene());
-            Game.cleanUp();
+            Parent root = FXMLLoader.load(getClass().getResource("menu.fxml"));
+            Scene menuScene = new Scene(root, WINDOW_WIDTH, WINDOW_HEIGHT);
+            Main.changeScene(menuScene);
+
         } catch (Exception e) {
             e.printStackTrace();
             System.exit(1);

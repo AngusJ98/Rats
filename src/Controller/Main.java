@@ -13,22 +13,18 @@ public class Main extends Application {
     public static final int WINDOW_WIDTH = 1000;
     public static final int WINDOW_HEIGHT = 800;
     private static int levelNum = 0;
-    private static Scene menuScene;
     public static final int LEVEL_COUNT = 6;
     public static Player activePlayer = null;
-
-    public static Scene getMenuScene() {
-        return menuScene;
-    }
 
 
     public void start(Stage primaryStage) throws Exception{
         stg = primaryStage;
         primaryStage.setResizable(false);
+
         Parent root = FXMLLoader.load(getClass().getResource("menu.fxml"));
-        primaryStage.setTitle("RATS!");
-        this.menuScene = new Scene(root, WINDOW_WIDTH, WINDOW_HEIGHT);
-        primaryStage.setScene(this.menuScene);
+
+        Scene menuScene = new Scene(root, WINDOW_WIDTH, WINDOW_HEIGHT);
+        primaryStage.setScene(menuScene);
         primaryStage.show();
     }
 

@@ -1,5 +1,12 @@
 package Controller;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+
+import static Controller.Main.WINDOW_HEIGHT;
+import static Controller.Main.WINDOW_WIDTH;
+
 /**
  *
  <p> 1. File-name: Defeat.java</p>
@@ -12,7 +19,10 @@ package Controller;
 public class Defeat {
     public void returnToMenu() {
         try {
-            Main.changeScene(Main.getMenuScene());
+            Parent root = FXMLLoader.load(getClass().getResource("menu.fxml"));
+            Scene menuScene = new Scene(root, WINDOW_WIDTH, WINDOW_HEIGHT);
+            Main.changeScene(menuScene);
+
         } catch (Exception e) {
             e.printStackTrace();
             System.exit(1);

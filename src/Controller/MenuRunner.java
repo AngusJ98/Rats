@@ -66,6 +66,7 @@ public class MenuRunner {
             for (int i = play.getItems().size() - 1; i > Main.activePlayer.getMaxLevelUnlocked(); i--) {
                 play.getItems().get(i).setDisable(true);
             }
+            playerId.setText(Main.activePlayer.getPlayerName());
         }
 
 
