@@ -96,6 +96,15 @@ public class BasicRat extends Rat {
                 break;
         }
     }
+
+    public boolean isSterile() {
+        return sterile;
+    }
+
+    public void setSterile(boolean sterile) {
+        this.sterile = sterile;
+    }
+
     /**
      * Setter for Time to Growth
      * @param timeToGrowth

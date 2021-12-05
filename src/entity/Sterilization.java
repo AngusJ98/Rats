@@ -6,17 +6,17 @@ import javafx.scene.image.Image;
 import java.util.ArrayList;
 
 public class Sterilization extends Item{
-    private static final int DEFAULT_TIME = 4000; // idk how long it's meant to stay for
-    private static final int RANGE = 3; //idk what range should be either
+    private static final int DEFAULT_TIME = 50; // idk how long it's meant to stay for. 5 seconds?
+    private static final int RANGE = 2; //idk what range should be either
     private int timer;
 
     public Sterilization(Pos position) {
-        super(new Image(""), position);
+        super(new Image("file:resources/sterile.png"), position);
         timer = DEFAULT_TIME;
     }
 
     public Sterilization(Pos position, int timeLeft) {
-        super(new Image(""), position);
+        super(new Image("file:resources/sterile.png"), position);
         timer = timeLeft;
     }
 	
@@ -30,11 +30,16 @@ public class Sterilization extends Item{
 				if (!(rats == null) && rats.size() > 0) {
 					for (BasicRat rat : rats) {
 						rat.setMateStatus(false);
+						rat.setSterile(true);
 					}	
 				}	
 			}
 		}	
-		
+
+		if (timer <= 0 ) {
+			Game.ItemManager.killItem(this);
+		}
+		timer--;
 	}
 }
 
