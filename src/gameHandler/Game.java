@@ -246,28 +246,46 @@ public class Game {
 						}
 						break;
 					case "gas":
-						placedItem = new Gas(pos);
-						items.add(placedItem);
+						if (Inventory.getGasCount() > 0) {
+							placedItem = new Gas(pos);
+							items.add(placedItem);
+							Inventory.setGasCount(Inventory.getBombCount() - 1);
+						}
 						break;
 					case "sterile":
-						placedItem = new Sterilization(pos);
-						items.add(placedItem);
+						if (Inventory.getSterileCount() > 0) {
+							placedItem = new Sterilization(pos);
+							items.add(placedItem);
+							Inventory.setBombCount(Inventory.getSterileCount() - 1);
+						}
 						break;
 					case "noEnt":
-						placedItem = new NoEntrySign(pos);
-						items.add(placedItem);
+						if (Inventory.getNoEntryCount() > 0) {
+							placedItem = new NoEntrySign(pos);
+							items.add(placedItem);
+							Inventory.setNoEntryCount(Inventory.getBombCount() - 1);
+						}
 						break;
 					case "male":
-						placedItem = new MaleGenderChange(pos);
-						items.add(placedItem);
+						if (Inventory.getMaleCount() > 0) {
+							placedItem = new MaleGenderChange(pos);
+							items.add(placedItem);
+							Inventory.setMaleCount(Inventory.getBombCount() - 1);
+						}
 						break;
 					case "female":
-						placedItem = new FemaleGenderChange(pos);
-						items.add(placedItem);
+						if (Inventory.getFemaleCount() > 0) {
+							placedItem = new FemaleGenderChange(pos);
+							items.add(placedItem);
+							Inventory.setFemaleCount(Inventory.getBombCount() - 1);
+						}
 						break;
 					case "deathRat":
-						//not using placedItem here cause deathrat doesn't inherit from entity
-						RatManager.deathRats.add(new DeathRat(pos));
+						if (Inventory.getDeathCount() > 0) {
+							//not using placedItem here cause deathrat doesn't inherit from entity
+							RatManager.deathRats.add(new DeathRat(pos));
+							Inventory.setDeathCount(Inventory.getDeathCount() - 1);
+						}
 						break;
 				}
 				if (!(placedItem == null)) {
@@ -332,7 +350,7 @@ public class Game {
             gameObjects = GameFileHandler.newGame(levelPath);
         constructTileMap(gameObjects.getThird());
 		constructRatList(gameObjects.getFirst());
-		setUpLevelStats(gameObjects.getFourth());
+		setUpLevelStats(gameObjects.getFourth(), gameObjects.getSixth());
 	}
 	public static String getLevelPath() {
 		return levelPath;
@@ -361,9 +379,9 @@ public class Game {
 		Game.rats = new ArrayList<BasicRat>(Arrays.asList(rats));
 	}
 
-	private void setUpLevelStats(HashMap<String, Integer> stats) {
+	private void setUpLevelStats(HashMap<String, Integer> stats, int[] inventory) {
 		this.timeLeft = stats.get("timeLeft") * 10;
 		this.loseAmount = stats.get("loseAmount");
-		Game.inventory = new Inventory(stats);
+		Game.inventory = new Inventory(stats, inventory);
 	}
 }

@@ -223,11 +223,11 @@ public class GameRenderer {
 
     public void updateCount() {
         this.bombCount.setText(String.valueOf(Inventory.getBombCount()));
-        this.gasCount.setText(String.valueOf(Inventory.getgasCount()));
-        this.sterileCount.setText(String.valueOf(Inventory.getsterileCount()));
-        this.noEntCount.setText(String.valueOf(Inventory.getnoEntryCount()));
-        this.maleCount.setText(String.valueOf(Inventory.getmaleCount()));
-        this.femaleCount.setText(String.valueOf(Inventory.getfemaleCount()));
+        this.gasCount.setText(String.valueOf(Inventory.getGasCount()));
+        this.sterileCount.setText(String.valueOf(Inventory.getSterileCount()));
+        this.noEntCount.setText(String.valueOf(Inventory.getNoEntryCount()));
+        this.maleCount.setText(String.valueOf(Inventory.getMaleCount()));
+        this.femaleCount.setText(String.valueOf(Inventory.getFemaleCount()));
         this.deathCount.setText(String.valueOf(Inventory.getDeathCount()));
     }
 

@@ -20,14 +20,22 @@ public class Inventory {
     private int femaleRestockRate;
     private int deathRestockRate;
 
-    public Inventory(HashMap<String, Integer> stats) {
-        this.bombRestockRate = stats.get("bomb");
-        this.gasRestockRate = stats.get("gas");
-        this.sterileRestockRate = stats.get("sterilise");
-        this.noEntRestockRate = stats.get("noEntry");
-        this.maleRestockRate = stats.get("mSexChange");
-        this.femaleRestockRate = stats.get("fSexChange");
-        this.deathRestockRate = stats.get("deathRat");
+    public Inventory(HashMap<String, Integer> stats, int[] inventory) {
+        this.bombRestockRate = stats.get("bombFreq");
+        this.gasRestockRate = stats.get("gasFreq");
+        this.sterileRestockRate = stats.get("steriliseFreq");
+        this.noEntRestockRate = stats.get("noEntryFreq");
+        this.maleRestockRate = stats.get("mSexChangeFreq");
+        this.femaleRestockRate = stats.get("fSexChangeFreq");
+        this.deathRestockRate = stats.get("deathRatFreq");
+        bombCount = inventory[0];
+        gasCount = inventory[1];
+        sterileCount = inventory[2];
+        noEntryCount = inventory[3];
+        maleCount = inventory[4];
+        femaleCount = inventory[5];
+        deathCount = inventory[6];
+
     }
 
     // TODO:
@@ -35,23 +43,23 @@ public class Inventory {
         return bombCount;
     }
 
-    public static int getgasCount() {
+    public static int getGasCount() {
         return gasCount;
     }
 
-    public static int getsterileCount() {
+    public static int getSterileCount() {
         return sterileCount;
     }
 
-    public static int getnoEntryCount() {
+    public static int getNoEntryCount() {
         return noEntryCount;
     }
 
-    public static int getmaleCount() {
+    public static int getMaleCount() {
         return maleCount;
     }
 
-    public static int getfemaleCount() {
+    public static int getFemaleCount() {
         return femaleCount;
     }
 
@@ -60,31 +68,31 @@ public class Inventory {
     }
 
     public static void setBombCount(int bombCount) {
-        this.bombCount = bombCount;
+        Inventory.bombCount = bombCount;
     }
 
     public static void setGasCount(int gasCount) {
-        this.gasCount = gasCount;
+        Inventory.gasCount = gasCount;
     }
 
     public static void setSterileCount(int sterileCount) {
-        this.sterileCount = sterileCount;
+        Inventory.sterileCount = sterileCount;
     }
 
     public static void setNoEntryCount(int noEntryCount) {
-        this.noEntryCount = noEntryCount;
+        Inventory.noEntryCount = noEntryCount;
     }
 
     public static void setMaleCount(int maleCount) {
-        this.maleCount = maleCount;
+        Inventory.maleCount = maleCount;
     }
 
     public static void setFemaleCount(int femaleCount) {
-        this.femaleCount = femaleCount;
+        Inventory.femaleCount = femaleCount;
     }
 
     public static void setDeathCount(int deathCount) {
-        this.deathCount = deathCount;
+        Inventory.deathCount = deathCount;
     }
 
     public void restock() {
@@ -96,6 +104,24 @@ public class Inventory {
             gasCount += 1;
         }
 
+        if (Game.getTimeLeft() % sterileRestockRate == 0) {
+            sterileCount += 1;
+        }
+
+        if (Game.getTimeLeft() % noEntRestockRate == 0) {
+            noEntryCount += 1;
+        }
+
+        if (Game.getTimeLeft() % maleRestockRate == 0) {
+            maleCount += 1;
+        }
+
+        if (Game.getTimeLeft() % femaleRestockRate == 0) {
+            femaleCount += 1;
+        }
+        if (Game.getTimeLeft() % deathRestockRate == 0) {
+            deathCount += 1;
+        }
     }
 
     /*

@@ -235,7 +235,7 @@ public class GameFileHandler {
         HashMap<String, Integer> levelStats = new HashMap<>();
         JSONObject jLevelStats = (JSONObject) json.get("levelStats");
         String[] keys = {
-                "timeLeft", "ratLimit", "bombFreq", "gasFreq", "steriliseFreq", "poisonFreq",
+                "timeLeft", "ratLimit", "bombFreq", "gasFreq", "steriliseFreq",
                 "mSexChangeFreq", "fSexChangeFreq", "noEntryFreq", "deathRatFreq" ,"loseAmount"
         };
         for (String key: keys) {
@@ -258,7 +258,7 @@ public class GameFileHandler {
     private static int[] parseInventory(JSONObject json) {
         JSONObject jInventory = (JSONObject) json.get("inventory");
         String[] keys = {
-                "bomb", "gas", "sterilise", "poison",
+                "bomb", "gas", "sterilise",
                 "mSexChange", "fSexChange", "noEntry", "deathRat"
         };
         int[] inventory = new int[keys.length];
