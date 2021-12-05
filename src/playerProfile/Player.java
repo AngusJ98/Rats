@@ -1,7 +1,12 @@
 package playerProfile;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * <p> 1. File-name: playerProfile.Player.java</p>
@@ -27,7 +32,7 @@ public class Player {
      * @param scores            the score of this player
      * @param maxLevelUnlocked the maximum level unlocked by this player
      */
-    Player(String playerName, int[] scores, int maxLevelUnlocked) {
+    public Player(String playerName, int[] scores, int maxLevelUnlocked) {
         this.playerName = playerName;
         this.scores = scores;
         this.maxLevelUnlocked = maxLevelUnlocked;
@@ -69,5 +74,19 @@ public class Player {
 
     public String getPlayerName() {
         return playerName;
+    }
+
+
+    public JSONObject makeJSON() {
+        JSONObject jo = new JSONObject();
+        JSONArray scoreNew = new JSONArray();
+        for (int score: scores) {
+            scoreNew.add(score);
+        }
+
+        jo.put("name",this.playerName);
+        jo.put("scores", scoreNew);
+        jo.put("maxLevel", this.maxLevelUnlocked);
+        return jo;
     }
 }

@@ -4,6 +4,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import playerProfile.Player;
+
 //This is a file
 public class Main extends Application {
 
@@ -12,7 +14,8 @@ public class Main extends Application {
     public static final int WINDOW_HEIGHT = 800;
     private static int levelNum = 0;
     private static Scene menuScene;
-
+    public static final int LEVEL_COUNT = 6;
+    public static Player activePlayer;
 
     public static Scene getMenuScene() {
         return menuScene;

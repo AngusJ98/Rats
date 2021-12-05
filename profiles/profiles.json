@@ -1,17 +1,1 @@
-{
-  "1": {
-    "name": "Gus",
-    "scores": [10,10,10,10,10,0,0,0],
-    "maxLevel": 7
-  },
-  "2": {
-    "name": "Dylan",
-    "scores": [5,5,5,5,5,5,0,0],
-    "maxLevel": 10
-  },
-  "3": {
-    "name": "Ethan",
-    "scores": [50,500,5,5,5,5,0,0],
-    "maxLevel": 10
-  }
-}
+{"people":[{"maxLevel":10,"scores":[5,5,5,5,5,5],"name":"Dylan"},{"maxLevel":10,"scores":[50,500,5,5,5,5],"name":"Ethan"},{"maxLevel":6,"scores":[1,2,3,4,5,6],"name":"test"},{"maxLevel":0,"scores":[0,0,0,0,0,0],"name":"bill"},{"maxLevel":0,"scores":[0,0,0,0,0,0],"name":"test3"},{"maxLevel":15,"scores":[1000000,1,1,1,1,1],"name":"Gus"},{"maxLevel":0,"scores":[0,0,0,0,0,0],"name":"test4"},{"maxLevel":0,"scores":[0,0,0,0,0,0],"name":"test5"}]}

@@ -1,6 +1,7 @@
 package Controller;
 import gameHandler.Game;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -18,12 +19,14 @@ import playerProfile.Player;
 import playerProfile.ProfileReader;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class MenuRunner {
 
     @FXML private AnchorPane menuBase;
     @FXML private TabPane highscore;
-
+    @FXML private Menu profiles;
+    @FXML private Text playerId;
     public MenuRunner() {
 
     }
@@ -41,10 +44,9 @@ public class MenuRunner {
 
         table.setStyle("-fx-background-color:GREY");
         updateHigh();
+        createProfileButtons();
         //add the table to the scene
         menuBase.getChildren().add(table);
-
-
     }
 
     private void startGame() throws Exception{
@@ -65,8 +67,32 @@ public class MenuRunner {
         }
     }
 
-    private void updateHigh() {
+    private void createProfileButtons() {
+        while (profiles.getItems().size() > 1) {
+            profiles.getItems().remove(1);
+        }
+        Player[] players = ProfileReader.retrieveAllPlayers();
+        int i = 0;
+        for (Player player : players) {
+            MenuItem m = new MenuItem();
+            m.setText(player.getPlayerName());
+            m.setId(i + "");
+            m.setOnAction(new EventHandler<ActionEvent>() {
+                @Override public void handle(ActionEvent e) {
+                    Player[] allPs = ProfileReader.retrieveAllPlayers();
+                    Main.activePlayer = allPs[Integer.parseInt(m.getId())];
+                    playerId.setText(Main.activePlayer.getPlayerName());
+                }
+            });
+            profiles.getItems().add(m);
+            i++;
+        }
+    }
 
+
+
+    private void updateHigh() {
+        highscore.getTabs().clear();
         for (int i = 0; i < 6; i++) {
             Tab newTab = new Tab();
             newTab.setText("Level " + i);
@@ -116,12 +142,8 @@ public class MenuRunner {
         this.startGame();
     }
 
-    public void level4(ActionEvent actionEvent) throws Exception {
-        Game.setLevelPath("level3");
-        this.startGame();
-    }
     public void liam(ActionEvent actionEvent) throws Exception {
-        Game.setLevelPath("level3");
+        Game.setLevelPath("liam");
         this.startGame();
     }
     public void dylanLevel(ActionEvent actionEvent) throws Exception {
@@ -129,4 +151,19 @@ public class MenuRunner {
         this.startGame();
     }
 
+    public void level4(ActionEvent actionEvent) throws Exception {
+        Game.setLevelPath("gusSpeedway");
+        this.startGame();
+    }
+
+    public void createProfile() {
+        TextInputDialog t = new TextInputDialog("");
+        t.setContentText("Enter your name:");
+        t.setTitle("Create Profile");
+        Optional<String> response = t.showAndWait();
+        if (response.isPresent()) {
+            ProfileReader.writeNewProfile(response.get());
+        }
+        this.initialize();
+    }
 }
