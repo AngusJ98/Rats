@@ -13,6 +13,8 @@
             <items>
               <MenuItem mnemonicParsing="false" onAction="#level1" text="Level 1" />
                   <MenuItem mnemonicParsing="false" onAction="#level2" text="Level 2" />
+                  <MenuItem mnemonicParsing="false" onAction="#level3" text="Level 3" />
+                  <MenuItem mnemonicParsing="false" onAction="#level4" text="level 4" />
                   <MenuItem mnemonicParsing="false" onAction="#liam" text="Liam" />
                   <MenuItem mnemonicParsing="false" onAction="#dylanLevel" text="DylanLevel" />
             </items>
