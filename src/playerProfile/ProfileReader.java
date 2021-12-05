@@ -1,6 +1,5 @@
 package playerProfile;
 
-import gameHandler.Tuple;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -9,7 +8,6 @@ import org.json.simple.parser.ParseException;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class ProfileReader {
@@ -87,6 +85,7 @@ public class ProfileReader {
                 players.remove(maxPlayer);
             }
         }
+
         return goodPlayers;
     }
 
