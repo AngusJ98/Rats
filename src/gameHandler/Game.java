@@ -73,10 +73,13 @@ public class Game {
 		if (rats.size() == 0) {
 			System.out.println("VICTORY!!");
 			System.out.println(score);
+			if (timeLeft > 0) {
+				Game.addScore(timeLeft);
+			}
 			//TODO updatePlayerStats();
 			Game.cleanUp();
 			Platform.runLater(() -> Game.runner.victoryScreen());
-		} else if (timeLeft <= 0 || rats.size() > loseAmount) {
+		} else if (rats.size() > loseAmount) {
 			System.out.println("DEFEAT :c");
 			Game.cleanUp();
 			Platform.runLater(() -> Game.runner.lossScreen());

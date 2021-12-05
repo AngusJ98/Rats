@@ -66,5 +66,13 @@ public class NoEntrySign extends Item {
 	 */
 	public void itemCollision(Item target) {}
 	public void onPlacement() {}	
-	public void tick() {}
+	public void tick() {
+		this.updateImage();
+	}
+
+	private void updateImage() {
+		int hits = this.hp;
+		this.image = new Image("file:resources/noEnt" + (MAX_HP - hits) + ".png");
+	}
+
 }

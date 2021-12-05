@@ -79,7 +79,6 @@ public class Bomb extends Item{
 
     private void updateImage() {
         int secsLeft = 1 + timer/1000;
-        System.out.println(secsLeft);
         this.image = new Image("file:resources/bomb" + secsLeft + ".png");
     }
 
