@@ -11,6 +11,7 @@ public class Inventory {
     private static int maleCount;
     private static int femaleCount;
     private static int deathCount;
+    private static int poisonCount;
 
     private int bombRestockRate;
     private int gasRestockRate;
@@ -19,6 +20,7 @@ public class Inventory {
     private int maleRestockRate;
     private int femaleRestockRate;
     private int deathRestockRate;
+    private int poisonRestockRate;
 
     public Inventory(HashMap<String, Integer> stats, int[] inventory) {
         this.bombRestockRate = stats.get("bombFreq");
@@ -28,6 +30,7 @@ public class Inventory {
         this.maleRestockRate = stats.get("mSexChangeFreq");
         this.femaleRestockRate = stats.get("fSexChangeFreq");
         this.deathRestockRate = stats.get("deathRatFreq");
+        this.poisonRestockRate = stats.get("poisonFreq");
         bombCount = inventory[0];
         gasCount = inventory[1];
         sterileCount = inventory[2];
@@ -35,7 +38,15 @@ public class Inventory {
         maleCount = inventory[4];
         femaleCount = inventory[5];
         deathCount = inventory[6];
+        poisonCount = inventory[7];
+    }
 
+    public static int getPoisonCount() {
+        return poisonCount;
+    }
+
+    public static void setPoisonCount(int poisonCount) {
+        Inventory.poisonCount = poisonCount;
     }
 
     // TODO:
@@ -121,6 +132,10 @@ public class Inventory {
         }
         if (Game.getTimeLeft() % deathRestockRate == 0) {
             deathCount += 1;
+        }
+
+        if (Game.getTimeLeft() % poisonRestockRate == 0) {
+            poisonCount += 1;
         }
     }
 

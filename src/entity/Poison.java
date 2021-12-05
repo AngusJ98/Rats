@@ -11,12 +11,6 @@ public class Poison extends Item{
 
     public Poison(Pos position) {
         super(new Image("file:resources/poison.png"), position);
-        timer = DEFAULT_TIME;
-    }
-
-    public Poison(Pos position, int timeLeft) {
-        super(new Image(""), position);
-        timer = timeLeft;
     }
 
 	@Override

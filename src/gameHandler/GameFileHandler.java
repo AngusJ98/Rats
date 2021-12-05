@@ -161,8 +161,7 @@ public class GameFileHandler {
                     jItem = (JSONObject) jItems.get(i);
                     position = objToPos(jItem);
                     itemArr[i] = new Poison(
-                            position,
-                            objToInt(jItem, "timeLeft")
+                            position
                     );
                 }
                 break;
@@ -236,7 +235,7 @@ public class GameFileHandler {
         JSONObject jLevelStats = (JSONObject) json.get("levelStats");
         String[] keys = {
                 "timeLeft", "ratLimit", "bombFreq", "gasFreq", "steriliseFreq",
-                "mSexChangeFreq", "fSexChangeFreq", "noEntryFreq", "deathRatFreq" ,"loseAmount"
+                "mSexChangeFreq", "fSexChangeFreq", "noEntryFreq", "deathRatFreq", "poisonFreq" ,"loseAmount"
         };
         for (String key: keys) {
             levelStats.put(key, objToInt(jLevelStats, key));
@@ -259,7 +258,7 @@ public class GameFileHandler {
         JSONObject jInventory = (JSONObject) json.get("inventory");
         String[] keys = {
                 "bomb", "gas", "sterilise",
-                "mSexChange", "fSexChange", "noEntry", "deathRat"
+                "mSexChange", "fSexChange", "noEntry", "deathRat", "poison"
         };
         int[] inventory = new int[keys.length];
 

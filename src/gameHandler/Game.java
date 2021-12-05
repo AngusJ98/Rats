@@ -59,6 +59,7 @@ public class Game {
 		TimerTask task = new TimerTask() {
 			@Override
 			public void run() {
+				inventory.restock();
 				RatManager.performRatActions();
 				ItemManager.performItemActions();
 				Platform.runLater(() -> runner.normalTickDrawing(createCombinedEntityList()));
@@ -256,7 +257,7 @@ public class Game {
 						if (Inventory.getSterileCount() > 0) {
 							placedItem = new Sterilization(pos);
 							items.add(placedItem);
-							Inventory.setBombCount(Inventory.getSterileCount() - 1);
+							Inventory.setSterileCount(Inventory.getSterileCount() - 1);
 						}
 						break;
 					case "noEnt":
@@ -287,12 +288,19 @@ public class Game {
 							Inventory.setDeathCount(Inventory.getDeathCount() - 1);
 						}
 						break;
+					case "poison":
+						if (Inventory.getPoisonCount() > 0) {
+							placedItem = new Poison(pos);
+							items.add(placedItem);
+							Inventory.setPoisonCount(Inventory.getBombCount() - 1);
+						}
+						break;
 				}
+
 				if (!(placedItem == null)) {
 					placedItem.onPlacement();
 				}
 			}
-
 
 		}
 		public static void addItem(Item item) {

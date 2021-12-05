@@ -32,6 +32,7 @@ public class GameRenderer {
     @FXML private Text maleCount;
     @FXML private Text femaleCount;
     @FXML private Text deathCount;
+    @FXML private Text poisonCount;
     @FXML private AnchorPane base;
     @FXML private ToggleGroup itemToggle;
     @FXML private StackPane board;
@@ -229,6 +230,7 @@ public class GameRenderer {
         this.maleCount.setText(String.valueOf(Inventory.getMaleCount()));
         this.femaleCount.setText(String.valueOf(Inventory.getFemaleCount()));
         this.deathCount.setText(String.valueOf(Inventory.getDeathCount()));
+        this.poisonCount.setText(String.valueOf(Inventory.getPoisonCount()));
     }
 
     public void returnToMenu() {
