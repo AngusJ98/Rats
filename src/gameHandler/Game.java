@@ -137,7 +137,9 @@ public class Game {
 	}
 
 	/**
-	 * Method for cleaning up the game
+	 * Method for cleaning up the game.
+	 * <p> side-effects</p>
+	 * <p> not referentially transparent</p>
 	 */
 	public static void cleanUp() {
 		Game.timer.cancel();
@@ -145,6 +147,11 @@ public class Game {
 		Game.items = new ArrayList<>(); //clear off old items
 		Platform.runLater(() -> Game.runner.removeEntities());
 	}
+
+	/**
+	 * method to combine Entity List for the game
+	 * @return List of entities
+	 */
 	private Entity[] createCombinedEntityList() {
 		ArrayList<Entity> entities = new ArrayList<>();
 		entities.addAll(Game.rats);
@@ -154,7 +161,9 @@ public class Game {
 		return entities.toArray(entityArray);
 	}
 
-
+	/**
+	 * 
+	 */
     public static class RatManager {
 		private static ArrayList<DeathRat> deathRats = new ArrayList<DeathRat>();
 		private static ArrayList<BasicRat> ratsToAdd = new ArrayList<>();
