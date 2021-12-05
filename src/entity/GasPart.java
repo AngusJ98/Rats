@@ -23,7 +23,6 @@ public class GasPart extends Item {
 			System.out.println(targ.getHP());
 		}	
 	}
-	public void onCollision(){};
 	public void itemCollision(Item target) {}
 	public void onPlacement() {}
 }

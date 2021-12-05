@@ -1,5 +1,6 @@
 package entity;
 
+import gameHandler.Game;
 import gameHandler.Pos;
 import javafx.scene.image.Image;
 
@@ -19,12 +20,12 @@ public class FemaleGenderChange extends Item {
     }
 
     public void ratCollision(Rat target) {
-        if(target instanceof BasicRat) {
+        if(target.getRatType() != RatTypes.DEATH) {
             target.setRatType(RatTypes.FEMALE);
+            Game.ItemManager.killItem(this);
         }
 	}
 
-	public void onCollision(){}
 	public void itemCollision(Item target) {}
 	public void onPlacement() {}	
 	public void tick() {

@@ -19,11 +19,10 @@ public class MaleGenderChange extends Item {
     }
 
     public void ratCollision(Rat target) {
-        if(target instanceof BasicRat) {
+        if(target.getRatType() != RatTypes.DEATH) {
             target.setRatType(RatTypes.MALE);
         }
 	}
-    public void onCollision(){};
 	public void itemCollision(Item target) {}
 	public void onPlacement() {}	
 	public void tick() {
