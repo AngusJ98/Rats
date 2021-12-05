@@ -24,7 +24,7 @@
       "numChildren": 0,
       "timeToBirth": 0,
       "hp": 100,
-      "position": [29, 1]
+      "position": [28, 1]
     },
     {
       "gender": "BABY",
@@ -57,7 +57,7 @@
       "numChildren": 0,
       "timeToBirth": 0,
       "hp": 50,
-      "position": [5, 5]
+      "position": [8, 8]
     }
   ],
   "itemsOnMap": {
