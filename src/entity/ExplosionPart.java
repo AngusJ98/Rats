@@ -18,7 +18,6 @@ public class ExplosionPart extends Item {
 		//get the next tile in <direction> direction
 		Pos newPos = Game.TileManager.getPosFromDir(direction, this.pos);
 		//if passable move myself
-		System.out.println(newPos);
 		if (Game.TileManager.getPassableTile(newPos)) {
 			this.setPosition(newPos);
 			//check for entities at my new position

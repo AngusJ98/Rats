@@ -15,6 +15,7 @@ public class Game {
 	private static ArrayList<BasicRat> rats = new ArrayList<BasicRat>();
 	private static String levelPath;
 	private static GameRenderer runner;
+	private static int loseAmount;
 	public static int score;
 
 	private static Timer timer = new Timer();
@@ -72,7 +73,7 @@ public class Game {
 			//TODO updatePlayerStats();
 			Game.cleanUp();
 			Platform.runLater(() -> Game.runner.victoryScreen());
-		} else if (timeLeft <= 0) {
+		} else if (timeLeft <= 0 || rats.size() > loseAmount) {
 			System.out.println("DEFEAT :c");
 			Game.cleanUp();
 			Platform.runLater(() -> Game.runner.lossScreen());
@@ -89,6 +90,7 @@ public class Game {
 		ArrayList<Entity> entities = new ArrayList<>();
 		entities.addAll(Game.rats);
 		entities.addAll(Game.items);
+		entities.addAll(RatManager.deathRats);
 		Entity[] entityArray = new Entity[entities.size()];
 		return entities.toArray(entityArray);
 	}
@@ -96,6 +98,8 @@ public class Game {
 
     public static class RatManager {
 		private static ArrayList<DeathRat> deathRats = new ArrayList<DeathRat>();
+		private static ArrayList<BasicRat> ratsToAdd = new ArrayList<>();
+		private static ArrayList<BasicRat> ratsToKill = new ArrayList<>();
 		public static ArrayList<BasicRat> getRatsAtPos(Pos pos) {
 			ArrayList<BasicRat> ratsAtPos = new ArrayList<BasicRat>();
 			for (int i = 0; i < rats.size(); i++) {
@@ -107,17 +111,16 @@ public class Game {
 			return ratsAtPos;
 		}
 		public static boolean killBasicRatsAtPos(Pos pos) {
-			ArrayList<BasicRat> ratsToKill = getRatsAtPos(pos);
+			ArrayList<BasicRat> toKill = getRatsAtPos(pos);
 			if (ratsToKill!= null) {
-				rats.removeAll(ratsToKill); //currently kills all basicrats on a square
+				ratsToKill.addAll(toKill);
 				return true;
 			}
 			return false;
 		}		
 		public static boolean killSingleRat(Rat rat) { //so i made this method for when we need to kill individual rats
 			if (rats.contains(rat)) {
-				Game.addScore(rat.getScore());
-				rats.remove(rat);
+				ratsToKill.add((BasicRat)rat);
 				return true;
 			} else if (deathRats.contains(rat)) {
 				deathRats.remove(rat);
@@ -126,11 +129,11 @@ public class Game {
 			System.out.println("Tried to kill a rat that did not exist");
 			return false;			
 		}
-		public static void killRatArray(ArrayList<BasicRat> ratsToKill) { //this one kills all basicrats in the array it's passed
-			rats.removeAll(ratsToKill);
+		public static void killRatArray(ArrayList<BasicRat> toKill) { //this one kills all basicrats in the array it's passed
+			ratsToKill.addAll(ratsToKill);
 		}
 		public static void performRatActions() {
-			ArrayList<BasicRat> ratsToKill = new ArrayList<>();
+
 			for (BasicRat rat : rats) {
 				rat.move();
 				rat.ratActions();
@@ -143,12 +146,19 @@ public class Game {
 			}
 			//Have to do this to avoid concurrency modification error
 			for (Rat toKill: ratsToKill) {
-				killSingleRat(toKill);
+				Game.addScore(toKill.getScore());
+				rats.remove(toKill);
 			}
+
+			Game.rats.addAll(ratsToAdd);
+			ratsToAdd.clear();
 			for (DeathRat deathRat : deathRats) {
 				deathRat.move();
 			}
-		}		
+		}
+		public static void addRat(BasicRat rat) {
+			ratsToAdd.add(rat);
+		}
 	}
 	
 	
@@ -346,5 +356,6 @@ public class Game {
 
 	private void setUpLevelStats(HashMap<String, Integer> stats) {
 		this.timeLeft = stats.get("timeLeft") * 10;
+		this.loseAmount = stats.get("loseAmount");
 	}
 }

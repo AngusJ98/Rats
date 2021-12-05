@@ -1,5 +1,5 @@
 package entity;
 
 public enum Direction {
-    NORTH, EAST, SOUTH, WEST;
+    SOUTH, EAST, NORTH, WEST;
 }

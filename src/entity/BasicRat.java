@@ -1,6 +1,7 @@
 package entity;
 
 import java.util.ArrayList;
+import java.util.concurrent.ThreadLocalRandom;
 
 import gameHandler.Game;
 import gameHandler.Pos;
@@ -16,14 +17,19 @@ import javafx.scene.image.Image;
  */
 
 public class BasicRat extends Rat {
-    private static final int MIN_GROWTH_TIME = 1000;
-    private static final int GROWTH_MULTIPLIER = 4000;
+    private static final int MIN_GROWTH_TIME = 100;
+    private static final int MAX_GROWTH_TIME = 200;
     private static final int ADULT_MAX_HP = 100;
     private static final int BABY_MAX_HP = 50;
+    private static final int PREGNANCY_COOLDOWN = 100;
+    public static final int MIN_CHILD = 3;
+    public static final int MAX_CHILD = 4;
+    public static final int BIRTH_TIMER = 100;
 	protected int hitPoints;
 	private int timeToGrowth; 
 	private int numChildren; //if this is above zero, implies the rat is pregnant
     private int timeToBirth;
+    private boolean sterile = false;
 
     /**
      * 1st Constuctor, intializes a basic rat in the Rat Class with
@@ -41,7 +47,7 @@ public class BasicRat extends Rat {
         setScore(10);
         switch (type) {
             case BABY:
-                timeToGrowth = (int) (Math.random() * GROWTH_MULTIPLIER) + MIN_GROWTH_TIME; //ms to growth (min 1000, max 5000)
+                timeToGrowth = ThreadLocalRandom.current().nextInt(MIN_GROWTH_TIME, MAX_GROWTH_TIME); //ms to growth (min 1000, max 5000)
                 setTimeToGrowth(timeToGrowth);
                 setHP(BABY_MAX_HP);
                 break;
@@ -131,21 +137,44 @@ public class BasicRat extends Rat {
         }
     }
     public void ratActions() {
-        if (this.getRatType() == RatTypes.BABY) {
-            timeToGrowth--;
+
+        switch (ratType) {
+            case BABY:
+                babyRatActions();
+                break;
+            case FEMALE:
+                femaleRatActions();
+                break;
         }
-        if (this.getRatType() == RatTypes.BABY && this.timeToGrowth <= 0) {
-            RatTypes gender;
-            if (Math.random() < 0.5) {
-                gender = RatTypes.FEMALE;
-            } else {
-                gender = RatTypes.MALE;
-            }
-            BasicRat grownRat = new BasicRat(gender, this.getPosition());
-            Game.getRats().add(grownRat);
-            Game.getRats().remove(this);
-        }
+
     }
+
+    private void babyRatActions() {
+        if (this.timeToGrowth <= 0) {
+            if (Math.random() < 0.5) {
+                this.setGender(RatTypes.FEMALE);
+            } else {
+                this.setGender(RatTypes.MALE);
+            }
+        }
+        timeToGrowth--;
+    }
+
+    private void femaleRatActions() {
+        if (this.timeToBirth < -PREGNANCY_COOLDOWN && !this.sterile) {
+            this.canMate = true;
+        }
+        if (this.timeToBirth < 0 && numChildren > 0) {
+            for (int i = 0; i < numChildren; i++) {
+                Game.RatManager.addRat(new BasicRat(RatTypes.BABY, this.pos));
+            }
+            this.numChildren = 0;
+        }
+        timeToBirth--;
+
+    }
+
+
     /**
      * Setter for HP
      * @param hitPoints
@@ -197,7 +226,7 @@ public class BasicRat extends Rat {
 	public void checkCurrentTile() {
 
 		ArrayList<Entity> entities = Game.TileManager.getEntities(pos);
-
+        entities.remove(this);
 		for (Entity entity : entities) {
 			//check if rat/cast to rat
 			if (entity.isRat()) {
@@ -209,12 +238,15 @@ public class BasicRat extends Rat {
 					if (rat.getMateStatus() && this.getMateStatus()) {
 						//if not pregnant/sterile/baby, reproduce
 						BasicRat basicRat = (BasicRat) rat;
+						numChildren = ThreadLocalRandom.current().nextInt(MIN_CHILD, MAX_CHILD+1);
 						if (this.ratType.equals(RatTypes.FEMALE)) {
 							this.canMate = false;
-							this.setNumChildren((int) (Math.random() * 10000)); 
+							this.setNumChildren(numChildren);
+							this.setTimeToBirth(BIRTH_TIMER);
 						} else {
 							basicRat.canMate = false;
-							basicRat.setNumChildren((int) (Math.random() * 10000));
+							basicRat.setNumChildren(numChildren);
+                            basicRat.setTimeToBirth(BIRTH_TIMER);
 						}
 					}
 				}			

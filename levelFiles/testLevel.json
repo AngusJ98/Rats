@@ -5,7 +5,7 @@
   },
   "rats": [
     {
-      "gender": "MALE",
+      "gender": "FEMALE",
       "canMate": true,
       "canMove": true,
       "moveSpeed": 1,
@@ -67,6 +67,7 @@
   "levelStats": {
     "timeLeft": 10000,
     "ratLimit": 10,
+    "loseAmount": 100,
     "bombFreq": 1, "gasFreq": 2, "steriliseFreq": 2, "poisonFreq": 3,
     "mSexChangeFreq": 4, "fSexChangeFreq": 4, "noEntryFreq": 4, "deathRatFreq": 1
   },
