@@ -48,13 +48,14 @@ public class Gas extends Item {
 				//add my location to a list of possible locations				
 				unvisitedTiles.add(pos);
 			}	
-			//create a gasPart at the location in the first index of the locations array 
-			gasArray[gasNum] = new GasPart(unvisitedTiles.get(0));
+			//create a gasPart at the location specified by unvisitedTiles(gasNum)
+			//this should stop tiles being removed from the array, then re-added by other tiles
+			gasArray[gasNum] = new GasPart(unvisitedTiles.get(gasNum));
 			Game.ItemManager.addItem(gasArray[gasNum]);
 			//search nearby tiles (in a + shape) for tiles that are passable and add them to the list of possible locations
 			//tiles must not be outside the board or be already in the list as that could lead to recursion 
 			//and multiple gasparts being created in the same location
-			Pos newPos = unvisitedTiles.get(0);
+			Pos newPos = unvisitedTiles.get(gasNum);
 			if ((newPos.y-1 >= 0) && Game.TileManager.getPassableTile(new Pos(newPos.x, newPos.y-1))) {
 				if (!unvisitedTiles.contains(new Pos(newPos.x, newPos.y-1))) {
 					unvisitedTiles.add(new Pos(newPos.x, newPos.y-1));
@@ -74,11 +75,8 @@ public class Gas extends Item {
 				if (!unvisitedTiles.contains(new Pos(newPos.x+1, newPos.y))) {
 					unvisitedTiles.add(new Pos(newPos.x+1, newPos.y));
 				}
-			}
-			//remove the tile we just placed a gasPart on from the list of possible tiles
-			unvisitedTiles.remove(newPos);
-		}	
-		
+			}			
+		}		
 	}
 	@Override
     public void ratCollision(Rat target) {}
