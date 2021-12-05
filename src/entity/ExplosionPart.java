@@ -8,11 +8,10 @@ import java.util.ArrayList;
 
 /**
  * <p> 1. File-name: ExplosivePart.java</p>
- * <p> 2. Creation Date: (N/A) </p>
- * <p> 3. Last modification date:</p>
+ * <p> 2. Creation Date: 29/11/2021</p>
+ * <p> 3. Last modification date: 5/12/2021</p>
  * <p> 4. Purpose of the program: Creates the explosion effect</p>
- *
- * @author
+ * @author Andrew
  */
 public class ExplosionPart extends Item {
     private Image image;
@@ -20,7 +19,8 @@ public class ExplosionPart extends Item {
 
     /**
      * Method used to track where the explosion is and where it is heading
-     *
+     * <p> no side-effects</p>
+     * <p> not referentially transparent</p>
      * @param position  the position of the current explosion part
      * @param direction the direction the explosion is travelling in
      */
@@ -30,6 +30,11 @@ public class ExplosionPart extends Item {
 
     }
 
+    /**
+     * ticks for the explosion part of the bomb
+     * <p> has side-effects</p>
+     * <p> referentially transparent</p>
+     */
     public void tick() {
         //get the next tile in <direction> direction
         Pos newPos = Game.TileManager.getPosFromDir(direction, this.pos);
@@ -58,10 +63,23 @@ public class ExplosionPart extends Item {
 
     // Rat deaths are handled by Ratmanager and Item deaths are handled by ItemManager,
     // so i would reccomend against that
+
+    /**
+     * collsion of explosion Part on rats
+     * <p> no side-effects</p>
+     * <p> not referentially transparent</p>
+     * @param target the rat to be colliding with
+     */
     public void ratCollision(Rat target) {
         Game.RatManager.killSingleRat(target);
     }
 
+    /**
+     * item colliding with explosion part
+     * <p> side-effects</p>
+     * <p> not referentially transparent</p>
+     * @param target the item being collided with
+     */
     public void itemCollision(Item target) {
         Game.ItemManager.killItem(target);
     }

@@ -50,8 +50,8 @@ public abstract class Entity {
     }
 
     /**
-     *
-     * @return
+     * gets entity type
+     * @ entity type
      */
     public EntityType getEntityType() {
         return entityType;
@@ -62,10 +62,18 @@ public abstract class Entity {
         //or don't idm
     }
 
+    /**
+     * sets the position of the entity
+     * @param position
+     */
     public void setPosition(Pos position) {
         this.pos = position;
     }
 
+    /**
+     * gets the position of the entity
+     * @return positon
+     */
     public Pos getPosition() {
         return pos;
     };
