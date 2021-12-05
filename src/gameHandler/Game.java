@@ -16,6 +16,7 @@ public class Game {
 	private static String levelPath;
 	private static GameRenderer runner;
 	private static int loseAmount;
+	private static Inventory inventory;
 	public static int score;
 
 	private static Timer timer = new Timer();
@@ -360,5 +361,6 @@ public class Game {
 	private void setUpLevelStats(HashMap<String, Integer> stats) {
 		this.timeLeft = stats.get("timeLeft") * 10;
 		this.loseAmount = stats.get("loseAmount");
+		Game.inventory = new Inventory(stats);
 	}
 }

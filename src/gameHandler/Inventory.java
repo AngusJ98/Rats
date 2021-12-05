@@ -1,23 +1,27 @@
 package gameHandler;
 
-public class Inventory {
-	//Inventory just tracks items left etc, I don't think it needs to be an entity
-	//we can either just display text on the side of the screen 
-	//or we could have lil icons which would be pretty neat
-	//would require a hashmap of <screenCoordinate, image> then when an item is used
-	//we can set screenCoordinate to a large number
-    private static int[] itemsLeft;
-    private static int[] itemNames;
-    private static int bombRestockRate;
-    private static int gasRestockRate;
-    private static int sterileRestockRate;
-    private static int noEntRestockRate;
-    private static int maleRestockRate;
-    private static int femaleRestockRate;
-    private static int deathRestockRate;
+import java.util.HashMap;
 
-    public Inventory() {
-        
+public class Inventory {
+
+    private int bombCount;
+
+    private int bombRestockRate;
+    private int gasRestockRate;
+    private int sterileRestockRate;
+    private int noEntRestockRate;
+    private int maleRestockRate;
+    private int femaleRestockRate;
+    private int deathRestockRate;
+
+    public Inventory(HashMap<String, Integer> stats) {
+        this.bombRestockRate = stats.get("bomb");
+        this.gasRestockRate = gasRestockRate;
+        this.sterileRestockRate = sterileRestockRate;
+        this.noEntRestockRate = noEntRestockRate;
+        this.maleRestockRate = maleRestockRate;
+        this.femaleRestockRate = femaleRestockRate;
+        this.deathRestockRate = deathRestockRate;
     }
 
     // TODO:
