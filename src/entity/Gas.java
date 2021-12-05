@@ -28,7 +28,7 @@ public class Gas extends Item {
     public Gas(Pos position) {
         super(new Image("file:resources/gasCan.png"), position);
 		//gas will have no sprite and be responsible for the spread of gasparts
-		//gasparts will be visible and deal damage to rats
+		//gas parts will be visible and deal damage to rats
     }
 	public void tick() { 
 		//if there are less than <6> gas clouds, this method will attempt to place one each game tick
@@ -36,10 +36,9 @@ public class Gas extends Item {
 
 			//simplified code by checking positions at start
 			if (unvisitedTiles.size() > 0) {
-				int randomPlace = ThreadLocalRandom.current().nextInt(0, unvisitedTiles.size());
-				gasArray[gasNum] = new GasPart(unvisitedTiles.get(randomPlace));
+				gasArray[gasNum] = new GasPart(unvisitedTiles.get(0));
 				Game.ItemManager.addItem(gasArray[gasNum]);
-				unvisitedTiles.remove(randomPlace);
+				unvisitedTiles.remove(0);
 				gasNum++;
 			}
 		} else if (gasNum >= MAX_GAS) {
@@ -51,13 +50,16 @@ public class Gas extends Item {
     public void ratCollision(Rat target) {}
 	public void itemCollision(Item target) {}
 	public void onPlacement() {
-		for (int x = -RANGE; x <= RANGE; x++) {
-			for (int y = -RANGE; y <= RANGE; y++) {
-				Pos maybe = new Pos(this.pos.x + x,this.pos.y + y);
-				if (Game.TileManager.getTile(maybe) != null) {
-					unvisitedTiles.add(maybe);
+    	for (int r = 0; r <= RANGE; r++){
+			for (int x = -r; x <= r; x++) {
+				for (int y = -r; y <= r; y++) {
+					Pos maybe = new Pos(this.pos.x + x,this.pos.y + y);
+					if (Game.TileManager.getTile(maybe) != null && Game.TileManager.getPassableTile(maybe)) {
+						unvisitedTiles.add(maybe);
+					}
 				}
 			}
 		}
+
 	}
 }

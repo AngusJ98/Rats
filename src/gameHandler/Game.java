@@ -89,6 +89,7 @@ public class Game {
 		ArrayList<Entity> entities = new ArrayList<>();
 		entities.addAll(Game.rats);
 		entities.addAll(Game.items);
+		entities.addAll(RatManager.deathRats);
 		Entity[] entityArray = new Entity[entities.size()];
 		return entities.toArray(entityArray);
 	}

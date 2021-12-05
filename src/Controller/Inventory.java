@@ -34,6 +34,10 @@ public class Inventory {
         return 1;
     }
 
+    public static int getDeathCount() {
+        return 1;
+    }
+
     public String toString() {
         String result = "Remaining Items:\n";
         //gets information from the "ItemsLeft" Attribute
