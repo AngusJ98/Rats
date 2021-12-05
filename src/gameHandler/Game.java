@@ -71,13 +71,19 @@ public class Game {
 
 	/**
 	 * adds the score
+	 * <p> no side-effects</p>
+	 * <p> referentially transparent</p>
 	 * @param addition for adding score to the game score
 	 */
 	public static void addScore(int addition) {
 		Game.score += addition;
 	}
 
-	
+	/**
+	 * method to start the game
+	 * <p> side-effects</p>
+	 * <p> referentially transparent</p>
+	 */
 	public void start() {
 		Game.runner.redrawBoard(this.createCombinedEntityList());
 		Game.score = 0;
@@ -86,6 +92,12 @@ public class Game {
 		this.items = new ArrayList<>();
 		this.startTimer();
     }
+
+	/**
+	 * method to start the timer
+	 * <p> side-effects</p>
+	 * <p> not referentially transparent</p>
+	 */
     private void startTimer() {
 		Game.timer = new Timer();
 		TimerTask task = new TimerTask() {
