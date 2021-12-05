@@ -64,8 +64,9 @@ public class Player {
         return maxLevelUnlocked;
     }
 
-
-    // this puts the score of the current player into a txt file
+    /**
+     * Method used to save a score to the end of profile.txt
+     */
     public void saveScore(){
         Writer output = null;
         File file = new File("profile.txt");
