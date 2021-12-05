@@ -546,7 +546,9 @@ public class Game {
 
 
 	/**
-	 * sets up 
+	 * sets up files that have been read here
+	 * <p> side-effects</p>
+	 * <p> referentially transparent</p>
 	 * @throws ParseException
 	 * @throws IOException
 	 */
@@ -559,14 +561,29 @@ public class Game {
 		constructRatList(gameObjects.getFirst());
 		setUpLevelStats(gameObjects.getFourth(), gameObjects.getSixth());
 	}
+
+	/**
+	 * gets level path
+	 * @return level path
+	 */
 	public static String getLevelPath() {
 		return levelPath;
 	}
 
+	/**
+	 * sets level path
+	 * @param levelPath
+	 */
 	public static void setLevelPath(String levelPath) {
 		Game.levelPath = levelPath;
 	}
 
+	/**
+	 * constructs the tile map
+	 * <p> no side-effects</p>
+	 * <p> referentially transparent</p>
+	 * @param map of the game
+	 */
 	public void constructTileMap(char[][] map) {
 		Game.tiles = new HashMap<>();//set to new hashmap so we don't accidentally keep old boards
 		TileManager.numTileWidth = map[0].length;
@@ -582,10 +599,23 @@ public class Game {
 		}
     }
 
+	/**
+	 * constructs a list of rats
+	 * <p> no side-effects</p>
+	 * <p> not referentially transparent</p>
+	 * @param rats list
+	 */
 	public void constructRatList(BasicRat[] rats) {
 		Game.rats = new ArrayList<BasicRat>(Arrays.asList(rats));
 	}
 
+	/**
+	 * sets up level stats
+	 * <p> no side-effects</p>
+	 * <p> not referentially transparent</p>
+	 * @param stats
+	 * @param inventory 
+	 */
 	private void setUpLevelStats(HashMap<String, Integer> stats, int[] inventory) {
 		this.timeLeft = stats.get("timeLeft") * 10;
 		this.loseAmount = stats.get("loseAmount");
