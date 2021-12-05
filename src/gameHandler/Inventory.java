@@ -1,4 +1,4 @@
-package Controller;
+package gameHandler;
 
 public class Inventory {
 	//Inventory just tracks items left etc, I don't think it needs to be an entity
@@ -11,31 +11,31 @@ public class Inventory {
 
     // TODO:
     public static int getBombCount() {
-        return 1;
+        return bombCount;
     }
 
     public static int getgasCount() {
-        return 1;
+        return gasCount;
     }
 
     public static int getsterileCount() {
-        return 1;
+        return sterileCount;
     }
 
     public static int getnoEntryCount() {
-        return 1;
+        return noEntryCount;
     }
 
     public static int getmaleCount() {
-        return 1;
+        return maleCount;
     }
 
     public static int getfemaleCount() {
-        return 1;
+        return femaleCount;
     }
 
     public static int getDeathCount() {
-        return 1;
+        return deathCount;
     }
 
     public String toString() {

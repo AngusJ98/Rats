@@ -1,26 +1,26 @@
 {
   "map": {
     "dimensions": [15, 7],
-    "tiles": "GGGGGGGGGGGGGGG\nGPPPTTPPPTTPPPG\nGGGPGGGGPGGPGPG\nGPPPGGPPPGGPGPG\nGPGGGGGGPGGPGPG\nGPPPTTPPPTTPPPG\nGGGGGGGGGGGGGGG"
+    "tiles": "GGGGGGGGGGGGGGG\nGPPPSSPPPSSPPPG\nGGGPGGGGPGGPGPG\nGPPPGGPPPGGPGPG\nGPGGGGGGPGGPGPG\nGPPPTTPPPTTPPPG\nGGGGGGGGGGGGGGG"
   },
   "rats": [
     {
-      "gender": "FEMALE",
+      "gender": "BABY",
       "canMate": true,
       "canMove": true,
-      "moveSpeed": 1,
-      "timeToGrowth": 0,
+      "moveSpeed": 2,
+      "timeToGrowth": 60,
       "numChildren": 0,
       "timeToBirth": 0,
       "hp": 100,
       "position": [1, 1]
     },
     {
-      "gender": "FEMALE",
+      "gender": "BABY",
       "canMate": true,
       "canMove": true,
-      "moveSpeed": 1,
-      "timeToGrowth": 0,
+      "moveSpeed": 2,
+      "timeToGrowth": 60,
       "numChildren": 0,
       "timeToBirth": 0,
       "hp": 100,

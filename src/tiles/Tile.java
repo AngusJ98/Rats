@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import entity.Entity;
 import entity.Rat;
+import gameHandler.Game;
 import javafx.scene.image.Image;
 
 /**

@@ -1,33 +1,26 @@
 package Controller;
 import entity.*;
 import gameHandler.Game;
+import gameHandler.Inventory;
 import gameHandler.Pos;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import tiles.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 
 
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Map;
 
 import static java.lang.Math.min;
-import static java.lang.Math.toIntExact;
 
 
 public class GameRenderer {
