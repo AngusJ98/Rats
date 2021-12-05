@@ -9,7 +9,7 @@ import java.net.URL;
 /**
  * <p> 1. File-name: MessageOfTheDay.java</p>
  * <p> 2. Creation Date: 03/12/21 </p>
- * <p> 3. Last modification date: 03/12/21 </p>
+ * <p> 3. Last modification date: 05/12/21 </p>
  * <p> 4. Purpose of the program: Grabs the message of the day from a url</p>
  *
  * @author Gus
@@ -79,6 +79,13 @@ public class MessageOfTheDay {
 		}
 		return (new String(solutionArr) + "CS-230");
 	}
+	/**
+	 * method to make the last letter of
+	 * the alphabet if moved back be the first
+	 * @param c: idervidual character
+	 * @param shift: Forward direction
+	 * @return one character
+	 */
 
 	private static char shiftLetterForward(char c, int shift) {
 		char next = c;
@@ -96,6 +103,14 @@ public class MessageOfTheDay {
 		return next;
 	}
 
+	/**
+	 * method to make the first letter of
+	 * the alphabet if moved back be the last
+	 * @param c: idervidual character
+	 * @param shift: Back direction
+	 * @return one character
+	 */
+
 	private static char shiftLetterBack(char c, int shift) {
 		char next = c;
 		for (int i = 0; i < shift; i++) {
@@ -112,6 +127,10 @@ public class MessageOfTheDay {
 		return next;
 	}
 
+	/**
+	 * method to return a random message
+	 * @return a message
+	 */
 	public static String getMotd() {
 		String solutionPart = getSolution();
 		solutionPart = solutionPart.length() + solutionPart;
