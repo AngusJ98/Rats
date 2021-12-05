@@ -544,7 +544,12 @@ public class Game {
 		return tiles; //bad
 	} //use TileManager.GetTile();
 
-	
+
+	/**
+	 * 
+	 * @throws ParseException
+	 * @throws IOException
+	 */
 	public void setUp() throws ParseException, IOException {
 		//file reader class goes here, reads file and passes data to this method
         Tuple<BasicRat[], Entity[][], char[][], HashMap<String, Integer>,
