@@ -73,7 +73,14 @@ public class Bomb extends Item{
         timer-= 100;
 		if (timer <= 0) { 
 			boom();
-		}		
+		}
+		updateImage();
+    }
+
+    private void updateImage() {
+        int secsLeft = 1 + timer/1000;
+        System.out.println(secsLeft);
+        this.image = new Image("file:resources/bomb" + secsLeft + ".png");
     }
 
     //Each bomb should display a count down: 4, 3, 2, 1.
