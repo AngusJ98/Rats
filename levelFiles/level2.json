@@ -24,7 +24,7 @@
       "numChildren": 0,
       "timeToBirth": 0,
       "hp": 100,
-      "position": [1, 2]
+      "position": [29, 1]
     },
     {
       "gender": "BABY",
@@ -35,7 +35,7 @@
       "numChildren": 0,
       "timeToBirth": 0,
       "hp": 100,
-      "position": [13, 1]
+      "position": [1, 13]
     },
     {
       "gender": "BABY",
@@ -46,7 +46,7 @@
       "numChildren": 0,
       "timeToBirth": 0,
       "hp": 100,
-      "position": [13, 5]
+      "position": [7, 7]
     },
     {
       "gender": "BABY",
