@@ -27,7 +27,6 @@ public abstract class Rat extends Entity {
 	protected RatTypes ratType;
 	protected int moveSpeed;
 	protected Direction moveDirection;
-	protected int score;
 	public boolean getMateStatus() {
 		return canMate;
 	}
@@ -224,7 +223,6 @@ public abstract class Rat extends Entity {
 	 */
 	public Rat(RatTypes type, Pos pos) {
 		super(new Image("File:resources/male.png"), EntityType.RAT, pos);
-		setScore(0);
 		setRatType(type);
 		setMoveStatus(true);
 		moveDirection = Direction.NORTH;
@@ -257,20 +255,5 @@ public abstract class Rat extends Entity {
 		}		
 	}
 
-	/**
-	 * gets score
-	 * @return score
-	 */
-	public int getScore() {
-		return score;
-	}
-
-	/**
-	 * set score
-	 * @param score
-	 */
-	public void setScore(int score) {
-		this.score = score;
-	}
 }
 

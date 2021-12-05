@@ -22,9 +22,10 @@ public class BasicRat extends Rat {
     private static final int ADULT_MAX_HP = 100;
     private static final int BABY_MAX_HP = 50;
     private static final int PREGNANCY_COOLDOWN = 100;
-    public static final int MIN_CHILD = 3;
-    public static final int MAX_CHILD = 4;
-    public static final int BIRTH_TIMER = 100;
+    private static final int MIN_CHILD = 3;
+    private static final int MAX_CHILD = 4;
+    private static final int BIRTH_TIMER = 100;
+    private static final int SCORE_BASE = 10;
 	protected int hitPoints;
 	private int timeToGrowth; 
 	private int numChildren; //if this is above zero, implies the rat is pregnant
@@ -44,7 +45,6 @@ public class BasicRat extends Rat {
         super(type, pos);
         setHP(ADULT_MAX_HP);
         setTimeToBirth(0);
-        setScore(10);
         switch (type) {
             case BABY:
                 timeToGrowth = ThreadLocalRandom.current().nextInt(MIN_GROWTH_TIME, MAX_GROWTH_TIME); //ms to growth (min 1000, max 5000)
@@ -136,6 +136,15 @@ public class BasicRat extends Rat {
             setRatType(gender);
         }
     }
+
+    /**
+     * gets score
+     * @return score
+     */
+    public int getScore() {
+        return SCORE_BASE + 10 * this.getNumChildren();
+    }
+
     public void ratActions() {
 
         switch (ratType) {
@@ -213,10 +222,6 @@ public class BasicRat extends Rat {
      */
     public int getTimeToBirth() {
         return timeToBirth;
-    }
-
-    public void updateScore() {
-        this.setScore(this.getNumChildren() * 10);
     }
 
     /**

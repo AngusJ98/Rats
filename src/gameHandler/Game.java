@@ -70,6 +70,7 @@ public class Game {
 	public static void checkVictory() {
 		if (rats.size() == 0) {
 			System.out.println("VICTORY!!");
+			System.out.println(score);
 			//TODO updatePlayerStats();
 			Game.cleanUp();
 			Platform.runLater(() -> Game.runner.victoryScreen());
@@ -104,7 +105,7 @@ public class Game {
 			ArrayList<BasicRat> ratsAtPos = new ArrayList<BasicRat>();
 			for (int i = 0; i < rats.size(); i++) {
 				BasicRat currentRat = rats.get(i);
-				if (currentRat.getPosition() == pos) {
+				if (currentRat.getPosition().equals(pos)) {
 					ratsAtPos.add(currentRat);
 				}
 			}
@@ -138,7 +139,6 @@ public class Game {
 				rat.move();
 				rat.ratActions();
 				rat.updateImage();
-				rat.updateScore();
 				if (rat.getHP() <= 0) {
 					ratsToKill.add(rat);
 					//killSingleRat(rat);
@@ -146,8 +146,11 @@ public class Game {
 			}
 			//Have to do this to avoid concurrency modification error
 			for (Rat toKill: ratsToKill) {
-				Game.addScore(toKill.getScore());
-				rats.remove(toKill);
+				if(rats.contains(toKill)) {
+					BasicRat target = (BasicRat) toKill;
+					Game.addScore(target.getScore());
+					rats.remove(toKill);
+				}
 			}
 
 			Game.rats.addAll(ratsToAdd);
