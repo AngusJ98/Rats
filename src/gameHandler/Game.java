@@ -239,8 +239,11 @@ public class Game {
 				switch (itemString) {
 					//TODO: call onPlacement() whenever an item is placed					
 					case "bomb":
-						placedItem = new Bomb(pos);
-						items.add(placedItem);
+						if (Inventory.getBombCount() > 0) {
+							placedItem = new Bomb(pos);
+							items.add(placedItem);
+							Inventory.
+						}
 						break;
 					case "gas":
 						placedItem = new Gas(pos);
