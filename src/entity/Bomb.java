@@ -4,6 +4,8 @@ import gameHandler.Game;
 import gameHandler.Pos;
 import javafx.scene.image.Image;
 
+import static entity.Direction.*;
+
 /**
  *
  <p> 1. File-name: Bomb.java</p>
@@ -59,11 +61,11 @@ public class Bomb extends Item{
      * BOOM!!!!!!!!!!!!
      */
     private void boom() {
-		Game.ItemManager.addItem(new ExplosionPart(this.pos, NORTH))
-		Game.ItemManager.addItem(new ExplosionPart(this.pos, EAST))
-		Game.ItemManager.addItem(new ExplosionPart(this.pos, SOUTH))
-		Game.ItemManager.addItem(new ExplosionPart(this.pos, WEST))
-		Game.ItemManager.killItem(this)
+		Game.ItemManager.addItem(new ExplosionPart(this.pos, NORTH));
+		Game.ItemManager.addItem(new ExplosionPart(this.pos, EAST));
+		Game.ItemManager.addItem(new ExplosionPart(this.pos, SOUTH));
+		Game.ItemManager.addItem(new ExplosionPart(this.pos, WEST));
+		Game.ItemManager.killItem(this);
     }
 
     /**
