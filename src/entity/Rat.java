@@ -32,6 +32,7 @@ public abstract class Rat extends Entity {
 
     /**
      * Method to get mate status
+     *
      * @return able to mate
      */
 
@@ -41,6 +42,7 @@ public abstract class Rat extends Entity {
 
     /**
      * Method to set current mate status
+     *
      * @param canMate: mate status
      */
 
@@ -50,6 +52,7 @@ public abstract class Rat extends Entity {
 
     /**
      * Method to get movement status
+     *
      * @return able to move
      */
 
@@ -59,6 +62,7 @@ public abstract class Rat extends Entity {
 
     /**
      * Method to set current move status
+     *
      * @param canMove: move status
      */
 
@@ -68,6 +72,7 @@ public abstract class Rat extends Entity {
 
     /**
      * Method to get rat type
+     *
      * @return rat type
      */
 
@@ -77,6 +82,7 @@ public abstract class Rat extends Entity {
 
     /**
      * Method to set current rat type
+     *
      * @param type: rat type
      */
 
@@ -86,6 +92,7 @@ public abstract class Rat extends Entity {
 
     /**
      * Method to get movement speed
+     *
      * @return movement speed
      */
 
@@ -95,6 +102,7 @@ public abstract class Rat extends Entity {
 
     /**
      * Method to set current movement speed
+     *
      * @param moveSpeed: movment speed number
      */
 
@@ -104,6 +112,7 @@ public abstract class Rat extends Entity {
 
     /**
      * Method to get movement direction
+     *
      * @return direction
      */
 
@@ -116,6 +125,7 @@ public abstract class Rat extends Entity {
 
     /**
      * Method to get amount of boost
+     *
      * @return boost amount
      */
 
@@ -125,6 +135,7 @@ public abstract class Rat extends Entity {
 
     /**
      * Method to set the amount of boost remaining
+     *
      * @param boostRemaining: amount of boost
      */
 
@@ -134,6 +145,7 @@ public abstract class Rat extends Entity {
 
     /**
      * Method to check if it is boosted
+     *
      * @return boosted status
      */
 
@@ -143,6 +155,7 @@ public abstract class Rat extends Entity {
 
     /**
      * Method to set movement boost
+     *
      * @param moveBoosted: movement boost
      */
 
@@ -154,6 +167,7 @@ public abstract class Rat extends Entity {
      * gets inverse move direction
      * <p> side-effects</p>
      * <p> not referentially transparent</p>
+     *
      * @return inverse move direction
      */
     public Direction getInverseMoveDirection() {
@@ -162,8 +176,8 @@ public abstract class Rat extends Entity {
 
     /**
      * move function for the rat
-     *<p> side-effects</p>
-     *<p> not referentially transparent</p>
+     * <p> side-effects</p>
+     * <p> not referentially transparent</p>
      */
     public boolean move() {
         if (Game.getTiles().get(this.pos).getType() == TileTypes.SPEEDTILE) {
@@ -230,6 +244,7 @@ public abstract class Rat extends Entity {
      * Gets the new position as a result of the current positon and direction
      * <p> side-effects</p>
      * <p> not referentially transparent</p>
+     *
      * @param dir takes the direction to be looking towards
      * @param pos takes the current coordinates
      * @return returns the new coordinates
@@ -261,6 +276,7 @@ public abstract class Rat extends Entity {
      * Used by other entities to move rats in a different way.
      * <p> side-effects</p>
      * <p> not referentially transparent</p>
+     *
      * @param movesLeft takes how many moves are needed for moving
      * @param direction takes direction to move in
      * @return boolean if true for force move
@@ -290,8 +306,9 @@ public abstract class Rat extends Entity {
      * 1st Constructor, creates an instance of a rat
      * <p> side-effects</p>
      * <p> not referentially transparent</p>
+     *
      * @param type takes in the type of rat
-     * @param pos takes in the position of the rat
+     * @param pos  takes in the position of the rat
      */
     public Rat(RatTypes type, Pos pos) {
         super(new Image("File:resources/male.png"), EntityType.RAT, pos);
