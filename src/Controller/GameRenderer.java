@@ -214,6 +214,11 @@ public class GameRenderer {
                 Pos position = entity.getPosition();
                 int x = position.x;
                 int y = position.y;
+
+                if (entity instanceof Rat) {
+                    Rat rat = (Rat)entity;
+                    pic.setRotate(180 + rat.getMoveDirection().ordinal()*90);
+                }
                 entityBoard.add(pic, x, y);
             }
         }
