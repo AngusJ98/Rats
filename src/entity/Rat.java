@@ -195,8 +195,9 @@ public abstract class Rat extends Entity {
             //    move one square
             /**   rats with a higher movespeed (baby rats or rats under the influence of speedtiles will loop and
              *    go through this process again so they do not end up inside walls) */
-            checkCurrentTile();
+
         }
+        checkCurrentTile();
         return true;
     }
 
