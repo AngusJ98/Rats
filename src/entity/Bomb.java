@@ -40,6 +40,11 @@ public class Bomb extends Item{
         timer = DEFAULT_BOMB_TIME;
     }
 
+    public Bomb(Pos position, int timeLeft) {
+        super(new Image("file:resources/bomb.png"), position);
+        timer = timeLeft;
+    }
+
 
 
 

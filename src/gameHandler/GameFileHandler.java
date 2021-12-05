@@ -91,32 +91,27 @@ public class GameFileHandler {
             switch ((String) rat.get("gender")) {
                 case "MALE":
                     type = RatTypes.MALE;
-                    imagePath = MALE_RAT_IMG;
                     break;
                 case "BABY":
                     type = RatTypes.BABY;
-                    imagePath = BABY_RAT_IMG;
                     break;
                 default:
                     type = RatTypes.FEMALE;
-                    imagePath = FEMALE_RAT_IMG;
                     break;
             }
 
-            image = new Image("file:resources/" + imagePath, true);
             positionJObj = (JSONArray) rat.get("position");
             position = objToPos(positionJObj);
             rats[i] = new BasicRat(
                     type,
-                    (boolean) rat.get("canMate"),
-                    (boolean) rat.get("canMove"),
-                    objToInt(rat, "moveSpeed"),
+                    position,
+                    objToInt(rat, "hp"),
                     objToInt(rat, "timeToGrowth"),
                     objToInt(rat, "numChildren"),
+                    objToInt(rat, "moveSpeed"),
                     objToInt(rat, "timeToBirth"),
-                    objToInt(rat, "hp"),
-                    position,
-                    image
+                    (boolean) rat.get("canMate"),
+                    (boolean) rat.get("canMove")
             );
         }
         return rats;

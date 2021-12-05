@@ -55,11 +55,13 @@ public class BasicRat extends Rat {
         }
     }
 
-    public BasicRat(RatTypes type, Pos pos, int hitPoints, int timeToGrowth, int numChildren, int timeToBirth, boolean canMate, boolean canMove) {
+    public BasicRat(RatTypes type, Pos pos, int hitPoints, int timeToGrowth, int numChildren,int moveSpeed,
+                    int timeToBirth, boolean canMate, boolean canMove) {
         super(type, pos);
         this.hitPoints = hitPoints;
         this.canMate = canMate;
         this.canMove = canMove;
+        this.moveSpeed = moveSpeed;
         switch (type) {
             case BABY:
                 setTimeToGrowth(timeToGrowth);

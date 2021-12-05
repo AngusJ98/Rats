@@ -14,7 +14,6 @@ public class GasPart extends Item {
 		super(new Image("file:resources/gas.png"), position);
 	}
 	public void tick() {
-		System.out.println("Gas life: " + this.currentExist + "-" + this.LIFETIME);
 		if(this.currentExist > LIFETIME) {
 			Game.ItemManager.killItem(this);
 		}
