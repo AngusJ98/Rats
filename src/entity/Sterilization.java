@@ -11,7 +11,7 @@ import java.util.ArrayList;
  <p> 2. Creation Date: (N/A) </p>
  <p> 3. Last modification date:</p>
  <p> 4. Purpose of the program: Sterilization implementation</p>
- * @author
+ * @author Ethan
  */
 
 public class Sterilization extends Item{

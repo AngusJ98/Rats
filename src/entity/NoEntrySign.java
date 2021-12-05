@@ -10,7 +10,7 @@ import javafx.scene.image.Image;
  <p> 2. Creation Date: (N/A) </p>
  <p> 3. Last modification date:</p>
  <p> 4. Purpose of the program: No entry sign implementation</p>
- * @author
+ * @author Andrew
  */
 
 public class NoEntrySign extends Item {
