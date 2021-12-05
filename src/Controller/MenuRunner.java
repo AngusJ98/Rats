@@ -76,4 +76,9 @@ public class MenuRunner {
         Game.setLevelPath("liam");
         this.startGame();
     }
+
+    public void dylanLevel(ActionEvent actionEvent) throws Exception {
+        Game.setLevelPath("DylanLevel");
+        this.startGame();
+    }
 }
