@@ -5,15 +5,39 @@ import gameHandler.*;
 import javafx.scene.image.Image;
 import java.util.ArrayList;
 
+/**
+ *
+ <p> 1. File-name: Sterilization.java</p>
+ <p> 2. Creation Date: (N/A) </p>
+ <p> 3. Last modification date:</p>
+ <p> 4. Purpose of the program: Sterilization implementation</p>
+ * @author
+ */
+
 public class Sterilization extends Item{
     private static final int DEFAULT_TIME = 50; // idk how long it's meant to stay for. 5 seconds?
     private static final int RANGE = 2; //idk what range should be either
     private int timer;
 
+	/**
+	 * 1st Constructor.
+	 * <p> side-effects</p>
+	 * <p> not referentially transparent</p>
+	 * @param pos takes coordinates of Sterilization to be placed.
+	 */
+
     public Sterilization(Pos position) {
         super(new Image("file:resources/sterile.png"), position);
         timer = DEFAULT_TIME;
     }
+
+	/**
+	 * 2st Constructor for save file.
+	 * <p> side-effects</p>
+	 * <p> not referentially transparent</p>
+	 * @param pos takes coordinates of Sterilization to be placed.
+	 * @param takes in the current time left of a Sterilization
+	 */
 
     public Sterilization(Pos position, int timeLeft) {
         super(new Image("file:resources/sterile.png"), position);
@@ -22,7 +46,7 @@ public class Sterilization extends Item{
 	
 	public void onPlacement() {}
     public void ratCollision(Rat target) {}
-	public void itemCollision(Item target) {}	
+	public void itemCollision(Item target) {}
 	public void tick() {
 		for (int yoffset = -RANGE; yoffset < RANGE; yoffset++) {
 			for (int xoffset = -RANGE; xoffset < RANGE; xoffset++) {
