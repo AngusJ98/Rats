@@ -8,11 +8,11 @@ import gameHandler.Pos;
 import javafx.scene.image.Image;
 
 /**
+ * <p> 1. File-name: Basic Rat.java</p>
+ * <p> 2. Creation Date: 28/11/2021</p>
+ * <p> 3. Last modification date: 5/12/2021</p>
+ * <p> 4. Purpose of the program: Basic Rat Implementation</p>
  *
- <p> 1. File-name: Basic Rat.java</p>
- <p> 2. Creation Date: 28/11/2021</p>
- <p> 3. Last modification date: 5/12/2021</p>
- <p> 4. Purpose of the program: Basic Rat Implementation</p>
  * @author Andrew
  */
 
@@ -27,9 +27,9 @@ public class BasicRat extends Rat {
     private static final int BIRTH_TIMER = 100;
     private static final int SCORE_BASE = 10;
     private static final int DEFAULT_SPEED = 2;
-	protected int hitPoints;
-	private int timeToGrowth; 
-	private int numChildren; //if this is above zero, implies the rat is pregnant
+    protected int hitPoints;
+    private int timeToGrowth;
+    private int numChildren; //if this is above zero, implies the rat is pregnant
     private int timeToBirth;
     private boolean sterile = false;
 
@@ -38,11 +38,12 @@ public class BasicRat extends Rat {
      * it's type and position depending on the case.
      * <p> no side-effects</p>
      * <p> not referentially transparent</p>
-     * @param type takes in the rat type of basic rat.
+     *
+     * @param type  takes in the rat type of basic rat.
      * @param image takes in the image of the rat
-     * @param pos takes coordinates of the position of the rat.
+     * @param pos   takes coordinates of the position of the rat.
      */
-    public BasicRat(RatTypes type,  Pos pos) {
+    public BasicRat(RatTypes type, Pos pos) {
         super(type, pos);
         setHP(ADULT_MAX_HP);
         setTimeToBirth(0);
@@ -62,7 +63,23 @@ public class BasicRat extends Rat {
         }
     }
 
-    public BasicRat(RatTypes type, Pos pos, int hitPoints, int timeToGrowth, int numChildren,int moveSpeed,
+    /**
+     * 2nd Constuctor, for the save game file
+     * <p> no side-effects</p>
+     * <p> not referentially transparent</p>
+     *
+     * @param type:         save what kind of rat
+     * @param pos:          save position
+     * @param hitPoints:    save the health points
+     * @param timeToGrowth: save time till growth if a baby
+     * @param numChildren:  save number of children if female
+     * @param moveSpeed:    save the movement speed
+     * @param timeToBirth:  save the set time that the female will give birth
+     * @param canMate:      save if able to mate
+     * @param canMove:      save if able to move
+     */
+
+    public BasicRat(RatTypes type, Pos pos, int hitPoints, int timeToGrowth, int numChildren, int moveSpeed,
                     int timeToBirth, boolean canMate, boolean canMove) {
         super(type, pos);
         this.hitPoints = hitPoints;
@@ -105,6 +122,7 @@ public class BasicRat extends Rat {
 
     /**
      * returns whether or not it's sterile
+     *
      * @return sterile
      */
     public boolean isSterile() {
@@ -113,6 +131,7 @@ public class BasicRat extends Rat {
 
     /**
      * sets the sterile booleon for the Basic Rat
+     *
      * @param sterile
      */
     public void setSterile(boolean sterile) {
@@ -121,30 +140,34 @@ public class BasicRat extends Rat {
 
     /**
      * Setter for Time to Growth
+     *
      * @param timeToGrowth
      */
-	private void setTimeToGrowth(int timeToGrowth) {
-		this.timeToGrowth = timeToGrowth;
-	}
+    private void setTimeToGrowth(int timeToGrowth) {
+        this.timeToGrowth = timeToGrowth;
+    }
 
     /**
      * Setter for Num of Children
+     *
      * @param numChildren
      */
-	private void setNumChildren(int numChildren) {
-		this.numChildren = numChildren;
-	}
+    private void setNumChildren(int numChildren) {
+        this.numChildren = numChildren;
+    }
 
     /**
      * Setter for Time To Birth
+     *
      * @param timeToBirth
      */
-	private void setTimeToBirth(int timeToBirth){
+    private void setTimeToBirth(int timeToBirth) {
         this.timeToBirth = timeToBirth;
     }
 
     /**
      * Setter for Gender
+     *
      * @param gender
      */
     public void setGender(RatTypes gender) {
@@ -162,6 +185,7 @@ public class BasicRat extends Rat {
 
     /**
      * gets score
+     *
      * @return score
      */
     public int getScore() {
@@ -190,7 +214,7 @@ public class BasicRat extends Rat {
     private void babyRatActions() {
         if (this.timeToGrowth <= 0) {
             this.setMoveSpeed(DEFAULT_SPEED);
-            if (ThreadLocalRandom.current().nextInt(0,10) < 5) {
+            if (ThreadLocalRandom.current().nextInt(0, 10) < 5) {
                 this.setGender(RatTypes.FEMALE);
             } else {
                 this.setGender(RatTypes.MALE);
@@ -219,6 +243,7 @@ public class BasicRat extends Rat {
 
     /**
      * Setter for HP
+     *
      * @param hitPoints
      */
     public void setHP(int hitPoints) {
@@ -227,6 +252,7 @@ public class BasicRat extends Rat {
 
     /**
      * Getter for Time to Growth
+     *
      * @return the time it takes for the rat to grow.
      */
     public int getTimeToGrowth() {
@@ -235,14 +261,16 @@ public class BasicRat extends Rat {
 
     /**
      * Getter for Num of Children
+     *
      * @return the number of children the female rat has.
      */
-	public int getNumChildren() {
-		return numChildren;
-	}
+    public int getNumChildren() {
+        return numChildren;
+    }
 
     /**
      * Getter for Hit Points
+     *
      * @return the number of hit points the rats have.
      */
     public int getHP() {
@@ -251,6 +279,7 @@ public class BasicRat extends Rat {
 
     /**
      * Getter for Time To Birth
+     *
      * @return the time of birth
      */
     public int getTimeToBirth() {
@@ -263,42 +292,42 @@ public class BasicRat extends Rat {
      * <p> side-effects</p>
      * <p> not referentially transparent</p>
      */
-	public void checkCurrentTile() {
+    public void checkCurrentTile() {
 
-		ArrayList<Entity> entities = Game.TileManager.getEntities(pos);
+        ArrayList<Entity> entities = Game.TileManager.getEntities(pos);
         entities.remove(this);
-		for (Entity entity : entities) {
-			//check if rat/cast to rat
-			if (entity.isRat()) {
-				Rat rat = (Rat) entity;
-				if (rat.getRatType().equals(RatTypes.DEATH)) {
-					rat.checkCurrentTile(); //death rat eats this rat
-				} else if (!rat.getRatType().equals(this.ratType) && !rat.getRatType().equals(RatTypes.BABY)) {
-					//check if adult rat of opposing gender
-					if (rat.getMateStatus() && this.getMateStatus()) {
-						//if not pregnant/sterile/baby, reproduce
-						BasicRat basicRat = (BasicRat) rat;
-						numChildren = ThreadLocalRandom.current().nextInt(MIN_CHILD, MAX_CHILD+1);
-						if (this.ratType.equals(RatTypes.FEMALE)) {
-							this.canMate = false;
-							this.setNumChildren(numChildren);
-							this.setTimeToBirth(BIRTH_TIMER);
-						} else {
-							basicRat.canMate = false;
-							basicRat.setNumChildren(numChildren);
+        for (Entity entity : entities) {
+            //check if rat/cast to rat
+            if (entity.isRat()) {
+                Rat rat = (Rat) entity;
+                if (rat.getRatType().equals(RatTypes.DEATH)) {
+                    rat.checkCurrentTile(); //death rat eats this rat
+                } else if (!rat.getRatType().equals(this.ratType) && !rat.getRatType().equals(RatTypes.BABY)) {
+                    //check if adult rat of opposing gender
+                    if (rat.getMateStatus() && this.getMateStatus()) {
+                        //if not pregnant/sterile/baby, reproduce
+                        BasicRat basicRat = (BasicRat) rat;
+                        numChildren = ThreadLocalRandom.current().nextInt(MIN_CHILD, MAX_CHILD + 1);
+                        if (this.ratType.equals(RatTypes.FEMALE)) {
+                            this.canMate = false;
+                            this.setNumChildren(numChildren);
+                            this.setTimeToBirth(BIRTH_TIMER);
+                        } else {
+                            basicRat.canMate = false;
+                            basicRat.setNumChildren(numChildren);
                             basicRat.setTimeToBirth(BIRTH_TIMER);
-						}
-					}
-				}			
-			} else {
-				try {
+                        }
+                    }
+                }
+            } else {
+                try {
 
                     Item item = (Item) entity;
                     item.onCollision(this);
-				} catch (Exception e) {
-					System.out.println("Rat tried to activate an item but could not cast to Item");
-				}
-			}
-		}	
-	}
+                } catch (Exception e) {
+                    System.out.println("Rat tried to activate an item but could not cast to Item");
+                }
+            }
+        }
+    }
 }
