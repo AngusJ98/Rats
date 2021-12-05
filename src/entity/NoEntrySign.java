@@ -60,6 +60,12 @@ public class NoEntrySign extends Item {
 			Game.ItemManager.killItem(this);
 		}  
 	}
+	/**
+	 *  Check if NoEntrySign has touched rat
+	 *  <p> no side-effects</p>
+	 * 	<p> not referentially transparent</p>
+	 * @param takes a NoEntrySign in to check if it there.
+	 */
 	public void itemCollision(Item target) {}
 	public void onPlacement() {}	
 	public void tick() {}
