@@ -12,8 +12,8 @@ import java.util.ArrayList;
 /**
  *
  <p> 1. File-name: DeathRat.java</p>
- <p> 2. Creation Date: (N/A) </p>
- <p> 3. Last modification date:</p>
+ <p> 2. Creation Date: 29/11/2021 </p>
+ <p> 3. Last modification date: 5/12/2021</p>
  <p> 4. Purpose of the program: Death Rat implementation</p>
  * @author Andrew
  */
@@ -56,8 +56,10 @@ public class DeathRat extends Rat {
 	}
 
 	/**
-	 * Checks the current tile if the death rate is above 5 kills or more
-	 * if so then the Death Rat Dies.
+	 *  Checks the current tile if the death rate is above 5 kills or more
+	 *  if so then the Death Rat Dies.
+	 *  <p> no side-effects</p>
+	 * 	<p>  referentially transparent</p>
 	 */
     public void checkCurrentTile() {
     	if (killCount < MAX_KILLS) {

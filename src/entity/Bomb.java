@@ -9,10 +9,10 @@ import static entity.Direction.*;
 /**
  *
  <p> 1. File-name: Bomb.java</p>
- <p> 2. Creation Date: (N/A) </p>
- <p> 3. Last modification date: </p>
+ <p> 2. Creation Date: 28/11/2021</p>
+ <p> 3. Last modification date: 5/12/2021</p>
  <p> 4. Purpose of the program: Bomb Implementation</p>
- * @author ??
+ * @author Andrew, Ethan
  */
 
 public class Bomb extends Item{
