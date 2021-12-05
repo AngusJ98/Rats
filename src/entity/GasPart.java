@@ -16,9 +16,10 @@ public class GasPart extends Item {
 		//decrease hp by 25
 		//ratmanager will check the hp of rats 
 		//after every move and kill rats at 0 hp
-		if (!(target.getRatType() == RatTypes.DEATH)) {
+		//now with 10 ticks, reducing by 5 instead
+		if (!(target.getRatType() == RatTypes.DEATH)) { //death rats wear gas masks
 			BasicRat targ = (BasicRat)target;
-			targ.setHP(targ.getHP() - 25);
+			targ.setHP(targ.getHP() - 5);
 			System.out.println(targ.getHP());
 		}	
 	}
