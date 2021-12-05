@@ -6,7 +6,14 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-
+/**
+ * <p> 1. File-name: MessageOfTheDay.java</p>
+ * <p> 2. Creation Date: 03/12/21 </p>
+ * <p> 3. Last modification date: 03/12/21 </p>
+ * <p> 4. Purpose of the program: Grabs the message of the day from a url</p>
+ *
+ * @author Gus
+ */
 public class MessageOfTheDay {
 
 	private static HttpURLConnection connection;
