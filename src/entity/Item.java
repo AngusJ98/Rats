@@ -19,9 +19,9 @@ public abstract class Item extends Entity {
      * Constructor, initializes Item via it's
      * Image and Coordinates, and type
      *
-     * @param type takes type of item
+     * @param type  takes type of item
      * @param image takes the image form files
-     * @param pos takes the position
+     * @param pos   takes the position
      */
 
     public Item(ItemType type, Image image, Pos pos) {
@@ -31,6 +31,7 @@ public abstract class Item extends Entity {
 
     /**
      * Method to get the type
+     *
      * @return type
      */
 
@@ -40,6 +41,7 @@ public abstract class Item extends Entity {
 
     /**
      * Method to set the type
+     *
      * @param type
      */
 
@@ -74,6 +76,7 @@ public abstract class Item extends Entity {
 
     /**
      * Method for rat collition
+     *
      * @param target: rat
      */
 
@@ -81,6 +84,7 @@ public abstract class Item extends Entity {
 
     /**
      * Method for item collition
+     *
      * @param target: item
      */
 
