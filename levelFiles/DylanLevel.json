@@ -125,6 +125,39 @@
       "timeToBirth": 0,
       "hp": 100,
       "position": [17, 17]
+    },
+    {
+      "gender": "BABY",
+      "canMate": true,
+      "canMove": true,
+      "moveSpeed": 2,
+      "timeToGrowth": 60,
+      "numChildren": 0,
+      "timeToBirth": 0,
+      "hp": 100,
+      "position": [17, 17]
+    },
+    {
+      "gender": "BABY",
+      "canMate": true,
+      "canMove": true,
+      "moveSpeed": 2,
+      "timeToGrowth": 60,
+      "numChildren": 0,
+      "timeToBirth": 0,
+      "hp": 100,
+      "position": [17, 17]
+    },
+    {
+      "gender": "BABY",
+      "canMate": true,
+      "canMove": true,
+      "moveSpeed": 2,
+      "timeToGrowth": 60,
+      "numChildren": 0,
+      "timeToBirth": 0,
+      "hp": 100,
+      "position": [17, 17]
     }
   ],
   "itemsOnMap": {
@@ -132,11 +165,11 @@
     "mSexChange": [], "fSexChange": [], "noEntry": [], "deathRat": []
   },
   "levelStats": {
-    "timeLeft": 10000,
-    "ratLimit": 10,
+    "timeLeft": 100,
+    "ratLimit": 30,
     "loseAmount": 100,
-    "bombFreq": 1, "gasFreq": 2, "steriliseFreq": 2, "poisonFreq": 3,
-    "mSexChangeFreq": 4, "fSexChangeFreq": 4, "noEntryFreq": 4, "deathRatFreq": 1
+    "bombFreq": 60, "gasFreq": 60, "steriliseFreq": 60, "poisonFreq": 60,
+    "mSexChangeFreq": 60, "fSexChangeFreq": 60, "noEntryFreq": 60, "deathRatFreq": 60
   },
   "playerStats": {
     "name": "Dave",
@@ -144,7 +177,7 @@
     "maxLevel": 3
   },
   "inventory": {
-    "bomb": 3, "gas": 3, "sterilise": 3, "poison" : 0,
-    "mSexChange": 3, "fSexChange": 3, "noEntry": 3, "deathRat": 1
+    "bomb": 0, "gas": 0, "sterilise": 0, "poison" : 0,
+    "mSexChange": 0, "fSexChange": 0, "noEntry": 0, "deathRat": 0
   }
 }
