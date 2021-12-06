@@ -11,6 +11,7 @@ import java.util.ArrayList;
  * <p> 2. Creation Date: 29/11/2021</p>
  * <p> 3. Last modification date: 5/12/2021</p>
  * <p> 4. Purpose of the program: Creates the explosion effect</p>
+ *
  * @author Andrew
  */
 public class ExplosionPart extends Item {
@@ -21,11 +22,12 @@ public class ExplosionPart extends Item {
      * Method used to track where the explosion is and where it is heading
      * <p> no side-effects</p>
      * <p> not referentially transparent</p>
+     *
      * @param position  the position of the current explosion part
      * @param direction the direction the explosion is travelling in
      */
     public ExplosionPart(Pos position, Direction direction) {
-        super(ItemType.EXPLOSIONPART ,new Image("file:resources/explosionPart.png"), position);
+        super(ItemType.EXPLOSIONPART, new Image("file:resources/explosionPart.png"), position);
         this.direction = direction;
 
     }
@@ -68,6 +70,7 @@ public class ExplosionPart extends Item {
      * collsion of explosion Part on rats
      * <p> no side-effects</p>
      * <p> not referentially transparent</p>
+     *
      * @param target the rat to be colliding with
      */
     public void ratCollision(Rat target) {
@@ -78,6 +81,7 @@ public class ExplosionPart extends Item {
      * item colliding with explosion part
      * <p> side-effects</p>
      * <p> not referentially transparent</p>
+     *
      * @param target the item being collided with
      */
     public void itemCollision(Item target) {

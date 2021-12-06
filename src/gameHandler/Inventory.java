@@ -4,11 +4,11 @@ import java.util.HashMap;
 
 /**
  * <p> 1. File-name: Inventory.java</p>
- * <p> 2. Creation Date: XX/XX/XX </p>
- * <p> 3. Last modification date: XX/XX/XX </p>
+ * <p> 2. Creation Date: 01/12/21 </p>
+ * <p> 3. Last modification date: 05/12/21 </p>
  * <p> 4. Purpose of the program: Used to hold and restock items which can be placed</p>
  *
- * @author
+ * @author Gus
  */
 
 public class Inventory {
@@ -32,10 +32,11 @@ public class Inventory {
     private int poisonRestockRate;
 
     /**
-     * Constructor for Inventory
+     * Constructor for Inventory that takes the rate at which item is spawned and
+     * the starting quantity of items
      *
-     * @param stats 
-     * @param inventory
+     * @param stats     hashmap declaring the frequency of items spawning
+     * @param inventory an array of the items and their quantities
      */
     public Inventory(HashMap<String, Integer> stats, int[] inventory) {
         this.bombRestockRate = stats.get("bombFreq");
@@ -200,66 +201,146 @@ public class Inventory {
         Inventory.deathCount = deathCount;
     }
 
+    /**
+     * Method used to return the restock rate of Bomb
+     *
+     * @return restock rate of Bomb
+     */
     public int getBombRestockRate() {
         return bombRestockRate;
     }
 
+    /**
+     * Method used to set the rate of which Bomb is restocked
+     *
+     * @param bombRestockRate restock rate of bomb
+     */
     public void setBombRestockRate(int bombRestockRate) {
         this.bombRestockRate = bombRestockRate;
     }
 
+    /**
+     * Method used to return the restock rate of Gas
+     *
+     * @return Gas restock rate
+     */
     public int getGasRestockRate() {
         return gasRestockRate;
     }
 
+    /**
+     * Method used to set the restock rate of Gas
+     *
+     * @param gasRestockRate restock rate of Gas
+     */
     public void setGasRestockRate(int gasRestockRate) {
         this.gasRestockRate = gasRestockRate;
     }
 
+    /**
+     * Method used to return the restock rate of Sterilizations
+     *
+     * @return Sterilization restock rate
+     */
     public int getSterileRestockRate() {
         return sterileRestockRate;
     }
 
+    /**
+     * Method used to set the rate at which Sterilizations restock
+     *
+     * @param sterileRestockRate restock rate of Sterilizations
+     */
     public void setSterileRestockRate(int sterileRestockRate) {
         this.sterileRestockRate = sterileRestockRate;
     }
 
+    /**
+     * Method which returns the restock rate of No Entry Signs
+     *
+     * @return No Entry Signs restock rate
+     */
     public int getNoEntRestockRate() {
         return noEntRestockRate;
     }
 
+    /**
+     * Method which returns the restock rate of No Entry Signs
+     *
+     * @param noEntRestockRate rate of restock for No Entry Signs
+     */
     public void setNoEntRestockRate(int noEntRestockRate) {
         this.noEntRestockRate = noEntRestockRate;
     }
 
+    /**
+     * Method which returns Male Gender Change restock rate
+     *
+     * @return Male Gender Change restock rate
+     */
     public int getMaleRestockRate() {
         return maleRestockRate;
     }
 
+    /**
+     * Method which sets the Male Gender Change restock rate
+     *
+     * @param maleRestockRate rate at which Male Gender Change is restocked
+     */
     public void setMaleRestockRate(int maleRestockRate) {
         this.maleRestockRate = maleRestockRate;
     }
 
+    /**
+     * Method which returns the Female Gender Change restock rate
+     *
+     * @return Female Gender Change restock rate
+     */
     public int getFemaleRestockRate() {
         return femaleRestockRate;
     }
 
+    /**
+     * Method which sets the Female Gender Change restock rate
+     *
+     * @param femaleRestockRate rate at which Female Gender Change is restocked
+     */
     public void setFemaleRestockRate(int femaleRestockRate) {
         this.femaleRestockRate = femaleRestockRate;
     }
 
+    /**
+     * Method which returns the Death Rat restock rate
+     *
+     * @return Death Rat restock rate
+     */
     public int getDeathRestockRate() {
         return deathRestockRate;
     }
 
+    /**
+     * Method which sets the Death Rat restock rate
+     *
+     * @param deathRestockRate rate at which the Death Rat restocks
+     */
     public void setDeathRestockRate(int deathRestockRate) {
         this.deathRestockRate = deathRestockRate;
     }
 
+    /**
+     * Method which returns the restock rate of Poison
+     *
+     * @return restock rate of Poison
+     */
     public int getPoisonRestockRate() {
         return poisonRestockRate;
     }
 
+    /**
+     * Method which sets the restock rate of Poison
+     *
+     * @param poisonRestockRate rate at which the Poison restocks
+     */
     public void setPoisonRestockRate(int poisonRestockRate) {
         this.poisonRestockRate = poisonRestockRate;
     }

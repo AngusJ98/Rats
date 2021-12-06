@@ -27,7 +27,7 @@ public class NoEntrySign extends Item {
      */
 
     public NoEntrySign(Pos position) {
-        super(ItemType.NOENTRYSIGN ,noEntImg, position);
+        super(ItemType.NOENTRYSIGN, noEntImg, position);
         hp = MAX_HP;
     }
 
@@ -41,7 +41,7 @@ public class NoEntrySign extends Item {
      */
 
     public NoEntrySign(Pos position, int hp) {
-        super(ItemType.NOENTRYSIGN ,noEntImg, position);
+        super(ItemType.NOENTRYSIGN, noEntImg, position);
         this.hp = hp;
     }
 

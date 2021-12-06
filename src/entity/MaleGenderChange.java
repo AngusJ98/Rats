@@ -24,7 +24,7 @@ public class MaleGenderChange extends Item {
      */
 
     public MaleGenderChange(Pos position) {
-        super(ItemType.MALE ,new Image("file:resources/male.png"), position);
+        super(ItemType.MALE, new Image("file:resources/male.png"), position);
 
     }
 
