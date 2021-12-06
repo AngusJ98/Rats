@@ -104,7 +104,7 @@ public class BasicRat extends Rat {
     /**
      * updates image of the rat
      * <p> no side-effects</p>
-     * <p> not referentially transparent</p>
+     * <p> wreferentially transparent</p>
      */
     public void updateImage() {
         switch (this.getRatType()) {
