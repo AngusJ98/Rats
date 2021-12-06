@@ -27,7 +27,7 @@ public class Gas extends Item {
      * @param position coordinates to place the gas in
      */
     public Gas(Pos position) {
-        super(ItemType.Gas ,new Image("file:resources/gasCan.png"), position);
+        super(ItemType.GAS ,new Image("file:resources/gasCan.png"), position);
 
         //gas will act like a gas canister and be responsible for the spread of gasparts
         //gasparts will be the entities that deal damage to rats

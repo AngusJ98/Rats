@@ -443,7 +443,7 @@ public class GameFileHandler {
 		inventoryStr += "    \"bomb\": " + Inventory.getBombCount() + ",";
 		inventoryStr += "    \"gas\": " + Inventory.getGasCount() + ",";
 		inventoryStr += "    \"sterilise\": " + Inventory.getSterileCount() + ",";
-		inventoryStr += "    \"poison\": " + Inventory.getPoisonCount() + ","
+		inventoryStr += "    \"poison\": " + Inventory.getPoisonCount() + ",";
 		inventoryStr += "    \"mSexChange\": " + Inventory.getMaleCount() + ",";
 		inventoryStr += "    \"fSexChange\": " + Inventory.getFemaleCount() + ",";
 		inventoryStr += "    \"noEntry\": " + Inventory.getNoEntryCount() + ",";

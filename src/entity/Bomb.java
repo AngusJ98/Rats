@@ -37,12 +37,12 @@ public class Bomb extends Item {
      * @param position takes in the coordinates of the Bomb
      */
     public Bomb(Pos position) {
-        super(ItemType.Bomb ,new Image("file:resources/bomb.png"), position);
+        super(ItemType.BOMB ,new Image("file:resources/bomb.png"), position);
         timer = DEFAULT_BOMB_TIME;
     }
 
     public Bomb(Pos position, int timeLeft) {
-        super(ItemType.Bomb ,new Image("file:resources/bomb.png"), position);
+        super(ItemType.BOMB ,new Image("file:resources/bomb.png"), position);
         timer = timeLeft;
     }
 

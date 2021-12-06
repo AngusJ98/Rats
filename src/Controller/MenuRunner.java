@@ -218,7 +218,7 @@ public class MenuRunner {
 
     private void load(String path) throws Exception {
         Game.setLevelPath(path);
-        Game.setLevelNum();
+        Game.setLevelNum(8);
         this.startGame();
     }
 }

@@ -25,7 +25,7 @@ public class ExplosionPart extends Item {
      * @param direction the direction the explosion is travelling in
      */
     public ExplosionPart(Pos position, Direction direction) {
-        super(ItemType.ExplosionPart ,new Image("file:resources/explosionPart.png"), position);
+        super(ItemType.EXPLOSIONPART ,new Image("file:resources/explosionPart.png"), position);
         this.direction = direction;
 
     }

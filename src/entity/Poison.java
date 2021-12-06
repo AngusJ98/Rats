@@ -24,7 +24,7 @@ public class Poison extends Item {
      * @param position coordinates of the rat
      */
     public Poison(Pos position) {
-        super(ItemType.Poison ,new Image("file:resources/poison.png"), position);
+        super(ItemType.POISON ,new Image("file:resources/poison.png"), position);
     }
 
     /**
