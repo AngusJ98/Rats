@@ -245,15 +245,15 @@ public class GameRenderer {
     }
 
     public void save1(ActionEvent event) {
-        save("1.json");
+        save("1");
     }
 
     public void save2(ActionEvent event) {
-        save("2.json");
+        save("2");
     }
 
     public void save3(ActionEvent event) {
-        save("3.json");
+        save("3");
     }
 
     private void save(String path) {

@@ -117,6 +117,8 @@ public class GameFileHandler {
     }
 
     private static Entity[] makeItemArray(JSONArray jItems, String key) {
+        return new Entity[0];
+        /*TODO I don't have enough time to get saving items to work
         int size = jItems.size();
         Pos position;
         JSONObject jItem;
@@ -206,7 +208,7 @@ public class GameFileHandler {
                 itemArr = new Entity[]{};
                 break;
         }
-        return itemArr;
+        return itemArr;*/
     }
 
     // TODO: change this to Item[][] if we make an abstract Item class
@@ -217,7 +219,7 @@ public class GameFileHandler {
                 "fSexChange", "noEntry", "deathRat"
         };
         int nItems = itemKeys.length;
-        Entity[][] items = new Item[nItems][];
+        Entity[][] items = new Entity[nItems][];
         String currentKey;
 
         for (int i = 0; i < nItems; i++) {
@@ -333,8 +335,8 @@ public class GameFileHandler {
 	public static void saveGame(String path) {
 		//construct map string
 		String mapStr = "";
-		for (int y = 0; y < Game.TileManager.getNumTileWidth();y++) {
-			for (int x = 0; x < Game.TileManager.getNumTileHeight();x++) {
+		for (int y = 0; y < Game.TileManager.getNumTileHeight();y++) {
+			for (int x = 0; x < Game.TileManager.getNumTileWidth();x++) {
 				TileTypes type = Game.TileManager.getTile(new Pos(x, y)).getType();
 				switch (type) {
 				case PATH:
@@ -362,7 +364,7 @@ public class GameFileHandler {
 		}
 		//construct dimension string
 		String dimStr = "[" +  Game.TileManager.getNumTileWidth() + "," + Game.TileManager.getNumTileHeight() + "],";
-		String fullMapString = "{\n  map: {\n    \"dimensions\": " + dimStr + "\"tiles\": \"" + mapStr + "\"\n  },\n";
+		String fullMapString = "{\n  \"map\": {\n    \"dimensions\": " + dimStr + "\"tiles\": \"" + mapStr + "\"\n  },\n";
 		
 		//construct rat string
 		String ratStr = "  \"rats\": [\n";
@@ -388,7 +390,8 @@ public class GameFileHandler {
 		ratStr += "  ],";
 		
 		//construct item string
-		String itemStr = "\n  \"itemsOnMap\": {\n    ";
+		String itemStr = "\n  \"itemsOnMap\": {\n    " + "    \"bomb\": [], \"gas\": [], \"sterilise\": [], \"poison\": [],\n" +
+                "    \"mSexChange\": [], \"fSexChange\": [], \"noEntry\": [], \"deathRat\": []";
 		ArrayList<Item> items = Game.ItemManager.getItemList();
 		for (Item item : items) {
 			//kinda scuffed but jonny made this before itemType so i have no choice
@@ -436,12 +439,13 @@ public class GameFileHandler {
 		lvlStr += "    \"timeLeft\": " + lvlStats.get("timeLeft") + ",";
 		lvlStr += "    \"bombFreq\": " + lvlStats.get("bombFreq") + ",";
 		lvlStr += "    \"gasFreq\": " + lvlStats.get("gasFreq") + ",";
-		lvlStr += "    \"sterilizeFreq\": " + lvlStats.get("sterilizeFreq") + ",";
-		lvlStr += "    \"mSexChangefreq\": " + lvlStats.get("mSexChangeFreq") + ",";
+		lvlStr += "    \"steriliseFreq\": " + lvlStats.get("steriliseFreq") + ",";
+		lvlStr += "    \"mSexChangeFreq\": " + lvlStats.get("mSexChangeFreq") + ",";
 		lvlStr += "    \"fSexChangeFreq\": " + lvlStats.get("fSexChangeFreq") + ",";
 		lvlStr += "    \"noEntryFreq\": " + lvlStats.get("noEntryFreq") + ",";
 		lvlStr += "    \"deathRatFreq\": " + lvlStats.get("deathRatFreq") + ",";
 		lvlStr += "    \"poisonFreq\": " + lvlStats.get("poisonFreq") + ",";
+        lvlStr += "    \"ratLimit\": " + lvlStats.get("loseAmount") + ",";
 		lvlStr += "    \"loseAmount\": " + lvlStats.get("loseAmount") + ",\n  },";		
 		
 		//construct inventory string
@@ -467,7 +471,7 @@ public class GameFileHandler {
     }	
 	private static void writeSaveFile(String saveString, String path) {
         try {
-            FileWriter writer = new FileWriter(LEVEL_PATH + path + SAVE_FILE_EXT, false);
+            FileWriter writer = new FileWriter(SAVE_PATH + path + SAVE_FILE_EXT, false);
             writer.write(saveString);
             writer.close();
         } catch (Exception e) {

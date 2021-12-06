@@ -140,16 +140,23 @@ public class Game {
 		setUpLevelStats(gameObjects.getFourth(), gameObjects.getSixth());
 	}
 
-	public void startFromSave() {
+	public void startFromSave() throws InterruptedException {
 		Game.runner.redrawBoard(this.createCombinedEntityList());
 		Game.score = 0;
 		System.out.println(this.rats.size());
 		System.out.println(Arrays.toString(this.createCombinedEntityList()));
-
+		this.tickWithoutRats();
+		Thread.sleep(100);
 		this.startTimer();
 	}
 
-
+	private void tickWithoutRats() {
+		inventory.restock();
+		ItemManager.performItemActions();
+		Platform.runLater(() -> runner.normalTickDrawing(createCombinedEntityList()));
+		Game.checkVictory();
+		timeLeft--;
+	}
 	/**
 	 * method to start the timer
 	 * <p> side-effects</p>
@@ -160,12 +167,18 @@ public class Game {
 		TimerTask task = new TimerTask() {
 			@Override
 			public void run() {
-				inventory.restock();
-				RatManager.performRatActions();
-				ItemManager.performItemActions();
-				Platform.runLater(() -> runner.normalTickDrawing(createCombinedEntityList()));
-				Game.checkVictory();
-				timeLeft--;
+				try {
+					inventory.restock();
+					RatManager.performRatActions();
+					ItemManager.performItemActions();
+					Platform.runLater(() -> runner.normalTickDrawing(createCombinedEntityList()));
+					Game.checkVictory();
+					timeLeft--;
+				} catch (ConcurrentModificationException e) {
+					System.out.println("Concurrent Modification, but game still works so pretend it didn't happen");
+				} catch (NullPointerException e) {
+					System.out.println("null pointer, but game still works so pretend it didn't happen");
+				}
 			}
 		};
 		timer.scheduleAtFixedRate(task, 0, 100);

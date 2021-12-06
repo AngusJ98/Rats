@@ -1,0 +1,73 @@
+{
+  "map": {
+    "dimensions": [15,7],"tiles": "GGGGGGGGGGGGGGG\nGPPPSSPPPSSPPPG\nGGGPGGGGPGGPGPG\nGPPPGGPPPGGPGPG\nGPGGGGGGPGGPGPG\nGPPPTTPPPTTPPPG\nGGGGGGGGGGGGGGG\n"
+  },
+  "rats": [
+    {
+      "gender": "MALE",
+      "canMate": true,
+      "canMove": true,
+      "moveSpeed": 2,
+      "timeToGrowth": -1,
+      "numChildren": 0,
+      "timeToBirth": 0,
+      "hp": 100,
+      "position": [8, 2],
+    },
+    {
+      "gender": "MALE",
+      "canMate": true,
+      "canMove": true,
+      "moveSpeed": 2,
+      "timeToGrowth": -1,
+      "numChildren": 0,
+      "timeToBirth": 0,
+      "hp": 100,
+      "position": [9, 1],
+    },
+    {
+      "gender": "MALE",
+      "canMate": false,
+      "canMove": true,
+      "moveSpeed": 2,
+      "timeToGrowth": -1,
+      "numChildren": 3,
+      "timeToBirth": 100,
+      "hp": 100,
+      "position": [1, 1],
+    },
+    {
+      "gender": "FEMALE",
+      "canMate": false,
+      "canMove": true,
+      "moveSpeed": 2,
+      "timeToGrowth": -1,
+      "numChildren": 4,
+      "timeToBirth": 2,
+      "hp": 100,
+      "position": [1, 5],
+    },
+    {
+      "gender": "FEMALE",
+      "canMate": false,
+      "canMove": true,
+      "moveSpeed": 2,
+      "timeToGrowth": -1,
+      "numChildren": 0,
+      "timeToBirth": -55,
+      "hp": 50,
+      "position": [1, 1],
+    }
+  ],
+  "itemsOnMap": {
+        "bomb": [], "gas": [], "sterilise": [], "poison": [],
+    "mSexChange": [], "fSexChange": [], "noEntry": [], "deathRat": []},
+  "levelStats": {    "timeLeft": 99884,    "bombFreq": 100,    "gasFreq": 200,    "steriliseFreq": 200,    "mSexChangeFreq": 40,    "fSexChangeFreq": 40,    "noEntryFreq": 40,    "deathRatFreq": 10,    "poisonFreq": 10,    "ratLimit": 100,    "loseAmount": 100,
+  },  "playerStats": {
+    "name": "Dave",
+    "score": 0,
+    "maxLevel": 3
+  },
+  "inventory": {    "bomb": 4,    "gas": 4,    "sterilise": 4,    "poison": 13,    "mSexChange": 6,    "fSexChange": 6,    "noEntry": 6,    "deathRat": 13
+  }
+}

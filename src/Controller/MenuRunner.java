@@ -205,7 +205,7 @@ public class MenuRunner {
     }
 
     public void load1(ActionEvent event) throws Exception{
-        load("2");
+        load("1");
     }
 
     public void load2(ActionEvent event) throws Exception{
