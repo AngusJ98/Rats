@@ -1,6 +1,7 @@
 package Controller;
 import entity.*;
 import gameHandler.Game;
+import gameHandler.GameFileHandler;
 import gameHandler.Inventory;
 import gameHandler.Pos;
 import javafx.event.EventHandler;
@@ -233,6 +234,30 @@ public class GameRenderer {
     }
 
     public void victoryScreen(){
+        try {
+            Parent gameScreen = FXMLLoader.load(getClass().getResource("victory.fxml"));
+            Scene gameScene = new Scene(gameScreen);
+            Main.changeScene(gameScene);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
+    }
+
+    public void save1(ActionEvent event) {
+        save("1.json");
+    }
+
+    public void save2(ActionEvent event) {
+        save("2.json");
+    }
+
+    public void save3(ActionEvent event) {
+        save("3.json");
+    }
+
+    private void save(String path) {
+        GameFileHandler.saveGame();
         try {
             Parent gameScreen = FXMLLoader.load(getClass().getResource("victory.fxml"));
             Scene gameScene = new Scene(gameScreen);

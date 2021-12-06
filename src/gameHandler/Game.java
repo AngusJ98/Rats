@@ -174,6 +174,7 @@ public class Game {
 		levelStats.put("deathRatFreq", inventory.getDeathRestockRate());
 		levelStats.put("poisonFreq", inventory.getPoisonRestockRate());
 		levelStats.put("loseAmount", Game.loseAmount);
+		return levelStats;
 	}
 
 	private static void updatePlayerStats(int score) {

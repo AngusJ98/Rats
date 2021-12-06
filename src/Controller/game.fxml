@@ -23,15 +23,14 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem mnemonicParsing="false" text="Save" />
-                  <MenuItem mnemonicParsing="false" text="Restart" />
                   <MenuItem mnemonicParsing="false" onAction="#returnToMenu" text="Return to Menu" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-                  <MenuItem mnemonicParsing="false" text="Guide" />
-              <MenuItem mnemonicParsing="false" text="About" />
+                  <Menu mnemonicParsing="false" text="Save">
+                    <items>
+                      <MenuItem mnemonicParsing="false" onAction="#save1" text="Slot 1" />
+                        <MenuItem mnemonicParsing="false" onAction="#save2" text="Slot 2" />
+                        <MenuItem mnemonicParsing="false" onAction="#save3" text="Slot 3" />
+                    </items>
+                  </Menu>
             </items>
           </Menu>
         </menus>

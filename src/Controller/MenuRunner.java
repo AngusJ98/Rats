@@ -28,6 +28,7 @@ public class MenuRunner {
     @FXML private Menu profiles;
     @FXML private Text playerId;
     @FXML private Menu play;
+    @FXML private Menu load;
     public MenuRunner() {
 
     }
@@ -191,6 +192,7 @@ public class MenuRunner {
         this.startGame();
     }
 
+
     public void createProfile() {
         TextInputDialog t = new TextInputDialog("");
         t.setContentText("Enter your name:");
@@ -200,5 +202,23 @@ public class MenuRunner {
             ProfileReader.writeNewProfile(response.get());
         }
         this.initialize();
+    }
+
+    public void load1(ActionEvent event) throws Exception{
+        load("3.json");
+    }
+
+    public void load2(ActionEvent event) throws Exception{
+        load("3.json");
+    }
+
+    public void load3(ActionEvent event) throws Exception{
+        load("3.json");
+    }
+
+    private void load(String path) throws Exception {
+        Game.setLevelPath(path);
+        Game.setLevelNum();
+        this.startGame();
     }
 }

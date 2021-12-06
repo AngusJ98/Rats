@@ -22,11 +22,12 @@
                   <MenuItem mnemonicParsing="false" onAction="#liam" text="Liam" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-                  <MenuItem mnemonicParsing="false" text="Guide" />
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
+          <Menu fx:id="load" mnemonicParsing="false" text="Load">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#load1" text="Slot 1" />
+                  <MenuItem mnemonicParsing="false" onAction="#load2" text="Slot 2" />
+                  <MenuItem mnemonicParsing="false" onAction="#load3" text="Slot 3" />
+               </items>
           </Menu>
             <Menu fx:id="profiles" mnemonicParsing="false" text="Profile">
               <items>
