@@ -30,25 +30,25 @@ public class MenuRunner {
     @FXML private Menu play;
     @FXML private Menu load;
     public MenuRunner() {
-
-    }
-
-
-    //shamelessly stolen from highscore
-    public void initialize() {
-
-        HBox table = new HBox(2);
-        table.setAlignment(Pos.TOP_CENTER);
         Alert motd = new Alert(Alert.AlertType.INFORMATION);
         motd.setTitle("Message of the day!");
         motd.setHeaderText("");
         motd.setContentText(MessageOfTheDay.getMotd());
         motd.showAndWait();
 
+    }
 
 
+    /**
+     * Runs code to set up the menu when it's initialised such
+     * as updating highscore and dynamically creating buttons
+     */
+    public void initialize() {
 
+        HBox table = new HBox(2);
+        table.setAlignment(Pos.TOP_CENTER);
         table.setStyle("-fx-background-color:GREY");
+
         updateHigh();
         createProfileButtons();
         //add the table to the scene
@@ -73,6 +73,10 @@ public class MenuRunner {
 
     }
 
+    /**
+     * starts the game, Switches scene and creates the game object
+     * @throws Exception exceptional
+     */
     private void startGame() throws Exception{
         try {
             //switch scene
@@ -91,6 +95,10 @@ public class MenuRunner {
         }
     }
 
+
+    /**
+     * creates a menu item for each profile
+     */
     private void createProfileButtons() {
         while (profiles.getItems().size() > 1) {
             profiles.getItems().remove(1);
@@ -115,7 +123,9 @@ public class MenuRunner {
     }
 
 
-
+    /**
+     * updates the high score using data from player profiles
+     */
     private void updateHigh() {
         highscore.getTabs().clear();
         for (int i = 0; i < 6; i++) {
@@ -150,34 +160,56 @@ public class MenuRunner {
         }
     }
 
-    public void updateScore(ActionEvent actionEvent) throws Exception {
-        this.initialize();
-    }
 
+    /**
+     * button method to start game at level 0
+     * @param actionEvent not used,
+     * @throws Exception exceptional
+     */
     public void level0(ActionEvent actionEvent) throws Exception {
         Game.setLevelPath("testLevel");
         Game.setLevelNum(0);
         this.startGame();
     }
 
+    /**
+     * button method to start game at level 1
+     * @param actionEvent not used,
+     * @throws Exception exceptional
+     */
     public void level1(ActionEvent actionEvent) throws Exception {
         Game.setLevelPath("level1");
         Game.setLevelNum(1);
         this.startGame();
     }
 
+    /**
+     * button method to start game at level 2
+     * @param actionEvent not used,
+     * @throws Exception exceptional
+     */
     public void level2(ActionEvent actionEvent) throws Exception {
         Game.setLevelPath("level2");
         Game.setLevelNum(2);
         this.startGame();
     }
 
+    /**
+     * button method to start game at the gus level
+     * @param actionEvent not used,
+     * @throws Exception exceptional
+     */
     public void gusLevel(ActionEvent actionEvent) throws Exception {
         Game.setLevelPath("gusSpeedway");
         Game.setLevelNum(4);
         this.startGame();
     }
 
+    /**
+     * button method to start game at the dylan level
+     * @param actionEvent not used,
+     * @throws Exception exceptional
+     */
     public void dylanLevel(ActionEvent actionEvent) throws Exception {
         Game.setLevelPath("DylanLevel");
         Game.setLevelNum(3);
@@ -185,7 +217,11 @@ public class MenuRunner {
     }
 
 
-
+    /**
+     * button method to start game at the liam level
+     * @param actionEvent not used,
+     * @throws Exception exceptional
+     */
     public void liam(ActionEvent actionEvent) throws Exception {
         Game.setLevelPath("liam");
         Game.setLevelNum(5);
@@ -193,6 +229,10 @@ public class MenuRunner {
     }
 
 
+    /**
+     * creates a dialog box to create a profile
+     * then reloads the menu if yes is clicked
+     */
     public void createProfile() {
         TextInputDialog t = new TextInputDialog("");
         t.setContentText("Enter your name:");
@@ -204,18 +244,38 @@ public class MenuRunner {
         this.initialize();
     }
 
+    /**
+     * button method to load save slot 1
+     * @param event not used
+     * @throws Exception Exceptional
+     */
     public void load1(ActionEvent event) throws Exception{
         load("1");
     }
 
+    /**
+     * button method to load save slot 1
+     * @param event not used
+     * @throws Exception Exceptional
+     */
     public void load2(ActionEvent event) throws Exception{
         load("2");
     }
 
+    /**
+     * button method to load save slot 1
+     * @param event not used
+     * @throws Exception Exceptional
+     */
     public void load3(ActionEvent event) throws Exception{
         load("3");
     }
 
+    /**
+     * starts the game by setting the game to be loaded and switching scene
+     * , then calling the setup and start methods on game
+     * @param path the path to the save file
+     */
     private void startGameFromSave(String path) {
         try {
             //switch scene
@@ -234,6 +294,11 @@ public class MenuRunner {
         }
     }
 
+    /**
+     * Sets up game to be loaded from a save file
+     * @param path the path to the save file
+     * @throws Exception Exceptional
+     */
     private void load(String path) throws Exception {
         Game.setLevelPath(path);
         Game.setLevelNum(8);
