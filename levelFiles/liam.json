@@ -29,7 +29,7 @@
 "position": [1, 2]
 },
 {
-"gender": "MALE",
+"gender": "BABY",
 "canMate": true,
 "canMove": true,
 "moveSpeed": 1,
@@ -40,7 +40,7 @@
 "position": [13, 1]
 },
 {
-"gender": "MALE",
+"gender": "BABY",
 "canMate": true,
 "canMove": true,
 "moveSpeed": 1,

@@ -69,8 +69,8 @@
     "ratLimit": 10,
     "loseAmount": 100,
     "bombFreq": 100, "gasFreq": 200, "steriliseFreq": 200,
-    "mSexChangeFreq": 40, "fSexChangeFreq": 40, "noEntryFreq": 40, "deathRatFreq": 10,
-    "poisonFreq": 10
+    "mSexChangeFreq": 40, "fSexChangeFreq": 40, "noEntryFreq": 40, "deathRatFreq": 20,
+    "poisonFreq": 20
   },
   "playerStats": {
     "name": "Dave",
