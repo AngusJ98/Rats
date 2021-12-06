@@ -37,7 +37,7 @@ public class BasicRat extends Rat {
      * 1st Constuctor, intializes a basic rat in the Rat Class with
      * it's type and position depending on the case.
      * <p> no side-effects</p>
-     * <p> not referentially transparent</p>
+     * <p> referentially transparent</p>
      *
      * @param type  takes in the rat type of basic rat.
      * @param image takes in the image of the rat
@@ -66,7 +66,7 @@ public class BasicRat extends Rat {
     /**
      * 2nd Constuctor, for the save game file
      * <p> no side-effects</p>
-     * <p> not referentially transparent</p>
+     * <p> referentially transparent</p>
      *
      * @param type:         save what kind of rat
      * @param pos:          save position
@@ -103,7 +103,7 @@ public class BasicRat extends Rat {
 
     /**
      * updates image of the rat
-     * <p> not side-effects</p>
+     * <p> no side-effects</p>
      * <p> not referentially transparent</p>
      */
     public void updateImage() {
