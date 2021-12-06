@@ -200,6 +200,70 @@ public class Inventory {
         Inventory.deathCount = deathCount;
     }
 
+    public int getBombRestockRate() {
+        return bombRestockRate;
+    }
+
+    public void setBombRestockRate(int bombRestockRate) {
+        this.bombRestockRate = bombRestockRate;
+    }
+
+    public int getGasRestockRate() {
+        return gasRestockRate;
+    }
+
+    public void setGasRestockRate(int gasRestockRate) {
+        this.gasRestockRate = gasRestockRate;
+    }
+
+    public int getSterileRestockRate() {
+        return sterileRestockRate;
+    }
+
+    public void setSterileRestockRate(int sterileRestockRate) {
+        this.sterileRestockRate = sterileRestockRate;
+    }
+
+    public int getNoEntRestockRate() {
+        return noEntRestockRate;
+    }
+
+    public void setNoEntRestockRate(int noEntRestockRate) {
+        this.noEntRestockRate = noEntRestockRate;
+    }
+
+    public int getMaleRestockRate() {
+        return maleRestockRate;
+    }
+
+    public void setMaleRestockRate(int maleRestockRate) {
+        this.maleRestockRate = maleRestockRate;
+    }
+
+    public int getFemaleRestockRate() {
+        return femaleRestockRate;
+    }
+
+    public void setFemaleRestockRate(int femaleRestockRate) {
+        this.femaleRestockRate = femaleRestockRate;
+    }
+
+    public int getDeathRestockRate() {
+        return deathRestockRate;
+    }
+
+    public void setDeathRestockRate(int deathRestockRate) {
+        this.deathRestockRate = deathRestockRate;
+    }
+
+    public int getPoisonRestockRate() {
+        return poisonRestockRate;
+    }
+
+    public void setPoisonRestockRate(int poisonRestockRate) {
+        this.poisonRestockRate = poisonRestockRate;
+    }
+
     /**
      * Method used to restock individual items in the Inventory
      * after a certain amount of time

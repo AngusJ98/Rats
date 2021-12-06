@@ -160,7 +160,7 @@ public class MenuRunner {
     }
 
     public void level1(ActionEvent actionEvent) throws Exception {
-        Game.setLevelPath("testLevel");
+        Game.setLevelPath("level1");
         Game.setLevelNum(1);
         this.startGame();
     }

@@ -1,9 +1,12 @@
 package gameHandler;
 
 import Controller.GameRenderer;
+import Controller.Main;
 import entity.*;
 import javafx.application.Platform;
 import org.json.simple.parser.ParseException;
+import playerProfile.Player;
+import playerProfile.ProfileReader;
 import tiles.Tile;
 
 import java.io.IOException;
@@ -27,6 +30,7 @@ public class Game {
 	private static int loseAmount;
 	private static Inventory inventory;
 	public static int score;
+	private static int levelNum;
 
 	private static Timer timer = new Timer();
 	private static int timeLeft = -1;
@@ -37,6 +41,15 @@ public class Game {
 	public Game() {
 
 	}
+
+	public static int getLevelNum() {
+		return levelNum;
+	}
+
+	public static void setLevelNum(int levelNum) {
+		Game.levelNum = levelNum;
+	}
+
 
 	/**
 	 * gets time left
@@ -135,7 +148,7 @@ public class Game {
 			if (timeLeft > 0) {
 				Game.addScore(timeLeft);
 			}
-			//TODO updatePlayerStats();
+			Game.updatePlayerStats(Game.score);
 			Game.cleanUp();
 			Platform.runLater(() -> Game.runner.victoryScreen());
 		} else if (rats.size() > loseAmount) {
@@ -144,6 +157,37 @@ public class Game {
 			Platform.runLater(() -> Game.runner.lossScreen());
 		}
 	}
+
+	/*
+	                "timeLeft", "ratLimit", "bombFreq", "gasFreq", "steriliseFreq",
+                "mSexChangeFreq", "fSexChangeFreq", "noEntryFreq", "deathRatFreq", "poisonFreq" ,"loseAmount"
+	 */
+	public HashMap<String, Integer> getLevelStats() {
+		HashMap<String, Integer> levelStats = new HashMap<>();
+		levelStats.put("timeLeft", Game.getTimeLeft());
+		levelStats.put("bombFreq", inventory.getBombRestockRate());
+		levelStats.put("gasFreq", inventory.getGasRestockRate());
+		levelStats.put("steriliseFreq", inventory.getSterileRestockRate());
+		levelStats.put("mSexChangeFreq", inventory.getMaleRestockRate());
+		levelStats.put("fSexChangeFreq", inventory.getFemaleRestockRate());
+		levelStats.put("noEntryFreq", inventory.getNoEntRestockRate());
+		levelStats.put("deathRatFreq", inventory.getDeathRestockRate());
+		levelStats.put("poisonFreq", inventory.getPoisonRestockRate());
+		levelStats.put("loseAmount", Game.loseAmount);
+	}
+
+	private static void updatePlayerStats(int score) {
+		Player current = Main.activePlayer;
+		if (current.getMaxLevelUnlocked() == Game.getLevelNum()) {
+			current.setMaxLevelUnlocked(Game.getLevelNum() + 1);
+		}
+		if (score > current.getScores()[Game.getLevelNum()]) {
+			current.getScores()[Game.getLevelNum()] = score;
+		}
+		System.out.println(current.getMaxLevelUnlocked());
+		ProfileReader.updateProfile(current.makeJSON());
+	}
+
 
 	/**
 	 * Method for cleaning up the game.
@@ -177,11 +221,11 @@ public class Game {
 		private static ArrayList<BasicRat> ratsToAdd = new ArrayList<>();
 		private static ArrayList<BasicRat> ratsToKill = new ArrayList<>();
 		private static ArrayList<DeathRat> deathRatsToKill = new ArrayList<>();
-		public static getRatList() {
+		public static ArrayList<BasicRat> getRatList() {
 			//should only be used by GFH
 			return rats;
 		}
-		public static getDeathRatList() {
+		public static ArrayList<DeathRat> getDeathRatList() {
 			return deathRats;
 		}	
 		
@@ -376,11 +420,11 @@ public class Game {
 	}
 	
 	
-	private static ArrayList<Item> items = new ArrayList<Item>(); 
+	private static ArrayList<Item> items = new ArrayList<Item>();
 	public static class ItemManager {
 	    private static ArrayList<Item> itemsToRemove = new ArrayList<>();
 		private static ArrayList<Item> itemsToAdd = new ArrayList<>();
-		public static getItemList() {
+		public static ArrayList<Item> getItemList() {
 			//should only be used by GFH
 			return items;
 		}

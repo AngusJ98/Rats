@@ -21,6 +21,7 @@ public class GameFileHandler {
     public static final String LEVEL_PATH = "levelFiles/";
     public static final String SAVE_FILE_EXT = ".json";
 
+
     private GameFileHandler() {}
 
     private static JSONObject readJSON(String fileName, boolean isLevel)
@@ -37,6 +38,7 @@ public class GameFileHandler {
             );
         }
     }
+
 
     private static int objToInt(JSONObject obj, String key) {
         return Math.toIntExact((long) obj.get(key));
@@ -220,8 +222,7 @@ public class GameFileHandler {
 
         for (int i = 0; i < nItems; i++) {
             currentKey = itemKeys[i];
-            items[i] =
-                    makeItemArray((JSONArray) itemsOnMap.get(currentKey), currentKey);
+            items[i] = makeItemArray((JSONArray) itemsOnMap.get(currentKey), currentKey);
         }
 
         return items;
@@ -327,8 +328,8 @@ public class GameFileHandler {
 	public static void saveGame() {
 		//construct map string
 		String mapStr = "";
-		for (y = 0; y < TileManager.getNumTileWidth()) {
-			for (x = 0; x < TileManager.getNumTileHeight()) {
+		for (y = 0; y < Game.TileManager.getNumTileWidth()) {
+			for (x = 0; x < Game.TileManager.getNumTileHeight()) {
 				TileType type = TileManager.getTile(new Pos(x, y)).getType();
 				switch (type) {
 				case TileTypes.PATH: 
