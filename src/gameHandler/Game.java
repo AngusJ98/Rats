@@ -38,14 +38,20 @@ public class Game {
 	/**
 	 * Constructer for game
 	 */
-	public Game() {
-
-	}
-
+	public Game() {}
+	
+	/**
+		 * gets level number
+		 * @return levelNum
+		 */
 	public static int getLevelNum() {
 		return levelNum;
 	}
 
+	/**
+		 * sets level number
+		 * @param levelNum
+		 */
 	public static void setLevelNum(int levelNum) {
 		Game.levelNum = levelNum;
 	}
@@ -61,7 +67,7 @@ public class Game {
 
 	/**
 	 * gets all the rats
-	 * @return
+	 * @return rats
 	 */
 	public static ArrayList<BasicRat> getRats() {
 		return rats;
@@ -115,7 +121,12 @@ public class Game {
 		this.startTimer();
     }
 
-
+	/**
+		 * gets data from filehandler and sets up entities
+		 * set up from save file
+		 * <p>side-effects</p>
+		 * <p>referentially transparent</p>
+		 */
 	public void setUpFromSave() throws ParseException, IOException {
 		//file reader class goes here, reads file and passes data to this method
 		Tuple<BasicRat[], Entity[][], char[][], HashMap<String, Integer>,
@@ -140,6 +151,11 @@ public class Game {
 		setUpLevelStats(gameObjects.getFourth(), gameObjects.getSixth());
 	}
 
+/**
+		 * starts the game
+		 * <p>side-effects</p>
+		 * <p>referentially transparent</p>
+		 */
 	public void startFromSave() throws InterruptedException {
 		Game.runner.redrawBoard(this.createCombinedEntityList());
 		Game.score = 0;
@@ -149,7 +165,14 @@ public class Game {
 		Thread.sleep(100);
 		this.startTimer();
 	}
-
+	
+	/**
+		 * tick method without affecting rats
+		 * <p>side-effects</p>
+		 * <p>not referentially transparent</p>
+		 * @param pos coordinates of the tile
+		 * @return returns true if passable, otherwise false
+		 */
 	private void tickWithoutRats() {
 		inventory.restock();
 		ItemManager.performItemActions();
@@ -210,6 +233,11 @@ public class Game {
 	                "timeLeft", "ratLimit", "bombFreq", "gasFreq", "steriliseFreq",
                 "mSexChangeFreq", "fSexChangeFreq", "noEntryFreq", "deathRatFreq", "poisonFreq" ,"loseAmount"
 	 */
+	/**
+	* gets the level's stats to save to a file
+	* <p> no side-effects</p>
+	* <p> referentially transparent</p>
+	*/ 
 	public static HashMap<String, Integer> getLevelStats() {
 		HashMap<String, Integer> levelStats = new HashMap<>();
 		levelStats.put("timeLeft", Game.getTimeLeft());
@@ -432,20 +460,46 @@ public class Game {
 			}
 			return entitiesOnPos;
 		}
+		
+		/**
+		 * gets the max width of the gameBoard
+		 * @return numTileWidth
+		 */
 		public static int getNumTileWidth() {
 			return numTileWidth;
 		}
+		
+		/**
+		 * sets the max width of the gameBoard
+		 * @param numTileWidth
+		 */
 		public static void setNumTileWidth(int numTileWidth) {
 			TileManager.numTileWidth = numTileWidth;
 		}
-
+		
+		/**
+		 * gets the max height of the gameBoard
+		 * @return numTileHeight
+		 */
 		public static int getNumTileHeight() {
 			return numTileHeight;
 		}
-
+		
+		/**
+		 * sets the max height of the gameBoard
+		 * @param numTileHeight
+		 */
 		public static void setNumTileHeight(int numTileHeight) {
 			TileManager.numTileHeight = numTileHeight;
 		}
+		
+		/**
+		 * gets the position in a specified direction
+		 * <p> no side-effects</p>
+		 * <p> referentially transparent</p>
+		 * @param dir the direction to move in, pos start position
+		 * @return pos the next position in the direction specified
+		 */
 		public static Pos getPosFromDir(Direction dir, Pos pos){
 			Pos newPos;
 			switch (dir) {
@@ -475,12 +529,24 @@ public class Game {
 	public static class ItemManager {
 	    private static ArrayList<Item> itemsToRemove = new ArrayList<>();
 		private static ArrayList<Item> itemsToAdd = new ArrayList<>();
+		
+		/**
+		 * gets the list of items
+		 * @return items
+		 */
 		public static ArrayList<Item> getItemList() {
 			//should only be used by GFH
 			return items;
 		}
+		
+		/**
+		 * tries to place an item
+		 * <p>side-effects</p>
+		 * <p>referentially transparent</p>
+		 * @param itemString the string representing the item, pos the coordinates to place the item at
+		 */
 		public static void tryPlace(String itemString, Pos pos) {
-			if (true /*TODO Stock check here*/) {
+			if (true /*TODO Stock check here*/) { //"just leave it there he's kinda quirky" - Gus, 4:19am when asked if i should remove the if statement
 				Item placedItem = null;
 				System.out.println(itemString);
 				switch (itemString) {
@@ -549,20 +615,40 @@ public class Game {
 			}
 
 		}
+		
+		/**
+		 * add item to the item list
+		 * <p> side-effects</p>
+		 * <p> referentially transparent</p>
+		 * @param item the item to be added
+		 */
 		public static void addItem(Item item) {
 			itemsToAdd.add(item);
 		}	
+		
+		/**
+		 * removes item from list
+		 * <p> side-effects</p>
+		 * <p> referentially transparent</p>
+		 * @param item the item to be removed
+		 */
 		public static void killItem(Item item) {
 			if (items.contains(item)) {
 				itemsToRemove.add(item);
 			}	
 		}
+		
+		/**
+		 * loop through all the items and make them perform their actions
+		 * <p> side-effects</p>
+		 * <p> referentially transparent</p>
+		 * @param pos coordinates of the tile
+		 * @return returns true if passable, otherwise false
+		 */
 		public static void performItemActions() {
 			for (Item item : items) {
 				item.tick();				
 			}
-
-
 
 			//remove items here to avoid concorrentModification exception
             for (Item item : itemsToRemove) {
@@ -578,7 +664,12 @@ public class Game {
 		}	
 	}
 	
-	
+	/**
+		 * start the game
+		 * <p> no side-effects</p>
+		 * <p> referentially transparent</p>
+		 * @param args
+		 */
 	public static void main(String[] args) {
 		Game game = new Game();
 		// Runner runner = new Runner(); Runner is not needed and will be loaded as part of the javafx stuff so no need to worry about that
@@ -593,10 +684,20 @@ public class Game {
         }
     }
 
-	public static HashMap<Pos, Tile> getTiles() { //no
-		return tiles; //bad
-	} //use TileManager.GetTile();
-
+	/**
+	* get a hashmap of tiles and their positions so tiles can know their own positions
+	* @return tiles
+	*/
+	public static HashMap<Pos, Tile> getTiles() { 
+		return tiles; 
+	} 
+	
+		/**
+		 * gets data from filehandler and sets up entities
+		 * sets up from level file
+		 * <p> side-effects</p>
+		 * <p> referentially transparent</p>
+		 */
 	public void setUp() throws ParseException, IOException {
 		//file reader class goes here, reads file and passes data to this method
         Tuple<BasicRat[], Entity[][], char[][], HashMap<String, Integer>,
@@ -606,14 +707,28 @@ public class Game {
 		constructRatList(gameObjects.getFirst());
 		setUpLevelStats(gameObjects.getFourth(), gameObjects.getSixth());
 	}
+	
+	/**
+	* get the level's filepath
+	* @return levelPath
+	*/
 	public static String getLevelPath() {
 		return levelPath;
 	}
 
+	/**
+	* set the level's filepath
+	* @param levelPath
+	*/
 	public static void setLevelPath(String levelPath) {
 		Game.levelPath = levelPath;
 	}
 
+	/**
+	* constructs the tilemap from Tilemanager
+	* <p> side-effects</p>
+	* <p> referentially transparent</p>
+	*/
 	public void constructTileMap(char[][] map) {
 		Game.tiles = new HashMap<>();//set to new hashmap so we don't accidentally keep old boards
 		TileManager.numTileWidth = map[0].length;
@@ -628,14 +743,26 @@ public class Game {
 			}
 		}
     }
-
+	
+	/**
+	* constructs an arraylist of rats from an array
+	* <p> side-effects</p>
+	* <p> referentially transparent</p>
+	* @param rats the array to convert
+	*/
 	public void constructRatList(BasicRat[] rats) {
 		Game.rats = new ArrayList<BasicRat>(Arrays.asList(rats));
 	}
 
+	/**
+	* sets up a level's stats and add them to inventory
+	* <p> side-effects</p>
+	* <p> referentially transparent</p>
+	@param stats the level's stats, inventory the number of items at the start of the level
+	*/
 	private void setUpLevelStats(HashMap<String, Integer> stats, int[] inventory) {
-		this.timeLeft = stats.get("timeLeft") * 10;
-		this.loseAmount = stats.get("loseAmount");
+		this.timeLeft = stats.get("timeLeft") * 10; //convert from seconds to ticks
+		this.loseAmount = stats.get("loseAmount"); 
 		Game.inventory = new Inventory(stats, inventory);
 	}
 }
