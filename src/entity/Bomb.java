@@ -41,6 +41,15 @@ public class Bomb extends Item {
         timer = DEFAULT_BOMB_TIME;
     }
 
+    /**
+     * 2nd Constructor, Svaes Bomb via it's
+     * Image and Coordinates, and sets a DEFAULT timer
+     * for when it explodes
+     *
+     * @param position takes in the coordinates of the Bomb
+     * @param timeLeft holds the time left
+     */
+
     public Bomb(Pos position, int timeLeft) {
         super(ItemType.BOMB ,new Image("file:resources/bomb.png"), position);
         timer = timeLeft;
