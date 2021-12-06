@@ -9,6 +9,14 @@ import org.json.simple.parser.ParseException;
 import java.io.*;
 import java.util.*;
 
+/**
+ * <p> 1. File-name: playerProfile.java</p>
+ * <p> 2. Creation Date: 25/11/21 </p>
+ * <p> 3. Last modification date: 05/12/21 </p>
+ * <p> 4. Purpose of the program: Used to read and convert JSON player objects</p>
+ *
+ * @author Gus
+ */
 public class ProfileReader {
     public static final String ERROR_MSG_FILE_NOT_FOUND = "Could not find %s.";
     public static final String PROFILE_PATH = "profiles/profiles.json";
