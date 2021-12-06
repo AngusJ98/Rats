@@ -131,7 +131,7 @@ public class GameRenderer {
     /**
      * Redraws the entire board, used at the start of the game
      *
-     * @param entities
+     * @param entities the entities to be drawn
      */
     public void redrawBoard(Entity[] entities) {
         this.entityBoard.getChildren().clear();
@@ -141,7 +141,7 @@ public class GameRenderer {
     /**
      * removes old graphics of entities and updates them
      *
-     * @param entities
+     * @param entities the entities to be drawn
      */
     public void redrawEntities(Entity[] entities) {
         this.removeEntities();

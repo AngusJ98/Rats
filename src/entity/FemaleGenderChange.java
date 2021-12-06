@@ -23,7 +23,7 @@ public class FemaleGenderChange extends Item {
      * <p> side-effects</p>
      * <p> not referentially transparent</p>
      *
-     * @param pos takes coordinates of male gender change to be placed.
+     * @param position takes coordinates of male gender change to be placed.
      */
 
     public FemaleGenderChange(Pos position) {
@@ -36,7 +36,7 @@ public class FemaleGenderChange extends Item {
      * <p> no side-effects</p>
      * <p> not referentially transparent</p>
      *
-     * @param takes the spesific rat in to change its gender
+     * @param target takes the spesific rat in to change its gender
      *              if all conditions are met.
      */
 
@@ -51,7 +51,7 @@ public class FemaleGenderChange extends Item {
     /**
      * Check if change gender item has touched a rat
      *
-     * @param takes the change gender item in to collide with rat
+     * @param target takes the change gender item in to collide with rat
      */
 
     public void itemCollision(Item target) {

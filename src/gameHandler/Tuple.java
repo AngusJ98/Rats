@@ -17,14 +17,16 @@ public class Tuple<T1, T2, T3, T4, T5, T6> {
     private final T5 fifth;
     private final T6 sixth;
 
-    /**
-     * Constructor.
-     * <p> side-effects</p>
-     * <p> not referentially transparent</p>
-     *
-     * @param pos takes all six tuples.
-     */
 
+    /**
+     * creates a tuple of 6 types
+     * @param first first type
+     * @param second 2nd type
+     * @param third third type
+     * @param fourth Fourth type
+     * @param fifth 5th TyPe
+     * @param sixth s6th type
+     */
     public Tuple(T1 first, T2 second, T3 third, T4 fourth,
                  T5 fifth, T6 sixth) {
         this.first = first;

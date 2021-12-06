@@ -53,7 +53,7 @@ public class Game {
     /**
      * sets level number
      *
-     * @param levelNum
+     * @param levelNum the level index
      */
     public static void setLevelNum(int levelNum) {
         Game.levelNum = levelNum;
@@ -99,7 +99,7 @@ public class Game {
     /**
      * sets runner
      *
-     * @param runner
+     * @param runner the runner for the rendrerer
      */
     public static void setRunner(GameRenderer runner) {
         Game.runner = runner;
@@ -135,6 +135,7 @@ public class Game {
      * set up from save file
      * <p>side-effects</p>
      * <p>referentially transparent</p>
+     * @Exception exceptional
      */
     public void setUpFromSave() throws ParseException, IOException {
         //file reader class goes here, reads file and passes data to this method
@@ -164,6 +165,7 @@ public class Game {
      * starts the game
      * <p>side-effects</p>
      * <p>referentially transparent</p>
+     * @Exception exceptional
      */
     public void startFromSave() throws InterruptedException {
         Game.runner.redrawBoard(this.createCombinedEntityList());
@@ -180,8 +182,6 @@ public class Game {
      * <p>side-effects</p>
      * <p>not referentially transparent</p>
      *
-     * @param pos coordinates of the tile
-     * @return returns true if passable, otherwise false
      */
     private void tickWithoutRats() {
         inventory.restock();
@@ -249,6 +249,7 @@ public class Game {
      * gets the level's stats to save to a file
      * <p> no side-effects</p>
      * <p> referentially transparent</p>
+     * @return the hashmap of stats hashed by their name
      */
     public static HashMap<String, Integer> getLevelStats() {
         HashMap<String, Integer> levelStats = new HashMap<>();
@@ -377,7 +378,7 @@ public class Game {
          * <p> no side-effects</p>
          * <p> not referentially transparent</p>
          *
-         * @param toKill
+         * @param toKill a list of rats to kill
          */
         public static void killRatArray(ArrayList<BasicRat> toKill) { //this one kills all basicrats in the array it's passed
             ratsToKill.addAll(ratsToKill);
@@ -425,7 +426,7 @@ public class Game {
          * <p> side-effects</p>
          * <p> not referentially transparent</p>
          *
-         * @param rat
+         * @param rat a rat to add to the rat list
          */
         public static void addRat(BasicRat rat) {
             ratsToAdd.add(rat);
@@ -467,8 +468,8 @@ public class Game {
         /**
          * gets entities
          *
-         * @param pos
-         * @return
+         * @param pos the pos
+         * @return the entities at the pos
          */
         public static ArrayList<Entity> getEntities(Pos pos) {
             ArrayList<Entity> entities = new ArrayList<>();
@@ -495,7 +496,7 @@ public class Game {
         /**
          * sets the max width of the gameBoard
          *
-         * @param numTileWidth
+         * @param numTileWidth the width
          */
         public static void setNumTileWidth(int numTileWidth) {
             TileManager.numTileWidth = numTileWidth;
@@ -513,7 +514,7 @@ public class Game {
         /**
          * sets the max height of the gameBoard
          *
-         * @param numTileHeight
+         * @param numTileHeight the height
          */
         public static void setNumTileHeight(int numTileHeight) {
             TileManager.numTileHeight = numTileHeight;
@@ -525,6 +526,8 @@ public class Game {
          * <p> referentially transparent</p>
          *
          * @param dir the direction to move in, pos start position
+         *
+         * @param pos the pos before the move
          * @return pos the next position in the direction specified
          */
         public static Pos getPosFromDir(Direction dir, Pos pos) {
@@ -574,6 +577,7 @@ public class Game {
          * <p>referentially transparent</p>
          *
          * @param itemString the string representing the item, pos the coordinates to place the item at
+         * @param pos the position to try and place the item
          */
         public static void tryPlace(String itemString, Pos pos) {
             if (true /*TODO Stock check here*/) { //"just leave it there he's kinda quirky" - Gus, 4:19am when asked if i should remove the if statement
@@ -675,8 +679,6 @@ public class Game {
          * <p> side-effects</p>
          * <p> referentially transparent</p>
          *
-         * @param pos coordinates of the tile
-         * @return returns true if passable, otherwise false
          */
         public static void performItemActions() {
             for (Item item : items) {
@@ -702,7 +704,7 @@ public class Game {
      * <p> no side-effects</p>
      * <p> referentially transparent</p>
      *
-     * @param args
+     * @param args arrrg
      */
     public static void main(String[] args) {
         Game game = new Game();
@@ -732,6 +734,7 @@ public class Game {
      * sets up from level file
      * <p> side-effects</p>
      * <p> referentially transparent</p>
+     * @Exception exceptional
      */
     public void setUp() throws ParseException, IOException {
         //file reader class goes here, reads file and passes data to this method
@@ -755,7 +758,7 @@ public class Game {
     /**
      * set the level's filepath
      *
-     * @param levelPath
+     * @param levelPath the path of the level file
      */
     public static void setLevelPath(String levelPath) {
         Game.levelPath = levelPath;
@@ -765,6 +768,7 @@ public class Game {
      * constructs the tilemap from Tilemanager
      * <p> side-effects</p>
      * <p> referentially transparent</p>
+     * @param map a 2d array of chars
      */
     public void constructTileMap(char[][] map) {
         Game.tiles = new HashMap<>();//set to new hashmap so we don't accidentally keep old boards
@@ -798,6 +802,7 @@ public class Game {
      * <p> referentially transparent</p>
      *
      * @param stats the level's stats, inventory the number of items at the start of the level
+     * @param inventory  inventory of items
      */
     private void setUpLevelStats(HashMap<String, Integer> stats, int[] inventory) {
         this.timeLeft = stats.get("timeLeft") * 10; //convert from seconds to ticks

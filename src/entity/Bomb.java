@@ -106,7 +106,7 @@ public class Bomb extends Item {
      * <p> no side-effects</p>
      * <p> not referentially transparent</p>
      *
-     * @return
+     * @return the number of seconds remaining
      */
     public int getSeconds() {
         return (int) Math.ceil((float) timer / TICKS_PER_SECOND);

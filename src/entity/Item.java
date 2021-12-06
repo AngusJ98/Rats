@@ -42,7 +42,7 @@ public abstract class Item extends Entity {
     /**
      * Method to set the type
      *
-     * @param type
+     * @param type the type of rat
      */
 
     public void setType(ItemType type) {

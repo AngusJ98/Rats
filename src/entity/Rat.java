@@ -178,6 +178,7 @@ public abstract class Rat extends Entity {
      * move function for the rat
      * <p> side-effects</p>
      * <p> not referentially transparent</p>
+     * @return a boolean of whether the rat moved
      */
     public boolean move() {
         if (Game.getTiles().get(this.pos).getType() == TileTypes.SPEEDTILE) {

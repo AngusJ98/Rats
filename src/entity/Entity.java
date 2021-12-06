@@ -52,7 +52,7 @@ public abstract class Entity {
     /**
      * gets entity type
      *
-     * @ entity type
+     * @return entityType  the type of entity
      */
     public EntityType getEntityType() {
         return entityType;
@@ -66,7 +66,7 @@ public abstract class Entity {
     /**
      * sets the position of the entity
      *
-     * @param position
+     * @param position the new position
      */
     public void setPosition(Pos position) {
         this.pos = position;

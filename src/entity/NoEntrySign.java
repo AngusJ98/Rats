@@ -36,10 +36,9 @@ public class NoEntrySign extends Item {
      * <p> side-effects</p>
      * <p> not referentially transparent</p>
      *
-     * @param position
-     * @param hp
+     * @param position the pos of the sign
+     * @param hp the signs current hp
      */
-
     public NoEntrySign(Pos position, int hp) {
         super(ItemType.NOENTRYSIGN, noEntImg, position);
         this.hp = hp;
@@ -50,7 +49,7 @@ public class NoEntrySign extends Item {
      * <p> no side-effects</p>
      * <p> not referentially transparent</p>
      *
-     * @param target
+     * @param target the targer
      */
 
     public void ratCollision(Rat target) {

@@ -40,7 +40,6 @@ public class BasicRat extends Rat {
      * <p> referentially transparent</p>
      *
      * @param type  takes in the rat type of basic rat.
-     * @param image takes in the image of the rat
      * @param pos   takes coordinates of the position of the rat.
      */
     public BasicRat(RatTypes type, Pos pos) {
@@ -132,7 +131,7 @@ public class BasicRat extends Rat {
     /**
      * sets the sterile booleon for the Basic Rat
      *
-     * @param sterile
+     * @param sterile is the rat sterile
      */
     public void setSterile(boolean sterile) {
         this.sterile = sterile;
@@ -141,7 +140,7 @@ public class BasicRat extends Rat {
     /**
      * Setter for Time to Growth
      *
-     * @param timeToGrowth
+     * @param timeToGrowth how long the rat has left to grow
      */
     private void setTimeToGrowth(int timeToGrowth) {
         this.timeToGrowth = timeToGrowth;
@@ -150,7 +149,7 @@ public class BasicRat extends Rat {
     /**
      * Setter for Num of Children
      *
-     * @param numChildren
+     * @param numChildren how many children the rat has
      */
     private void setNumChildren(int numChildren) {
         this.numChildren = numChildren;
@@ -159,7 +158,7 @@ public class BasicRat extends Rat {
     /**
      * Setter for Time To Birth
      *
-     * @param timeToBirth
+     * @param timeToBirth time remaining till birth
      */
     private void setTimeToBirth(int timeToBirth) {
         this.timeToBirth = timeToBirth;
@@ -168,7 +167,7 @@ public class BasicRat extends Rat {
     /**
      * Setter for Gender
      *
-     * @param gender
+     * @param gender new gender
      */
     public void setGender(RatTypes gender) {
         // Changing to male won't affect existing males because they won't have
@@ -244,7 +243,7 @@ public class BasicRat extends Rat {
     /**
      * Setter for HP
      *
-     * @param hitPoints
+     * @param hitPoints the hit points to set to
      */
     public void setHP(int hitPoints) {
         this.hitPoints = hitPoints;
