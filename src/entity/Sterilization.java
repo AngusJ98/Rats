@@ -25,7 +25,7 @@ public class Sterilization extends Item {
      * <p> side-effects</p>
      * <p> not referentially transparent</p>
      *
-     * @param pos takes coordinates of Sterilization to be placed.
+     * @param position takes coordinates of Sterilization to be placed.
      */
 
     public Sterilization(Pos position) {
@@ -38,10 +38,9 @@ public class Sterilization extends Item {
      * <p> side-effects</p>
      * <p> not referentially transparent</p>
      *
-     * @param pos   takes coordinates of Sterilization to be placed.
-     * @param takes in the current time left of a Sterilization
+     * @param position   takes coordinates of Sterilization to be placed.
+     * @param timeLeft in the current time left of a Sterilization
      */
-
     public Sterilization(Pos position, int timeLeft) {
         super(ItemType.STERILIZATION, new Image("file:resources/sterile.png"), position);
         timer = timeLeft;
