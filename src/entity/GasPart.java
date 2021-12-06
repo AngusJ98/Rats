@@ -22,17 +22,18 @@ public class GasPart extends Item {
 
     /**
      * Constructor used to create a Gas image on a specific position
+     *
      * @param position the position of the gas being created
      */
     public GasPart(Pos position) {
-        super(ItemType.GASPART ,new Image("file:resources/gas.png"), position);
+        super(ItemType.GASPART, new Image("file:resources/gas.png"), position);
     }
 
     /**
      * Removes gas from the board after a certain duration
      * first to be placed is the first to be removed
-     *  <p> no side-effects</p>
-     * 	<p> referentially transparent</p>
+     * <p> no side-effects</p>
+     * <p> referentially transparent</p>
      */
     public void tick() {
         if (this.currentExist > LIFETIME) {
@@ -43,8 +44,9 @@ public class GasPart extends Item {
 
     /**
      * collision for when the gas part collides with the Gas Part
-     *  <p> no side-effects</p>
-     * 	<p> referentially transparent</p>
+     * <p> no side-effects</p>
+     * <p> referentially transparent</p>
+     *
      * @param target the rat being collided with
      */
     public void ratCollision(Rat target) {
