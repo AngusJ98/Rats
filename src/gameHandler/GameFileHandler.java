@@ -21,7 +21,6 @@ public class GameFileHandler {
     public static final String LEVEL_PATH = "levelFiles/";
     public static final String SAVE_FILE_EXT = ".json";
 
-
     private GameFileHandler() {}
 
     private static JSONObject readJSON(String fileName, boolean isLevel)
@@ -38,7 +37,6 @@ public class GameFileHandler {
             );
         }
     }
-
 
     private static int objToInt(JSONObject obj, String key) {
         return Math.toIntExact((long) obj.get(key));
@@ -222,7 +220,8 @@ public class GameFileHandler {
 
         for (int i = 0; i < nItems; i++) {
             currentKey = itemKeys[i];
-            items[i] = makeItemArray((JSONArray) itemsOnMap.get(currentKey), currentKey);
+            items[i] =
+                    makeItemArray((JSONArray) itemsOnMap.get(currentKey), currentKey);
         }
 
         return items;
@@ -328,8 +327,8 @@ public class GameFileHandler {
 	public static void saveGame() {
 		//construct map string
 		String mapStr = "";
-		for (y = 0; y < Game.TileManager.getNumTileWidth()) {
-			for (x = 0; x < Game.TileManager.getNumTileHeight()) {
+		for (y = 0; y < TileManager.getNumTileWidth()) {
+			for (x = 0; x < TileManager.getNumTileHeight()) {
 				TileType type = TileManager.getTile(new Pos(x, y)).getType();
 				switch (type) {
 				case TileTypes.PATH: 
@@ -380,10 +379,10 @@ public class GameFileHandler {
 			}
 			ratStr += "\n";
 		}
-		ratStr += "  ],\n";
+		ratStr += "  ],";
 		
 		//construct item string
-		String itemStr = "  \"itemsOnMap\": {\n    ";
+		String itemStr = "\n  \"itemsOnMap\": {\n    ";
 		ArrayList<Item> items = ItemManager.getItemList(); 
 		for (Item item : items) {
 			//kinda scuffed but jonny made this before itemType so i have no choice
@@ -419,23 +418,44 @@ public class GameFileHandler {
 		for (DeathRat deathRat : deathRats) {
 			itemStr += "\"deathRat"\": [" + deathRat.getPosition.x ", " + deathRat.getPosition.y + "]";
 			if (index < items.size() -1) {
-				itemStr += ", "
+				itemStr += ", ";
 			}	
-			index++
-		}	
+			index++;
+		}
+		itemStr += "},";
 
 		//construct level stats string
-		String lvlStr = "";
-		
-		//construct player string
-		String playerStr = "";
+		String lvlStr = "\n  \"levelStats\": {";
+		HashMap<String, Integer> lvlStats = Game.getLevelStats();
+		lvlStr += "    \"timeLeft\": " + lvlStats.get("timeLeft") + ",";
+		lvlStr += "    \"bombFreq\": " + lvlStats.get("bombFreq") + ",";
+		lvlStr += "    \"gasFreq\": " + lvlStats.get("gasFreq") + ",";
+		lvlStr += "    \"sterilizeFreq\": " + lvlStats.get("sterilizeFreq") + ",";
+		lvlStr += "    \"mSexChangefreq\": " + lvlStats.get("mSexChangeFreq") + ",";
+		lvlStr += "    \"fSexChangeFreq\": " + lvlStats.get("fSexChangeFreq") + ",";
+		lvlStr += "    \"noEntryFreq\": " + lvlStats.get("noEntryFreq") + ",";
+		lvlStr += "    \"deathRatFreq\": " + lvlStats.get("deathRatFreq") + ",";
+		lvlStr += "    \"poisonFreq\": " + lvlStats.get("poisonFreq") + ",";
+		lvlStr += "    \"loseAmount\": " + lvlStats.get("loseAmount") + ",\n  },";		
 		
 		//construct inventory string
-		String inventoryStr = "";
-				
-		String fullGameString = fullMapString + ratStr + itemStr + lvlStr + playerStr + inventoryStr;		
+		String inventoryStr = "\n  \"inventory\": {";
+		inventoryStr = "    \"bomb\": " + Inventory.getBombCount() + ",";
+		inventoryStr = "    \"gas\": " + Inventory.getGasCount() + ",";
+		inventoryStr = "    \"sterilise\": " + Inventory.getSterileCount() + ",";
+		inventoryStr = "    \"poison\": " + Inventory.getPoisonCount() + ","
+		inventoryStr = "    \"mSexChange\": " + Inventory.getMaleCount() + ",";
+		inventoryStr = "    \"fSexChange\": " + Inventory.getFemaleCount() + ",";
+		inventoryStr = "    \"noEntry\": " + Inventory.getNoEntryCount() + ",";
+		inventoryStr = "    \"deathRat\": " + Inventory.getDeathCount() + "\n  }\n}";
+	
+		String fullGameString = fullMapString + ratStr + itemStr + lvlStr + playerStr + inventoryStr;
+		
+		writeSaveFile(fullGameString);
     }	
 	private static void writeSaveFile(String saveString) {
+		JSONObject obj = new JSONObject
+		
 		
     }
 	
