@@ -9,11 +9,11 @@ import javafx.scene.image.Image;
 
 /**
  * <p> 1. File-name: Tile.java</p>
- * <p> 2. Creation Date: XX/XX/XX </p>
- * <p> 3. Last modification date: XX/XX/XX </p>
+ * <p> 2. Creation Date: 13/11/21 </p>
+ * <p> 3. Last modification date: 04/12/21 </p>
  * <p> 4. Purpose of the program: Implementation of different tile types</p>
  *
- * @author ??
+ * @author Andrew
  */
 //whoever`s class this is please fill in missing information in Javadoc
 public class Tile { // Does tile need to be an entity.Entity? Tiles don't
@@ -27,8 +27,6 @@ public class Tile { // Does tile need to be an entity.Entity? Tiles don't
      * Constructor used to create a new Tile.
      * Uses a switch statement to initialise a tile based on the case it satisfies
      * and executes specific things respective of the case it satisfies.
-     * <p> no side-effects</p>
-     * <p> not referentially transparent</p>
      *
      * @param type the tile type which is being created
      */
@@ -117,16 +115,18 @@ public class Tile { // Does tile need to be an entity.Entity? Tiles don't
 
 
     /**
-     * Method
+     * Method which stops the rats from showing up under Tunnels
      *
-     * @return
+     * @return boolean of whether a tile hides rats
      */
     public boolean getHidesRats() {
         return hidesRats;
     }
 
     /**
-     * @param hidesRats
+     * Method which is used to set whether a tile such as tunnel hides rats
+     *
+     * @param hidesRats will set a tile to hide rats
      */
     private void setHidesRats(boolean hidesRats) {
         this.hidesRats = hidesRats;
