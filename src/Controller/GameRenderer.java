@@ -304,7 +304,7 @@ public class GameRenderer {
 
     /**
      * Saves the current game state
-     * @param path the json file to save it in. 
+     * @param path the json file to save it in.
      */
     private void save(String path) {
         GameFileHandler.saveGame(path);

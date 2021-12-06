@@ -11,12 +11,16 @@ import static Controller.Main.WINDOW_WIDTH;
  *
  <p> 1. File-name: Defeat.java</p>
  <p> 2. Creation Date: (N/A) </p>
- <p> 3. Last modification date:</p>
+ <p> 3. Last modification date:6/12/21</p>
  <p> 4. Purpose of the program: Display defeat message</p>
  * @author Gus
  */
 
 public class Defeat {
+
+    /**
+     * returns to the menu scene
+     */
     public void returnToMenu() {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("menu.fxml"));
