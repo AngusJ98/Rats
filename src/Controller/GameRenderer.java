@@ -298,7 +298,7 @@ public class GameRenderer {
     /**
      * action for save button
      *
-     * @param event
+     * @param event event
      */
     public void save1(ActionEvent event) {
         save("1");
@@ -307,7 +307,7 @@ public class GameRenderer {
     /**
      * action for save button
      *
-     * @param event
+     * @param event event
      */
     public void save2(ActionEvent event) {
         save("2");
@@ -316,7 +316,7 @@ public class GameRenderer {
     /**
      * action for save button
      *
-     * @param event
+     * @param event event
      */
     public void save3(ActionEvent event) {
         save("3");

@@ -135,7 +135,9 @@ public class Game {
      * set up from save file
      * <p>side-effects</p>
      * <p>referentially transparent</p>
-     * @Exception exceptional
+
+     * @throws ParseException exception
+     * @throws IOException exception
      */
     public void setUpFromSave() throws ParseException, IOException {
         //file reader class goes here, reads file and passes data to this method
@@ -165,7 +167,7 @@ public class Game {
      * starts the game
      * <p>side-effects</p>
      * <p>referentially transparent</p>
-     * @Exception exceptional
+     * @throws InterruptedException exceptional
      */
     public void startFromSave() throws InterruptedException {
         Game.runner.redrawBoard(this.createCombinedEntityList());
@@ -734,7 +736,8 @@ public class Game {
      * sets up from level file
      * <p> side-effects</p>
      * <p> referentially transparent</p>
-     * @Exception exceptional
+     * @throws ParseException exceptional
+     * @throws IOException exceptional
      */
     public void setUp() throws ParseException, IOException {
         //file reader class goes here, reads file and passes data to this method
