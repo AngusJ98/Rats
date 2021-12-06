@@ -19,9 +19,10 @@ public class NoEntrySign extends Item {
     private int hp;
 
     /**
-     *  1st Constructor.
-     *  <p> side-effects</p>
-     *  <p> not referentially transparent</p>
+     * 1st Constructor.
+     * <p> side-effects</p>
+     * <p> not referentially transparent</p>
+     *
      * @param position takes in position
      */
 
