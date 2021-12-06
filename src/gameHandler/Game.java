@@ -50,7 +50,7 @@ public class Game {
 
 	/**
 		 * sets level number
-		 * @param levelNum
+		 * @param levelNum the number index of the level
 		 */
 	public static void setLevelNum(int levelNum) {
 		Game.levelNum = levelNum;
@@ -91,7 +91,7 @@ public class Game {
 
 	/**
 	 * sets runner
-	 * @param runner
+	 * @param runner this is the runner
 	 */
 	public static void setRunner(GameRenderer runner) {
 		Game.runner = runner;
@@ -126,6 +126,7 @@ public class Game {
 		 * set up from save file
 		 * <p>side-effects</p>
 		 * <p>referentially transparent</p>
+	 	 * @exception Exceptional
 		 */
 	public void setUpFromSave() throws ParseException, IOException {
 		//file reader class goes here, reads file and passes data to this method
