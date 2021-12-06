@@ -12,6 +12,7 @@ import javafx.scene.image.Image;
  * <p> 2. Creation Date: 30/11/2021 </p>
  * <p> 3. Last modification date: 5/12/2021</p>
  * <p> 4. Purpose of the program: Gas item implementation</p>
+ *
  * @author Andrew
  */
 
@@ -24,10 +25,11 @@ public class Gas extends Item {
 
     /**
      * 1st Constructor, intializes the position of the gas
+     *
      * @param position coordinates to place the gas in
      */
     public Gas(Pos position) {
-        super(ItemType.GAS ,new Image("file:resources/gasCan.png"), position);
+        super(ItemType.GAS, new Image("file:resources/gasCan.png"), position);
 
         //gas will act like a gas canister and be responsible for the spread of gasparts
         //gasparts will be the entities that deal damage to rats
@@ -38,8 +40,8 @@ public class Gas extends Item {
 
     /**
      * ticks for the gas
-     *  <p> no side-effects</p>
-     * 	<p> not referentially transparent</p>
+     * <p> no side-effects</p>
+     * <p> not referentially transparent</p>
      */
     public void tick() {
         //if there are less than <6> gas clouds, this method will attempt to place one each game tick
