@@ -1,4 +1,5 @@
 package Controller;
+
 import gameHandler.Game;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -21,14 +22,30 @@ import playerProfile.ProfileReader;
 import java.util.ArrayList;
 import java.util.Optional;
 
+/**
+ * <p> 1. File-name: MenuRunner.java</p>
+ * <p> 2. Creation Date: 1/12/21 </p>
+ * <p> 3. Last modification date:6/12/21</p>
+ * <p> 4. Purpose of the program: Runs the menu</p>
+ *
+ * @author Gus
+ */
+
 public class MenuRunner {
 
-    @FXML private AnchorPane menuBase;
-    @FXML private TabPane highscore;
-    @FXML private Menu profiles;
-    @FXML private Text playerId;
-    @FXML private Menu play;
-    @FXML private Menu load;
+    @FXML
+    private AnchorPane menuBase;
+    @FXML
+    private TabPane highscore;
+    @FXML
+    private Menu profiles;
+    @FXML
+    private Text playerId;
+    @FXML
+    private Menu play;
+    @FXML
+    private Menu load;
+
     public MenuRunner() {
         Alert motd = new Alert(Alert.AlertType.INFORMATION);
         motd.setTitle("Message of the day!");
@@ -75,9 +92,10 @@ public class MenuRunner {
 
     /**
      * starts the game, Switches scene and creates the game object
+     *
      * @throws Exception exceptional
      */
-    private void startGame() throws Exception{
+    private void startGame() throws Exception {
         try {
             //switch scene
             Parent gameScreen = FXMLLoader.load(getClass().getResource("game.fxml"));
@@ -110,7 +128,8 @@ public class MenuRunner {
             m.setText(player.getPlayerName());
             m.setId(i + "");
             m.setOnAction(new EventHandler<ActionEvent>() {
-                @Override public void handle(ActionEvent e) {
+                @Override
+                public void handle(ActionEvent e) {
                     Player[] allPs = ProfileReader.retrieveAllPlayers();
                     Main.activePlayer = allPs[Integer.parseInt(m.getId())];
                     playerId.setText(Main.activePlayer.getPlayerName());
@@ -138,19 +157,17 @@ public class MenuRunner {
             ColumnConstraints colCon = new ColumnConstraints();
             colCon.setPercentWidth(20);
 
-            table.getColumnConstraints().addAll(colCon,colCon);
+            table.getColumnConstraints().addAll(colCon, colCon);
             int j = 0;
-            for (Player mini :highScorers) {
+            for (Player mini : highScorers) {
                 Text name = new Text(mini.getPlayerName());
-                Text score = new Text (mini.getScores()[i] + "");
+                Text score = new Text(mini.getScores()[i] + "");
                 name.setFont(new Font(20));
                 score.setFont(new Font(20));
-                table.add(name,0,j);
+                table.add(name, 0, j);
                 table.add(score, 1, j);
                 j++;
             }
-
-
 
 
             newTab.setContent(table);
@@ -163,6 +180,7 @@ public class MenuRunner {
 
     /**
      * button method to start game at level 0
+     *
      * @param actionEvent not used,
      * @throws Exception exceptional
      */
@@ -174,6 +192,7 @@ public class MenuRunner {
 
     /**
      * button method to start game at level 1
+     *
      * @param actionEvent not used,
      * @throws Exception exceptional
      */
@@ -185,6 +204,7 @@ public class MenuRunner {
 
     /**
      * button method to start game at level 2
+     *
      * @param actionEvent not used,
      * @throws Exception exceptional
      */
@@ -196,6 +216,7 @@ public class MenuRunner {
 
     /**
      * button method to start game at the gus level
+     *
      * @param actionEvent not used,
      * @throws Exception exceptional
      */
@@ -207,6 +228,7 @@ public class MenuRunner {
 
     /**
      * button method to start game at the dylan level
+     *
      * @param actionEvent not used,
      * @throws Exception exceptional
      */
@@ -219,6 +241,7 @@ public class MenuRunner {
 
     /**
      * button method to start game at the liam level
+     *
      * @param actionEvent not used,
      * @throws Exception exceptional
      */
@@ -246,34 +269,38 @@ public class MenuRunner {
 
     /**
      * button method to load save slot 1
+     *
      * @param event not used
      * @throws Exception Exceptional
      */
-    public void load1(ActionEvent event) throws Exception{
+    public void load1(ActionEvent event) throws Exception {
         load("1");
     }
 
     /**
      * button method to load save slot 1
+     *
      * @param event not used
      * @throws Exception Exceptional
      */
-    public void load2(ActionEvent event) throws Exception{
+    public void load2(ActionEvent event) throws Exception {
         load("2");
     }
 
     /**
      * button method to load save slot 1
+     *
      * @param event not used
      * @throws Exception Exceptional
      */
-    public void load3(ActionEvent event) throws Exception{
+    public void load3(ActionEvent event) throws Exception {
         load("3");
     }
 
     /**
      * starts the game by setting the game to be loaded and switching scene
      * , then calling the setup and start methods on game
+     *
      * @param path the path to the save file
      */
     private void startGameFromSave(String path) {
@@ -296,6 +323,7 @@ public class MenuRunner {
 
     /**
      * Sets up game to be loaded from a save file
+     *
      * @param path the path to the save file
      * @throws Exception Exceptional
      */
