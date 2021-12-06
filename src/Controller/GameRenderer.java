@@ -30,7 +30,7 @@ import static java.lang.Math.min;
  * <p> 1. File-name: GameRenderer.java</p>
  * <p> 2. Creation Date: 26/11/21 </p>
  * <p> 3. Last modification date: 5/12/21 </p>
- * <p> 4. Purpose of the program: To renderer the game </p>
+ * <p> 4. Purpose of the program: To render the game </p>
  *
  * @author Gus
  */
