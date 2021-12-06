@@ -5,8 +5,8 @@ import java.util.Objects;
 /**
  *
  <p> 1. File-name: Pos.java</p>
- <p> 2. Creation Date: (N/A) </p>
- <p> 3. Last modification date:</p>
+ <p> 2. Creation Date: 17/11/21 </p>
+ <p> 3. Last modification date: 05/12/21 </p>
  <p> 4. Purpose of the program: Makes a position on the map for entitys</p>
  * @author Gus
  */
