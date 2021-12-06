@@ -1,7 +1,7 @@
 {
   "map": {
-    "dimensions": [22, 15],
-    "tiles": "GGGGGGGGGGGGGGGGGGGGGG\nGPPPPPPPPPPPPPPPPPPPPG\nGPGGGGGGPGGPGPGGGGGGPG\nGPPPSPPPPTTPGPGGGGGGPG\nGPGGGGGGPGGPGPGGGGGGPG\nGPPPTTPPPTTPSPPTTTPSPG\nGPGGGGGPGGTGGGPGGGGGPG\nGPGGGGGPGGTGGGPGGGGGPG\nGPGGGGGPGGTGGGPGGGGGPG\nGPSPPPPPPPPPPPPGGGGGPG\nGPGGGTGGGGGPGGGGGGGGPG\nGPGGGTGGGGGPPPPSPPPPPG\nGPGGGTGGGGGPGGGGGGGGPG\nGPPPPPPPPSPPPPSPPPPPPG\nGGGGGGGGGGGGGGGGGGGGGG\n"
+    "dimensions": [34, 34],
+    "tiles": "GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG\nGPPPPPPPSPPPPPPPPPPPPPPPPPPPPPPPPG\nGPGGPGGGPGGGPGGGGGPGGGGGGGGGGGGGPG\nGPGGPGGGGGGGPGGGGGGGGGPGGGGGGPPPPG\nGPGGPTTTTTTTPPPPPPPSPPPPPGGGGGGGPG\nGPGGPGGGTGGGGGGGTGGGGGPGGGGGGGGGPG\nGPGGPGGGTGGGGGGGTGGGGGPPPPPSPPPPPG\nGPPSPPPPPPPPPTTTTTTTTTPGGGGPGGGGPG\nGPGGGTGGGPGGGGGGGGGGGGGGGGGPGGGGPG\nGPGGGTTTTPGGGGPGGGGGGGGGGGGPGGGGPG\nGPGGGGGGGPPPPPPPSPTTTTTTTTTPGGGGPG\nGPGGGGGSPPGGGGGGGGGGGTGGGGGGGGGGPG\nGPGGGGGGGPGGPGGGGGGGGTGGGGGGGGGGPG\nGPTTTTTTTPPPPPPSPPPPPPPPPPPSPPPPPG\nGPGGGTGGGGGGPGGGGGGPGGGGGGGGGGGGPG\nGPGGGTGGGGGGPGGPGGGPGGGGGGGGGGGGPG\nGPPPPPPPPPPPPPPPPPPPSPPPPPTTTTTTPG\nGPGGPGGGPGGGPGGGGGPGGGGGGGGGGGGGPG\nGPGGPGGGGGGGPGGGGGGGGGPGGGGGGPPPPG\nGPGGPTTTTTTTPPPPPPPSPPPPPGGGGGGGPG\nGPGGPGGGTGGGGGGGTGGGGGPGGGGGGGGGPG\nGSGGPGGGTGGGGGGGTGGGGGPPPPPSPPPPPG\nGPPSPPPPPPPPPTTTTTTTTTPGGGGPGGGGPG\nGPGGGTGGGPGGGGGGGGGGGGGGGGGPGGGGPG\nGPGGGTTTTPGGGGPGGGGGGGGGGGGPGGGGPG\nGPGGGGGGGPPPPPPPSPTTTTTTTTTPGGGGSG\nGPGGGGGSPPGGGGGGGGGGGTGGGGGGGGGGPG\nGPGGGGGGGPGGPGGGGGGGGTGGGGGGGGGGPG\nGPTTTTTTTPPPPPPSPPPPPPPPPPPSPPPPPG\nGPGGGTGGGGGGPGGGGGGPGGGGGGGPGGGGPG\nGPGGGTGGGGGGPGGPGGGPGGGGGGGPGGGGPG\nGGGGGTGGGGGGPGGGGGGPGGGGGGGPGGGGGG\nGPPPPPPPPPPPPPPPPSPPPPPPPPPPPPPPPG\nGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG\n"
 
   },
   "rats": [
@@ -14,7 +14,7 @@
       "numChildren": 0,
       "timeToBirth": 0,
       "hp": 100,
-      "position": [1, 1]
+      "position": [17, 17]
     },
     {
       "gender": "BABY",
@@ -25,7 +25,7 @@
       "numChildren": 0,
       "timeToBirth": 0,
       "hp": 100,
-      "position": [12, 2]
+      "position": [17, 17]
     },
     {
       "gender": "BABY",
@@ -36,7 +36,7 @@
       "numChildren": 0,
       "timeToBirth": 0,
       "hp": 100,
-      "position": [1, 8]
+      "position": [17, 17]
     },
     {
       "gender": "BABY",
@@ -47,18 +47,84 @@
       "numChildren": 0,
       "timeToBirth": 0,
       "hp": 100,
-      "position": [9, 2]
+      "position": [17, 17]
     },
     {
       "gender": "BABY",
-      "canMate": false,
+      "canMate": true,
       "canMove": true,
       "moveSpeed": 2,
       "timeToGrowth": 60,
       "numChildren": 0,
       "timeToBirth": 0,
-      "hp": 50,
-      "position": [5, 5]
+      "hp": 100,
+      "position": [17, 17]
+    },
+    {
+      "gender": "BABY",
+      "canMate": true,
+      "canMove": true,
+      "moveSpeed": 2,
+      "timeToGrowth": 60,
+      "numChildren": 0,
+      "timeToBirth": 0,
+      "hp": 100,
+      "position": [17, 17]
+    },
+    {
+      "gender": "BABY",
+      "canMate": true,
+      "canMove": true,
+      "moveSpeed": 2,
+      "timeToGrowth": 60,
+      "numChildren": 0,
+      "timeToBirth": 0,
+      "hp": 100,
+      "position": [17, 17]
+    },
+    {
+      "gender": "BABY",
+      "canMate": true,
+      "canMove": true,
+      "moveSpeed": 2,
+      "timeToGrowth": 60,
+      "numChildren": 0,
+      "timeToBirth": 0,
+      "hp": 100,
+      "position": [17, 17]
+    },
+    {
+      "gender": "BABY",
+      "canMate": true,
+      "canMove": true,
+      "moveSpeed": 2,
+      "timeToGrowth": 60,
+      "numChildren": 0,
+      "timeToBirth": 0,
+      "hp": 100,
+      "position": [17, 17]
+    },
+    {
+      "gender": "BABY",
+      "canMate": true,
+      "canMove": true,
+      "moveSpeed": 2,
+      "timeToGrowth": 60,
+      "numChildren": 0,
+      "timeToBirth": 0,
+      "hp": 100,
+      "position": [17, 17]
+    },
+    {
+      "gender": "BABY",
+      "canMate": true,
+      "canMove": true,
+      "moveSpeed": 2,
+      "timeToGrowth": 60,
+      "numChildren": 0,
+      "timeToBirth": 0,
+      "hp": 100,
+      "position": [17, 17]
     }
   ],
   "itemsOnMap": {
