@@ -3,17 +3,18 @@ package gameHandler;
 import java.util.Objects;
 
 /**
+ * <p> 1. File-name: Pos.java</p>
+ * <p> 2. Creation Date: 17/11/21 </p>
+ * <p> 3. Last modification date: 05/12/21 </p>
+ * <p> 4. Purpose of the program: Makes a position on the map for entitys</p>
  *
- <p> 1. File-name: Pos.java</p>
- <p> 2. Creation Date: 17/11/21 </p>
- <p> 3. Last modification date: 05/12/21 </p>
- <p> 4. Purpose of the program: Makes a position on the map for entitys</p>
  * @author Gus
  */
 
 public class Pos {
     public int x;
     public int y;
+
     public Pos(int x, int y) {
         this.x = x;
         this.y = y;
@@ -22,6 +23,7 @@ public class Pos {
 
     /**
      * method to check if position is the same on game and object
+     *
      * @param o: object
      * @return the x and y postions
      */
@@ -32,6 +34,7 @@ public class Pos {
 
     /**
      * method to calculate the hash value
+     *
      * @return the hash value
      */
 
@@ -44,6 +47,7 @@ public class Pos {
 
     /**
      * string method for checking the positions
+     *
      * @return a string of the x and y positions
      */
 

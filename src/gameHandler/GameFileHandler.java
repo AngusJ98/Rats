@@ -17,21 +17,32 @@ import org.json.simple.parser.*;
 import entity.*;
 import tiles.TileTypes;
 
+/**
+ * <p> 1. File-name: GameFileHandler.java</p>
+ * <p> 2. Creation Date: 26/11/21 </p>
+ * <p> 3. Last modification date: 5/12/21 </p>
+ * <p> 4. Purpose of the program: Manages the game files </p>
+ *
+ * @author Gus
+ */
+
 public class GameFileHandler {
     public static final String ERROR_MSG_FILE_NOT_FOUND = "Could not find %s.";
     public static final String SAVE_PATH = "saveFiles/";
     public static final String LEVEL_PATH = "levelFiles/";
     public static final String SAVE_FILE_EXT = ".json";
 
-    private GameFileHandler() {}
+    private GameFileHandler() {
+    }
 
     /**
      * reads the file as a json object
+     *
      * @param fileName the file to be read
-     * @param isLevel is the file a level or a save
+     * @param isLevel  is the file a level or a save
      * @return A json object containing the details needed to create a level
-     * @throws ParseException  Exceptional
-     * @throws IOException Exceptional
+     * @throws ParseException Exceptional
+     * @throws IOException    Exceptional
      */
     private static JSONObject readJSON(String fileName, boolean isLevel)
             throws ParseException, IOException {
@@ -50,6 +61,7 @@ public class GameFileHandler {
 
     /**
      * Converts a JSON subobject to an int
+     *
      * @param obj the object containing the int
      * @param key the key
      * @return the int obtained from the object
@@ -60,6 +72,7 @@ public class GameFileHandler {
 
     /**
      * Converts a JSON subobject to an int
+     *
      * @param obj the object containing the int
      * @param key the key
      * @return the int obtained from the object
@@ -70,6 +83,7 @@ public class GameFileHandler {
 
     /**
      * Converts a JSON object to a position object
+     *
      * @param obj the object containing the int
      * @return the Pos obtained from the object
      */
@@ -79,6 +93,7 @@ public class GameFileHandler {
 
     /**
      * Converts a JSON object to a position object
+     *
      * @param obj the object containing the int
      * @return the Pos obtained from the object
      */
@@ -88,6 +103,7 @@ public class GameFileHandler {
 
     /**
      * Turns a JSON object into a 2d array of chars representing the game board tiles,
+     *
      * @param json a json object containing the map as a string and an array containing the dimensions
      * @return a 2d array of chars representing tiles
      */
@@ -113,6 +129,7 @@ public class GameFileHandler {
 
     /**
      * creates a list of rats from a jsonarray
+     *
      * @param json A jsonarray containing the data for 0 or more rats
      * @return an array of basic rats
      */
@@ -158,8 +175,9 @@ public class GameFileHandler {
 
     /**
      * Should be able to load items from json, however we did not finish it in time
+     *
      * @param jItems a JSON array of the items
-     * @param key the type of item
+     * @param key    the type of item
      * @return At the moment, an empty array
      */
     private static Entity[] makeItemArray(JSONArray jItems, String key) {
@@ -259,11 +277,12 @@ public class GameFileHandler {
 
     /**
      * Constructs all items on map
+     *
      * @param json A json object hashed by item names
      * @return a 2d list of items by type
      */
     private static Entity[][] parseItemsOnMap(JSONObject json) {
-        JSONObject itemsOnMap = (JSONObject)json.get("itemsOnMap");
+        JSONObject itemsOnMap = (JSONObject) json.get("itemsOnMap");
         String[] itemKeys = {
                 "bomb", "gas", "sterilise", "poison", "mSexChange",
                 "fSexChange", "noEntry", "deathRat"
@@ -282,6 +301,7 @@ public class GameFileHandler {
 
     /**
      * Creates a hashmap of the level stats from a json object
+     *
      * @param json a json object containing the level stats
      * @return a hashmap hashed by the attribute
      */
@@ -290,9 +310,9 @@ public class GameFileHandler {
         JSONObject jLevelStats = (JSONObject) json.get("levelStats");
         String[] keys = {
                 "timeLeft", "ratLimit", "bombFreq", "gasFreq", "steriliseFreq",
-                "mSexChangeFreq", "fSexChangeFreq", "noEntryFreq", "deathRatFreq", "poisonFreq" ,"loseAmount"
+                "mSexChangeFreq", "fSexChangeFreq", "noEntryFreq", "deathRatFreq", "poisonFreq", "loseAmount"
         };
-        for (String key: keys) {
+        for (String key : keys) {
             levelStats.put(key, objToInt(jLevelStats, key));
         }
         return levelStats;
@@ -301,11 +321,12 @@ public class GameFileHandler {
     /**
      * Creates a hashmap of the player stats from a json object
      * Now redundant due to player profiles
+     *
      * @param json a json object containing the level stats
      * @return a hashmap hashed by the attribute
      */
     private static HashMap<String, HashMap<String, Integer>>
-		parsePlayerStats(JSONObject json) {
+    parsePlayerStats(JSONObject json) {
         HashMap<String, HashMap<String, Integer>> player = new HashMap<>();
         HashMap<String, Integer> playerStats = new HashMap<>();
         JSONObject jPlayerStats = (JSONObject) json.get("playerStats");
@@ -317,6 +338,7 @@ public class GameFileHandler {
 
     /**
      * creates a list of how many of each item the player has when the map is loaded
+     *
      * @param json a json object hashed by item names
      * @return an int[] representing the number of each item
      */
@@ -337,12 +359,13 @@ public class GameFileHandler {
 
     /**
      * Creates a tuple of all info needed to start the game.
+     *
      * @param json A json object of the whole level
      * @return A tuple of 6 elements, representing rats,items, map, levelstats,playerstats, and inventory
      */
     private static Tuple<BasicRat[], Entity[][], char[][], HashMap<String, Integer>,
-        HashMap<String, HashMap<String, Integer>>, int[]>
-		parseJSON(JSONObject json) {
+            HashMap<String, HashMap<String, Integer>>, int[]>
+    parseJSON(JSONObject json) {
         BasicRat[] rats = parseRats(json);
         Entity[][] items = parseItemsOnMap(json);
         char[][] map = parseMap(json);
@@ -355,6 +378,7 @@ public class GameFileHandler {
 
     /**
      * serialises an object, or it should
+     *
      * @param objects object to be serialised
      * @return returns an empty string
      */
@@ -365,10 +389,11 @@ public class GameFileHandler {
 
     /**
      * Unused alternate method for getting a tuple of all info needed to start the game.
+     *
      * @param name the file name the data is stored in
      * @return A tuple of 6 elements, representing rats,items, map, levelstats,playerstats, and inventory
      * @throws ParseException Exceptional
-     * @throws IOException Exceptional
+     * @throws IOException    Exceptional
      */
     public static Tuple<BasicRat[], Entity[][], char[][], HashMap<String, Integer>,
             HashMap<String, HashMap<String, Integer>>, int[]>
@@ -379,10 +404,11 @@ public class GameFileHandler {
 
     /**
      * creates a tuple of all info needed to start the game for a preset level
+     *
      * @param name the fileName
      * @return A tuple of 6 elements, representing rats,items, map, levelstats,playerstats, and inventory
      * @throws ParseException Exceptional
-     * @throws IOException Exceptional
+     * @throws IOException    Exceptional
      */
     public static Tuple<BasicRat[], Entity[][], char[][], HashMap<String, Integer>,
             HashMap<String, HashMap<String, Integer>>, int[]>
@@ -393,10 +419,11 @@ public class GameFileHandler {
 
     /**
      * Creates a tuple of all info needed to start the game for a save game
+     *
      * @param name the file name the data is stored in
      * @return A tuple of 6 elements, representing rats,items, map, levelstats,playerstats, and inventory
      * @throws ParseException Exceptional
-     * @throws IOException Exceptional
+     * @throws IOException    Exceptional
      */
     public static Tuple<BasicRat[], Entity[][], char[][], HashMap<String, Integer>,
             HashMap<String, HashMap<String, Integer>>, int[]>
@@ -407,6 +434,7 @@ public class GameFileHandler {
 
     /**
      * used for testing purposes only
+     *
      * @param in object to be printed
      */
     public static void print(Object in) {
@@ -415,13 +443,14 @@ public class GameFileHandler {
 
     /**
      * used for testing purposes only
+     *
      * @param in object to be printed
      */
     public static void println(Object in) {
         System.out.println(in);
     }
 
-    public static void main(String[] args) throws ParseException, IOException{
+    public static void main(String[] args) throws ParseException, IOException {
 //        try {
 //            System.out.println(readSaveFile("testLevel.json", true));
 //        } catch (Exception e) {
@@ -438,152 +467,154 @@ public class GameFileHandler {
 
     /**
      * Saves a game to the selected save file using json
+     *
      * @param path the slot to save to
      */
-	public static void saveGame(String path) {
-		//construct map string
-		String mapStr = "";
-		for (int y = 0; y < Game.TileManager.getNumTileHeight();y++) {
-			for (int x = 0; x < Game.TileManager.getNumTileWidth();x++) {
-				TileTypes type = Game.TileManager.getTile(new Pos(x, y)).getType();
-				switch (type) {
-				case PATH:
-					mapStr += "P";
-					break;
-                case TUNNEL:
-					mapStr += "T";
-					break;
-				case GRASS:
-					mapStr += "G";
-					break;
-				case SPEEDTILE:
-					mapStr += "S";
-					break;
-				default:
-					//Unknown Tile
-					//not sure if this would ever trigger cause
-					//errors should arise when the map is loaded but
-					//it's here anyway and you can't stop me 
-					mapStr += "U";
-					break;
-				}	
-			}
-			mapStr += "\\n"; //idk how to print \n without creating a new line but we should be literally appending \n aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-		}
-		//construct dimension string
-		String dimStr = "[" +  Game.TileManager.getNumTileWidth() + "," + Game.TileManager.getNumTileHeight() + "],";
-		String fullMapString = "{\n  \"map\": {\n    \"dimensions\": " + dimStr + "\"tiles\": \"" + mapStr + "\"\n  },\n";
-		
-		//construct rat string
-		String ratStr = "  \"rats\": [\n";
-		ArrayList<BasicRat> rats = Game.RatManager.getRatList();
-		for (int i = 0; i < rats.size(); i++) {
-			BasicRat rat = rats.get(i);
-			ratStr += "    {\n";
-			ratStr += "      \"gender\": \"" + rat.getRatType() +"\",\n";
-			ratStr += "      \"canMate\": " + rat.getMateStatus() + ",\n";
-			ratStr += "      \"canMove\": " + rat.getMoveStatus() + ",\n";
-			ratStr += "      \"moveSpeed\": " + rat.getMoveSpeed() + ",\n";
-			ratStr += "      \"timeToGrowth\": " + rat.getTimeToGrowth() + ",\n";
-			ratStr += "      \"numChildren\": " + rat.getNumChildren() + ",\n";
-			ratStr += "      \"timeToBirth\": " + rat.getTimeToBirth() + ",\n";
-			ratStr += "      \"hp\": " + rat.getHP() + ",\n";
-			ratStr += "      \"position\": [" + rat.getPosition().x + ", " + rat.getPosition().y + "],\n";
-			ratStr += "    }";
-			if (!(i == rats.size()-1)) {
-				ratStr += ",";
-			}
-			ratStr += "\n";
-		}
-		ratStr += "  ],";
-		
-		//construct item string
-		String itemStr = "\n  \"itemsOnMap\": {\n    " + "    \"bomb\": [], \"gas\": [], \"sterilise\": [], \"poison\": [],\n" +
+    public static void saveGame(String path) {
+        //construct map string
+        String mapStr = "";
+        for (int y = 0; y < Game.TileManager.getNumTileHeight(); y++) {
+            for (int x = 0; x < Game.TileManager.getNumTileWidth(); x++) {
+                TileTypes type = Game.TileManager.getTile(new Pos(x, y)).getType();
+                switch (type) {
+                    case PATH:
+                        mapStr += "P";
+                        break;
+                    case TUNNEL:
+                        mapStr += "T";
+                        break;
+                    case GRASS:
+                        mapStr += "G";
+                        break;
+                    case SPEEDTILE:
+                        mapStr += "S";
+                        break;
+                    default:
+                        //Unknown Tile
+                        //not sure if this would ever trigger cause
+                        //errors should arise when the map is loaded but
+                        //it's here anyway and you can't stop me
+                        mapStr += "U";
+                        break;
+                }
+            }
+            mapStr += "\\n"; //idk how to print \n without creating a new line but we should be literally appending \n aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+        }
+        //construct dimension string
+        String dimStr = "[" + Game.TileManager.getNumTileWidth() + "," + Game.TileManager.getNumTileHeight() + "],";
+        String fullMapString = "{\n  \"map\": {\n    \"dimensions\": " + dimStr + "\"tiles\": \"" + mapStr + "\"\n  },\n";
+
+        //construct rat string
+        String ratStr = "  \"rats\": [\n";
+        ArrayList<BasicRat> rats = Game.RatManager.getRatList();
+        for (int i = 0; i < rats.size(); i++) {
+            BasicRat rat = rats.get(i);
+            ratStr += "    {\n";
+            ratStr += "      \"gender\": \"" + rat.getRatType() + "\",\n";
+            ratStr += "      \"canMate\": " + rat.getMateStatus() + ",\n";
+            ratStr += "      \"canMove\": " + rat.getMoveStatus() + ",\n";
+            ratStr += "      \"moveSpeed\": " + rat.getMoveSpeed() + ",\n";
+            ratStr += "      \"timeToGrowth\": " + rat.getTimeToGrowth() + ",\n";
+            ratStr += "      \"numChildren\": " + rat.getNumChildren() + ",\n";
+            ratStr += "      \"timeToBirth\": " + rat.getTimeToBirth() + ",\n";
+            ratStr += "      \"hp\": " + rat.getHP() + ",\n";
+            ratStr += "      \"position\": [" + rat.getPosition().x + ", " + rat.getPosition().y + "],\n";
+            ratStr += "    }";
+            if (!(i == rats.size() - 1)) {
+                ratStr += ",";
+            }
+            ratStr += "\n";
+        }
+        ratStr += "  ],";
+
+        //construct item string
+        String itemStr = "\n  \"itemsOnMap\": {\n    " + "    \"bomb\": [], \"gas\": [], \"sterilise\": [], \"poison\": [],\n" +
                 "    \"mSexChange\": [], \"fSexChange\": [], \"noEntry\": [], \"deathRat\": []";
-		ArrayList<Item> items = Game.ItemManager.getItemList();
-		for (Item item : items) {
-			//kinda scuffed but jonny made this before itemType so i have no choice
-			ItemType type = item.getType();
-			String itemTypeStr = "";
-			switch (type) {
-				case BOMB:
-				itemTypeStr = "bomb";
-				break;
-				case GAS:
-				itemTypeStr = "gas";
-				break;
+        ArrayList<Item> items = Game.ItemManager.getItemList();
+        for (Item item : items) {
+            //kinda scuffed but jonny made this before itemType so i have no choice
+            ItemType type = item.getType();
+            String itemTypeStr = "";
+            switch (type) {
+                case BOMB:
+                    itemTypeStr = "bomb";
+                    break;
+                case GAS:
+                    itemTypeStr = "gas";
+                    break;
                 case STERILIZATION:
-				itemTypeStr = "sterilize";
-				break;
-				case MALE:
-				itemTypeStr = "mSexChange";
-				break;
-				case FEMALE:
-				itemTypeStr = "fSexChange";
-				break;
-				case NOENTRYSIGN:
-				itemTypeStr = "noEntry";
-				break;
-				case POISON:
-				itemTypeStr = "poison";
-				break;
-			}
-			itemStr += "\"" + itemTypeStr + "\": [" + item.getPosition().x  + ", " + item.getPosition().y + "]";
-		}
-		ArrayList<DeathRat> deathRats = Game.RatManager.getDeathRatList();
-		int index = 0;
-		for (DeathRat deathRat : deathRats) {
-			itemStr += "\"deathRat\": [" + deathRat.getPosition().x + ", " + deathRat.getPosition().y + "]";
-			if (index < items.size() -1) {
-				itemStr += ", ";
-			}	
-			index++;
-		}
-		itemStr += "},";
+                    itemTypeStr = "sterilize";
+                    break;
+                case MALE:
+                    itemTypeStr = "mSexChange";
+                    break;
+                case FEMALE:
+                    itemTypeStr = "fSexChange";
+                    break;
+                case NOENTRYSIGN:
+                    itemTypeStr = "noEntry";
+                    break;
+                case POISON:
+                    itemTypeStr = "poison";
+                    break;
+            }
+            itemStr += "\"" + itemTypeStr + "\": [" + item.getPosition().x + ", " + item.getPosition().y + "]";
+        }
+        ArrayList<DeathRat> deathRats = Game.RatManager.getDeathRatList();
+        int index = 0;
+        for (DeathRat deathRat : deathRats) {
+            itemStr += "\"deathRat\": [" + deathRat.getPosition().x + ", " + deathRat.getPosition().y + "]";
+            if (index < items.size() - 1) {
+                itemStr += ", ";
+            }
+            index++;
+        }
+        itemStr += "},";
 
-		//construct level stats string
-		String lvlStr = "\n  \"levelStats\": {";
-		HashMap<String, Integer> lvlStats = Game.getLevelStats();
-		lvlStr += "    \"timeLeft\": " + lvlStats.get("timeLeft") + ",";
-		lvlStr += "    \"bombFreq\": " + lvlStats.get("bombFreq") + ",";
-		lvlStr += "    \"gasFreq\": " + lvlStats.get("gasFreq") + ",";
-		lvlStr += "    \"steriliseFreq\": " + lvlStats.get("steriliseFreq") + ",";
-		lvlStr += "    \"mSexChangeFreq\": " + lvlStats.get("mSexChangeFreq") + ",";
-		lvlStr += "    \"fSexChangeFreq\": " + lvlStats.get("fSexChangeFreq") + ",";
-		lvlStr += "    \"noEntryFreq\": " + lvlStats.get("noEntryFreq") + ",";
-		lvlStr += "    \"deathRatFreq\": " + lvlStats.get("deathRatFreq") + ",";
-		lvlStr += "    \"poisonFreq\": " + lvlStats.get("poisonFreq") + ",";
+        //construct level stats string
+        String lvlStr = "\n  \"levelStats\": {";
+        HashMap<String, Integer> lvlStats = Game.getLevelStats();
+        lvlStr += "    \"timeLeft\": " + lvlStats.get("timeLeft") + ",";
+        lvlStr += "    \"bombFreq\": " + lvlStats.get("bombFreq") + ",";
+        lvlStr += "    \"gasFreq\": " + lvlStats.get("gasFreq") + ",";
+        lvlStr += "    \"steriliseFreq\": " + lvlStats.get("steriliseFreq") + ",";
+        lvlStr += "    \"mSexChangeFreq\": " + lvlStats.get("mSexChangeFreq") + ",";
+        lvlStr += "    \"fSexChangeFreq\": " + lvlStats.get("fSexChangeFreq") + ",";
+        lvlStr += "    \"noEntryFreq\": " + lvlStats.get("noEntryFreq") + ",";
+        lvlStr += "    \"deathRatFreq\": " + lvlStats.get("deathRatFreq") + ",";
+        lvlStr += "    \"poisonFreq\": " + lvlStats.get("poisonFreq") + ",";
         lvlStr += "    \"ratLimit\": " + lvlStats.get("loseAmount") + ",";
-		lvlStr += "    \"loseAmount\": " + lvlStats.get("loseAmount") + ",\n  },";		
-		
-		//construct inventory string
-		String inventoryStr = "\n  \"inventory\": {";
-		inventoryStr += "    \"bomb\": " + Inventory.getBombCount() + ",";
-		inventoryStr += "    \"gas\": " + Inventory.getGasCount() + ",";
-		inventoryStr += "    \"sterilise\": " + Inventory.getSterileCount() + ",";
-		inventoryStr += "    \"poison\": " + Inventory.getPoisonCount() + ",";
-		inventoryStr += "    \"mSexChange\": " + Inventory.getMaleCount() + ",";
-		inventoryStr += "    \"fSexChange\": " + Inventory.getFemaleCount() + ",";
-		inventoryStr += "    \"noEntry\": " + Inventory.getNoEntryCount() + ",";
-		inventoryStr += "    \"deathRat\": " + Inventory.getDeathCount() + "\n  }\n}";
+        lvlStr += "    \"loseAmount\": " + lvlStats.get("loseAmount") + ",\n  },";
 
-		String playerStr = "  \"playerStats\": {\n" +
+        //construct inventory string
+        String inventoryStr = "\n  \"inventory\": {";
+        inventoryStr += "    \"bomb\": " + Inventory.getBombCount() + ",";
+        inventoryStr += "    \"gas\": " + Inventory.getGasCount() + ",";
+        inventoryStr += "    \"sterilise\": " + Inventory.getSterileCount() + ",";
+        inventoryStr += "    \"poison\": " + Inventory.getPoisonCount() + ",";
+        inventoryStr += "    \"mSexChange\": " + Inventory.getMaleCount() + ",";
+        inventoryStr += "    \"fSexChange\": " + Inventory.getFemaleCount() + ",";
+        inventoryStr += "    \"noEntry\": " + Inventory.getNoEntryCount() + ",";
+        inventoryStr += "    \"deathRat\": " + Inventory.getDeathCount() + "\n  }\n}";
+
+        String playerStr = "  \"playerStats\": {\n" +
                 "    \"name\": \"Dave\",\n" +
                 "    \"score\": 0,\n" +
                 "    \"maxLevel\": 3\n" +
                 "  },";
-	
-		String fullGameString = fullMapString + ratStr + itemStr + lvlStr + playerStr + inventoryStr;
-		
-		writeSaveFile(fullGameString, path);
+
+        String fullGameString = fullMapString + ratStr + itemStr + lvlStr + playerStr + inventoryStr;
+
+        writeSaveFile(fullGameString, path);
     }
 
     /**
      * writes save file to a file
+     *
      * @param saveString the json string to save
-     * @param path the file to save to
+     * @param path       the file to save to
      */
-	private static void writeSaveFile(String saveString, String path) {
+    private static void writeSaveFile(String saveString, String path) {
         try {
             FileWriter writer = new FileWriter(SAVE_PATH + path + SAVE_FILE_EXT, false);
             writer.write(saveString);
@@ -592,5 +623,5 @@ public class GameFileHandler {
             System.out.println("Save unsuccessfool. OOp");
         }
     }
-	
+
 }
