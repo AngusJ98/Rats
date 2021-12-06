@@ -15,6 +15,12 @@ public class ProfileReader {
 
     private ProfileReader() {}
 
+    /**
+     * reads a json file as a json object
+     * @return a json object from the file
+     * @throws ParseException Exceptional
+     * @throws IOException Exceptional
+     */
     private static JSONObject readJSON()
             throws ParseException, IOException {
         String filePath = PROFILE_PATH;
@@ -29,16 +35,32 @@ public class ProfileReader {
         }
     }
 
+    /**
+     * Converts a JSON subobject to an int
+     * @param obj the object containing the int
+     * @param key the key
+     * @return the int obtained from the object
+     */
     private static int objToInt(JSONObject obj, String key) {
         return Math.toIntExact((long) obj.get(key));
     }
 
+    /**
+     * Converts a JSON subobject to an int
+     * @param obj the object containing the int
+     * @param key the key
+     * @return the int obtained from the object
+     */
     private static int objToInt(JSONArray obj, int key) {
         return Math.toIntExact((long) obj.get(key));
     }
 
 
-    //String playerName, int score, int maxLevelUnlocked
+    /**
+     * takes a JSON object and converts it into a player object
+     * @param json A JSOn object containing the attributes to make up a profile
+     * @return a player object
+     */
     private static Player parseProfile(JSONObject json) {
         String name = (String) json.get("name");
         JSONArray jScores = (JSONArray) json.get("scores");
@@ -50,6 +72,10 @@ public class ProfileReader {
         return new Player(name, scores, maxLevel);
     }
 
+    /**
+     * Reads a json array from a file and converts it into a list of players
+     * @return an array of players
+     */
     public static Player[] retrieveAllPlayers() {
         Player[] players = {};
         try {
@@ -64,6 +90,11 @@ public class ProfileReader {
         return players;
     }
 
+    /**
+     * Calculates the 10 highest scores for a level
+     * @param levelNum the level num to check score for
+     * @return an arraylist of the 10 highest scoring players for that level
+     */
     public static ArrayList<Player> getHighScores(int levelNum) {
         ArrayList<Player> players = new ArrayList<>(Arrays.asList(retrieveAllPlayers()));
         ArrayList<Player> goodPlayers = new ArrayList<>();
@@ -85,12 +116,21 @@ public class ProfileReader {
         return goodPlayers;
     }
 
+    /**
+     * creates a new profile from a name using default stats
+     * @param name the name for the new profile
+     * @return a new empty player profile
+     */
     public static Player createProfile(String name) {
 
         Player newP = new Player(name, new int[Main.LEVEL_COUNT],0);
         return newP;
     }
 
+    /**
+     * writes a new profile if one with the same name does not exist
+     * @param name the name of the new profile
+     */
     public static void writeNewProfile(String name) {
         try {
             JSONObject file = readJSON();
@@ -117,6 +157,10 @@ public class ProfileReader {
         }
     }
 
+    /**
+     * Method to update a profile using a new profile with the same name
+     * @param updateProf the new version of the profile
+     */
     public static void updateProfile(JSONObject updateProf) {
         try {
             JSONObject file = readJSON();
