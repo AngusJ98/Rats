@@ -1,4 +1,5 @@
 package Controller;
+
 import entity.*;
 import gameHandler.Game;
 import gameHandler.GameFileHandler;
@@ -26,27 +27,38 @@ import static Controller.Main.WINDOW_WIDTH;
 import static java.lang.Math.min;
 
 /**
+ * <p> 1. File-name: GameRenderer.java</p>
+ * <p> 2. Creation Date: 26/11/21 </p>
+ * <p> 3. Last modification date: 5/12/21 </p>
+ * <p> 4. Purpose of the program: To renderer the game </p>
  *
- <p> 1. File-name: GameRenderer.java</p>
- <p> 2. Creation Date: (N/A) </p>
- <p> 3. Last modification date:</p>
- <p> 4. Purpose of the program: To renderer the game </p>
  * @author Gus
  */
 
 public class GameRenderer {
 
-    @FXML private Text bombCount;
-    @FXML private Text gasCount;
-    @FXML private Text sterileCount;
-    @FXML private Text noEntCount;
-    @FXML private Text maleCount;
-    @FXML private Text femaleCount;
-    @FXML private Text deathCount;
-    @FXML private Text poisonCount;
-    @FXML private AnchorPane base;
-    @FXML private ToggleGroup itemToggle;
-    @FXML private StackPane board;
+    @FXML
+    private Text bombCount;
+    @FXML
+    private Text gasCount;
+    @FXML
+    private Text sterileCount;
+    @FXML
+    private Text noEntCount;
+    @FXML
+    private Text maleCount;
+    @FXML
+    private Text femaleCount;
+    @FXML
+    private Text deathCount;
+    @FXML
+    private Text poisonCount;
+    @FXML
+    private AnchorPane base;
+    @FXML
+    private ToggleGroup itemToggle;
+    @FXML
+    private StackPane board;
 
     private final double pixelWidth = 600; //this is how wide the board section of the game is
     private int tilePixelSize = 1; //Set as default, will be changed later
@@ -78,7 +90,6 @@ public class GameRenderer {
      * Constructor. adds a reference to itself to game class.
      * <p> big side-effects</p>
      * <p> not referentially transparent</p>
-     *
      */
     public GameRenderer() {
         Game.setRunner(this); //I hate doing this but is what it is
@@ -91,12 +102,13 @@ public class GameRenderer {
         this.tileBoard = new GridPane();
         this.entityBoard = new GridPane();
         this.buttonBoard = new GridPane();
-        board.getChildren().addAll(tileBoard,entityBoard,buttonBoard);
+        board.getChildren().addAll(tileBoard, entityBoard, buttonBoard);
         tileBoard.setGridLinesVisible(true);
     }
 
     /**
      * The normal drawing actions done in a tick.
+     *
      * @param entities the entities to be drawn
      */
     public void normalTickDrawing(Entity[] entities) {
@@ -106,6 +118,7 @@ public class GameRenderer {
 
     /**
      * Draws the tiles and the entities on it
+     *
      * @param entities the entities to be drawn
      */
     public void drawBoard(Entity[] entities) {
@@ -117,6 +130,7 @@ public class GameRenderer {
 
     /**
      * Redraws the entire board, used at the start of the game
+     *
      * @param entities
      */
     public void redrawBoard(Entity[] entities) {
@@ -126,6 +140,7 @@ public class GameRenderer {
 
     /**
      * removes old graphics of entities and updates them
+     *
      * @param entities
      */
     public void redrawEntities(Entity[] entities) {
@@ -150,26 +165,27 @@ public class GameRenderer {
             pic.setFitHeight(this.tilePixelSize);
             pic.setFitWidth(this.tilePixelSize);
 
-            tileBoard.add(pic, x,y);
+            tileBoard.add(pic, x, y);
             //add a transparent button on top so we can add items
             Button b = new Button();
-            b.setMaxSize(this.tilePixelSize,this.tilePixelSize);
-            b.setPrefSize(this.tilePixelSize,this.tilePixelSize);
-            b.setMinSize(this.tilePixelSize,this.tilePixelSize);
+            b.setMaxSize(this.tilePixelSize, this.tilePixelSize);
+            b.setPrefSize(this.tilePixelSize, this.tilePixelSize);
+            b.setMinSize(this.tilePixelSize, this.tilePixelSize);
             b.setStyle(
                     "    -fx-border-color: transparent;\n" +
-                    "    -fx-border-width: 0;\n" +
-                    "    -fx-background-radius: 10;\n" +
-                    "    -fx-background-color: transparent\n"
+                            "    -fx-border-width: 0;\n" +
+                            "    -fx-background-radius: 10;\n" +
+                            "    -fx-background-color: transparent\n"
             );
 
             //set button action if items can be placed
             if (tile.areItemsPlaceable()) {
                 b.setOnAction(new EventHandler<ActionEvent>() {
-                    @Override public void handle(ActionEvent e) {
+                    @Override
+                    public void handle(ActionEvent e) {
                         int buttonY = GridPane.getRowIndex(b);
                         int buttonX = GridPane.getColumnIndex(b);
-                        ToggleButton selectedButton = (ToggleButton)itemToggle.getSelectedToggle();
+                        ToggleButton selectedButton = (ToggleButton) itemToggle.getSelectedToggle();
                         if (selectedButton != null) {
                             String itemString = selectedButton.getId();
                             Game.ItemManager.tryPlace(itemString, new Pos(buttonX, buttonY));
@@ -177,13 +193,14 @@ public class GameRenderer {
                     }
                 });
             }
-            buttonBoard.add(b,x,y);
+            buttonBoard.add(b, x, y);
 
         }
     }
 
     /**
      * Draws the entities
+     *
      * @param entities the entities to be drawn
      */
     public void drawEntities(Entity[] entities) {
@@ -196,7 +213,7 @@ public class GameRenderer {
             }
         }
         for (Entity entity : entities) {
-            if(!Game.TileManager.getTile(entity.getPosition()).getHidesRats()) {
+            if (!Game.TileManager.getTile(entity.getPosition()).getHidesRats()) {
                 ImageView pic = new ImageView();
                 pic.setImage(entity.getImage());
                 pic.setFitHeight(this.tilePixelSize);
@@ -206,8 +223,8 @@ public class GameRenderer {
                 int y = position.y;
 
                 if (entity instanceof Rat) {
-                    Rat rat = (Rat)entity;
-                    pic.setRotate(180 + rat.getMoveDirection().ordinal()*90);
+                    Rat rat = (Rat) entity;
+                    pic.setRotate(180 + rat.getMoveDirection().ordinal() * 90);
                 }
                 entityBoard.add(pic, x, y);
             }
@@ -267,7 +284,7 @@ public class GameRenderer {
     /**
      * Method to move to the victory screen
      */
-    public void victoryScreen(){
+    public void victoryScreen() {
         try {
             Parent gameScreen = FXMLLoader.load(getClass().getResource("victory.fxml"));
             Scene gameScene = new Scene(gameScreen);
@@ -280,6 +297,7 @@ public class GameRenderer {
 
     /**
      * action for save button
+     *
      * @param event
      */
     public void save1(ActionEvent event) {
@@ -288,6 +306,7 @@ public class GameRenderer {
 
     /**
      * action for save button
+     *
      * @param event
      */
     public void save2(ActionEvent event) {
@@ -296,6 +315,7 @@ public class GameRenderer {
 
     /**
      * action for save button
+     *
      * @param event
      */
     public void save3(ActionEvent event) {
@@ -304,7 +324,8 @@ public class GameRenderer {
 
     /**
      * Saves the current game state
-     * @param path the json file to save it in. 
+     *
+     * @param path the json file to save it in.
      */
     private void save(String path) {
         GameFileHandler.saveGame(path);

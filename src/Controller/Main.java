@@ -1,4 +1,5 @@
 package Controller;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -6,7 +7,15 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import playerProfile.Player;
 
-//This is a file
+/**
+ * <p> 1. File-name: Main.java</p>
+ * <p> 2. Creation Date: 26/11/21 </p>
+ * <p> 3. Last modification date: 5/12/21 </p>
+ * <p> 4. Purpose of the program: To start the game </p>
+ *
+ * @author Gus
+ */
+
 public class Main extends Application {
 
     private static Stage stg;
@@ -16,8 +25,13 @@ public class Main extends Application {
     public static final int LEVEL_COUNT = 6;
     public static Player activePlayer = null;
 
-
-    public void start(Stage primaryStage) throws Exception{
+    /**
+     * Starts the game by launching the menu
+     *
+     * @param primaryStage the static primary to be used
+     * @throws Exception Exceptional
+     */
+    public void start(Stage primaryStage) throws Exception {
         stg = primaryStage;
         primaryStage.setResizable(false);
 
@@ -28,16 +42,25 @@ public class Main extends Application {
         primaryStage.show();
     }
 
+    /**
+     * LAUNCH DA GAME
+     *
+     * @param args ARRRRRG I'm a pirate
+     */
     public static void main(String[] args) {
         launch(args);
     }
 
+    /**
+     * used for switching between scenes
+     *
+     * @param newScene the scene to switch to
+     */
     public static void changeScene(Scene newScene) {
         stg.close();
         Main.stg.setScene(newScene);
         stg.show();
     }
-
 
 
 }
