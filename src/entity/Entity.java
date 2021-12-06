@@ -12,9 +12,6 @@ import javafx.scene.image.Image;
  * @author Andrew
  */
 
-public enum EntityType { //nvm just needed refactoring
-    RAT, ITEM
-}
 
 public abstract class Entity {
     protected Image image;
