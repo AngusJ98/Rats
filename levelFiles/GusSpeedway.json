@@ -13,9 +13,8 @@
       "numChildren": 0,
       "timeToBirth": 0,
       "hp": 100,
-      "position": [1, 1]
-    },
-    {
+      "position": [21, 21]
+    },    {
       "gender": "BABY",
       "canMate": true,
       "canMove": true,
@@ -24,9 +23,8 @@
       "numChildren": 0,
       "timeToBirth": 0,
       "hp": 100,
-      "position": [12, 2]
-    },
-    {
+      "position": [21, 21]
+    },    {
       "gender": "BABY",
       "canMate": true,
       "canMove": true,
@@ -35,9 +33,8 @@
       "numChildren": 0,
       "timeToBirth": 0,
       "hp": 100,
-      "position": [1, 8]
-    },
-    {
+      "position": [21, 21]
+    },    {
       "gender": "BABY",
       "canMate": true,
       "canMove": true,
@@ -46,18 +43,127 @@
       "numChildren": 0,
       "timeToBirth": 0,
       "hp": 100,
-      "position": [9, 2]
-    },
-    {
+      "position": [21, 21]
+    },    {
       "gender": "BABY",
-      "canMate": false,
+      "canMate": true,
       "canMove": true,
       "moveSpeed": 2,
       "timeToGrowth": 60,
       "numChildren": 0,
       "timeToBirth": 0,
-      "hp": 50,
-      "position": [5, 5]
+      "hp": 100,
+      "position": [21, 21]
+    },    {
+      "gender": "BABY",
+      "canMate": true,
+      "canMove": true,
+      "moveSpeed": 2,
+      "timeToGrowth": 60,
+      "numChildren": 0,
+      "timeToBirth": 0,
+      "hp": 100,
+      "position": [21, 21]
+    },    {
+      "gender": "BABY",
+      "canMate": true,
+      "canMove": true,
+      "moveSpeed": 2,
+      "timeToGrowth": 60,
+      "numChildren": 0,
+      "timeToBirth": 0,
+      "hp": 100,
+      "position": [21, 21]
+    },    {
+      "gender": "BABY",
+      "canMate": true,
+      "canMove": true,
+      "moveSpeed": 2,
+      "timeToGrowth": 60,
+      "numChildren": 0,
+      "timeToBirth": 0,
+      "hp": 100,
+      "position": [21, 21]
+    },    {
+      "gender": "BABY",
+      "canMate": true,
+      "canMove": true,
+      "moveSpeed": 2,
+      "timeToGrowth": 60,
+      "numChildren": 0,
+      "timeToBirth": 0,
+      "hp": 100,
+      "position": [21, 21]
+    },    {
+      "gender": "BABY",
+      "canMate": true,
+      "canMove": true,
+      "moveSpeed": 2,
+      "timeToGrowth": 60,
+      "numChildren": 0,
+      "timeToBirth": 0,
+      "hp": 100,
+      "position": [21, 21]
+    },    {
+      "gender": "BABY",
+      "canMate": true,
+      "canMove": true,
+      "moveSpeed": 2,
+      "timeToGrowth": 60,
+      "numChildren": 0,
+      "timeToBirth": 0,
+      "hp": 100,
+      "position": [21, 21]
+    },    {
+      "gender": "BABY",
+      "canMate": true,
+      "canMove": true,
+      "moveSpeed": 2,
+      "timeToGrowth": 60,
+      "numChildren": 0,
+      "timeToBirth": 0,
+      "hp": 100,
+      "position": [21, 21]
+    },    {
+      "gender": "BABY",
+      "canMate": true,
+      "canMove": true,
+      "moveSpeed": 2,
+      "timeToGrowth": 60,
+      "numChildren": 0,
+      "timeToBirth": 0,
+      "hp": 100,
+      "position": [21, 21]
+    },    {
+      "gender": "BABY",
+      "canMate": true,
+      "canMove": true,
+      "moveSpeed": 2,
+      "timeToGrowth": 60,
+      "numChildren": 0,
+      "timeToBirth": 0,
+      "hp": 100,
+      "position": [21, 21]
+    },    {
+      "gender": "BABY",
+      "canMate": true,
+      "canMove": true,
+      "moveSpeed": 2,
+      "timeToGrowth": 60,
+      "numChildren": 0,
+      "timeToBirth": 0,
+      "hp": 100,
+      "position": [21, 21]
+    },    {
+      "gender": "BABY",
+      "canMate": true,
+      "canMove": true,
+      "moveSpeed": 2,
+      "timeToGrowth": 60,
+      "numChildren": 0,
+      "timeToBirth": 0,
+      "hp": 100,
+      "position": [21, 21]
     }
   ],
   "itemsOnMap": {
@@ -65,11 +171,11 @@
     "mSexChange": [], "fSexChange": [], "noEntry": [], "deathRat": []
   },
   "levelStats": {
-    "timeLeft": 10000,
+    "timeLeft": 100,
     "ratLimit": 10,
     "loseAmount": 100,
-    "bombFreq": 1, "gasFreq": 2, "steriliseFreq": 2, "poisonFreq": 3,
-    "mSexChangeFreq": 4, "fSexChangeFreq": 4, "noEntryFreq": 4, "deathRatFreq": 1
+    "bombFreq": 10, "gasFreq": 60, "steriliseFreq": 20, "poisonFreq": 30,
+    "mSexChangeFreq": 40, "fSexChangeFreq": 40, "noEntryFreq": 40, "deathRatFreq": 100
   },
   "playerStats": {
     "name": "Dave",

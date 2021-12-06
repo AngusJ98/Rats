@@ -66,7 +66,7 @@
     "mSexChange": [], "fSexChange": [], "noEntry": [], "deathRat": []
   },
   "levelStats": {
-    "timeLeft": 10000,
+    "timeLeft": 1000,
     "ratLimit": 10,
     "loseAmount": 100,
     "bombFreq": 1, "gasFreq": 2, "steriliseFreq": 2, "poisonFreq": 3,
