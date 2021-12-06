@@ -14,6 +14,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.*;
 import entity.*;
+import tiles.TileTypes;
 
 public class GameFileHandler {
     public static final String ERROR_MSG_FILE_NOT_FOUND = "Could not find %s.";
@@ -208,20 +209,19 @@ public class GameFileHandler {
     }
 
     // TODO: change this to Item[][] if we make an abstract Item class
-    private static Item[][] parseItemsOnMap(JSONObject json) {
+    private static Entity[][] parseItemsOnMap(JSONObject json) {
         JSONObject itemsOnMap = (JSONObject)json.get("itemsOnMap");
         String[] itemKeys = {
                 "bomb", "gas", "sterilise", "poison", "mSexChange",
                 "fSexChange", "noEntry", "deathRat"
         };
         int nItems = itemKeys.length;
-        Item[][] items = new Item[nItems][];
+        Entity[][] items = new Item[nItems][];
         String currentKey;
 
         for (int i = 0; i < nItems; i++) {
             currentKey = itemKeys[i];
-            items[i] =
-                    makeItemArray((JSONArray) itemsOnMap.get(currentKey), currentKey);
+            items[i] = makeItemArray((JSONArray) itemsOnMap.get(currentKey), currentKey);
         }
 
         return items;
@@ -327,23 +327,23 @@ public class GameFileHandler {
 	public static void saveGame() {
 		//construct map string
 		String mapStr = "";
-		for (y = 0; y < TileManager.getNumTileWidth()) {
-			for (x = 0; x < TileManager.getNumTileHeight()) {
-				TileType type = TileManager.getTile(new Pos(x, y)).getType();
+		for (int y = 0; y < Game.TileManager.getNumTileWidth();y++) {
+			for (int x = 0; x < Game.TileManager.getNumTileHeight();x++) {
+				TileTypes type = Game.TileManager.getTile(new Pos(x, y)).getType();
 				switch (type) {
-				case TileTypes.PATH: 
+				case PATH:
 					mapStr += "P";
 					break;
-				case TileTypes.TUNNEL;
+                case TUNNEL:
 					mapStr += "T";
 					break;
-				case TileTypes.GRASS:
+				case GRASS:
 					mapStr += "G";
 					break;
-				case TileTypes.SPEEDTILE:
+				case SPEEDTILE:
 					mapStr += "S";
 					break;
-				case default:
+				default:
 					//Unknown Tile
 					//not sure if this would ever trigger cause
 					//errors should arise when the map is loaded but
@@ -355,24 +355,24 @@ public class GameFileHandler {
 			mapStr += "\\n"; //idk how to print \n without creating a new line but we should be literally appending \n aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 		}
 		//construct dimension string
-		String dimStr = "[" +  TileManager.getNumTileWidth() + "," TileManager.getNumTileHeight() + "],";
+		String dimStr = "[" +  Game.TileManager.getNumTileWidth() + "," + Game.TileManager.getNumTileHeight() + "],";
 		String fullMapString = "{\n  map: {\n    \"dimensions\": " + dimStr + "\"tiles\": \"" + mapStr + "\"\n  },\n";
 		
 		//construct rat string
 		String ratStr = "  \"rats\": [\n";
-		ArrayList<BasicRat> rats = RatManager.getRatList();
-		for (i = 0; i < rats.size(); i++) {
-			rat = rats.get(i)
+		ArrayList<BasicRat> rats = Game.RatManager.getRatList();
+		for (int i = 0; i < rats.size(); i++) {
+			BasicRat rat = rats.get(i);
 			ratStr += "    {\n";
-			ratStr += "      \"gender\": \"" + rat.getRatType() "\",\n";
-			ratStr += "      \"canMate\": " + rat.getMateStatus() ",\n";
-			ratStr += "      \"canMove\": " + rat.getMoveStatus() ",\n";
-			ratStr += "      \"moveSpeed\": " + rat.getMoveSpeed() ",\n";
-			ratStr += "      \"timeToGrowth\": " + rat.getTimeToGrowth() ",\n";
-			ratStr += "      \"numChildren\": " + rat.getNumChildren() ",\n";
-			ratStr += "      \"timeToBirth\": " + rat.getTimeToBirth() ",\n";
-			ratStr += "      \"hp\": " + rat.getHP() ",\n";
-			ratStr += "      \"position\": [" + rat.getPosition().x + ", " + rat.getPosition().y "],\n";
+			ratStr += "      \"gender\": \"" + rat.getRatType() +"\",\n";
+			ratStr += "      \"canMate\": " + rat.getMateStatus() + ",\n";
+			ratStr += "      \"canMove\": " + rat.getMoveStatus() + ",\n";
+			ratStr += "      \"moveSpeed\": " + rat.getMoveSpeed() + ",\n";
+			ratStr += "      \"timeToGrowth\": " + rat.getTimeToGrowth() + ",\n";
+			ratStr += "      \"numChildren\": " + rat.getNumChildren() + ",\n";
+			ratStr += "      \"timeToBirth\": " + rat.getTimeToBirth() + ",\n";
+			ratStr += "      \"hp\": " + rat.getHP() + ",\n";
+			ratStr += "      \"position\": [" + rat.getPosition().x + ", " + rat.getPosition().y + "],\n";
 			ratStr += "    }";
 			if (!(i == rats.size()-1)) {
 				ratStr += ",";
@@ -383,40 +383,40 @@ public class GameFileHandler {
 		
 		//construct item string
 		String itemStr = "\n  \"itemsOnMap\": {\n    ";
-		ArrayList<Item> items = ItemManager.getItemList(); 
+		ArrayList<Item> items = Game.ItemManager.getItemList();
 		for (Item item : items) {
 			//kinda scuffed but jonny made this before itemType so i have no choice
-			ItemType type = item.getType
-			String itemTypeStr
+			ItemType type = item.getType();
+			String itemTypeStr = "";
 			switch (type) {
-				case ItemType.BOMB:
+				case BOMB:
 				itemTypeStr = "bomb";
 				break;
-				case ItemType.GAS:
+				case GAS:
 				itemTypeStr = "gas";
 				break;
-				case ItemType.STERILIZE:
+                case STERILIZATION:
 				itemTypeStr = "sterilize";
 				break;
-				case ItemType.MALE:
+				case MALE:
 				itemTypeStr = "mSexChange";
 				break;
-				case ItemType.FEMALE:
+				case FEMALE:
 				itemTypeStr = "fSexChange";
 				break;
-				case ItemType.NOENTRYSIGN:
+				case NOENTRYSIGN:
 				itemTypeStr = "noEntry";
 				break;
-				case ItemType.POISON:
+				case POISON:
 				itemTypeStr = "poison";
 				break;
 			}
-			itemStr += "\"" + itemTypeStr + "\": [" + Item.getPosition.x ", " + Item.getPosition.y + "]";
+			itemStr += "\"" + itemTypeStr + "\": [" + item.getPosition().x  + ", " + item.getPosition().y + "]";
 		}
-		ArrayList<DeathRat> deathRats = getDeathRatList();
-		index = 0;
+		ArrayList<DeathRat> deathRats = Game.RatManager.getDeathRatList();
+		int index = 0;
 		for (DeathRat deathRat : deathRats) {
-			itemStr += "\"deathRat"\": [" + deathRat.getPosition.x ", " + deathRat.getPosition.y + "]";
+			itemStr += "\"deathRat\": [" + deathRat.getPosition().x + ", " + deathRat.getPosition().y + "]";
 			if (index < items.size() -1) {
 				itemStr += ", ";
 			}	
@@ -440,21 +440,27 @@ public class GameFileHandler {
 		
 		//construct inventory string
 		String inventoryStr = "\n  \"inventory\": {";
-		inventoryStr = "    \"bomb\": " + Inventory.getBombCount() + ",";
-		inventoryStr = "    \"gas\": " + Inventory.getGasCount() + ",";
-		inventoryStr = "    \"sterilise\": " + Inventory.getSterileCount() + ",";
-		inventoryStr = "    \"poison\": " + Inventory.getPoisonCount() + ","
-		inventoryStr = "    \"mSexChange\": " + Inventory.getMaleCount() + ",";
-		inventoryStr = "    \"fSexChange\": " + Inventory.getFemaleCount() + ",";
-		inventoryStr = "    \"noEntry\": " + Inventory.getNoEntryCount() + ",";
-		inventoryStr = "    \"deathRat\": " + Inventory.getDeathCount() + "\n  }\n}";
+		inventoryStr += "    \"bomb\": " + Inventory.getBombCount() + ",";
+		inventoryStr += "    \"gas\": " + Inventory.getGasCount() + ",";
+		inventoryStr += "    \"sterilise\": " + Inventory.getSterileCount() + ",";
+		inventoryStr += "    \"poison\": " + Inventory.getPoisonCount() + ","
+		inventoryStr += "    \"mSexChange\": " + Inventory.getMaleCount() + ",";
+		inventoryStr += "    \"fSexChange\": " + Inventory.getFemaleCount() + ",";
+		inventoryStr += "    \"noEntry\": " + Inventory.getNoEntryCount() + ",";
+		inventoryStr += "    \"deathRat\": " + Inventory.getDeathCount() + "\n  }\n}";
+
+		String playerStr = "  \"playerStats\": {\n" +
+                "    \"name\": \"Dave\",\n" +
+                "    \"score\": 0,\n" +
+                "    \"maxLevel\": 3\n" +
+                "  },";
 	
 		String fullGameString = fullMapString + ratStr + itemStr + lvlStr + playerStr + inventoryStr;
 		
 		writeSaveFile(fullGameString);
     }	
 	private static void writeSaveFile(String saveString) {
-		JSONObject obj = new JSONObject
+		JSONObject obj = new JSONObject();
 		
 		
     }

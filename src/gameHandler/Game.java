@@ -162,7 +162,7 @@ public class Game {
 	                "timeLeft", "ratLimit", "bombFreq", "gasFreq", "steriliseFreq",
                 "mSexChangeFreq", "fSexChangeFreq", "noEntryFreq", "deathRatFreq", "poisonFreq" ,"loseAmount"
 	 */
-	public HashMap<String, Integer> getLevelStats() {
+	public static HashMap<String, Integer> getLevelStats() {
 		HashMap<String, Integer> levelStats = new HashMap<>();
 		levelStats.put("timeLeft", Game.getTimeLeft());
 		levelStats.put("bombFreq", inventory.getBombRestockRate());
