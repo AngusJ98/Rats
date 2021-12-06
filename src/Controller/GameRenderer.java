@@ -75,32 +75,39 @@ public class GameRenderer {
     */
 
     /**
-     * Constructor.
-     * <p> side-effects</p>
+     * Constructor. adds a reference to itself to game class.
+     * <p> big side-effects</p>
      * <p> not referentially transparent</p>
-     * @param i have no clue .
+     *
      */
-
     public GameRenderer() {
         Game.setRunner(this); //I hate doing this but is what it is
     }
 
+    /**
+     * Initialises graphical components
+     */
     public void initialize() {
-
         this.tileBoard = new GridPane();
         this.entityBoard = new GridPane();
         this.buttonBoard = new GridPane();
         board.getChildren().addAll(tileBoard,entityBoard,buttonBoard);
         tileBoard.setGridLinesVisible(true);
-
     }
 
+    /**
+     * The normal drawing actions done in a tick.
+     * @param entities the entities to be drawn
+     */
     public void normalTickDrawing(Entity[] entities) {
         this.updateCount();
         this.redrawEntities(entities);
     }
 
-
+    /**
+     * Draws the tiles and the entities on it
+     * @param entities the entities to be drawn
+     */
     public void drawBoard(Entity[] entities) {
         drawTiles();
         redrawEntities(entities);
@@ -108,19 +115,28 @@ public class GameRenderer {
     }
 
 
-    //Completely redraws board, don't think it's needed
+    /**
+     * Redraws the entire board, used at the start of the game
+     * @param entities
+     */
     public void redrawBoard(Entity[] entities) {
         this.entityBoard.getChildren().clear();
         this.drawBoard(entities);
     }
 
+    /**
+     * removes old graphics of entities and updates them
+     * @param entities
+     */
     public void redrawEntities(Entity[] entities) {
         this.removeEntities();
         this.drawEntities(entities);
     }
 
 
-    //This only needs to be called once... probably
+    /**
+     * Draws the tiles on the map.
+     */
     public void drawTiles() {
         this.tilePixelSize = min((int) pixelWidth / Game.TileManager.getNumTileWidth(), (int) pixelWidth / Game.TileManager.getNumTileHeight());//Min statement to account for rectangular board
 
@@ -166,7 +182,10 @@ public class GameRenderer {
         }
     }
 
-
+    /**
+     * Draws the entities
+     * @param entities the entities to be drawn
+     */
     public void drawEntities(Entity[] entities) {
         for (int x = 0; x < Game.TileManager.getNumTileWidth(); x++) {
             for (int y = 0; y < Game.TileManager.getNumTileHeight(); y++) {
@@ -195,10 +214,16 @@ public class GameRenderer {
         }
     }
 
+    /**
+     * Clears the board of entities
+     */
     public void removeEntities() {
         entityBoard.getChildren().clear();
     }
 
+    /**
+     * updates the count of items displayed on the board
+     */
     public void updateCount() {
         this.bombCount.setText(String.valueOf(Inventory.getBombCount()));
         this.gasCount.setText(String.valueOf(Inventory.getGasCount()));
@@ -210,6 +235,9 @@ public class GameRenderer {
         this.poisonCount.setText(String.valueOf(Inventory.getPoisonCount()));
     }
 
+    /**
+     * Method to return to the menu from the game
+     */
     public void returnToMenu() {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("menu.fxml"));
@@ -222,6 +250,9 @@ public class GameRenderer {
         }
     }
 
+    /**
+     * method to move to the loss screen
+     */
     public void lossScreen() {
         try {
             Parent gameScreen = FXMLLoader.load(getClass().getResource("defeat.fxml"));
@@ -233,6 +264,9 @@ public class GameRenderer {
         }
     }
 
+    /**
+     * Method to move to the victory screen
+     */
     public void victoryScreen(){
         try {
             Parent gameScreen = FXMLLoader.load(getClass().getResource("victory.fxml"));
@@ -244,18 +278,34 @@ public class GameRenderer {
         }
     }
 
+    /**
+     * action for save button
+     * @param event
+     */
     public void save1(ActionEvent event) {
         save("1");
     }
 
+    /**
+     * action for save button
+     * @param event
+     */
     public void save2(ActionEvent event) {
         save("2");
     }
 
+    /**
+     * action for save button
+     * @param event
+     */
     public void save3(ActionEvent event) {
         save("3");
     }
 
+    /**
+     * Saves the current game state
+     * @param path the json file to save it in. 
+     */
     private void save(String path) {
         GameFileHandler.saveGame(path);
         try {
