@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * <p> 1. File-name: playerProfile.Player.java</p>
+ * <p> 1. File-name: Player.java</p>
  * <p> 2. Creation Date: 19/11/21 </p>
  * <p> 3. Last modification date: 03/12/21 </p>
  * <p> 4. Purpose of the program: Creation of players</p>
