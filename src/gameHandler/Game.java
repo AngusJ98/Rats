@@ -115,6 +115,41 @@ public class Game {
 		this.startTimer();
     }
 
+
+	public void setUpFromSave() throws ParseException, IOException {
+		//file reader class goes here, reads file and passes data to this method
+		Tuple<BasicRat[], Entity[][], char[][], HashMap<String, Integer>,
+				HashMap<String, HashMap<String, Integer>>, int[]>
+				gameObjects = GameFileHandler.newGameFromSave(levelPath);
+		constructTileMap(gameObjects.getThird());
+		Entity[][] itemsToAdd = gameObjects.getSecond();
+		RatManager.deathRats = new ArrayList<>();
+		ArrayList<Entity> idek = new ArrayList<>();
+		for (int x = 0; x < itemsToAdd.length; x++) {
+			idek.addAll(Arrays.asList(itemsToAdd[x]));
+		}
+		for (Entity ent : idek) {
+			if (ent.getEntityType() == EntityType.RAT) {
+				RatManager.deathRats.add((DeathRat) ent);
+			} else {
+				Game.items.add((Item)ent);
+			}
+		}
+
+		constructRatList(gameObjects.getFirst());
+		setUpLevelStats(gameObjects.getFourth(), gameObjects.getSixth());
+	}
+
+	public void startFromSave() {
+		Game.runner.redrawBoard(this.createCombinedEntityList());
+		Game.score = 0;
+		System.out.println(this.rats.size());
+		System.out.println(Arrays.toString(this.createCombinedEntityList()));
+
+		this.startTimer();
+	}
+
+
 	/**
 	 * method to start the timer
 	 * <p> side-effects</p>
@@ -199,6 +234,8 @@ public class Game {
 		Game.timer.cancel();
 		Game.timer = null;
 		Game.items = new ArrayList<>(); //clear off old items
+		RatManager.deathRats = new ArrayList<>();
+		Game.rats = new ArrayList<>();
 		Platform.runLater(() -> Game.runner.removeEntities());
 	}
 

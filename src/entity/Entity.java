@@ -12,7 +12,7 @@ import javafx.scene.image.Image;
  * @author Andrew
  */
 
-enum EntityType { //nvm just needed refactoring
+public enum EntityType { //nvm just needed refactoring
     RAT, ITEM
 }
 

@@ -205,20 +205,38 @@ public class MenuRunner {
     }
 
     public void load1(ActionEvent event) throws Exception{
-        load("3.json");
+        load("2");
     }
 
     public void load2(ActionEvent event) throws Exception{
-        load("3.json");
+        load("2");
     }
 
     public void load3(ActionEvent event) throws Exception{
-        load("3.json");
+        load("3");
+    }
+
+    private void startGameFromSave(String path) {
+        try {
+            //switch scene
+            Parent gameScreen = FXMLLoader.load(getClass().getResource("game.fxml"));
+            Scene gameScene = new Scene(gameScreen);
+            Main.changeScene(gameScene);
+
+            //Create new game object
+            Game game = new Game();
+            game.setUpFromSave();
+            game.startFromSave();
+            //TODO pass code to load the level file
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
     }
 
     private void load(String path) throws Exception {
         Game.setLevelPath(path);
         Game.setLevelNum(8);
-        this.startGame();
+        this.startGameFromSave(path);
     }
 }

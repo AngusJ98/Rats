@@ -257,11 +257,12 @@ public class GameRenderer {
     }
 
     private void save(String path) {
-        GameFileHandler.saveGame();
+        GameFileHandler.saveGame(path);
         try {
-            Parent gameScreen = FXMLLoader.load(getClass().getResource("victory.fxml"));
-            Scene gameScene = new Scene(gameScreen);
-            Main.changeScene(gameScene);
+            Parent root = FXMLLoader.load(getClass().getResource("menu.fxml"));
+            Scene menuScene = new Scene(root, WINDOW_WIDTH, WINDOW_HEIGHT);
+            Main.changeScene(menuScene);
+
         } catch (Exception e) {
             e.printStackTrace();
             System.exit(1);

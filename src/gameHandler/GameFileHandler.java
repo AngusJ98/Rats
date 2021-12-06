@@ -2,6 +2,7 @@ package gameHandler;
 
 import java.io.FileReader;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -300,7 +301,12 @@ public class GameFileHandler {
         JSONObject json = readJSON(name, true);
         return parseJSON(json);
     }
-
+    public static Tuple<BasicRat[], Entity[][], char[][], HashMap<String, Integer>,
+            HashMap<String, HashMap<String, Integer>>, int[]>
+    newGameFromSave(String name) throws ParseException, IOException {
+        JSONObject json = readJSON(name, false);
+        return parseJSON(json);
+    }
     // For testing //
     public static void print(Object in) {
         System.out.print(in);
@@ -324,7 +330,7 @@ public class GameFileHandler {
 
 
     }	
-	public static void saveGame() {
+	public static void saveGame(String path) {
 		//construct map string
 		String mapStr = "";
 		for (int y = 0; y < Game.TileManager.getNumTileWidth();y++) {
@@ -457,12 +463,16 @@ public class GameFileHandler {
 	
 		String fullGameString = fullMapString + ratStr + itemStr + lvlStr + playerStr + inventoryStr;
 		
-		writeSaveFile(fullGameString);
+		writeSaveFile(fullGameString, path);
     }	
-	private static void writeSaveFile(String saveString) {
-		JSONObject obj = new JSONObject();
-		
-		
+	private static void writeSaveFile(String saveString, String path) {
+        try {
+            FileWriter writer = new FileWriter(LEVEL_PATH + path + SAVE_FILE_EXT, false);
+            writer.write(saveString);
+            writer.close();
+        } catch (Exception e) {
+            System.out.println("Save unsuccessfool. OOp");
+        }
     }
 	
 }
