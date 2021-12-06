@@ -1,12 +1,12 @@
 /**
  * <p> 1. File-name: TileTypes.java</p>
- * <p> 2. Creation Date: XX/XX/XX </p>
- * <p> 3. Last modification date: XX/XX/XX </p>
+ * <p> 2. Creation Date: 13/11/21 </p>
+ * <p> 3. Last modification date: 13/11/21 </p>
  * <p> 4. Purpose of the program: Define an enum for the types of Tiles there are</p>
  *
- * @author ??
+ * @author Andrew
  */
-//whoever`s class this is please fill in missing information in Javadoc
+
 package tiles;
 
 /**

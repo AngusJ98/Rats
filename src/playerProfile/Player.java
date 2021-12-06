@@ -29,7 +29,7 @@ public class Player {
      * <p> not referentially transparent</p>
      *
      * @param playerName       the name of this player
-     * @param scores            the score of this player
+     * @param scores           the score of this player
      * @param maxLevelUnlocked the maximum level unlocked by this player
      */
     public Player(String playerName, int[] scores, int maxLevelUnlocked) {
@@ -72,22 +72,37 @@ public class Player {
         return maxLevelUnlocked;
     }
 
+    /**
+     * Method used to get a players name
+     *
+     * @return the players name
+     */
     public String getPlayerName() {
         return playerName;
     }
 
+    /**
+     * Method to set the max level a player has unlocked
+     *
+     * @param maxLevelUnlocked maximum level unlocked
+     */
     public void setMaxLevelUnlocked(int maxLevelUnlocked) {
         this.maxLevelUnlocked = maxLevelUnlocked;
     }
 
+    /**
+     * Method to turn the player into a JSON object
+     *
+     * @return player as a JSON object
+     */
     public JSONObject makeJSON() {
         JSONObject jo = new JSONObject();
         JSONArray scoreNew = new JSONArray();
-        for (int score: scores) {
+        for (int score : scores) {
             scoreNew.add(score);
         }
 
-        jo.put("name",this.playerName);
+        jo.put("name", this.playerName);
         jo.put("scores", scoreNew);
         jo.put("maxLevel", this.maxLevelUnlocked);
         return jo;
