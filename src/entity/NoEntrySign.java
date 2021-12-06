@@ -23,7 +23,7 @@ public class NoEntrySign extends Item {
      * <p> side-effects</p>
      * <p> not referentially transparent</p>
      *
-     * @param pos takes coordinates of NoEntrySign to be placed.
+     * @param position takes in position
      */
 
     public NoEntrySign(Pos position) {
@@ -36,8 +36,8 @@ public class NoEntrySign extends Item {
      * <p> side-effects</p>
      * <p> not referentially transparent</p>
      *
-     * @param pos   takes coordinates of NoEntrySign to be placed.
-     * @param takes in the current hp of a NoEntrySign
+     * @param position
+     * @param hp
      */
 
     public NoEntrySign(Pos position, int hp) {
@@ -50,7 +50,7 @@ public class NoEntrySign extends Item {
      * <p> no side-effects</p>
      * <p> not referentially transparent</p>
      *
-     * @param takes a spesific rat in to change its direction.
+     * @param target
      */
 
     public void ratCollision(Rat target) {
@@ -67,8 +67,9 @@ public class NoEntrySign extends Item {
     /**
      * Check if NoEntrySign has touched rat
      *
-     * @param takes a NoEntrySign in to check if it there.
+     * @param target: takes a NoEntrySign in to check if it there.
      */
+
     public void itemCollision(Item target) {
     }
 
